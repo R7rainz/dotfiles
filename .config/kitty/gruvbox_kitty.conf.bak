@@ -1,0 +1,96 @@
+# ────────────────
+# Kitty Config - Gruvbox Noir Dark 
+# ────────────────
+
+# Font
+font_family      Hurmit Nerd Font
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        11.5
+
+# Padding
+window_padding_width  0
+window_margin_width   0
+
+# Performance
+repaint_delay        10
+input_delay          1
+sync_to_monitor      yes
+enable_audio_bell    no
+
+# Cursor
+cursor                 #d5c4a1
+cursor_shape           beam
+cursor_blink_interval  0.6
+cursor_stop_blinking_after 0
+cursor_trail           1
+cursor_trail_decay     0.1 0.4
+
+# Selection
+selection_foreground   #fbf1c7
+selection_background   #3a3a3a
+
+# Background and Foreground
+foreground             #d4be98
+background             #000000
+background_opacity     1
+
+# URL Highlight
+url_color              #d79921
+
+# Tab Bar
+tab_bar_style           powerline
+active_tab_background   #2c2c2c
+active_tab_foreground   #ebdbb2
+inactive_tab_background #1a1a1a
+inactive_tab_foreground #665c54
+tab_separator           ""
+
+# Border
+active_border_color     #fabd2f
+inactive_border_color   #3c3836
+bell_border_color       #cc241d
+
+# Gruvbox Noir-Dark Colors
+color0  #0f0f0f
+color1  #aa2222
+color2  #78823c
+color3  #a67c21
+color4  #3a5a78
+color5  #8e5d78
+color6  #5c7f6a
+color7  #928374
+
+color8  #3c3836
+color9  #bb4444
+color10 #9bbc46
+color11 #cfa935
+color12 #689cb5
+color13 #b07090
+color14 #78b29c
+color15 #ebdbb2
+
+# Scrollback & Mouse
+scrollback_lines        5000
+mouse_hide_wait         3.0
+wheel_scroll_multiplier 5.0
+
+# Allow hyperlinks
+allow_hyperlinks yes
+
+# Powerline Symbols Support
+symbol_map U+E0B0-U+E0B3 Hurmit Nerd Font
+
+# Launch shell
+shell /bin/fish
+
+cursor_shape beam
+cursor_blink_interval 0.6 
+cursor_stop_blinking_after 0 
+enable_audio_bell
+
+background_opacity 1
+
+cursor_trail 1
+cursor_trail_decay 0.1 0.4
