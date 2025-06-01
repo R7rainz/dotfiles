@@ -1,0 +1,59 @@
+return {
+  "EdenEast/nightfox.nvim",
+  priority = 1000,
+  config = function()
+    require("nightfox").setup({
+      options = {
+        transparent = false,
+        dim_inactive = true,
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+          types = "italic",
+        },
+      },
+      palettes = {
+        carbonfox = {
+          black = "#000000",
+          bg0 = "#000000", -- main background
+          bg1 = "#0a0a0a",
+          bg2 = "#1a1a1a",
+          fg0 = "#c0c0c0",
+          fg1 = "#c0c0c0",
+          red = "#ff5f5f", -- strong red for errors
+          green = "#5faf87",
+          yellow = "#5faf87", -- replacing yellow with green
+          blue = "#87afd7",
+          magenta = "#af87ff",
+          cyan = "#5fd7d7",
+          white = "#dcdccc",
+          orange = "#ff5f5f", -- override orange with red
+          pink = "#ff5f5f",
+        },
+      },
+      specs = {
+        carbonfox = {
+          syntax = {
+            keyword = "blue",
+            builtin0 = "cyan",
+            builtin1 = "cyan",
+            string = "green",
+            number = "blue",
+            comment = "fg2",
+            variable = "fg1",
+            constant = "blue",
+            type = "blue",
+            error = "red",
+          },
+          diag = {
+            error = "red",
+            warn = "red",
+            hint = "fg3",
+            info = "blue",
+          },
+        },
+      },
+    })
+    vim.cmd("colorscheme carbonfox")
+  end,
+}

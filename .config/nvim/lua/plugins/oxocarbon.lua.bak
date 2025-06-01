@@ -1,0 +1,13 @@
+return {
+  "nyoom-engineering/oxocarbon.nvim",
+  priority = 1000, -- make sure it loads before other UI plugins
+  config = function()
+    vim.opt.background = "dark" -- or "light" if you prefer
+    vim.cmd("colorscheme oxocarbon")
+
+    -- Optional: Transparent background
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+  end,
+}
