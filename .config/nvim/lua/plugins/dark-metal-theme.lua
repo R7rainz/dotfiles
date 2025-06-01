@@ -5,7 +5,7 @@ return {
     lazy = false,
     config = function()
       require("black-metal").setup({
-        theme = "impaled-nazarene", -- <- change to any other band if needed
+        theme = "venom", -- <- change to any other band if needed
         variant = "dark",
         transparent = false,
         term_colors = true,
