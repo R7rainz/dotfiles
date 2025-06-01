@@ -1,0 +1,1 @@
+../../../Dotfiles/.config/waybar/scripts/cpu-temp.sh

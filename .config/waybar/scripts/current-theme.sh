@@ -1,0 +1,1 @@
+../../../Dotfiles/.config/waybar/scripts/current-theme.sh

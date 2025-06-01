@@ -1,0 +1,1 @@
+../../../Dotfiles/.config/waybar/scripts/volume-control.sh

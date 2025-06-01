@@ -1,0 +1,1 @@
+../../../Dotfiles/.config/waybar/scripts/theme-switcher.sh
