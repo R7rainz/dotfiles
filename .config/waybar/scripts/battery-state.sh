@@ -1,1 +1,0 @@
-../../../Dotfiles/.config/waybar/scripts/battery-state.sh

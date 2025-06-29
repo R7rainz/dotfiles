@@ -10,7 +10,8 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # oh-my-posh init fish --config $HOME/.poshthemes/kushal.omp.json | source
-oh-my-posh init fish --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/sonicboom_dark.omp.json' | source
+# oh-my-posh init fish --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/tiwahu.omp.json' | source
+oh-my-posh init fish --config ~/.config/oh-my-posh/themes/custom.omp.json | source
 
 function ls
     eza --icons --group-directories-first --oneline $argv
@@ -33,7 +34,6 @@ end
 # end
 
 set -U fish_user_paths /home/rainz/.local/bin $fish_user_paths
-
 #yazi function 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
