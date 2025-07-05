@@ -1,11 +1,8 @@
-![image](https://github.com/user-attachments/assets/03ef993e-2fad-4668-a313-2b2a31d6b66e)
-
-
 <div align="center">
 
-# 🚀 Modern Arch Linux Hyprland Dotfiles
+# ✨ RAINZ'S Arch Hyprland Rice
 
-*A comprehensive setup for a sleek Arch Linux desktop environment with Hyprland*
+*A meticulously crafted Arch Linux desktop experience*
 
 [![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)](https://archlinux.org/)
 [![Hyprland](https://img.shields.io/badge/Hyprland-00D9FF?style=for-the-badge&logo=wayland&logoColor=white)](https://hyprland.org/)
@@ -14,118 +11,121 @@
 
 ---
 
-*Transform your Arch Linux experience with this carefully curated collection of dotfiles featuring Hyprland's modern Wayland compositor, beautiful themes, and productivity-focused tools.*
+*Elevate your Linux workflow with this carefully curated collection of dotfiles*
 
 </div>
 
-## 🖥️ System Showcase
+## 🖼️ Preview Gallery
 
 <div align="center">
 
-| Component | Technology | Description |
-|-----------|------------|-------------|
-| 🐧 **Distribution** | `Arch Linux` | Rolling release Linux distribution |
-| 🪟 **Window Manager** | `Hyprland` | Modern Wayland compositor with animations |
-| 🌐 **Browser** | `Zen Browser` | Privacy-focused Firefox-based browser |
-| 🖥️ **Terminal** | `Kitty` | GPU-accelerated terminal emulator |
-| 🐚 **Shell** | `Fish + Oh My Posh` | User-friendly shell with beautiful prompts |
-| ✏️ **Editor** | `Neovim` | Extensible text editor |
-| 🚀 **App Launcher** | `Rofi` | Application launcher and window switcher |
-| 📊 **Status Bar** | `Waybar` | Highly customizable status bar |
-| 🔔 **Notifications** | `SwayNC` | Notification daemon for Wayland |
-| 🖼️ **Wallpaper** | `Hyprpaper + Waypaper` | Wallpaper management |
-| 🔐 **Display Manager** | `SDDM` | Simple Desktop Display Manager |
-| 🔊 **Audio** | `PulseAudio + Pipewire` | Modern audio stack |
+### Desktop Showcase
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="https://github.com/user-attachments/assets/7a85eb93-d3df-493f-a341-e0f13547f6a6" alt="Desktop Overview" style="border-radius: 8px;"/>
+      <p><em>Clean Desktop with Waybar and Rofi</em></p>
+    </td>
+    <td width="50%">
+      <img src="https://github.com/user-attachments/assets/68f81533-c7a9-4d90-951c-9a4c0ce9931c" alt="Terminal Setup" style="border-radius: 8px;"/>
+      <p><em>Terminal & Development Environment</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="https://github.com/user-attachments/assets/d5e6620b-7521-467b-a809-d53609db8cf0" alt="Application Launcher" style="border-radius: 8px;"/>
+      <p><em>Spotify with Cava</em></p>
+    </td>
+    <td width="50%">
+      <img src="https://github.com/user-attachments/assets/9b87382c-5a32-4fbe-99ce-53f1a1bd9e9d" alt="Browser Setup" style="border-radius: 8px;"/>
+      <p><em>SDDM Theme</em></p>
+    </td>
+  </tr>
+</table>
 
 </div>
 
 ---
 
-## 📋 Prerequisites
+## ⚡ Tech Stack
 
-> **Important**: Ensure you have the following before proceeding
+<div align="center">
 
-- 🐧 **Arch Linux** (fresh installation recommended)
-- 📦 **git** installed
-- 🔧 **yay** AUR helper installed  
-- 👑 **sudo** privileges
-- 🖥️ **GPU drivers** properly installed (NVIDIA users need additional setup)
+| Component | Choice | Why |
+|:---------:|:------:|:---:|
+| 🐧 **OS** | `Arch Linux` | Rolling release perfection |
+| 🪟 **WM** | `Hyprland` | Smooth Wayland animations |
+| 🌐 **Browser** | `Zen Browser` | Privacy-focused & customizable |
+| 🖥️ **Terminal** | `Kitty` | GPU-accelerated performance |
+| 🐚 **Shell** | `Fish + Oh My Posh` | Beautiful & user-friendly |
+| ✏️ **Editor** | `Neovim` | Extensible text editing |
+| 🚀 **Launcher** | `Rofi` | Fast application switching |
+| 📊 **Bar** | `Waybar` | Highly customizable status |
+| 🔔 **Notifications** | `SwayNC` | Clean notification system |
+| 🖼️ **Wallpaper** | `Hyprpaper + Waypaper` | Dynamic wallpaper management |
+
+</div>
 
 ---
 
-## 🛠️ Installation Guide
+## 🚀 Quick Start
 
-### 📥 **Step 1: Clone the Repository**
-
+### Prerequisites
 ```bash
-git clone https://github.com/R7rainz/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+# Ensure you have these essentials
+- Arch Linux (fresh install recommended)
+- git, yay, sudo privileges
+- Proper GPU drivers installed
 ```
 
-### 🏗️ **Step 2: Install Hyprland on Arch Linux**
-
-#### Essential Dependencies
-
+### One-Command Setup
 ```bash
-# Update system first
-sudo pacman -Syu
+git clone https://github.com/R7rainz/dotfiles.git ~/dotfiles && cd ~/dotfiles
+```
 
-# Install essential dependencies for Hyprland
+---
+
+## 📦 Installation Steps
+
+<details>
+<summary><b>🏗️ Step 1: Hyprland Installation</b></summary>
+
+### System Update & Dependencies
+```bash
+sudo pacman -Syu
 sudo pacman -S base-devel cmake meson ninja gcc pkgconf libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info cpio tomlplusplus hyprlang hyprcursor hyprwayland-scanner
 ```
 
-#### Graphics Drivers Setup
-
-**For NVIDIA Users:**
+### GPU Drivers
+**NVIDIA:**
 ```bash
-# Install NVIDIA drivers (choose appropriate version)
 sudo pacman -S nvidia nvidia-utils nvidia-settings
-
-# For older cards, use nvidia-470xx-dkms instead
-# yay -S nvidia-470xx-dkms nvidia-470xx-utils
-
-# Add NVIDIA modules to mkinitcpio
-sudo nano /etc/mkinitcpio.conf
-# Add: MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
-
-# Regenerate initramfs
+# Add to /etc/mkinitcpio.conf: MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 sudo mkinitcpio -P
-
-# Enable DRM kernel mode setting
-sudo nano /etc/default/grub
-# Add to GRUB_CMDLINE_LINUX_DEFAULT: nvidia_drm.modeset=1
-
-# Update GRUB
+# Add to GRUB: nvidia_drm.modeset=1
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-**For AMD Users:**
+**AMD:**
 ```bash
-# Install AMD drivers
 sudo pacman -S mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
 ```
 
-**For Intel Users:**
+**Intel:**
 ```bash
-# Install Intel drivers
 sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel
 ```
 
-#### Install Hyprland
-
+### Install Hyprland
 ```bash
-# Install Hyprland from official repositories
 sudo pacman -S hyprland
-
-# Or install the latest development version from AUR (recommended for latest features)
+# Or for latest features:
 yay -S hyprland-git
-
-# Install additional Hyprland tools
 yay -S xdg-desktop-portal-hyprland-git
 ```
 
-#### Configure XDG Desktop Portal
-
+### Configure XDG Desktop Portal
 ```bash
 # Install required portal packages
 sudo pacman -S xdg-desktop-portal-wlr xdg-desktop-portal-gtk
@@ -141,118 +141,57 @@ org.freedesktop.impl.portal.FileChooser=gtk
 EOF
 ```
 
-### 📦 **Step 3: Install Required Packages**
+</details>
 
-#### 🔧 Core System Packages
-
-```bash
-# Core utilities and dependencies
-sudo pacman -S git stow brightnessctl pacman-contrib pipewire pipewire-pulse wireplumber bluez-utils
-
-# Audio control
-sudo pacman -S pulseaudio pavucontrol
-
-# Bluetooth
-sudo pacman -S blueman
-
-# Wayland essentials
-sudo pacman -S wayland wayland-protocols wlroots
-```
-
-#### 🚀 Main Applications
+<details>
+<summary><b>📦 Step 2: Core Packages</b></summary>
 
 ```bash
-# Terminal and shell
-sudo pacman -S kitty fish
+# System essentials
+sudo pacman -S git stow brightnessctl pacman-contrib pipewire pipewire-pulse wireplumber bluez-utils pulseaudio pavucontrol blueman wayland wayland-protocols wlroots
 
-# Editor and system tools
-sudo pacman -S neovim rofi hyprpaper
+# Applications
+sudo pacman -S kitty fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm
+yay -S waybar swaync waypaper zen-browser-bin pnpm-bin
 
-# Wayland compositor tools
-yay -S waybar swaync waypaper
-
-# Browser
-yay -S zen-browser-bin
-
-# File manager and utilities
-sudo pacman -S thunar gvfs gvfs-mtp
-```
-
-#### 💻 Development Tools
-
-```bash
-# Package managers and helpers
-sudo pacman -S npm
-yay -S pnpm-bin
-
-# Make sure yay is installed
-# If not: git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-```
-
-#### 🔤 Fonts
-
-```bash
-# Install required fonts
+# Fonts & Tools
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-liberation ttf-dejavu
-yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd
-```
+yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd bat fastfetch
 
-#### 📊 Fetch Tools
-
-```bash
-# System information tools
-yay -S bat fastfetch
-```
-
-#### 🎨 Oh My Posh Theme Engine
-
-```bash
-# Install Oh My Posh
+# Oh My Posh
 curl -s https://ohmyposh.dev/install.sh | bash -s
 ```
 
-### 🌐 **Step 4: Configure Zen Browser**
+</details>
 
-#### Install Zen Browser Theme (Nebula)
+<details>
+<summary><b>🌐 Step 3: Zen Browser Setup</b></summary>
 
+### Nebula Theme Installation
 ```bash
-# Clone the Nebula theme repository
 git clone https://github.com/JustAdumbPrsn/Zen-Nebula.git ~/zen-nebula
-cd ~/zen-nebula
 ```
 
-#### Apply Custom CSS
-
-1. **Open Zen Browser** and navigate to `about:config`
-2. **Search for** `toolkit.legacyUserProfileCustomizations.stylesheets`
-3. **Set the value to** `true`
-4. **Navigate to** `about:support`
-5. **Click** "Open Folder" next to "Profile Folder"
-6. **Create a** `chrome` **folder** if it doesn't exist
-7. **Copy the CSS files** from the Nebula repository:
-
+### Apply Custom CSS
+1. Open Zen Browser → `about:config`
+2. Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
+3. Go to `about:support` → Open Profile Folder
+4. Create `chrome` folder
+5. Copy CSS files:
 ```bash
-# Copy the userChrome.css to your profile
 cp ~/zen-nebula/userChrome.css ~/.zen/[your-profile]/chrome/
 cp ~/zen-nebula/userContent.css ~/.zen/[your-profile]/chrome/
 ```
 
-#### Browser Configuration
+### Extensions & Settings
+- Install **uBlock Origin**
+- Enable **Compact Sidebar Mode**
+- Configure privacy settings
 
-1. **Enable Compact Mode**:
-   - Go to `Settings` → `Zen` → `Sidebar`
-   - Enable "Compact Mode"
+</details>
 
-2. **Install Extensions**:
-   - **uBlock Origin**: Install from Firefox Add-ons store
-   - Configure uBlock Origin with your preferred filter lists
-
-3. **Additional Settings**:
-   - Enable sidebar in compact mode
-   - Configure privacy settings as needed
-   - Set up sync if desired
-
-### 🎭 **Step 5: Setup SDDM Theme**
+<details>
+<summary><b>🎭 Step 4: SDDM Theme Setup</b></summary>
 
 ```bash
 # Install SDDM theme
@@ -262,29 +201,26 @@ sudo ~/dotfiles/install-sddm-theme.sh
 # The theme will be installed to: /usr/share/sddm/themes/silent
 ```
 
-### ⚙️ **Step 6: Configure Services**
+</details>
 
-#### 📶 Enable Bluetooth
+<details>
+<summary><b>⚙️ Step 5: System Configuration</b></summary>
 
+### Services
 ```bash
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-```
-
-#### 🔊 Enable Audio Services
-
-```bash
-# Enable PipeWire services (user-level)
+# Audio
 systemctl --user enable pipewire pipewire-pulse wireplumber
 systemctl --user start pipewire pipewire-pulse wireplumber
+
+# Bluetooth
+sudo systemctl enable bluetooth && sudo systemctl start bluetooth
+
+# Display Manager
+sudo systemctl enable sddm
 ```
 
-#### 🖥️ Configure Display Manager
-
+### Configure Display Manager
 ```bash
-# Enable SDDM
-sudo systemctl enable sddm
-
 # Configure SDDM to use Wayland session
 sudo mkdir -p /etc/sddm.conf.d
 sudo tee /etc/sddm.conf.d/10-wayland.conf << EOF
@@ -297,14 +233,15 @@ CompositorCommand=Hyprland
 EOF
 ```
 
-### 🔗 **Step 7: Apply Dotfiles with Stow**
+</details>
 
-Navigate to your dotfiles directory and stow the configurations:
+<details>
+<summary><b>🔗 Step 6: Apply Dotfiles</b></summary>
 
 ```bash
 cd ~/dotfiles
 
-# Stow individual packages (recommended for first-time setup)
+# Individual stowing (recommended)
 stow batfetch
 stow fastfetch
 stow fish
@@ -316,36 +253,23 @@ stow swaync
 stow waybar
 stow hyprpaper
 stow waypaper
-stow hyprland  # This will stow Hyprland configuration
+stow hyprland
 
 # Or stow everything at once (be careful of conflicts)
 # stow */
 ```
 
-### 🐚 **Step 8: Configure Shell**
-
-#### Set Fish as Default Shell
-
+### Configure Shell
 ```bash
-# Add fish to valid shells
+# Set Fish as default shell
 echo /usr/bin/fish | sudo tee -a /etc/shells
-
-# Change default shell
 chsh -s /usr/bin/fish
-```
 
-#### Install Oh My Posh Theme
-
-```bash
-# The custom theme should already be linked via stow
-# Verify the theme file exists
+# Verify Oh My Posh theme
 ls -la ~/.config/oh-my-posh/themes/custom.omp.json
 ```
 
-### 🔤 **Step 9: Font Configuration**
-
-Ensure the fonts are properly recognized:
-
+### Font Configuration
 ```bash
 # Refresh font cache
 fc-cache -fv
@@ -354,17 +278,18 @@ fc-cache -fv
 fc-list | grep -i "jetbrains\\|hurmit\\|inconsolata"
 ```
 
-### ✅ **Step 10: Final Configuration**
+</details>
 
-#### Reload Fish Configuration
+<details>
+<summary><b>✅ Step 7: Final Configuration</b></summary>
 
+### Reload Fish Configuration
 ```bash
 fish
 source ~/.config/fish/config.fish
 ```
 
-#### Test Applications
-
+### Test Applications
 ```bash
 # Test fetch tools
 batfetch
@@ -383,13 +308,14 @@ rofi -show drun
 zen-browser &
 ```
 
-#### Launch Hyprland
-
+### Launch Hyprland
 ```bash
 # If using a display manager, select Hyprland from the session menu
 # Or start Hyprland manually from TTY:
 Hyprland
 ```
+
+</details>
 
 ---
 
@@ -593,6 +519,22 @@ cp ~/zen-nebula/*.css ~/.zen/[profile-name]/chrome/
 
 ---
 
+## 💝 Support
+
+<div align="center">
+
+**Enjoying this rice? Show some love!**
+
+[![GitHub Stars](https://img.shields.io/github/stars/R7rainz/dotfiles?style=for-the-badge&logo=github&color=yellow)](https://github.com/R7rainz/dotfiles/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/R7rainz/dotfiles?style=for-the-badge&logo=github&color=blue)](https://github.com/R7rainz/dotfiles/network)
+
+[![Issues](https://img.shields.io/badge/Issues-Welcome-brightgreen?style=for-the-badge&logo=github)](https://github.com/R7rainz/dotfiles/issues)
+[![Pull Requests](https://img.shields.io/badge/PRs-Welcome-blue?style=for-the-badge&logo=github)](https://github.com/R7rainz/dotfiles/pulls)
+
+</div>
+
+---
+
 ## 🤝 Contributing
 
 <div align="center">
@@ -600,9 +542,6 @@ cp ~/zen-nebula/*.css ~/.zen/[profile-name]/chrome/
 **Found a bug? Have an improvement?**
 
 Feel free to fork this repository and submit pull requests for improvements or additional configurations.
-
-[![GitHub Issues](https://img.shields.io/badge/Issues-Welcome-brightgreen?style=for-the-badge&logo=github)](https://github.com/R7rainz/dotfiles/issues)
-[![Pull Requests](https://img.shields.io/badge/PRs-Welcome-blue?style=for-the-badge&logo=github)](https://github.com/R7rainz/dotfiles/pulls)
 
 </div>
 
@@ -619,7 +558,11 @@ Feel free to fork this repository and submit pull requests for improvements or a
 
 ---
 
-*⭐ If you found this helpful, consider giving it a star!*
+<img src="https://github.com/user-attachments/assets/03ef993e-2fad-4668-a313-2b2a31d6b66e" alt="RAINZ" width="50" style="border-radius: 50%;"/>
+
+**Crafted by RAINZ** • *Making Linux beautiful, one rice at a time*
+
+⭐ **Star this repo if it helped you!**
 
 **Made with ❤️ for the Arch Linux and Hyprland community**
 
