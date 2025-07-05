@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#6b7280",
+          "template": " "
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "#9ca3af",
+          "template": "{{ .UserName }}@{{ .HostName }} "
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#d1d5db",
+          "template": " {{ .Path }} ",
+          "properties": {
+            "style": "folder",
+            "folder_icon": "\ue5ff",
+            "home_icon": "\ueb06",
+            "folder_separator_icon": "/"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#9ca3af",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#ffffff{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#e5e7eb{{ end }}",
+            "{{ if gt .Ahead 0 }}#d1d5db{{ end }}",
+            "{{ if gt .Behind 0 }}#d1d5db{{ end }}"
+          ],
+          "template": "on {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#4b5563",
+          "template": "\u276f "
+        }
+      ]
+    }
+  ]
+}

@@ -51,7 +51,3 @@ require("lazy").setup({
     },
   },
 })
-
-return {
-  "nyoom-engineering/oxocarbon.nvim",
-}
