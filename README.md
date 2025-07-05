@@ -357,6 +357,7 @@ stow -R */
 │   ├── waybar/
 │   ├── hyprpaper/
 │   └── waypaper/
+├── Wallpapers/
 ├── system/
 │   └── sddm/
 │       └── themes/
