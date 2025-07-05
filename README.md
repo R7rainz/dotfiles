@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/03ef993e-2fad-4668-a313-2b2a31d6b66e)
+
+
 <div align="center">
 
 # 🚀 Modern Arch Linux Hyprland Dotfiles
