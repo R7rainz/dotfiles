@@ -1,0 +1,62 @@
+{
+  "position": "top-right",
+  "layer": "overlay",
+  "control-center-layer": "overlay",
+  "control-center-margin-top": 40,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 10,
+  "notification-margin-top": 40,
+  "notification-margin-right": 10,
+  "notification-visibility-time": 5000,
+  "notification-fade-in-time": 300,
+  "notification-fade-out-time": 300,
+  "notification-slide-in-time": 300,
+  "notification-slide-out-time": 300,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "script-fail-notify": true,
+  "scripts": {
+    "notification-sound": {
+      "exec" : "paplay /home/rainz/Downloads/pull-out-551.ogg",
+      "urgency": "Normal"
+    }
+  },
+  "notification-criteria": [
+    {
+      "criteria": "app-name",
+      "value": "Spotify",
+      "urgency": "Low"
+    },
+    {
+      "criteria": "app-name", 
+      "value": "Discord",
+      "urgency": "Normal"
+    }
+  ],
+  "widgets": {
+    "control-center": [
+      "title",
+      "dnd",
+      "mpris",
+      "notifications"
+    ],
+    "notification-popup": [
+      "app-icon",
+      "summary",
+      "body",
+      "time"
+    ]
+  },
+  "dnd-indicator": {
+    "text": "🔕 Do Not Disturb",
+    "tooltip": "Toggle Do Not Disturb mode"
+  },
+  "mpris": {
+    "image-size": 48,
+    "image-radius": 8,
+    "blur": true
+  }
+}

@@ -1,0 +1,266 @@
+@define-color bg #0a0a0a;
+@define-color bg-secondary #1a1a1a;
+@define-color bg-tertiary #2a2a2a;
+@define-color fg #ffffff;
+@define-color fg-secondary #cccccc;
+@define-color fg-tertiary #999999;
+@define-color accent #ffffff;
+@define-color accent-secondary #666666;
+@define-color shadow rgba(0, 0, 0, 0.6);
+@define-color border #333333;
+
+* {
+  font-family: "InconsolataLGC Nerd Font", "JetBrains Mono", "Hurmit Nerd Font", sans-serif;
+  font-size: 13px;
+  color: @fg;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Notification Popups */
+.notification {
+  background-color: @bg-secondary;
+  color: @fg;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 32px @shadow;
+  border: 1px solid @border;
+  margin: 0;
+  min-width: 340px;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+}
+
+.notification .summary {
+  font-weight: 600;
+  font-size: 14px;
+  color: @accent;
+  margin-bottom: 6px;
+}
+
+.notification .body {
+  color: @fg-secondary;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.notification .app-icon {
+  min-width: 24px;
+  min-height: 24px;
+  margin-right: 12px;
+  border-radius: 6px;
+}
+
+.notification .time {
+  color: @fg-tertiary;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.notification .close-button {
+  background-color: transparent;
+  color: @fg-tertiary;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.notification .close-button:hover {
+  background-color: @bg-tertiary;
+  color: @accent;
+}
+
+/* Control Center */
+.control-center {
+  background-color: @bg;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 12px 40px @shadow;
+  border: 1px solid @border;
+  min-width: 380px;
+  max-width: 420px;
+  backdrop-filter: blur(20px);
+}
+
+.control-center .widget {
+  background-color: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  padding: 12px;
+  margin: 0 0 8px 0;
+}
+
+.control-center .widget:hover {
+  background-color: @bg-secondary;
+  color: @accent;
+}
+
+/* Control Center Header */
+.control-center-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: @accent;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* DND Toggle */
+.dnd-indicator {
+  color: @accent;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px;
+  background-color: @bg-secondary;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.dnd-indicator.enabled {
+  background-color: @bg-tertiary;
+  color: @fg-secondary;
+}
+
+/* Notification List */
+.notification-list {
+  padding: 0;
+  margin: 0;
+}
+
+.notification-list .notification {
+  margin-bottom: 12px;
+  background-color: @bg-secondary;
+  border: 1px solid @border;
+  transition: all 0.2s ease;
+}
+
+.notification-list .notification:hover {
+  background-color: @bg-tertiary;
+  border-color: @accent-secondary;
+  transform: translateY(-2px);
+}
+
+.notification-list .notification .summary {
+  color: @accent;
+  font-weight: 600;
+}
+
+.notification-list .notification .body {
+  color: @fg-secondary;
+}
+
+.notification-list .notification .time {
+  color: @fg-tertiary;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* Clear All Button */
+.clear-all-notifications {
+  background-color: @bg-secondary;
+  color: @fg;
+  border: 1px solid @border;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.clear-all-notifications:hover {
+  background-color: @bg-tertiary;
+  color: @accent;
+  border-color: @accent-secondary;
+}
+
+/* MPRIS Widget */
+.mpris {
+  background-color: @bg-secondary;
+  border: 1px solid @border;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.mpris .title {
+  color: @accent;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mpris .artist {
+  color: @fg-secondary;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.mpris .controls {
+  margin-top: 8px;
+}
+
+.mpris .control-button {
+  background-color: transparent;
+  color: @fg-tertiary;
+  border-radius: 6px;
+  padding: 6px;
+  margin: 0 4px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.mpris .control-button:hover {
+  background-color: @bg-tertiary;
+  color: @accent;
+}
+
+/* Scrollbar */
+scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+scrollbar slider {
+  background-color: @accent-secondary;
+  border-radius: 3px;
+  min-height: 20px;
+}
+
+scrollbar slider:hover {
+  background-color: @accent;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.notification {
+  animation: slideIn 0.3s ease-out;
+}
+
+.notification.closing {
+  animation: slideOut 0.3s ease-in;
+}
