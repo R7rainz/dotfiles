@@ -55,7 +55,7 @@
 ### 📥 **Step 1: Clone the Repository**
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/R7rainz/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
@@ -598,8 +598,8 @@ cp ~/zen-nebula/*.css ~/.zen/[profile-name]/chrome/
 
 Feel free to fork this repository and submit pull requests for improvements or additional configurations.
 
-[![GitHub Issues](https://img.shields.io/badge/Issues-Welcome-brightgreen?style=for-the-badge&logo=github)](https://github.com/yourusername/dotfiles/issues)
-[![Pull Requests](https://img.shields.io/badge/PRs-Welcome-blue?style=for-the-badge&logo=github)](https://github.com/yourusername/dotfiles/pulls)
+[![GitHub Issues](https://img.shields.io/badge/Issues-Welcome-brightgreen?style=for-the-badge&logo=github)](https://github.com/R7rainz/dotfiles/issues)
+[![Pull Requests](https://img.shields.io/badge/PRs-Welcome-blue?style=for-the-badge&logo=github)](https://github.com/R7rainz/dotfiles/pulls)
 
 </div>
 
