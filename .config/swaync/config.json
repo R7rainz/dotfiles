@@ -5,22 +5,36 @@
   "control-center-margin-top": 40,
   "control-center-margin-bottom": 10,
   "control-center-margin-right": 10,
+  "control-center-width": 400,
+  "control-center-height": 600,
   "notification-margin-top": 40,
   "notification-margin-right": 10,
-  "notification-visibility-time": 5000,
-  "notification-fade-in-time": 300,
-  "notification-fade-out-time": 300,
-  "notification-slide-in-time": 300,
-  "notification-slide-out-time": 300,
+  "notification-window-width": 400,
+  "notification-icon-size": 48,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+  "notification-visibility-time": 8000,
+  "notification-fade-in-time": 500,
+  "notification-fade-out-time": 500,
+  "notification-slide-in-time": 400,
+  "notification-slide-out-time": 400,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
-  "transition-time": 200,
+  "transition-time": 300,
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
   "scripts": {
     "notification-sound": {
-      "exec" : "paplay /home/rainz/Downloads/pull-out-551.ogg",
+      "exec": "paplay /home/rainz/Downloads/pull-out-551.ogg",
+      "urgency": "Normal"
+    },
+    "browser-notification": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga",
+      "urgency": "Normal"
+    },
+    "email-notification": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-email.oga",
       "urgency": "Normal"
     }
   },
@@ -31,9 +45,144 @@
       "urgency": "Low"
     },
     {
-      "criteria": "app-name", 
+      "criteria": "app-name",
       "value": "Discord",
       "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "firefox",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Firefox",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "chromium",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Google Chrome",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Brave Browser",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Microsoft Edge",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Thunderbird",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Evolution",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Mailspring",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Slack",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Teams",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Telegram",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Signal",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "WhatsApp",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Steam",
+      "urgency": "Low"
+    },
+    {
+      "criteria": "app-name",
+      "value": "KeePassXC",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Bitwarden",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "NetworkManager",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Bluetooth",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "PulseAudio",
+      "urgency": "Low"
+    },
+    {
+      "criteria": "app-name",
+      "value": "PipeWire",
+      "urgency": "Low"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Battery",
+      "urgency": "Critical"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Power Manager",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Update Manager",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Calendar",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "app-name",
+      "value": "Reminder",
+      "urgency": "Normal"
+    },
+    {
+      "criteria": "urgency",
+      "value": "Critical",
+      "urgency": "Critical"
     }
   ],
   "widgets": {
@@ -47,7 +196,8 @@
       "app-icon",
       "summary",
       "body",
-      "time"
+      "time",
+      "actions"
     ]
   },
   "dnd-indicator": {
@@ -56,7 +206,7 @@
   },
   "mpris": {
     "image-size": 48,
-    "image-radius": 8,
+    "image-radius": 12,
     "blur": true
   }
 }
