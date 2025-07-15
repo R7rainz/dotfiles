@@ -28,7 +28,7 @@
           "background": "#2a2a2a",
           "foreground": "#e5e7eb",
           "powerline_symbol": "\ue0b0",
-          "template": " {{ .UserName }}@{{ .HostName }} "
+          "template": " R A I N Z ☁️ "
         },
         {
           "type": "path",
