@@ -1,14 +1,16 @@
--- Fix LazyVim import order
+-- Simplified LazyVim configuration without plugin duplication
 return {
   spec = {
     -- LazyVim should be first
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
-    -- Then any LazyVim extras
+    -- LazyVim extras (these already include mason and lsp configs)
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
 
+    -- Your custom plugins
     { import = "plugins" },
   },
+
   defaults = {
     lazy = false,
     version = false,

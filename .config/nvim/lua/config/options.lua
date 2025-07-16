@@ -50,3 +50,5 @@ opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
+
+vim.lsp.set_log_level("error")
