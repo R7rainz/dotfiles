@@ -24,7 +24,7 @@ return {
         colors.bg_popup = "#000000"
         colors.bg_sidebar = "#000000"
         colors.bg_statusline = "#000000"
-        colors.bg_visual = "#4a1a1a"
+        colors.bg_visual = "#4a1a1a" -- Dark red for visual selection
 
         -- Red-focused color palette with complementary colors
         colors.fg = "#e8e8e8" -- Light gray for main text
@@ -33,7 +33,7 @@ return {
         colors.fg_sidebar = "#e8e8e8" -- Light gray for sidebar
 
         -- Primary red colors (various shades)
-        colors.red = "#ff2d2d" -- Bright red
+        colors.red = "#ff2d2d" -- Bright red (main accent)
         colors.red1 = "#ff4444" -- Lighter red
         colors.red2 = "#cc1f1f" -- Darker red
         colors.crimson = "#dc143c" -- Crimson red
@@ -41,15 +41,15 @@ return {
 
         -- Complementary colors (limited greens/blues, keeping cyan)
         colors.cyan = "#00ffff" -- Bright cyan (you like this)
-        colors.teal = "#20b2aa" -- Teal (cyan-ish)
-        colors.orange = "#ff8c42" -- Warm orange
-        colors.pink = "#ff69b4" -- Hot pink
+        colors.teal = "#20b2aa" -- Teal (cyan-ish, for structures)
+        colors.orange = "#ff8c42" -- Warm orange (for numbers, warnings)
+        colors.pink = "#ff69b4" -- Hot pink (for operators, hints)
         colors.white = "#ffffff" -- Pure white
-        colors.silver = "#c0c0c0" -- Silver
+        colors.silver = "#c0c0c0" -- Silver (for identifiers)
 
-        -- Minimal blues/greens (just accents)
-        colors.blue = "#4169e1" -- Royal blue (minimal use)
-        colors.green = "#32cd32" -- Lime green (minimal use)
+        -- Minimal blues/greens (just accents for specific elements)
+        colors.blue = "#4169e1" -- Royal blue (minimal use, e.g., some types)
+        colors.green = "#32cd32" -- Lime green (minimal use, e.g., git additions)
 
         -- UI colors
         colors.border = "#555555"
@@ -144,7 +144,7 @@ return {
         highlights.PmenuSbar = { bg = "#1a1a1a" }
         highlights.PmenuThumb = { bg = colors.red }
 
-        -- Statusline
+        -- Statusline (LazyVim's default statusline will use these colors)
         highlights.StatusLine = { fg = colors.fg, bg = "#1a1a1a" }
         highlights.StatusLineNC = { fg = colors.fg_dark, bg = colors.bg }
 
