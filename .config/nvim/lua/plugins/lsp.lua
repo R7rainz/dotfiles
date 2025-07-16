@@ -63,7 +63,7 @@ return {
             "--fallback-style=llvm",
           },
         },
-        jdtls = {},
+        jdtls = false,
 
         -- Other languages
         lua_ls = {

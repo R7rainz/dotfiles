@@ -38,16 +38,4 @@ return {
       vim.g.user_emmet_leader_key = "<C-z>"
     end,
   },
-
-  -- 📦 PACKAGE.JSON HELPER: Shows package versions (FIXED loading issue)
-  {
-    "vuki656/package-info.nvim",
-    -- What it does: Shows latest versions in package.json
-    -- Features: Update packages, show outdated versions
-    ft = "json",
-    event = "VeryLazy", -- Load very late to avoid conflicts
-    config = function()
-      require("package-info").setup()
-    end,
-  },
 }
