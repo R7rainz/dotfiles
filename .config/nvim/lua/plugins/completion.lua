@@ -15,6 +15,9 @@ return {
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-emoji",
     },
+    {
+      "github/copilot.vim",
+    },
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
