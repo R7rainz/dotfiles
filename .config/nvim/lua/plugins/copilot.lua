@@ -99,9 +99,9 @@ return {
     { "<leader>ccR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
     { "<leader>ccn", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
 
-    { "<leader>ci", ":CopilotChatInline ", mode = "x", desc = "CopilotChat - Inline chat with selection" },
-    { "<leader>cm", "<cmd>CopilotChatCommit<cr>", desc = "CopilotChat - Generate commit message" },
-    { "<leader>cq", "<cmd>CopilotChatBuffer<cr>", desc = "CopilotChat - Quick chat" },
+    -- { "<leader>ci", ":CopilotChatInline ", mode = "x", desc = "CopilotChat - Inline chat with selection" },
+    -- { "<leader>cm", "<cmd>CopilotChatCommit<cr>", desc = "CopilotChat - Generate commit message" },
+    -- { "<leader>cq", "<cmd>CopilotChatBuffer<cr>", desc = "CopilotChat - Quick chat" },
     -- Chat with Copilot in visual mode
     {
       "<leader>ccv",
@@ -110,14 +110,14 @@ return {
       desc = "CopilotChat - Open in vertical split",
     },
     {
-      "<C-i>",
+      "<leader>i",
       function()
         local input = vim.fn.input("Inline Chat: ")
         if input ~= "" then
           vim.cmd("CopilotChatInline " .. input)
         end
       end,
-      mode = "i",
+      mode = "n",
       desc = "CopilotChat - Inline chat",
     },
     -- Also add a visual mode binding for inline chat
