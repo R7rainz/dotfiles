@@ -2,7 +2,6 @@
 return {
   -- Enable none-ls extra for LazyVim compatibility
   { import = "lazyvim.plugins.extras.lsp.none-ls" },
-
   {
     "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
@@ -38,16 +37,13 @@ return {
         python = { "black" },
         lua = { "stylua" },
       },
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
+      -- Disable format_on_save to prevent conflicts and notifications
+      format_on_save = false,
       formatters = {
         injected = { options = { ignore_errors = true } },
       },
     },
   },
-
   {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
