@@ -14,7 +14,9 @@ return {
       require("Comment").setup({
         padding = true,
         sticky = true,
-        ignore = nil,
+        ignore = function()
+          return ""
+        end,
         toggler = {
           line = "gcc",
           block = "gbc",
@@ -32,8 +34,10 @@ return {
           basic = true,
           extra = true,
         },
-        pre_hook = nil,
-        post_hook = nil,
+        pre_hook = function(c)
+          return ""
+        end,
+        post_hook = function(c) end,
       })
     end,
   },

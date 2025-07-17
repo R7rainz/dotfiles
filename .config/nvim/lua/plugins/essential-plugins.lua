@@ -1,15 +1,5 @@
 -- Core essential plugins with explanations
 return {
-  -- 🎨 COLORSCHEME: Tokyo Night theme (already configured in colorscheme.lua)
-
-  -- 📁 FILE EXPLORER: Browse files and folders
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    -- What it does: Side panel file explorer like VSCode
-    -- Keybind: <leader>e to toggle
-    -- Features: Create/delete files, git status, search
-  },
-
   -- 🔍 FUZZY FINDER: Find files, search text, etc.
   {
     "nvim-telescope/telescope.nvim",
