@@ -1,9 +1,10 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "Cascadia Code", monospace;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   min-height: 0;
-  color: #e0e0e0;
+  color: #dcdfe4;
+  /* Neutral foreground */
   border: none;
   margin: 0;
   padding: 0;
@@ -14,17 +15,15 @@ window#waybar {
   margin: 5px 10px;
 }
 
-/* Floating modules */
 .modules-left,
 .modules-center,
 .modules-right {
-  background-color: rgba(20, 20, 30, 0.5);
-  /* Slightly darker glass */
+  background-color: rgba(30, 30, 40, 0.5);
+  /* Softer glass */
   border-radius: 12px;
   padding: 6px 12px;
   margin: 4px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  /* Shadow for floating effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* Workspaces */
@@ -37,73 +36,81 @@ window#waybar {
 }
 
 #workspaces button.focused {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 #workspaces button:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 #workspaces button label {
-  color: #c6a0f6;
+  color: #a0c5e8;
+  /* Muted sky blue */
 }
 
 /* Modules */
 #custom-launcher {
-  color: #00bfff;
+  color: #82aaff;
+  /* Light indigo */
   font-size: 16px;
   padding-right: 10px;
 }
 
 #cpu {
-  color: #eed49f;
+  color: #e6c384;
+  /* Soft amber */
   padding: 0 10px 0 12px;
 }
 
 #memory {
-  color: #a6da95;
+  color: #c3e88d;
+  /* Pastel green */
   padding: 0 10px;
 }
 
 #temperature {
-  color: #8aadf4;
+  color: #91b4d5;
+  /* Soft blue */
   padding: 0 12px 0 10px;
 }
 
 #disk {
-  color: #68b0d6;
+  color: #7fc4bd;
+  /* Sea green */
 }
 
 #custom-pacman {
-  color: #68b0d6;
+  color: #7fc4bd;
 }
 
 #custom-playerctl {
-  color: #46c880;
+  color: #9ece6a;
+  /* Lime green */
   font-size: 14px;
 }
 
 #battery {
-  color: #a6da95;
+  color: #c3e88d;
 }
 
 #backlight {
-  color: #eed49f;
+  color: #e6c384;
   padding: 0 10px;
 }
 
 #pulseaudio {
-  color: #91d7e3;
+  color: #89ddff;
+  /* Cyan blue */
   padding: 0 10px;
 }
 
 #network {
-  color: #c6a0f6;
+  color: #82aaff;
   padding: 0 10px;
 }
 
 #clock {
-  color: #ffffff;
+  color: #dcdfe4;
   padding: 0 10px;
 }
 
@@ -115,17 +122,19 @@ window#waybar {
 #custom-dot,
 #custom-filler,
 #custom-separator {
-  color: #6e738d;
+  color: #7a818e;
+  /* Muted gray-blue */
   padding: 0 6px;
 }
 
 #custom-pacman-update {
   color: #8bd5ca;
+  /* Aqua */
   margin: 0 10px;
 }
 
 #custom-pacman-update-icon {
-  color: #181926;
+  color: #1e1e2e;
   padding: 2px 5px;
   border-radius: 5px;
 }
