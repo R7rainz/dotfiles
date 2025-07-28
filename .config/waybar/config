@@ -26,7 +26,8 @@
     "custom/separator",
     "network",
     "custom/dot",
-    "clock"
+    "clock",
+    "tray"
   ],
 
   "custom/playerctl": {
@@ -103,6 +104,12 @@
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
+  "tray":{
+    "icon-size":15,
+    "spacing":10
+  },
+
+
   "cpu": {
     "interval": 10,
     "format": " {usage}% ",
@@ -125,14 +132,22 @@
     "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
 
+
   "network": {
-    "format-wifi": "󰒢 {essid}",
-    "format-alt": "󰒢 {bandwidthTotalBits}",
-    "on-click-right": "nm-connection-editor",
-    "format-ethernet": " wired",
-    "tooltip-format": "{essid} {signalStrength}%",
-    "format-disconnected": ""
+    "interface": "wlan*",
+    "format": "{ifname}",
+    "format-wifi": "󰒢 {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+    "format-disconnected": "󰖪 Disconnected",
+    "format-alt": "󰒢 {bandwidthDownBits} 󰕒 {bandwidthUpBits}",
+    "tooltip-format": "󰒢 {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nNetmask: {netmask}\nSignal: {signalStrength}%\nFrequency: {frequency}MHz",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click-right": "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu",
+    "on-click-middle": "nmcli device wifi rescan",
+    "interval": 5,
+    "max-length": 50
   },
+
 
   "pulseaudio": {
     "format": "{icon} <b>{volume}</b>",
