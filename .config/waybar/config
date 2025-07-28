@@ -10,6 +10,7 @@
     "memory",
     "temperature",
     "custom/filler",
+    "hyprland/window",
     "custom/playerctl",
     "custom/filler",
     "disk",
@@ -223,6 +224,106 @@
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C"
   },
+  "hyprland/window": {
+    "format": "{}",
+    "tooltip": false,
+    "min-length": 5,
+
+    "rewrite": {
+      // ────────────────────────────────────────────────────────── desktop ───
+      "": 
+        "<span foreground='#89b4fa'> </span> Hyprland",
+
+      // ───────────────────────────────────────────────────────── terminal ───
+
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
+
+      "tmux(.*)": 
+        "<span foreground='#a6e3a1'> </span> Tmux",
+
+      // ────────────────────────────────────────────────────────── browser ───
+
+      "(.*)Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      "(.*) — Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> $1",
+
+      "(.*)Zen Browser": 
+        "<span foreground='#fab387'>󰺕 </span> Zen Browser",
+      "(.*) — Zen Browser": 
+        "<span foreground='#fab387'>󰺕 </span> $1",
+
+      // ────────────────────────────────────────────────────── development ───
+
+      "(.*) - Visual Studio Code": 
+        "<span foreground='#89b4fa'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": 
+        "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+
+      "nvim": 
+        "<span foreground='#a6e3a1'> </span> Neovim",
+      "nvim (.*)": 
+        "<span foreground='#a6e3a1'> </span> $1",
+
+      "vim": 
+        "<span foreground='#a6e3a1'> </span> Vim",
+      "vim (.*)": 
+        "<span foreground='#a6e3a1'> </span> $1",
+
+      // ──────────────────────────────────────────────────────────── media ───
+
+      "(.*)Spotify": 
+        "<span foreground='#a6e3a1'> </span> Spotify",
+      "(.*)Spotify Premium": 
+        "<span foreground='#a6e3a1'> </span> Spotify Premium",
+
+      "OBS(.*)": 
+        "<span foreground='#a6adc8'>󰻃 </span> OBS Studio",
+
+      "VLC media player": 
+        "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": 
+        "<span foreground='#fab387'>󰕼 </span> $1",
+
+      "(.*) - mpv": 
+        "<span foreground='#cba6f7'> </span> $1",
+
+      "qView": "󰋩  qView",
+
+      "(.*).jpg": "󰋩  $1.jpg",
+      "(.*).png": "󰋩  $1.png",
+      "(.*).svg": "󰋩  $1.svg",
+
+      // ─────────────────────────────────────────────────────────── social ───
+
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": 
+        "<span foreground='#89b4fa'> </span> $1Discord$2",
+
+      "vesktop": 
+        "<span foreground='#89b4fa'> </span> Discord",
+
+      // ──────────────────────────────────────────────────────── documents ───
+
+      "ONLYOFFICE Desktop Editors": 
+        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+
+      "(.*).docx": 
+        "<span foreground='#89b4fa'>󰈭 </span> $1.docx",
+      "(.*).xlsx": 
+        "<span foreground='#a6e3a1'>󰈜 </span> $1.xlsx",
+      "(.*).pptx": 
+        "<span foreground='#fab387'>󰈨 </span> $1.pptx",
+      "(.*).pdf": 
+        "<span foreground='#f38ba8'> </span> $1.pdf",
+
+      // ─────────────────────────────────────────────────────────── system ───
+      "Authenticate": "  Authenticate"
+    }
+  },
+
 
   "custom/wrap-left": {
     "format": "<b>[</b>"
