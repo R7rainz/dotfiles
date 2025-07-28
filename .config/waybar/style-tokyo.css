@@ -1,34 +1,45 @@
 * {
-  font-family: "JetBrains Mono Nerd Font", monospace;
-  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  font-family: JetBrainsMono Nerd Font;
   font-size: 16px;
-  background-color: #000000;
-  /* black background */
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.modules-left {
+  background-color: #1e2030;
+  border-radius: 8px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.modules-center {
+  background-color: #1e2030;
+  border-radius: 8px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .modules-right {
-  /* background-color unchanged (removed) */
-  border-radius: 5px 0px 0px 5px;
-}
-
-/* Set the Waybar container background to black */
-window#waybar {
-  background-color: #000000;
+  background-color: #1e2030;
+  border-radius: 8px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 #custom-launcher {
   font-size: 20px;
-  color: #00bfff;
-  /* original color */
+  color: #ff005f;
   padding-right: 10px;
-  background-color: #000000;
 }
 
 #cpu,
-#memory,
-#temperature {
+#memory{
   font-size: 15px;
-  background: #000000;
+  background: #363a4f;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -42,6 +53,7 @@ window#waybar {
 #memory {
   color: #a6da95;
   padding: 0px 10px 0px 0px;
+  border-radius: 0px 5px 5px 0px;
 }
 
 #temperature {
@@ -51,13 +63,11 @@ window#waybar {
 }
 
 #custom-window-name {
-  color: #68b0d6;
   margin-right: 10px;
-  background-color: #000000;
 }
 
 #custom-pacman-update-icon {
-  background-color: #000000;
+  background-color: #8bd5ca;
   color: #181926;
   padding-left: 5px;
   padding-right: 5px;
@@ -74,66 +84,58 @@ window#waybar {
 #workspaces button:nth-child(1) label {
   color: #8aadf4;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(2) label {
   color: #ed8796;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(3) label {
   color: #a6da95;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(4) label {
   color: #c6a0f6;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(5) label {
   color: #f4dbd6;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(6) label {
   color: #f5a97f;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(7) label {
-  color: #8bd5ca;
+  color: #f5a97f;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(8) label {
-  color: #68b0d6;
+  color: #f5a97f;
   margin: 0px 8px;
-  background-color: #000000;
 }
 
 #workspaces button:nth-child(9) label {
-  color: #aab1d3;
+  color: #f5a97f;
   margin: 0px 8px;
-  background-color: #000000;
 }
+
 
 #battery {
   color: #a6da95;
-  /* margin unchanged */
+  margin: 0px 10px 0px 0px;
 }
 
 #pulseaudio,
 #backlight {
   font-size: 15px;
-  background-color: #000000;
+  background: #363a4f;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -152,40 +154,30 @@ window#waybar {
 
 #custom-right-arr {
   color: #8aadf4;
-  background-color: #000000;
 }
 
 #custom-pacman {
-  color: #68b0d6;
-  background-color: #000000;
+  color: #8aadf4;
 }
 
 #network {
   color: #c6a0f6;
   margin-right: 10px;
-  background-color: #000000;
 }
 
 #custom-dot {
   color: #6e738d;
   padding-right: 10px;
-  background-color: #000000;
 }
 
 #custom-dot-alt {
   color: #a5adcb;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #000000;
-}
-
-#disk {
-  color: #68b0d6;
-  background-color: #000000;
 }
 
 #custom-clock-icon {
-  color: #fff;
+  color: #cad3f5;
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 5px;
@@ -194,17 +186,8 @@ window#waybar {
 }
 
 #custom-filler {
-  color: #6e738d;
+  color: #cad3f5;
   padding-left: 0px;
-  padding-right: 9px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-#custom-filler2 {
-  color: #6e738d;
-  padding-left: 3px;
   padding-right: 9px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -213,23 +196,7 @@ window#waybar {
 
 #clock {
   padding-left: 10px;
-  color: #ffffff;
-  /* white text */
-  /* keeps text color */
 }
 
 /*# sourceMappingURL=style.css.map */
 
-/* Your existing styles + toggle button */
-#custom-toggle-tray {
-  background-color: rgba(30, 30, 46, 0.8);
-  color: #fab387;
-  padding: 2px 8px;
-  margin: 0 2px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-#custom-toggle-tray:hover {
-  background-color: rgba(69, 71, 90, 0.8);
-}

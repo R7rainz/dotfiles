@@ -271,3 +271,6 @@ end
 alias z='cd' # If you want z to behave like cd
 alias jump='zi' # Interactive jump
 alias zls='zoxide query -l' # List all directories in zoxide
+
+#fish default cursor 
+set fish_cursor_default beam
