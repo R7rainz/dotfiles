@@ -24,9 +24,7 @@
     "network",
     "custom/dot",
     "clock",
-    "custom/update",
-    "tray"
-
+    "group/tools"
   ],
 
 "custom/playerctl": {
@@ -101,7 +99,6 @@
   },
   "modules": [
     "custom/mark",
-    "custom/updates",
     "custom/uptime",
     "cpu",
     "memory",
@@ -109,6 +106,33 @@
     "disk"
   ]
 },
+
+"group/tools": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 400,
+    "transition-right-to-left": true
+  },
+  "modules": [
+    "custom/mark1",
+    "custom/spacing",
+    "custom/update",
+    "custom/clipboard",
+    "tray"
+  ]
+},
+
+"custom/spacing": {
+  "format": " "
+},
+
+
+"custom/mark1": {
+  "format": "⟨",  // ← Left-facing arrow icon
+  "tooltip": "Toggle Utilities",
+  "on-click": "mode=toggle"
+},
+
 
 "custom/mark": {
   "format": "",  // ← Hamburger icon (requires Nerd Font)
@@ -178,6 +202,14 @@
     "on-click-right": "pavucontrol"
   },
 
+  "custom/clipboard":{
+    "format":"󱉫",
+    "tooltip": true,
+    "tooltip-format": "Click to open clipboard history",
+    "on-click": "/home/rainz/Dotfiles/.config/waybar/scripts/waybar-clipboard.sh",
+    "interval": 60
+  },
+
   "battery": {
     "bat": "BAT0",
     "interval": 30,
@@ -189,7 +221,8 @@
     "format-charging": " {icon} {capacity}%",
     "format-icons": [" ", " ", " ", " "],
     "max-length": 25,
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "sh -c \"rofi -dmenu -p 'Select Power Mode' <<< $'Performance\\nBalanced\\nPower Saver' | awk '{print tolower($0)}' | tr -d ' ' | xargs -I{} ~/.config/power-modes/{}.sh\""
   },
 
   "custom/right-arr": {

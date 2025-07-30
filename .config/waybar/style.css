@@ -67,7 +67,7 @@ window#waybar {
   padding-right: 10px;
 }
 
-#group-utils {
+#group-hardware {
   color: #a0ffa0;
   background: transparent;
   padding: 0 10px;
@@ -75,13 +75,30 @@ window#waybar {
   transition: background 0.2s ease;
 }
 
-#group-utils:hover {
+#group-hardware:hover {
   background: rgba(160, 255, 160, 0.2);
 }
 
-#group-utils:active {
+#group-hardware:active {
   background: rgba(100, 255, 100, 0.3);
 }
+
+#group-tools {
+  color: #a0ffa0;
+  background: transparent;
+  padding: 0 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+#group-tools:hover {
+  background: rgba(160, 255, 160, 0.2);
+}
+
+#group-tools:active {
+  background: rgba(100, 255, 100, 0.3);
+}
+
 
 #custom-mark.drawer-toggle {
   padding: 0 10px;
@@ -144,6 +161,19 @@ window#waybar {
 #custom-playerctl:hover {
   background: rgba(90, 90, 90, 0.2);
   color: #ffffff;
+}
+
+#custom-clipboard {
+  color: #6366f1;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 0 8px;
+  margin: 0 4px;
+}
+
+#custom-clipboard:hover {
+  color: #10b981;
+  transition: all 0.3s ease;
 }
 
 #battery {
