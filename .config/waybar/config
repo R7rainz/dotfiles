@@ -20,7 +20,6 @@
     "backlight",
     "pulseaudio",
     "custom/dot",
-    "custom/separator",
     "network",
     "custom/dot",
     "clock",
@@ -118,6 +117,7 @@
     "custom/spacing",
     "custom/update",
     "custom/clipboard",
+    "custom/power",
     "tray"
   ]
 },
@@ -188,6 +188,13 @@
     "max-length": 1
   },
 
+"custom/power": {
+  "format": " ⏻ ",
+  "tooltip": false,
+  "on-click": "wlogout --protocol layer-shell"
+},
+
+
   "pulseaudio": {
     "format": "{icon} <b>{volume}</b>",
     "format-bluetooth": " {volume}",
@@ -218,7 +225,7 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " {icon} {capacity}%",
+    "format-charging": "⚡ {capacity}%",
     "format-icons": [" ", " ", " ", " "],
     "max-length": 25,
     "tooltip": false,
