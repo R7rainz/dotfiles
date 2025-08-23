@@ -11,7 +11,9 @@ end
 
 # oh-my-posh init fish --config $HOME/.poshthemes/kushal.omp.json | source
 # oh-my-posh init fish --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/tiwahu.omp.json' | source
-oh-my-posh init fish --config ~/.config/oh-my-posh/themes/custom.omp.json | source
+#oh-my-posh init fish --config ~/.config/oh-my-posh/themes/custom.omp.json | source
+
+starship init fish | source
 
 function ls
     eza --icons --group-directories-first --oneline $argv
@@ -98,7 +100,7 @@ alias f='ff'
 alias finder='ff'
 
 # Bind to Ctrl+T for quick access
-bind \ct 'ff; commandline -f repaint'
+bind \cf 'ff; commandline -f repaint'
 
 # ========== DIRECTORY NAVIGATION (ZOXIDE) ==========
 # Initialize zoxide but don't let it override cd
@@ -274,3 +276,4 @@ alias zls='zoxide query -l' # List all directories in zoxide
 
 #fish default cursor 
 set fish_cursor_default beam
+starship init fish | source
