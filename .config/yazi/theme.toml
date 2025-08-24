@@ -1,0 +1,200 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+# Flavor
+[flavor]
+dark  = ""
+light = ""
+
+# Manager
+[mgr]
+cwd = { fg = "#00e0e0" }  # Electric cyan
+
+# Hovered
+hovered         = { reversed = true }
+preview_hovered = { underline = true }
+
+# Find
+find_keyword  = { fg = "#ffff80", bold = true, italic = true, underline = true }  # Bright yellow
+find_position = { fg = "#ff80ff", bg = "reset", bold = true, italic = true }      # Electric pink
+
+# Symlink
+symlink_target = { italic = true }
+
+# Marker
+marker_copied   = { fg = "#00ff80",  bg = "#00ff80" }   # Electric green
+marker_cut      = { fg = "#ff6b6b",    bg = "#ff6b6b" }     # Bright red
+marker_marked   = { fg = "#00e0e0",   bg = "#00e0e0" }    # Electric cyan
+marker_selected = { fg = "#ffff80", bg = "#ffff80" }  # Bright yellow
+
+# Count
+count_copied   = { fg = "#e0e0ff", bg = "#00ff80" }   # White on green
+count_cut      = { fg = "#e0e0ff", bg = "#ff6b6b" }     # White on red
+count_selected = { fg = "#0a0a12", bg = "#ffff80" }  # Black on yellow
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#404060" }  # Dark gray-blue
+
+# Highlighting
+syntect_theme = ""
+
+# Tabs
+[tabs]
+active   = { fg = "#e0e0ff", bg = "#12121a", bold = true }  # White text on dark bg
+inactive = { fg = "#8080ff", bg = "#1a1a25" }              # Electric blue on darker bg
+
+# Separator
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+# Mode
+[mode]
+normal_main = { fg = "#e0e0ff", bg = "#8080ff", bold = true }  # Electric blue
+normal_alt  = { fg = "#8080ff", bg = "#1a1a25" }
+
+# Select mode
+select_main = { fg = "#e0e0ff", bg = "#ff6b6b", bold = true }  # Bright red
+select_alt  = { fg = "#ff6b6b", bg = "#1a1a25" }
+
+# Unset mode
+unset_main = { fg = "#e0e0ff", bg = "#ffa500", bold = true }   # Orange
+unset_alt  = { fg = "#ffa500", bg = "#1a1a25" }
+
+# Status bar
+[status]
+overall   = {}
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_sep   = { fg = "#505070" }  # Medium gray
+perm_type  = { fg = "#00ff80" }  # Electric green
+perm_read  = { fg = "#ffff80" }  # Bright yellow
+perm_write = { fg = "#ff6b6b" }    # Bright red
+perm_exec  = { fg = "#00e0e0" }  # Electric cyan
+
+# Progress
+progress_label  = { bold = true }
+progress_normal = { fg = "#8080ff", bg = "#0a0a12" }  # Electric blue
+progress_error  = { fg = "#ff6b6b", bg = "#0a0a12" }    # Bright red
+
+# Which
+[which]
+cols            = 3
+mask            = { bg = "#0a0a12" }
+cand            = { fg = "#00e0e0" }      # Electric cyan
+rest            = { fg = "#505070" }      # Medium gray
+desc            = { fg = "#ff80ff" }      # Electric pink
+separator       = "  "
+separator_style = { fg = "#404060" }      # Dark gray-blue
+
+# Confirmation
+[confirm]
+border     = { fg = "#8080ff" }  # Electric blue
+title      = { fg = "#8080ff" }  # Electric blue
+content    = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+# Spotter
+[spot]
+border = { fg = "#8080ff" }  # Electric blue
+title  = { fg = "#8080ff" }  # Electric blue
+
+# Table
+tbl_col  = { fg = "#0a0a12" }
+tbl_cell = { fg = "#0a0a12", reversed = true }
+
+# Notification
+[notify]
+title_info  = { fg = "#00ff80" }  # Electric green
+title_warn  = { fg = "#ffff80" }  # Bright yellow
+title_error = { fg = "#ff6b6b" }    # Bright red
+
+# Icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# Picker
+[pick]
+border   = { fg = "#8080ff" }  # Electric blue
+active   = { fg = "#ff80ff", bold = true }  # Electric pink
+inactive = {}
+
+# Input
+[input]
+border   = { fg = "#8080ff" }  # Electric blue
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+# Completion
+[cmp]
+border   = { fg = "#0a0a12" }
+active   = { reversed = true }
+inactive = {}
+
+# Icons
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+# Task manager
+[tasks]
+border  = { fg = "#8080ff" }  # Electric blue
+title   = {}
+hovered = { fg = "#ff80ff", underline = true }  # Electric pink
+
+# Help menu
+[help]
+on      = { fg = "#00e0e0" }  # Electric cyan
+run     = { fg = "#ff80ff" }  # Electric pink
+desc    = {}
+hovered = { reversed = true, bold = true }
+footer  = { fg = "#0a0a12", bg = "#e0e0ff" }  # Black on white
+
+# File-specific styles
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#ff6b6b" },      # Bright red
+
+	# Media
+	{ mime = "{audio,video}/*", fg = "#ffff80" },  # Bright yellow
+
+	# Archives
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#ff6b6b" },  # Bright red
+
+	# Documents
+	{ mime = "application/{pdf,doc,rtf}", fg = "#00e0e0" },  # Electric cyan
+
+	# Special files
+	{ name = "*", is = "orphan", bg = "#ff6b6b" },  # Bright red
+	{ name = "*", is = "exec"  , fg = "#00ff80" },  # Electric green
+
+	# Dummy files
+	{ name = "*", is = "dummy", bg = "#ff6b6b" },   # Bright red
+	{ name = "*/", is = "dummy", bg = "#ff6b6b" },  # Bright red
+
+	# Fallback
+	{ name = "*/", fg = "#e0e0ff" }  # White
+]
+
+# Icons section remains the same - keep all your existing icon definitions
+# The icon colors will automatically adapt to the new theme colors
+[icon]
+globs = []
+dirs  = [
+	# ... [keep all your existing dir entries] ...
+]
+files = [
+	# ... [keep all your existing file entries] ...
+]
+exts = [
+	# ... [keep all your existing extension entries] ...
+]
+conds = [
+	# ... [keep all your existing condition entries] ...
+]
