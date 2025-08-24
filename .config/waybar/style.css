@@ -1,20 +1,16 @@
 * {
-  font-family: "Hurmit Nerd Font", monospace;
-  font-weight: bold;
+  font-family: "Cascadia Code NF", monospace;
+  font-weight: 500;
   font-size: 12px;
-  min-height: 7px;
-  color: #dcdfe4;
-  /* Neutral foreground */
+  min-height: 0;
+  color: #e0e0ff;
+  /* Cyberpunk text */
   border: none;
   margin: 0;
   padding: 0;
 }
 
 #waybar {
-  min-height: 7px;
-}
-
-window#waybar {
   background: transparent;
   margin: 5px 10px;
 }
@@ -22,53 +18,66 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  background-color: rgba(30, 30, 40, 0.5);
-  /* Softer glass */
+  background-color: rgba(10, 10, 18, 0.9);
+  /* Cyberpunk dark background */
   border-radius: 12px;
   padding: 2px 12px;
   margin: 4px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(64, 64, 96, 0.4);
+  /* Cyberpunk border */
 }
 
-/* Workspaces */
+/* Workspaces - Cyberpunk style */
 #workspaces {
-  margin: 0 8px;
+  margin: 0 4px;
 }
 
 #workspaces button {
   padding: 4px 8px;
   margin: 0 2px;
   background: transparent;
-  color: #cccccc;
-  border-radius: 6px;
-  font-size: 14px;
+  color: #505070;
+  /* Cyberpunk gray */
+  border-radius: 8px;
+  font-size: 13px;
   transition: all 0.2s ease-in-out;
 }
 
 #workspaces button.active {
-  background-color: rgba(255, 50, 50, 0.2);
-  /* subtle red bg */
-  color: #ff5555;
-  /* red text */
+  background-color: rgba(255, 128, 255, 0.2);
+  /* Cyberpunk pink */
+  color: #ff80ff;
+  /* Cyberpunk pink */
+  box-shadow: inset 0 0 0 1px rgba(255, 128, 255, 0.3);
 }
 
 #workspaces button.urgent {
-  background-color: rgba(255, 85, 85, 0.3);
-  color: #ff3333;
+  background-color: rgba(255, 107, 107, 0.3);
+  color: #ff6b6b;
+  /* Cyberpunk red */
 }
 
-/* Muted sky blue */
+#workspaces button:hover {
+  background-color: rgba(128, 128, 255, 0.1);
+  /* Cyberpunk blue */
+  color: #8080ff;
+  /* Cyberpunk blue */
+}
 
-/* Modules */
+/* Custom launcher - Cyberpunk style */
 #custom-launcher {
-  color: #82aaff;
-  /* Light indigo */
+  color: #00e0e0;
+  /* Cyberpunk cyan */
   font-size: 16px;
-  padding-right: 10px;
+  padding-right: 12px;
+  margin-left: 4px;
 }
 
+/* Hardware group - Cyberpunk colors */
 #group-hardware {
-  color: #a0ffa0;
+  color: #00ff80;
+  /* Cyberpunk green */
   background: transparent;
   padding: 0 10px;
   border-radius: 8px;
@@ -76,15 +85,17 @@ window#waybar {
 }
 
 #group-hardware:hover {
-  background: rgba(160, 255, 160, 0.2);
+  background: rgba(0, 255, 128, 0.15);
 }
 
 #group-hardware:active {
-  background: rgba(100, 255, 100, 0.3);
+  background: rgba(0, 255, 128, 0.25);
 }
 
+/* Tools group */
 #group-tools {
-  color: #a0ffa0;
+  color: #ffa500;
+  /* Cyberpunk orange */
   background: transparent;
   padding: 0 10px;
   border-radius: 8px;
@@ -92,137 +103,251 @@ window#waybar {
 }
 
 #group-tools:hover {
-  background: rgba(160, 255, 160, 0.2);
+  background: rgba(255, 165, 0, 0.15);
 }
 
 #group-tools:active {
-  background: rgba(100, 255, 100, 0.3);
+  background: rgba(255, 165, 0, 0.25);
 }
 
-
+/* Drawer toggle */
 #custom-mark.drawer-toggle {
   padding: 0 10px;
-  color: #cdd6f4;
-  background-color: rgba(50, 50, 50, 0.15);
+  color: #e0e0ff;
+  background-color: rgba(64, 64, 96, 0.2);
   border-radius: 10px;
   transition: background 0.2s ease;
 }
 
 #custom-mark.drawer-toggle:hover {
-  background-color: rgba(50, 50, 50, 0.3);
+  background-color: rgba(64, 64, 96, 0.4);
 }
 
-
-/* Optional: style drawer content (CPU, RAM, etc.) */
-#cpu,
-#memory,
-#temperature,
-#disk {
-  padding: 0 6px;
-  color: #caffca;
-}
-
+/* Hardware monitors - Cyberpunk colors */
 #cpu {
-  color: #e6c384;
-  /* Soft amber */
+  color: #ffa500;
+  /* Cyberpunk orange */
   padding: 0 10px 0 12px;
 }
 
 #memory {
-  color: #c3e88d;
-  /* Pastel green */
+  color: #8080ff;
+  /* Cyberpunk blue */
   padding: 0 10px;
 }
 
 #temperature {
-  color: #91b4d5;
-  /* Soft blue */
+  color: #ff6b6b;
+  /* Cyberpunk red */
   padding: 0 12px 0 10px;
 }
 
 #disk {
-  color: #7fc4bd;
-  /* Sea green */
+  color: #00e0e0;
+  /* Cyberpunk cyan */
+  padding: 0 10px;
 }
 
 #custom-pacman {
-  color: #7fc4bd;
+  color: #00ff80;
+  /* Cyberpunk green */
+  padding: 0 8px;
 }
 
+/* Player control */
 #custom-playerctl {
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 4px 12px;
+  border-radius: 8px;
   background: transparent;
-  color: #cdd6f4;
-  font-size: 14px;
+  color: #e0e0ff;
+  font-size: 13px;
   transition: background 0.2s ease;
 }
 
 #custom-playerctl:hover {
-  background: rgba(90, 90, 90, 0.2);
-  color: #ffffff;
+  background: rgba(128, 128, 255, 0.15);
+  /* Cyberpunk blue */
+  color: #8080ff;
 }
 
+#custom-playerctl.playing {
+  color: #ff80ff;
+  /* Cyberpunk pink */
+}
+
+/* Clipboard */
 #custom-clipboard {
-  color: #6366f1;
-  border-radius: 6px;
+  color: #00e0e0;
+  /* Cyberpunk cyan */
+  border-radius: 8px;
   font-size: 16px;
   padding: 0 8px;
   margin: 0 4px;
+  transition: color 0.3s ease;
 }
 
 #custom-clipboard:hover {
-  color: #10b981;
-  transition: all 0.3s ease;
+  color: #00ff80;
+  /* Cyberpunk green */
 }
 
+/* Battery */
 #battery {
-  color: #c3e88d;
+  color: #00ff80;
+  /* Cyberpunk green */
+  padding: 0 8px;
+}
+
+#battery.warning {
+  color: #ffa500;
+  /* Cyberpunk orange */
+}
+
+#battery.critical {
+  color: #ff6b6b;
+  /* Cyberpunk red */
 }
 
 #backlight {
-  color: #e6c384;
+  color: #ffa500;
+  /* Cyberpunk orange */
   padding: 0 10px;
 }
 
+/* Audio */
 #pulseaudio {
+  color: #00e0e0;
+  /* Cyberpunk cyan */
+  padding: 0 10px;
   min-width: 0px;
-  color: #89ddff;
-  /* Cyan blue */
-  padding: 0 10px;
 }
 
+#pulseaudio.muted {
+  color: #505070;
+  /* Cyberpunk gray */
+}
+
+/* Network */
 #network {
-  color: #82aaff;
+  color: #8080ff;
+  /* Cyberpunk blue */
   padding: 0 10px;
 }
 
+#network.disconnected {
+  color: #ff6b6b;
+  /* Cyberpunk red */
+}
+
+/* Clock */
 #clock {
-  color: #dcdfe4;
-  padding: 0 10px;
+  color: #e0e0ff;
+  /* Cyberpunk foreground */
+  padding: 0 12px;
+  font-weight: 600;
+  background: rgba(255, 128, 255, 0.15);
+  /* Cyberpunk pink */
+  border-radius: 8px;
+  margin: 0 4px;
 }
 
+/* Tray */
 #tray {
   margin-left: 10px;
-  padding: 0 5px;
+  padding: 0 8px;
+  background: rgba(64, 64, 96, 0.2);
+  border-radius: 8px;
 }
 
+/* Separators and dots */
 #custom-dot,
 #custom-filler,
 #custom-separator {
-  color: #7a818e;
-  /* Muted gray-blue */
+  color: #505070;
+  /* Cyberpunk gray */
   padding: 0 6px;
+  opacity: 0.6;
 }
 
+/* Pacman updates */
 #custom-pacman-update {
-  color: #8bd5ca;
-  /* Aqua */
+  color: #00ff80;
+  /* Cyberpunk green */
   margin: 0 10px;
+  padding: 0 8px;
+  background: rgba(0, 255, 128, 0.15);
+  border-radius: 8px;
 }
 
 #custom-pacman-update-icon {
-  color: #1e1e2e;
-  padding: 2px 5px;
+  color: #0a0a12;
+  padding: 2px 6px;
   border-radius: 5px;
+  background: #00ff80;
+  /* Cyberpunk green */
+  margin-right: 6px;
+}
+
+/* Animation for active elements */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#battery.charging,
+#network.connected,
+#pulseaudio:not(.muted) {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Cyberpunk glow effect for active elements */
+#workspaces button.active,
+#custom-playerctl.playing,
+#clock {
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* Focused window title */
+#window {
+  color: #e0e0ff;
+  padding: 0 12px;
+  font-style: italic;
+  background: rgba(128, 128, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* Custom weather module */
+#custom-weather {
+  color: #00e0e0;
+  padding: 0 10px;
+}
+
+/* Power button */
+#custom-power {
+  color: #ff6b6b;
+  padding: 0 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+#custom-power:hover {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+/* Workspace numbers with cyberpunk style */
+#workspaces button {
+  font-feature-settings: "tnum";
+}
+
+#workspaces button.active {
+  font-weight: 600;
 }
