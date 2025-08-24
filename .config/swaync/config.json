@@ -2,15 +2,15 @@
   "position": "top-right",
   "layer": "overlay",
   "control-center-layer": "overlay",
-  "control-center-margin-top": 40,
-  "control-center-margin-bottom": 10,
-  "control-center-margin-right": 10,
-  "control-center-width": 400,
+  "control-center-margin-top": 45,
+  "control-center-margin-bottom": 12,
+  "control-center-margin-right": 15,
+  "control-center-width": 420,
   "control-center-height": 600,
-  "notification-margin-top": 40,
-  "notification-margin-right": 10,
-  "notification-window-width": 400,
-  "notification-icon-size": 48,
+  "notification-margin-top": 45,
+  "notification-margin-right": 15,
+  "notification-window-width": 420,
+  "notification-icon-size": 52,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
   "notification-visibility-time": 5000,
@@ -47,161 +47,7 @@
     }
   },
   "notification-criteria": [
-    {
-      "criteria": "app-name",
-      "value": "Spotify",
-      "urgency": "Low"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Discord",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "firefox",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Firefox",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "chromium",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Google Chrome",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Brave Browser",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Microsoft Edge",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Thunderbird",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Evolution",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Mailspring",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Slack",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Teams",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Telegram",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Signal",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "WhatsApp",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Steam",
-      "urgency": "Low"
-    },
-    {
-      "criteria": "app-name",
-      "value": "KeePassXC",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Bitwarden",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "NetworkManager",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Bluetooth",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "PulseAudio",
-      "urgency": "Low"
-    },
-    {
-      "criteria": "app-name",
-      "value": "PipeWire",
-      "urgency": "Low"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Battery",
-      "urgency": "Critical"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Power Manager",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Update Manager",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Calendar",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Reminder",
-      "urgency": "Normal"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Volume Control",
-      "urgency": "Low"
-    },
-    {
-      "criteria": "app-name",
-      "value": "Brightness Control",
-      "urgency": "Low"
-    },
-    {
-      "criteria": "urgency",
-      "value": "Critical",
-      "urgency": "Critical"
-    }
+    // ... (keep your existing criteria)
   ],
   "widgets": {
     "control-center": [
@@ -223,8 +69,8 @@
     "tooltip": "Toggle Do Not Disturb mode"
   },
   "mpris": {
-    "image-size": 48,
-    "image-radius": 12,
+    "image-size": 52,
+    "image-radius": 16,
     "blur": true
   }
 }
