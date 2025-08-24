@@ -7,7 +7,7 @@ return {
       terminal_colors = true,
       styles = {
         comments = { italic = true },
-        keywords = { italic = true, bold = true },
+        keywords = { italic = false, bold = true },
         functions = { bold = true },
         variables = {},
         sidebars = "dark",
@@ -15,58 +15,60 @@ return {
       },
       sidebars = { "qf", "help", "terminal", "packer", "neo-tree" },
       on_colors = function(colors)
-        -- Match Kitty Dracula background colors
-        colors.bg = "#000000" -- Pure black background
-        colors.bg_dark = "#121212" -- Slightly lighter black
-        colors.bg_float = "#1a1a1a"
-        colors.bg_highlight = "#282a36" -- Kitty's active tab background
-        colors.bg_popup = "#1a1a1a"
-        colors.bg_sidebar = "#000000"
-        colors.bg_statusline = "#1a1a1a"
-        colors.bg_visual = "#44475a" -- Kitty's inactive border color
+        -- Clean dark background
+        colors.bg = "#0a0a12"
+        colors.bg_dark = "#070710"
+        colors.bg_float = "#12121a"
+        colors.bg_highlight = "#1a1a25"
+        colors.bg_popup = "#12121a"
+        colors.bg_sidebar = "#0a0a12"
+        colors.bg_statusline = "#12121a"
+        colors.bg_visual = "#2a2a45"
 
-        -- Text colors matching Kitty
-        colors.fg = "#f8f8f2" -- Kitty foreground
-        colors.fg_dark = "#e6edf3"
-        colors.fg_gutter = "#6272a4" -- Kitty color8
-        colors.fg_sidebar = "#f8f8f2"
+        -- Text colors - better contrast
+        colors.fg = "#e0e0ff"
+        colors.fg_dark = "#b0b0d0"
+        colors.fg_gutter = "#505070"
+        colors.fg_sidebar = "#e0e0ff"
 
-        -- Kitty Dracula color palette
-        colors.red = "#ff5555" -- Kitty red
-        colors.red1 = "#ff6e6e" -- Kitty bright red
-        colors.red2 = "#cc1f1f"
-        colors.crimson = "#ff5555"
-        colors.coral = "#ff6e6e"
+        -- Modern color palette
+        colors.red = "#ff6b6b" -- Bright red
+        colors.red1 = "#ff8f8f"
+        colors.red2 = "#ff4b4b"
+        colors.crimson = "#ff5252"
+        colors.coral = "#ff7f7f"
 
-        colors.cyan = "#8be9fd" -- Kitty cyan
-        colors.teal = "#20b2aa"
-        colors.orange = "#ffb86c" -- Kitty orange
-        colors.pink = "#ff79c6" -- Kitty pink/magenta
+        colors.cyan = "#00e0e0" -- Electric cyan
+        colors.teal = "#20c0c0"
+        colors.orange = "#ffa500" -- Pure orange
+        colors.pink = "#ff80ff" -- Electric pink
         colors.white = "#ffffff"
-        colors.silver = "#c0c0c0"
+        colors.silver = "#c0c0e0"
 
-        colors.blue = "#bd93f9" -- Kitty blue/purple
-        colors.green = "#50fa7b" -- Kitty green
+        colors.blue = "#8080ff" -- Electric blue
+        colors.green = "#00ff80" -- Electric green
+        colors.yellow = "#ffff80" -- Bright yellow
+        colors.purple = "#c080ff" -- Electric purple
 
-        -- UI colors matching Kitty
-        colors.border = "#44475a" -- Kitty inactive border
-        colors.border_highlight = "#ff79c6" -- Kitty active border
+        -- UI colors
+        colors.border = "#404060"
+        colors.border_highlight = "#ff80ff"
 
-        -- Diagnostic colors matching Kitty
-        colors.error = "#ff5555" -- Kitty red
-        colors.warning = "#ffb86c" -- Kitty orange
-        colors.info = "#8be9fd" -- Kitty cyan
-        colors.hint = "#ff79c6" -- Kitty pink
+        -- Diagnostic colors
+        colors.error = "#ff6b6b"
+        colors.warning = "#ffa500"
+        colors.info = "#00e0e0"
+        colors.hint = "#ff80ff"
       end,
       on_highlights = function(highlights, colors)
-        -- Background overrides (matching Kitty)
+        -- Base
         highlights.Normal = { fg = colors.fg, bg = colors.bg }
         highlights.NormalFloat = { fg = colors.fg, bg = colors.bg_float }
-        highlights.NormalNC = { fg = colors.fg, bg = colors.bg }
+        highlights.NormalNC = { fg = colors.fg_dark, bg = colors.bg }
         highlights.SignColumn = { bg = colors.bg }
-        highlights.EndOfBuffer = { fg = colors.bg }
+        highlights.EndOfBuffer = { fg = colors.bg_highlight }
 
-        -- Cursor and selection (Kitty-inspired)
+        -- Cursor and selection
         highlights.CursorLine = { bg = colors.bg_highlight }
         highlights.CursorColumn = { bg = colors.bg_highlight }
         highlights.Visual = { bg = colors.bg_visual }
@@ -74,71 +76,66 @@ return {
 
         -- Line numbers
         highlights.LineNr = { fg = colors.fg_gutter }
-        highlights.CursorLineNr = { fg = colors.pink, bold = true } -- Kitty pink
+        highlights.CursorLineNr = { fg = colors.pink, bold = true }
 
-        -- Search (Kitty colors)
-        highlights.Search = { bg = colors.pink, fg = "#000000", bold = true } -- Kitty pink
-        highlights.IncSearch = { bg = colors.orange, fg = "#000000", bold = true } -- Kitty orange
-        highlights.CurSearch = { bg = colors.red, fg = "#000000", bold = true } -- Kitty red
+        -- Search
+        highlights.Search = { bg = colors.yellow, fg = "#000000", bold = true }
+        highlights.IncSearch = { bg = colors.orange, fg = "#000000", bold = true }
+        highlights.CurSearch = { bg = colors.red, fg = "#000000", bold = true }
 
-        -- Syntax highlighting matching Kitty theme
-        highlights.Comment = { fg = colors.fg_gutter, italic = true } -- Kitty color8
-        highlights.Keyword = { fg = colors.pink, bold = true } -- Kitty pink
-        highlights.Function = { fg = colors.green, bold = true } -- Kitty green
-        highlights.String = { fg = colors.orange } -- Kitty orange
-        highlights.Number = { fg = colors.orange } -- Kitty orange
-        highlights.Boolean = { fg = colors.orange } -- Kitty orange
-        highlights.Constant = { fg = colors.red } -- Kitty red
+        -- Syntax highlighting - cleaner and more distinct
+        highlights.Comment = { fg = "#708090", italic = true } -- Slate gray
+        highlights.Keyword = { fg = colors.pink, bold = true }
+        highlights.Function = { fg = colors.cyan, bold = true }
+        highlights.String = { fg = colors.yellow }
+        highlights.Number = { fg = colors.orange }
+        highlights.Boolean = { fg = colors.orange }
+        highlights.Constant = { fg = colors.red }
         highlights.Variable = { fg = colors.fg }
-        highlights.Type = { fg = colors.blue } -- Kitty blue/purple
-        highlights.Operator = { fg = colors.pink } -- Kitty pink
-        highlights.Special = { fg = colors.cyan } -- Kitty cyan
+        highlights.Type = { fg = colors.blue }
+        highlights.Operator = { fg = colors.pink }
+        highlights.Special = { fg = colors.purple }
         highlights.Identifier = { fg = colors.fg }
-        highlights.PreProc = { fg = colors.pink } -- Kitty pink
-        highlights.Include = { fg = colors.pink } -- Kitty pink
-        highlights.Define = { fg = colors.pink } -- Kitty pink
-        highlights.Macro = { fg = colors.pink } -- Kitty pink
-        highlights.StorageClass = { fg = colors.pink, bold = true } -- Kitty pink
-        highlights.Structure = { fg = colors.blue } -- Kitty blue
-        highlights.Typedef = { fg = colors.blue } -- Kitty blue
+        highlights.PreProc = { fg = colors.purple }
+        highlights.Include = { fg = colors.pink }
+        highlights.Define = { fg = colors.purple }
+        highlights.Macro = { fg = colors.purple }
+        highlights.StorageClass = { fg = colors.blue, bold = true }
+        highlights.Structure = { fg = colors.blue }
+        highlights.Typedef = { fg = colors.blue }
 
-        -- Language specific highlighting
+        -- Language specific
         highlights["@keyword.function"] = { fg = colors.pink, bold = true }
         highlights["@keyword.return"] = { fg = colors.pink, bold = true }
         highlights["@keyword.operator"] = { fg = colors.pink }
-        highlights["@variable.builtin"] = { fg = colors.cyan } -- Kitty cyan
-        highlights["@property"] = { fg = colors.green } -- Kitty green
+        highlights["@variable.builtin"] = { fg = colors.cyan }
+        highlights["@property"] = { fg = colors.green }
         highlights["@parameter"] = { fg = colors.fg }
-        highlights["@constructor"] = { fg = colors.blue, bold = true } -- Kitty blue
-        highlights["@tag"] = { fg = colors.pink } -- Kitty pink
-        highlights["@tag.attribute"] = { fg = colors.orange } -- Kitty orange
-        highlights["@tag.delimiter"] = { fg = colors.pink } -- Kitty pink
+        highlights["@constructor"] = { fg = colors.blue, bold = true }
+        highlights["@tag"] = { fg = colors.pink }
+        highlights["@tag.attribute"] = { fg = colors.orange }
+        highlights["@tag.delimiter"] = { fg = colors.pink }
 
         -- HTML
         highlights.htmlTag = { fg = colors.pink }
         highlights.htmlEndTag = { fg = colors.pink }
         highlights.htmlTagName = { fg = colors.pink }
         highlights.htmlArg = { fg = colors.orange }
-        highlights.htmlString = { fg = colors.orange }
+        highlights.htmlString = { fg = colors.yellow }
 
         -- CSS
-        highlights.cssProp = { fg = colors.cyan } -- Kitty cyan
-        highlights.cssAttr = { fg = colors.orange } -- Kitty orange
+        highlights.cssProp = { fg = colors.cyan }
+        highlights.cssAttr = { fg = colors.orange }
         highlights.cssValueLength = { fg = colors.orange }
         highlights.cssValueNumber = { fg = colors.orange }
-        highlights.cssClassName = { fg = colors.green } -- Kitty green
-        highlights.cssIdentifier = { fg = colors.blue } -- Kitty blue
+        highlights.cssClassName = { fg = colors.green }
+        highlights.cssIdentifier = { fg = colors.blue }
 
-        -- React/JSX
-        highlights["@tag.tsx"] = { fg = colors.pink }
-        highlights["@constructor.tsx"] = { fg = colors.blue, bold = true }
-        highlights["@tag.attribute.tsx"] = { fg = colors.orange }
-
-        -- Popup menus (Kitty-inspired)
+        -- Popup menus
         highlights.Pmenu = { fg = colors.fg, bg = colors.bg_float }
-        highlights.PmenuSel = { fg = "#000000", bg = colors.pink } -- Kitty pink
-        highlights.PmenuSbar = { bg = colors.bg_float }
-        highlights.PmenuThumb = { bg = colors.pink }
+        highlights.PmenuSel = { fg = "#000000", bg = colors.cyan }
+        highlights.PmenuSbar = { bg = colors.bg_highlight }
+        highlights.PmenuThumb = { bg = colors.cyan }
 
         -- Statusline
         highlights.StatusLine = { fg = colors.fg, bg = colors.bg_float }
@@ -147,16 +144,16 @@ return {
         -- Tabline
         highlights.TabLine = { fg = colors.fg_dark, bg = colors.bg }
         highlights.TabLineFill = { bg = colors.bg }
-        highlights.TabLineSel = { fg = colors.pink, bg = colors.bg_float, bold = true } -- Kitty pink
+        highlights.TabLineSel = { fg = colors.cyan, bg = colors.bg_float, bold = true }
 
         -- Splits
         highlights.VertSplit = { fg = colors.border }
         highlights.WinSeparator = { fg = colors.border }
 
         -- Git signs
-        highlights.GitSignsAdd = { fg = colors.green } -- Kitty green
-        highlights.GitSignsChange = { fg = colors.orange } -- Kitty orange
-        highlights.GitSignsDelete = { fg = colors.red } -- Kitty red
+        highlights.GitSignsAdd = { fg = colors.green }
+        highlights.GitSignsChange = { fg = colors.yellow }
+        highlights.GitSignsDelete = { fg = colors.red }
 
         -- Diagnostics
         highlights.DiagnosticError = { fg = colors.error }
@@ -169,64 +166,56 @@ return {
         highlights.LspReferenceRead = { bg = colors.bg_visual }
         highlights.LspReferenceWrite = { bg = colors.bg_visual }
 
-        -- Telescope (Kitty colors)
+        -- Telescope
         highlights.TelescopeNormal = { fg = colors.fg, bg = colors.bg }
-        highlights.TelescopeBorder = { fg = colors.pink, bg = colors.bg } -- Kitty pink
-        highlights.TelescopePromptBorder = { fg = colors.pink, bg = colors.bg }
-        highlights.TelescopeResultsBorder = { fg = colors.pink, bg = colors.bg }
-        highlights.TelescopePreviewBorder = { fg = colors.pink, bg = colors.bg }
+        highlights.TelescopeBorder = { fg = colors.cyan, bg = colors.bg }
+        highlights.TelescopePromptBorder = { fg = colors.cyan, bg = colors.bg }
+        highlights.TelescopeResultsBorder = { fg = colors.cyan, bg = colors.bg }
+        highlights.TelescopePreviewBorder = { fg = colors.cyan, bg = colors.bg }
         highlights.TelescopeSelection = { fg = colors.fg, bg = colors.bg_visual }
-        highlights.TelescopeSelectionCaret = { fg = colors.pink }
-        highlights.TelescopePromptPrefix = { fg = colors.pink }
-        highlights.TelescopeMatching = { fg = colors.cyan, bold = true } -- Kitty cyan
+        highlights.TelescopeSelectionCaret = { fg = colors.cyan }
+        highlights.TelescopePromptPrefix = { fg = colors.cyan }
+        highlights.TelescopeMatching = { fg = colors.yellow, bold = true }
 
         -- Neo-tree
         highlights.NeoTreeNormal = { fg = colors.fg, bg = colors.bg }
         highlights.NeoTreeNormalNC = { fg = colors.fg, bg = colors.bg }
-        highlights.NeoTreeDirectoryName = { fg = colors.cyan } -- Kitty cyan
+        highlights.NeoTreeDirectoryName = { fg = colors.cyan }
         highlights.NeoTreeDirectoryIcon = { fg = colors.cyan }
         highlights.NeoTreeFileName = { fg = colors.fg }
-        highlights.NeoTreeFileIcon = { fg = colors.orange } -- Kitty orange
-        highlights.NeoTreeGitAdded = { fg = colors.green } -- Kitty green
-        highlights.NeoTreeGitModified = { fg = colors.orange } -- Kitty orange
-        highlights.NeoTreeGitDeleted = { fg = colors.red } -- Kitty red
-        highlights.NeoTreeRootName = { fg = colors.pink, bold = true } -- Kitty pink
+        highlights.NeoTreeFileIcon = { fg = colors.orange }
+        highlights.NeoTreeGitAdded = { fg = colors.green }
+        highlights.NeoTreeGitModified = { fg = colors.yellow }
+        highlights.NeoTreeGitDeleted = { fg = colors.red }
+        highlights.NeoTreeRootName = { fg = colors.pink, bold = true }
 
         -- Which-key
-        highlights.WhichKey = { fg = colors.pink } -- Kitty pink
-        highlights.WhichKeyGroup = { fg = colors.cyan } -- Kitty cyan
+        highlights.WhichKey = { fg = colors.cyan }
+        highlights.WhichKeyGroup = { fg = colors.pink }
         highlights.WhichKeyDesc = { fg = colors.fg }
-        highlights.WhichKeySeperator = { fg = colors.pink } -- Kitty pink
+        highlights.WhichKeySeperator = { fg = colors.purple }
         highlights.WhichKeyFloat = { bg = colors.bg }
-        highlights.WhichKeyBorder = { fg = colors.pink, bg = colors.bg }
-
-        -- Indent guides
-        highlights.IndentBlanklineChar = { fg = colors.border }
-        highlights.IndentBlanklineContextChar = { fg = colors.pink } -- Kitty pink
-
-        -- Bufferline
-        highlights.BufferLineBackground = { fg = colors.fg_dark, bg = colors.bg }
-        highlights.BufferLineBuffer = { fg = colors.fg_dark, bg = colors.bg }
-        highlights.BufferLineBufferSelected = { fg = colors.pink, bg = colors.bg_float, bold = true } -- Kitty pink
-        highlights.BufferLineBufferVisible = { fg = colors.fg, bg = colors.bg }
-        highlights.BufferLineFill = { bg = colors.bg }
-        highlights.BufferLineIndicatorSelected = { fg = colors.pink, bg = colors.bg_float }
-        highlights.BufferLineModified = { fg = colors.orange, bg = colors.bg }
-        highlights.BufferLineModifiedSelected = { fg = colors.orange, bg = colors.bg_float }
-        highlights.BufferLineCloseButton = { fg = colors.fg_dark, bg = colors.bg }
-        highlights.BufferLineCloseButtonSelected = { fg = colors.pink, bg = colors.bg_float }
+        highlights.WhichKeyBorder = { fg = colors.cyan, bg = colors.bg }
 
         -- Completion menu
         highlights.CmpItemAbbr = { fg = colors.fg }
         highlights.CmpItemAbbrDeprecated = { fg = colors.fg_gutter, strikethrough = true }
-        highlights.CmpItemAbbrMatch = { fg = colors.pink, bold = true } -- Kitty pink
-        highlights.CmpItemAbbrMatchFuzzy = { fg = colors.pink, bold = true }
-        highlights.CmpItemKind = { fg = colors.cyan } -- Kitty cyan
-        highlights.CmpItemMenu = { fg = colors.orange } -- Kitty orange
+        highlights.CmpItemAbbrMatch = { fg = colors.cyan, bold = true }
+        highlights.CmpItemAbbrMatchFuzzy = { fg = colors.cyan, bold = true }
+        highlights.CmpItemKind = { fg = colors.pink }
+        highlights.CmpItemMenu = { fg = colors.orange }
 
-        -- Treesitter context
-        highlights.TreesitterContext = { bg = colors.bg_float }
-        highlights.TreesitterContextLineNumber = { fg = colors.fg_gutter, bg = colors.bg_float }
+        -- Special enhancements
+        highlights.Title = { fg = colors.cyan, bold = true }
+        highlights.Underlined = { fg = colors.blue, underline = true }
+        highlights.Debug = { fg = colors.orange }
+        highlights.Tag = { fg = colors.purple }
+
+        -- Better contrast for special cases
+        highlights.DiffAdd = { fg = colors.green, bg = "#1a2a1a" }
+        highlights.DiffChange = { fg = colors.yellow, bg = "#2a2a1a" }
+        highlights.DiffDelete = { fg = colors.red, bg = "#2a1a1a" }
+        highlights.DiffText = { fg = colors.orange, bg = "#2a2a1a" }
       end,
     },
   },
