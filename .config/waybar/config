@@ -173,6 +173,7 @@
     "tooltip-format": "󰒢 {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nNetmask: {netmask}\nSignal: {signalStrength}%\nFrequency: {frequency}MHz",
     "tooltip-format-disconnected": "Disconnected",
     "on-click-right": "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu",
+    "on-click-right": "nmgui",
     "on-click-middle": "nmcli device wifi rescan",
     "interval": 5,
     "max-length": 50
