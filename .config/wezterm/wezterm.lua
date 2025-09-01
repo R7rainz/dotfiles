@@ -161,8 +161,8 @@ config.keys = {
 	{ key = "5", mods = "ALT", action = wezterm.action.ActivateTab(4) },
 
 	-- Pane management
-	{ key = "Enter", mods = "CTRL|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "\\", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "Enter", mods = "CTRL|SHIFT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "/", mods = "CTRL", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) }, -- Try with just CTRL
 	{ key = "z", mods = "CTRL|SHIFT", action = wezterm.action.TogglePaneZoomState },
 
 	-- Search
