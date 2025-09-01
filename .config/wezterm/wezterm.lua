@@ -1,6 +1,3 @@
--- ~/.config/wezterm/wezterm.lua
--- 🖤 Clean WezTerm Configuration - Pure Black Background
-
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
@@ -57,101 +54,88 @@ config.cursor_blink_ease_in = "EaseIn"
 config.cursor_blink_ease_out = "EaseOut"
 
 config.colors = {
-	foreground = "#e0e0ff", -- Soft white with blue tint
-	background = "#000000", -- Pure black background
-	cursor_bg = "#ff6b6b", -- Bright red cursor
-	cursor_fg = "#000000",
-	cursor_border = "#ff6b6b",
-	selection_fg = "#000000",
-	selection_bg = "#ff6b6b", -- Red selection
-	scrollbar_thumb = "#1a1a25",
-	split = "#404060", -- Border color
+	-- The default text color
+	foreground = "#f0f0f0",
+	-- The default background color
+	background = "#0a0a0a",
 
-	-- Tab bar colors
+	-- Overrides the cursor color
+	cursor_bg = "#ff6b6b",
+	cursor_fg = "#0a0a0a",
+	cursor_border = "#ff6b6b",
+
+	-- Overrides the selection colors
+	selection_fg = "#ffffff",
+	selection_bg = "#404040",
+
+	-- The color of the scrollbar "thumb"; the portion that represents the current viewport
+	scrollbar_thumb = "#666666",
+
+	-- The color of the split lines between panes
+	split = "#333333",
+
+	ansi = {
+		"#1a1a1a", -- black (darker for contrast)
+		"#ff4757", -- red (vibrant red)
+		"#2ed573", -- green (mid vibrant green)
+		"#ffa502", -- yellow (bright orange-yellow)
+		"#ff6348", -- blue replacement (coral-red)
+		"#ff3838", -- magenta (bright red-pink)
+		"#00d2d3", -- cyan (vibrant cyan - you mentioned cyan alone is fine)
+		"#f1f2f6", -- white (soft white)
+	},
+
+	brights = {
+		"#2f3542", -- bright black (gray)
+		"#ff6b7a", -- bright red
+		"#7bed9f", -- bright green
+		"#ffb142", -- bright yellow
+		"#ff7675", -- bright blue replacement (salmon)
+		"#fd79a8", -- bright magenta (pink)
+		"#74b9ff", -- bright cyan (keeping this vibrant)
+		"#ffffff", -- bright white (pure white)
+	},
+
+	-- Colors for copy_mode and quick_select
+	copy_mode_active_highlight_bg = { Color = "#ff6b6b" },
+	copy_mode_active_highlight_fg = { Color = "#0a0a0a" },
+	copy_mode_inactive_highlight_bg = { Color = "#404040" },
+	copy_mode_inactive_highlight_fg = { Color = "#f0f0f0" },
+
+	quick_select_label_bg = { Color = "#ffa502" },
+	quick_select_label_fg = { Color = "#0a0a0a" },
+	quick_select_match_bg = { Color = "#ff4757" },
+	quick_select_match_fg = { Color = "#ffffff" },
+
+	-- Visual bell
+	visual_bell = "#ff6b6b",
+
+	-- Colors for the tab bar
 	tab_bar = {
-		background = "#000000",
+		background = "#0a0a0a",
 		active_tab = {
-			bg_color = "#ff6b6b", -- Red active tab
-			fg_color = "#000000", -- Black text
+			bg_color = "#ff4757",
+			fg_color = "#ffffff",
 			intensity = "Bold",
 		},
 		inactive_tab = {
-			bg_color = "#0a0a12", -- Dark background
-			fg_color = "#b0b0d0", -- Muted text
+			bg_color = "#2f3542",
+			fg_color = "#a4b0be",
 		},
 		inactive_tab_hover = {
-			bg_color = "#12121a", -- Slightly lighter
-			fg_color = "#ff6b6b", -- Red text on hover
+			bg_color = "#404040",
+			fg_color = "#f0f0f0",
 		},
 		new_tab = {
-			bg_color = "#000000",
-			fg_color = "#b0b0d0",
+			bg_color = "#2ed573",
+			fg_color = "#0a0a0a",
 		},
 		new_tab_hover = {
-			bg_color = "#ff6b6b", -- Red background
-			fg_color = "#000000", -- Black text
-			italic = true,
+			bg_color = "#7bed9f",
+			fg_color = "#0a0a0a",
 		},
 	},
-
-	-- ANSI colors matching TokyoNight with red instead of pink
-	ansi = {
-		"#2c2c2c", -- black (darker)
-		"#ff6b6b", -- red (primary red)
-		"#00ff80", -- green (electric green)
-		"#ffff80", -- yellow (bright yellow)
-		"#8080ff", -- blue (electric blue)
-		"#ff6b6b", -- magenta (replaced with red)
-		"#00e0e0", -- cyan (electric cyan)
-		"#e0e0ff", -- white (primary text)
-	},
-	brights = {
-		"#4a4a4a", -- bright black
-		"#ff8f8f", -- bright red (red1)
-		"#00ff99", -- bright green
-		"#ffff99", -- bright yellow
-		"#9999ff", -- bright blue
-		"#ff8f8f", -- bright magenta (replaced with bright red)
-		"#00ffff", -- bright cyan
-		"#ffffff", -- bright white
-	},
-	indexed = {
-		[17] = "#ff6b6b", -- Use vibrant red
-		[18] = "#00ff80", -- Green
-		[19] = "#8080ff", -- Blue
-		[20] = "#ff4b4b", -- Darker red (red2)
-		[21] = "#00e0e0", -- Cyan
-		[22] = "#ffff80", -- Yellow
-		[23] = "#c080ff", -- Purple
-	},
 }
--- 🎪 TAB BAR CONFIGURATION
-config.enable_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = false
-config.tab_max_width = 32
-
--- 🖱️ MOUSE SUPPORT
-config.mouse_bindings = {
-	-- Right click paste
-	{
-		event = { Down = { streak = 1, button = "Right" } },
-		mods = "NONE",
-		action = wezterm.action.PasteFrom("Clipboard"),
-	},
-	-- Triple click selects line
-	{
-		event = { Down = { streak = 3, button = "Left" } },
-		action = wezterm.action.SelectTextAtMouseCursor("Line"),
-	},
-	-- Double click selects word
-	{
-		event = { Down = { streak = 2, button = "Left" } },
-		action = wezterm.action.SelectTextAtMouseCursor("Word"),
-	},
-}
-
 -- ⌨️ KEY BINDINGS
 config.keys = {
 	-- Clipboard

@@ -15,207 +15,216 @@ return {
       },
       sidebars = { "qf", "help", "terminal", "packer", "neo-tree" },
       on_colors = function(colors)
-        -- Clean dark background
-        colors.bg = "#0a0a12"
-        colors.bg_dark = "#070710"
-        colors.bg_float = "#12121a"
-        colors.bg_highlight = "#1a1a25"
-        colors.bg_popup = "#12121a"
-        colors.bg_sidebar = "#0a0a12"
-        colors.bg_statusline = "#12121a"
-        colors.bg_visual = "#2a2a45"
+        -- True black background with red accents
+        colors.bg = "#000000" -- Pure black
+        colors.bg_dark = "#080808"
+        colors.bg_float = "#121212"
+        colors.bg_highlight = "#1a1a1a"
+        colors.bg_popup = "#121212"
+        colors.bg_sidebar = "#0a0a0a"
+        colors.bg_statusline = "#121212"
+        colors.bg_visual = "#2a1a1a" -- Red tinted visual selection
 
-        -- Text colors - better contrast
-        colors.fg = "#e0e0ff"
-        colors.fg_dark = "#b0b0d0"
-        colors.fg_gutter = "#505070"
-        colors.fg_sidebar = "#e0e0ff"
+        -- Text colors - high contrast with red emphasis
+        colors.fg = "#ffffff"
+        colors.fg_dark = "#cccccc"
+        colors.fg_gutter = "#666666"
+        colors.fg_sidebar = "#ffffff"
 
-        -- Modern color palette - PINK REPLACED WITH RED SHADES
-        colors.red = "#ff6b6b" -- Bright red
-        colors.red1 = "#ff8f8f"
-        colors.red2 = "#ff4b4b"
+        -- Red-dominated color palette
+        colors.red = "#ff4757" -- Vibrant primary red
+        colors.red1 = "#ff6b6b" -- Bright red
+        colors.red2 = "#ff3838" -- Intense red
         colors.crimson = "#ff5252"
-        colors.coral = "#ff7f7f"
+        colors.coral = "#ff7f50"
 
-        colors.cyan = "#00e0e0" -- Electric cyan
+        colors.cyan = "#00e0e0"
         colors.teal = "#20c0c0"
-        colors.orange = "#ffa500" -- Pure orange
-        colors.pink = "#ff6b6b" -- Changed from pink to red shade
+        colors.orange = "#ffa500"
+        colors.pink = "#ff4757" -- Red instead of pink
         colors.white = "#ffffff"
-        colors.silver = "#c0c0e0"
+        colors.silver = "#c0c0c0"
 
-        colors.blue = "#8080ff" -- Electric blue
-        colors.green = "#00ff80" -- Electric green
-        colors.yellow = "#ffff80" -- Bright yellow
-        colors.purple = "#c080ff" -- Electric purple
+        colors.blue = "#7aa2f7" -- Tokyo Night blue
+        colors.green = "#9ece6a" -- Tokyo Night green
+        colors.yellow = "#e0af68" -- Tokyo Night yellow (muted gold)
+        colors.purple = "#bb9af7" -- Tokyo Night purple
 
-        -- UI colors
-        colors.border = "#404060"
-        colors.border_highlight = "#ff6b6b" -- Changed from pink to red
+        -- UI colors with red accents
+        colors.border = "#404040"
+        colors.border_highlight = "#ff4757"
 
-        -- Diagnostic colors
-        colors.error = "#ff6b6b"
-        colors.warning = "#ffa500"
+        -- Diagnostic colors - all red variants
+        colors.error = "#ff4757"
+        colors.warning = "#e0af68" -- Tokyo Night yellow
         colors.info = "#00e0e0"
-        colors.hint = "#ff6b6b" -- Changed from pink to red
+        colors.hint = "#ff6b6b"
       end,
       on_highlights = function(highlights, colors)
-        -- Base
+        -- Base with black background
         highlights.Normal = { fg = colors.fg, bg = colors.bg }
         highlights.NormalFloat = { fg = colors.fg, bg = colors.bg_float }
         highlights.NormalNC = { fg = colors.fg_dark, bg = colors.bg }
         highlights.SignColumn = { bg = colors.bg }
         highlights.EndOfBuffer = { fg = colors.bg_highlight }
 
-        -- Cursor and selection
+        -- Cursor and selection - red accents
         highlights.CursorLine = { bg = colors.bg_highlight }
         highlights.CursorColumn = { bg = colors.bg_highlight }
         highlights.Visual = { bg = colors.bg_visual }
         highlights.VisualNOS = { bg = colors.bg_visual }
 
-        -- Line numbers
+        -- Line numbers - red current line
         highlights.LineNr = { fg = colors.fg_gutter }
-        highlights.CursorLineNr = { fg = colors.red, bold = true } -- Changed from pink to red
+        highlights.CursorLineNr = { fg = colors.red, bold = true }
 
-        -- Search
-        highlights.Search = { bg = colors.yellow, fg = "#000000", bold = true }
-        highlights.IncSearch = { bg = colors.orange, fg = "#000000", bold = true }
-        highlights.CurSearch = { bg = colors.red, fg = "#000000", bold = true }
+        -- Search - red-based search highlights
+        highlights.Search = { bg = colors.red, fg = "#000000", bold = true }
+        highlights.IncSearch = { bg = colors.cyan, fg = "#000000", bold = true }
+        highlights.CurSearch = { bg = colors.red2, fg = "#000000", bold = true }
 
-        -- Syntax highlighting - cleaner and more distinct
-        highlights.Comment = { fg = "#708090", italic = true } -- Slate gray
-        highlights.Keyword = { fg = colors.red, bold = true } -- Changed from pink to red
+        -- Syntax highlighting - more red elements
+        highlights.Comment = { fg = "#565f89", italic = true } -- Tokyo Night comment color
+        highlights.Keyword = { fg = colors.red, bold = true }
         highlights.Function = { fg = colors.cyan, bold = true }
-        highlights.String = { fg = colors.yellow }
+        highlights.String = { fg = colors.green } -- Green strings like Tokyo Night
         highlights.Number = { fg = colors.orange }
         highlights.Boolean = { fg = colors.orange }
         highlights.Constant = { fg = colors.red }
         highlights.Variable = { fg = colors.fg }
         highlights.Type = { fg = colors.blue }
-        highlights.Operator = { fg = colors.red } -- Changed from pink to red
+        highlights.Operator = { fg = colors.red }
         highlights.Special = { fg = colors.purple }
         highlights.Identifier = { fg = colors.fg }
-        highlights.PreProc = { fg = colors.purple }
-        highlights.Include = { fg = colors.red } -- Changed from pink to red
+        highlights.PreProc = { fg = colors.red }
+        highlights.Include = { fg = colors.red }
         highlights.Define = { fg = colors.purple }
-        highlights.Macro = { fg = colors.purple }
+        highlights.Macro = { fg = colors.red }
         highlights.StorageClass = { fg = colors.blue, bold = true }
         highlights.Structure = { fg = colors.blue }
         highlights.Typedef = { fg = colors.blue }
 
-        -- Language specific
-        highlights["@keyword.function"] = { fg = colors.red, bold = true } -- Changed from pink to red
-        highlights["@keyword.return"] = { fg = colors.red, bold = true } -- Changed from pink to red
-        highlights["@keyword.operator"] = { fg = colors.red } -- Changed from pink to red
+        -- Language specific - more red
+        highlights["@keyword.function"] = { fg = colors.red, bold = true }
+        highlights["@keyword.return"] = { fg = colors.red, bold = true }
+        highlights["@keyword.operator"] = { fg = colors.red }
         highlights["@variable.builtin"] = { fg = colors.cyan }
         highlights["@property"] = { fg = colors.green }
         highlights["@parameter"] = { fg = colors.fg }
         highlights["@constructor"] = { fg = colors.blue, bold = true }
-        highlights["@tag"] = { fg = colors.red } -- Changed from pink to red
-        highlights["@tag.attribute"] = { fg = colors.orange }
-        highlights["@tag.delimiter"] = { fg = colors.red } -- Changed from pink to red
+        highlights["@tag"] = { fg = colors.red }
+        highlights["@tag.attribute"] = { fg = colors.cyan }
+        highlights["@tag.delimiter"] = { fg = colors.red }
+        highlights["@type"] = { fg = colors.blue }
+        highlights["@type.builtin"] = { fg = colors.red }
 
-        -- HTML
-        highlights.htmlTag = { fg = colors.red } -- Changed from pink to red
-        highlights.htmlEndTag = { fg = colors.red } -- Changed from pink to red
-        highlights.htmlTagName = { fg = colors.red } -- Changed from pink to red
-        highlights.htmlArg = { fg = colors.orange }
-        highlights.htmlString = { fg = colors.yellow }
+        -- HTML - red tags
+        highlights.htmlTag = { fg = colors.red }
+        highlights.htmlEndTag = { fg = colors.red }
+        highlights.htmlTagName = { fg = colors.red }
+        highlights.htmlArg = { fg = colors.cyan }
+        highlights.htmlString = { fg = colors.green }
 
         -- CSS
         highlights.cssProp = { fg = colors.cyan }
-        highlights.cssAttr = { fg = colors.orange }
+        highlights.cssAttr = { fg = colors.green }
         highlights.cssValueLength = { fg = colors.orange }
         highlights.cssValueNumber = { fg = colors.orange }
         highlights.cssClassName = { fg = colors.green }
         highlights.cssIdentifier = { fg = colors.blue }
 
-        -- Popup menus
+        -- Popup menus - red selection
         highlights.Pmenu = { fg = colors.fg, bg = colors.bg_float }
-        highlights.PmenuSel = { fg = "#000000", bg = colors.cyan }
+        highlights.PmenuSel = { fg = "#000000", bg = colors.red }
         highlights.PmenuSbar = { bg = colors.bg_highlight }
-        highlights.PmenuThumb = { bg = colors.cyan }
+        highlights.PmenuThumb = { bg = colors.red }
 
-        -- Statusline
+        -- Statusline - red accents
         highlights.StatusLine = { fg = colors.fg, bg = colors.bg_float }
         highlights.StatusLineNC = { fg = colors.fg_dark, bg = colors.bg }
 
-        -- Tabline
+        -- Tabline - red active tab
         highlights.TabLine = { fg = colors.fg_dark, bg = colors.bg }
         highlights.TabLineFill = { bg = colors.bg }
-        highlights.TabLineSel = { fg = colors.cyan, bg = colors.bg_float, bold = true }
+        highlights.TabLineSel = { fg = colors.red, bg = colors.bg_float, bold = true }
 
         -- Splits
         highlights.VertSplit = { fg = colors.border }
         highlights.WinSeparator = { fg = colors.border }
 
-        -- Git signs
+        -- Git signs - red for delete
         highlights.GitSignsAdd = { fg = colors.green }
         highlights.GitSignsChange = { fg = colors.yellow }
         highlights.GitSignsDelete = { fg = colors.red }
 
-        -- Diagnostics
+        -- Diagnostics - red error and hint
         highlights.DiagnosticError = { fg = colors.error }
         highlights.DiagnosticWarn = { fg = colors.warning }
         highlights.DiagnosticInfo = { fg = colors.info }
         highlights.DiagnosticHint = { fg = colors.hint }
 
-        -- LSP
+        -- LSP - red references
         highlights.LspReferenceText = { bg = colors.bg_visual }
         highlights.LspReferenceRead = { bg = colors.bg_visual }
         highlights.LspReferenceWrite = { bg = colors.bg_visual }
 
-        -- Telescope
+        -- Telescope - red borders and selection
         highlights.TelescopeNormal = { fg = colors.fg, bg = colors.bg }
-        highlights.TelescopeBorder = { fg = colors.cyan, bg = colors.bg }
-        highlights.TelescopePromptBorder = { fg = colors.cyan, bg = colors.bg }
-        highlights.TelescopeResultsBorder = { fg = colors.cyan, bg = colors.bg }
-        highlights.TelescopePreviewBorder = { fg = colors.cyan, bg = colors.bg }
+        highlights.TelescopeBorder = { fg = colors.red, bg = colors.bg }
+        highlights.TelescopePromptBorder = { fg = colors.red, bg = colors.bg }
+        highlights.TelescopeResultsBorder = { fg = colors.red, bg = colors.bg }
+        highlights.TelescopePreviewBorder = { fg = colors.red, bg = colors.bg }
         highlights.TelescopeSelection = { fg = colors.fg, bg = colors.bg_visual }
-        highlights.TelescopeSelectionCaret = { fg = colors.cyan }
-        highlights.TelescopePromptPrefix = { fg = colors.cyan }
-        highlights.TelescopeMatching = { fg = colors.yellow, bold = true }
+        highlights.TelescopeSelectionCaret = { fg = colors.red }
+        highlights.TelescopePromptPrefix = { fg = colors.red }
+        highlights.TelescopeMatching = { fg = colors.cyan, bold = true }
 
-        -- Neo-tree
+        -- Neo-tree - red root and icons
         highlights.NeoTreeNormal = { fg = colors.fg, bg = colors.bg }
         highlights.NeoTreeNormalNC = { fg = colors.fg, bg = colors.bg }
         highlights.NeoTreeDirectoryName = { fg = colors.cyan }
-        highlights.NeoTreeDirectoryIcon = { fg = colors.cyan }
+        highlights.NeoTreeDirectoryIcon = { fg = colors.red }
         highlights.NeoTreeFileName = { fg = colors.fg }
-        highlights.NeoTreeFileIcon = { fg = colors.orange }
+        highlights.NeoTreeFileIcon = { fg = colors.cyan }
         highlights.NeoTreeGitAdded = { fg = colors.green }
         highlights.NeoTreeGitModified = { fg = colors.yellow }
         highlights.NeoTreeGitDeleted = { fg = colors.red }
-        highlights.NeoTreeRootName = { fg = colors.red, bold = true } -- Changed from pink to red
+        highlights.NeoTreeRootName = { fg = colors.red, bold = true }
 
-        -- Which-key
+        -- Which-key - red groups
         highlights.WhichKey = { fg = colors.cyan }
-        highlights.WhichKeyGroup = { fg = colors.red } -- Changed from pink to red
+        highlights.WhichKeyGroup = { fg = colors.red }
         highlights.WhichKeyDesc = { fg = colors.fg }
-        highlights.WhichKeySeperator = { fg = colors.purple }
+        highlights.WhichKeySeperator = { fg = colors.red }
         highlights.WhichKeyFloat = { bg = colors.bg }
-        highlights.WhichKeyBorder = { fg = colors.cyan, bg = colors.bg }
+        highlights.WhichKeyBorder = { fg = colors.red, bg = colors.bg }
 
-        -- Completion menu
+        -- Completion menu - red kind
         highlights.CmpItemAbbr = { fg = colors.fg }
         highlights.CmpItemAbbrDeprecated = { fg = colors.fg_gutter, strikethrough = true }
-        highlights.CmpItemAbbrMatch = { fg = colors.cyan, bold = true }
-        highlights.CmpItemAbbrMatchFuzzy = { fg = colors.cyan, bold = true }
-        highlights.CmpItemKind = { fg = colors.red } -- Changed from pink to red
-        highlights.CmpItemMenu = { fg = colors.orange }
+        highlights.CmpItemAbbrMatch = { fg = colors.red, bold = true }
+        highlights.CmpItemAbbrMatchFuzzy = { fg = colors.red, bold = true }
+        highlights.CmpItemKind = { fg = colors.red }
+        highlights.CmpItemMenu = { fg = colors.cyan }
 
-        -- Special enhancements
-        highlights.Title = { fg = colors.cyan, bold = true }
-        highlights.Underlined = { fg = colors.blue, underline = true }
+        -- Special enhancements - red titles
+        highlights.Title = { fg = colors.red, bold = true }
+        highlights.Underlined = { fg = colors.cyan, underline = true }
         highlights.Debug = { fg = colors.orange }
         highlights.Tag = { fg = colors.purple }
 
-        -- Better contrast for special cases
+        -- Better contrast for special cases - red diff
         highlights.DiffAdd = { fg = colors.green, bg = "#1a2a1a" }
         highlights.DiffChange = { fg = colors.yellow, bg = "#2a2a1a" }
         highlights.DiffDelete = { fg = colors.red, bg = "#2a1a1a" }
-        highlights.DiffText = { fg = colors.orange, bg = "#2a2a1a" }
+        highlights.DiffText = { fg = colors.cyan, bg = "#2a2a1a" }
+
+        -- Additional red enhancements
+        highlights.Cursor = { fg = colors.bg, bg = colors.red }
+        highlights.MatchParen = { fg = colors.red, bold = true, underline = true }
+        highlights.NonText = { fg = colors.fg_gutter }
+        highlights.SpecialKey = { fg = colors.red }
+        highlights.Whitespace = { fg = colors.fg_gutter }
       end,
     },
   },
