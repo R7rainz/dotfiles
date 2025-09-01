@@ -78,7 +78,7 @@ config.colors = {
 		"#1a1a1a", -- black (darker for contrast)
 		"#ff4757", -- red (vibrant red)
 		"#2ed573", -- green (mid vibrant green)
-		"#ffa502", -- yellow (bright orange-yellow)
+		"#FFD700", -- gold
 		"#ff6348", -- blue replacement (coral-red)
 		"#ff3838", -- magenta (bright red-pink)
 		"#00d2d3", -- cyan (vibrant cyan - you mentioned cyan alone is fine)
@@ -89,7 +89,7 @@ config.colors = {
 		"#2f3542", -- bright black (gray)
 		"#ff6b7a", -- bright red
 		"#7bed9f", -- bright green
-		"#ffb142", -- bright yellow
+		"#FFD700", -- bright yellow
 		"#ff7675", -- bright blue replacement (salmon)
 		"#fd79a8", -- bright magenta (pink)
 		"#74b9ff", -- bright cyan (keeping this vibrant)
