@@ -165,6 +165,12 @@ config.keys = {
 	{ key = "/", mods = "CTRL", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) }, -- Try with just CTRL
 	{ key = "z", mods = "CTRL|SHIFT", action = wezterm.action.TogglePaneZoomState },
 
+	-- Navigate between panes using arrow keys
+	{ key = "LeftArrow", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.ActivatePaneDirection("Down") },
+
 	-- Search
 	{ key = "f", mods = "CTRL|SHIFT", action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
 
@@ -192,8 +198,8 @@ config.default_prog = { "/bin/fish", "-l" }
 
 -- 💡 SETTINGS
 config.automatically_reload_config = true
-config.check_for_updates = false
-config.audible_bell = "Disabled"
+config.check_for_updates = true
+config.audible_bell = "SystemBeep"
 config.scrollback_lines = 10000
 config.enable_scroll_bar = false
 
@@ -203,5 +209,30 @@ config.initial_rows = 30
 
 -- Remove background effects
 config.window_background_gradient = nil
+
+-- 🖼️ BACKGROUND IMAGE PATH
+local bg_image = os.getenv("HOME") .. "/Dotfiles/.config/wezterm/assets/bg-blurred-darker.png"
+
+-- 🖼️ SIMPLE IMAGE BACKGROUND (Current WezTerm syntax)
+config.background = {
+	{
+		source = { File = bg_image },
+		repeat_x = "NoRepeat",
+		repeat_y = "NoRepeat",
+		width = "Cover",
+		height = "Cover",
+		vertical_align = "Middle",
+		horizontal_align = "Center",
+	},
+}
+
+-- 🎆 ADDITIONAL VISUAL ENHANCEMENTS
+config.bold_brightens_ansi_colors = true
+config.inactive_pane_hsb = {
+	saturation = 0.8,
+	brightness = 0.6,
+}
+
+config.macos_window_background_blur = 40
 
 return config
