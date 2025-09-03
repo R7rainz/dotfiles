@@ -110,29 +110,28 @@ config.colors = {
 	-- Visual bell
 	visual_bell = "#ff6b6b",
 
-	-- Colors for the tab bar
 	tab_bar = {
-		background = "#0a0a0a",
+		background = "#0f0f23", -- Deep dark blue/purple
 		active_tab = {
-			bg_color = "#ff4757",
+			bg_color = "#6c5ce7", -- Purple accent
 			fg_color = "#ffffff",
 			intensity = "Bold",
 		},
 		inactive_tab = {
-			bg_color = "#2f3542",
-			fg_color = "#a4b0be",
+			bg_color = "#2d3748", -- Dark gray-blue
+			fg_color = "#a0aec0", -- Light gray
 		},
 		inactive_tab_hover = {
-			bg_color = "#404040",
-			fg_color = "#f0f0f0",
+			bg_color = "#4a5568", -- Lighter gray-blue
+			fg_color = "#e2e8f0", -- Almost white
 		},
 		new_tab = {
-			bg_color = "#2ed573",
-			fg_color = "#0a0a0a",
+			bg_color = "#2d3748",
+			fg_color = "#a0aec0",
 		},
 		new_tab_hover = {
-			bg_color = "#7bed9f",
-			fg_color = "#0a0a0a",
+			bg_color = "#6c5ce7",
+			fg_color = "#ffffff",
 		},
 	},
 }
@@ -230,9 +229,9 @@ config.background = {
 config.bold_brightens_ansi_colors = true
 config.inactive_pane_hsb = {
 	saturation = 0.8,
-	brightness = 0.6,
+	brightness = 0.7,
 }
 
-config.macos_window_background_blur = 40
+config.macos_window_background_blur = 20
 
 return config
