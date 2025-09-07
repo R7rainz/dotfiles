@@ -1,133 +1,244 @@
-// /**
-//  * User: Avasz
-//  * Copyleft: Avasz
-//  * This theme was copied directly from deadguy's sidetab theme for rofi. Edited for my liking.
-//  */
-//
-// configuration {
-// 	display-drun:    "Activate";
-// 	display-run:     "Execute";
-// 	display-window:  "Window";
-// 	show-icons:      true;
-// 	sidebar-mode:    false;
-// }
-//
-// * {
-// 	background-color:            #000000;
-// 	text-color:                  #555555;
-// 	selbg:                       #555555;
-// 	actbg:                       #000000;
-// 	urgbg:                       #e53935;
-// 	winbg:			     		 #26c6da;
-//
-//
-// 	selected-normal-foreground:  @winbg;
-// 	normal-foreground:           @text-color;
-// 	selected-normal-background:  @actbg;
-// 	normal-background:           @background-color;
-//
-// 	selected-urgent-foreground:  @background-color;
-// 	urgent-foreground:           @text-color;
-// 	selected-urgent-background:  @urgbg;
-// 	urgent-background:           @background-color;
-//
-// 	selected-active-foreground:  @winbg;
-// 	active-foreground:           @text-color;
-// 	selected-active-background:  @actbg;
-// 	active-background:           @selbg;
-//
-// 	line-margin:                 2;
-// 	line-padding:                2;
-// 	separator-style:             "none";
-// 	hide-scrollbar:              "false";
-// 	margin:                      0;
-// 	padding:                     5;
-// }
-//
-// window {
-// 	location:	 0;
-// 	anchor:		 0;
-// 	height:		 37%;
-// 	width:		 30%;
-// 	orientation: horizontal;
-// 	children:	 [mainbox];
-// }
-//
-// mainbox {
-// 	spacing:  0.8em;
-// 	children: [ entry,listview,mode-switcher ];
-// }
-//
-// button { padding: 5px 2px; }
-//
-// button selected {
-// 	background-color: @active-background;
-// 	text-color:       @background-color;
-// }
-//
-// inputbar {
-// 	padding: 5px;
-// 	spacing: 5px;
-// }
-//
-// listview {
-// 	spacing: 0.5em;
-// 	dynamic: false;
-// 	cycle:   true;
-// }
-//
-// element { padding: 10px; }
-//
-// entry {
-// 	expand:         false;
-// 	text-color:     @normal-foreground;
-// 	vertical-align: 1;
-// 	padding:        5px;
-// }
-//
-// element normal.normal {
-// 	background-color: @normal-background;
-// 	text-color:       @normal-foreground;
-// }
-//
-// element normal.urgent {
-// 	background-color: @urgent-background;
-// 	text-color:       @urgent-foreground;
-// }
-//
-// element normal.active {
-// 	background-color: @active-background;
-// 	text-color:       @active-foreground;
-// }
-//
-// element selected.normal {
-// 	background-color: @selected-normal-background;
-// 	text-color:       @selected-normal-foreground;
-// 	border:           0 5px solid 0 0;
-// 	border-color:	    @active-background;
-// }
-//
-// element selected.urgent {
-// 	background-color: @selected-urgent-background;
-// 	text-color:       @selected-urgent-foreground;
-// }
-//
-// element selected.active {
-// 	background-color: @selected-active-background;
-// 	text-color:       @selected-active-foreground;
-// }
-//
-// element alternate.normal {
-// 	background-color: @normal-background;
-// 	text-color:       @normal-foreground;
-// }
-//
-// element alternate.urgent {
-// 	background-color: @urgent-background;
-// 	text-color:       @urgent-foreground;
-// }
-//
-// element alternate.active {
-// 	background-color: @active-background;
-// 	text-color:       @active-foreground;
-// }
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    display-drun:               "APPS";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "WINDOW";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
+}
+
+/*****----- Global Properties -----*****/
+* {
+    font:                        "JetBrains Mono Nerd Font 10";
+    /* Main backgrounds - matching neovim theme */
+    background:                  #000000;    /* colors.bg */
+    background-alt:              #121212;    /* colors.bg_float/bg_popup */
+    background-dark:             #080808;    /* colors.bg_dark */
+    background-highlight:        #1a1a1a;    /* colors.bg_highlight */
+    background-sidebar:          #0a0a0a;    /* colors.bg_sidebar */
+    background-visual:           #2a1a1a;    /* colors.bg_visual */
+    
+    /* Text colors */
+    foreground:                  #ffffff;    /* colors.fg */
+    foreground-alt:              #b0b0b0;    /* colors.fg_dark */
+    foreground-dim:              #505050;    /* colors.fg_gutter */
+    
+    /* Vibrant accent colors from neovim */
+    selected:                    #121212;    /* bg_float for selected background */
+    selected-text:               #00ffff;    /* colors.cyan - bright electric cyan */
+    active:                      #00ff99;    /* colors.green - electric green */
+    urgent:                      #ff0066;    /* colors.error - bright error red */
+    
+    /* Additional accent colors */
+    accent-primary:              #00ccff;    /* colors.blue - electric blue */
+    accent-secondary:            #ff3388;    /* colors.red1 - bright pink */
+    accent-warning:              #ff9900;    /* colors.warning - bright orange */
+    accent-info:                 #00ffff;    /* colors.info - bright cyan */
+    
+    /* Borders */
+    border-color:                #404040;    /* colors.border */
+    border-highlight:            #ff0066;    /* colors.border_highlight */
+}
+
+/*****----- Main Window -----*****/
+window {
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       1000px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               15px;
+    cursor:                      "default";
+    background-color:            @background;
+    border:                      2px;
+    border-color:                @border-color;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listbox" ];
+}
+
+imagebox {
+    padding:                     20px;
+    background-color:            @background-dark;
+    background-image:            url("./bg-blurred-darker.png", height);
+    orientation:                 vertical;
+    children:                    [ "inputbar", "dummy", "mode-switcher" ];
+    border-radius:               15px 0px 0px 15px;
+}
+
+listbox {
+    spacing:                     20px;
+    padding:                     20px;
+    background-color:            @background-sidebar;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+    border-radius:               0px 15px 15px 0px;
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+    border:                      1px;
+    border-color:                @border-color;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "";
+    background-color:            inherit;
+    text-color:                  @accent-primary;
+    font:                        "JetBrains Mono Nerd Font Bold 10";
+}
+entry {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           @foreground-dim;
+    cursor-color:                @accent-secondary;
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:                     true;
+    spacing:                     20px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+button {
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  @foreground-alt;
+    cursor:                      pointer;
+    border:                      1px;
+    border-color:                @border-color;
+}
+button selected {
+    background-color:            @background-highlight;
+    text-color:                  @accent-primary;
+    border-color:                @accent-primary;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     12px;
+    border-radius:               10px;
+    background-color:            transparent;
+    text-color:                  @foreground-alt;
+    cursor:                      pointer;
+}
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground-alt;
+}
+element normal.urgent {
+    background-color:            @background-visual;
+    text-color:                  @urgent;
+}
+element normal.active {
+    background-color:            @background-visual;
+    text-color:                  @active;
+}
+element selected.normal {
+    background-color:            @background-highlight;
+    text-color:                  @selected-text;
+    border:                      1px;
+    border-color:                @accent-primary;
+}
+element selected.urgent {
+    background-color:            @background-highlight;
+    text-color:                  @urgent;
+    border:                      1px;
+    border-color:                @urgent;
+}
+element selected.active {
+    background-color:            @background-highlight;
+    text-color:                  @active;
+    border:                      1px;
+    border-color:                @active;
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   @accent-secondary;
+}
+
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
+}
+textbox {
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  @accent-warning;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    border:                      1px;
+    border-color:                @accent-warning;
+}
+error-message {
+    padding:                     15px;
+    border-radius:               20px;
+    background-color:            @background;
+    text-color:                  @urgent;
+    border:                      2px;
+    border-color:                @urgent;
+}
