@@ -13,7 +13,7 @@
   "notification-icon-size": 52,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
-  "notification-visibility-time": 5000,
+  "notification-visibility-time": 8000,
   "notification-fade-in-time": 300,
   "notification-fade-out-time": 300,
   "notification-slide-in-time": 300,
@@ -44,10 +44,59 @@
     "brightness-sound": {
       "exec": "paplay /usr/share/sounds/freedesktop/stereo/device-added.oga",
       "urgency": "Low"
+    },
+    "web-notification": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga",
+      "urgency": "Normal"
     }
   },
   "notification-criteria": [
-    // ... (keep your existing criteria)
+    {
+      "criteria": {
+        "app-name": "zen"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "web-notification"
+    },
+    {
+      "criteria": {
+        "app-name": "brave"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "web-notification"
+    },
+    {
+      "criteria": {
+        "app-name": "firefox"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "web-notification"
+    },
+    {
+      "criteria": {
+        "app-name": "google-chrome"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "web-notification"
+    },
+    {
+      "criteria": {
+        "summary": "*notification*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 6000
+    },
+    {
+      "criteria": {
+        "body": "*website*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 6000
+    }
   ],
   "widgets": {
     "control-center": [
