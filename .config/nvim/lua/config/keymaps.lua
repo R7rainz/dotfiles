@@ -1,7 +1,6 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
--- keymaps.lua for Lazy.nvim setup
 local map = vim.keymap.set
 
 -- Smart quit function
@@ -13,7 +12,6 @@ local function smart_quit()
       table.insert(visible_buffers, buf.bufnr)
     end
   end
-
   if #visible_buffers > 1 then
     vim.cmd("bdelete")
   else
@@ -41,6 +39,10 @@ map("n", "<leader>hs", "<cmd>split<cr>", { desc = "Horizontal split" })
 map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
 map("n", "<leader>ba", "<cmd>%bdelete|edit#|bdelete#<cr>", { desc = "Delete all buffers except current" })
 map("n", "<leader>q", smart_quit, { desc = "Smart quit" })
+
+-- Insert mode keymaps
+-- Ctrl+H as fallback if the above don't work (some terminals send different codes)
+map("i", "<C-H>", "<C-w>", { desc = "Delete word backward (Ctrl+H fallback)", noremap = true, silent = true })
 
 -- Create alternative quit commands
 vim.api.nvim_create_user_command("Q", function()
