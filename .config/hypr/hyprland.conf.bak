@@ -25,7 +25,7 @@ monitor=,preferred,auto,1
 # See https://wiki.hyprland.org/Configuring/Keywords/
 
 # Set programs that you use
-$terminal = wezterm 
+$terminal = kitty
 $fileManager = dolphin
 $menu = rofi -show drun
 
@@ -39,13 +39,8 @@ $menu = rofi -show drun
 
 # exec-once = $terminal
 # exec-once = nm-applet &
-exec-once = waybar   
+exec-once = waybar & hyprpaper  
 exec-once = swaync
-exec-once = waypaper --restore
-exec-once = ~/.local/bin/battery_monitor.sh
-exec-once = ~/.local/bin/bluetooth-auto-switch.sh
-exec-once = wl-paste --watch cliphist store
-
 
 exec-once = swayidle -w \
     timeout 300 './smartlock.sh' \
@@ -183,122 +178,53 @@ decoration {
     shadow {
         enabled = true
         range = 10
-        render_power = 10
-        color = rgba(0, 0, 0, 0.5)   # soft dark grey shadow
+        render_power = 7
+        # color = rgba(0a0a0acc)   # soft dark grey shadow
     }
 
     blur {
         enabled = false
         size = 5
         passes = 2
-        vibrancy = 0.25
+        vibrancy = 1
     }
 }
 
 animations {
-    enabled = true
+    enabled = yes
 
-    # 🎯 Custom Bézier Curves (mix of springy, smooth, snappy)
-    bezier = springy, 0.2, 1.5, 0.5, 1.0
-    bezier = ultra_soft, 0.3, 0, 0.2, 1
-    bezier = snappy, 0.65, 0, 0.35, 1
-    bezier = bounce_out, 0.2, 1.4, 0.6, 0.9
-    bezier = hyperpop, 0.4, -0.4, 0.2, 1.4
+    # Smoother, more subtle macOS-like bezier curves
+    bezier = macEaseOut, 0.33, 0, 0.2, 1
+    bezier = macEaseInOut, 0.42, 0, 0.58, 1
+    bezier = macSubtleSpring, 0.4, 0.8, 0.4, 1
+    bezier = macFade, 0.4, 0.0, 0.2, 1
 
-    # 🪟 Window Animations
-    animation = windows, 1, 4, bounce_out, popin 50%
-    animation = windowsIn, 1, 3.5, bounce_out, popin 60%
-    animation = windowsOut, 1, 3, springy, slide right
-    animation = windowsMove, 1, 2.5, ultra_soft
+    # Global transitions — smooth and quick
+    animation = global, 1, 5, macEaseInOut
 
-    # 🌫️ Fades
-    animation = fade, 1, 2, ultra_soft
-    animation = fadeIn, 1, 2.5, ultra_soft
-    animation = fadeOut, 1, 2, snappy
-    animation = fadeSwitch, 1, 2, snappy
-    animation = fadeDim, 1, 2.5, ultra_soft
-    animation = fadeShadow, 1, 2.5, snappy
+    # Window animations — fade in softly, no aggressive popping
+    animation = windows, 1, 4, macSubtleSpring, popin
 
-    # 🖼️ Layer Animations (now sleek and modern)
-    animation = layers, 1, 2, ultra_soft, fade
-    animation = layersIn, 1, 2, ultra_soft, fade
-    animation = layersOut, 1, 1.8, ultra_soft, fade
-    animation = fadeLayers, 1, 2, ultra_soft
-    animation = fadeLayersIn, 1, 2.5, ultra_soft
-    animation = fadeLayersOut, 1, 1.8, ultra_soft
+    # Fading elements (opacity) — gentle
+    animation = fade, 1, 4, macFade
 
-    # 🌀 Workspaces - expressive slidefade
-    animation = workspaces, 1, 6, hyperpop, slidefade 30%
-    animation = workspacesIn, 1, 5, bounce_out, slidefade 25%
-    animation = workspacesOut, 1, 4.5, springy, slidefade 25%
-    animation = specialWorkspace, 1, 4, springy, slidefadevert 20%
-    animation = specialWorkspaceIn, 1, 3.5, springy, slidefadevert 25%
-    animation = specialWorkspaceOut, 1, 3, bounce_out, slidefadevert 20%
+    # Border width transitions — crisp but smooth
+    animation = border, 1, 6, macEaseInOut
 
-    # 🟦 Borders and angles
-    animation = border, 1, 7, snappy
-    animation = borderangle, 1, 15, hyperpop, loop
-
-    # 🔍 Zoom factor for screen zoom (if used)
-    animation = zoomFactor, 1, 4, springy
+    # Workspace transitions — sleek horizontal slide
+    animation = workspaces, 1, 5, macEaseInOut, slide
 }
 
 
 # Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
 # "Smart gaps" / "No gaps when only"
-# === Workspace Configuration ===
-# These workspaces are treated like fullscreen or distraction-free zones
-
-# Workspace: TV Output (Media/Presentation)
-workspace = w[tv1], gapsout:0, gapsin:0
-windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
-windowrule = rounding 0, floating:0, onworkspace:w[tv1]
-
-# Workspace: Focus Mode (Writing/Coding)
-workspace = f[1], gapsout:0, gapsin:0
-windowrule = bordersize 0, floating:0, onworkspace:f[1]
-windowrule = rounding 0, floating:0, onworkspace:f[1]
-layerrule = blur, waybar
-layerrule = ignorealpha 0.1, waybar
-
-
-#window rules
-# === 🌄 Waypaper (Wallpaper Setter) ===
-# Clean floating window with no border, centered on launch
-windowrulev2 = float, class:^(waypaper)$
-windowrulev2 = center, class:^(waypaper)$
-windowrulev2 = size 1000 700, class:^(waypaper)$
-windowrulev2 = bordersize 0, class:^(waypaper)$
-windowrulev2 = rounding 6, class:^(waypaper)$
-
-# === 📂 File Manager (e.g. Nautilus, Thunar, Dolphin) ===
-# Floating, centered with light border
-windowrulev2 = float, class:^(org.gnome.Nautilus|Thunar|dolphin)$
-windowrulev2 = center, class:^(org.gnome.Nautilus|Thunar|dolphin)$
-windowrulev2 = size 1200 800, class:^(org.gnome.Nautilus|Thunar|dolphin)$
-windowrulev2 = bordersize 2, class:^(org.gnome.Nautilus|Thunar|dolphin)$
-windowrulev2 = rounding 8, class:^(org.gnome.Nautilus|Thunar|dolphin)$
-
-# === ⚙️ Settings apps (e.g. GNOME Settings) ===
-windowrulev2 = float, class:^(gnome-control-center|lxappearance)$
-windowrulev2 = center, class:^(gnome-control-center|lxappearance)$
-windowrulev2 = size 1000 700, class:^(gnome-control-center|lxappearance)$
-windowrulev2 = rounding 6, class:^(gnome-control-center|lxappearance)$
-
-# === 💬 Chat / Messaging (like Discord, Telegram) ===
-windowrulev2 = float, class:^(discord|TelegramDesktop)$
-windowrulev2 = size 1300 850, class:^(discord|TelegramDesktop)$
-windowrulev2 = rounding 8, class:^(discord|TelegramDesktop)$
-
-# === 🧮 Floating Terminals (like Kitty, Alacritty for quick popups) ===
-# Apply only to terminals with a special title (e.g., 'float-term')
-windowrulev2 = float, title:^(float-term)$
-windowrulev2 = center, title:^(float-term)$
-windowrulev2 = size 1000 600, title:^(float-term)$
-windowrulev2 = bordersize 2, title:^(float-term)$
-windowrulev2 = rounding 8, title:^(float-term)$
-
-
+# uncomment all if you wish to use that.
+# workspace = w[tv1], gapsout:0, gapsin:0
+# workspace = f[1], gapsout:0, gapsin:0
+# windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
+# windowrule = rounding 0, floating:0, onworkspace:w[tv1]
+# windowrule = bordersize 0, floating:0, onworkspace:f[1]
+# windowrule = rounding 0, floating:0, onworkspace:f[1]
 
 # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
 dwindle {
@@ -340,9 +266,9 @@ input {
 }
 
 # https://wiki.hyprland.org/Configuring/Variables/#gestures
-# gestures {
-#     workspace_swipe = true 
-# }
+gestures {
+    workspace_swipe = false
+}
 
 # Example per-device config
 # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
@@ -399,9 +325,6 @@ bind = $mainMod SHIFT, 8, movetoworkspace, 8
 bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
-# fullscreen
-bind = $mainMod, f, fullscreen 
-
 # Example special workspace (scratchpad)
 bind = $mainMod, S, togglespecialworkspace, magic
 bind = $mainMod SHIFT, S, movetoworkspace, special:magic
@@ -414,16 +337,12 @@ bind = $mainMod, mouse_up, workspace, e-1
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod SHIFT, left, resizewindow
 
-# Updated Hyprland bindings for volume and brightness with notifications
-
-# Volume controls with notifications and sounds
-bindel = ,XF86AudioRaiseVolume, exec, /home/rainz/.config/hypr/scripts/control.sh volume-up
-bindel = ,XF86AudioLowerVolume, exec, /home/rainz/.config/hypr/scripts/control.sh volume-down
-bindel = ,XF86AudioMute, exec, /home/rainz/.config/hypr/scripts/control.sh volume-mute
-
-# Brightness controls with notifications
-bindel = ,XF86MonBrightnessUp, exec, /home/rainz/.config/hypr/scripts/control.sh brightness-up
-bindel = ,XF86MonBrightnessDown, exec, /home/rainz/.config/hypr/scripts/control.sh brightness-down
+# Laptop multimedia keys for volume and LCD brightness
+bindel = ,XF86AudioRaiseVolume, exec, pamixer --allow-boost -i 5
+bindel = ,XF86AudioLowerVolume, exec, pamixer -d 5
+bindel = ,XF86AudioMute, exec, pamixer -t
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl set +5%
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl set 5%-
 
 # Requires playerctl
 bindl = , XF86AudioNext, exec, playerctl next
@@ -438,10 +357,7 @@ bind = SUPER, S, exec, grim -g "$(slurp)" - | wl-copy
 bindm = $mainMod, W, cyclenext 
 
 #hyprlock 
-bind = SUPER, L, exec, hyprlock 
-
-#clipboard 
-bind = SUPER,C,exec,~/.local/bin/rofi-clipboard.sh
+bind = SUPER, L, exec, hyprlock
 
 ##############################
 ### WINDOWS AND WORKSPACES ###
@@ -453,4 +369,9 @@ bind = SUPER,C,exec,~/.local/bin/rofi-clipboard.sh
 # Example windowrule
 # windowrule = float,class:^(kitty)$,title:^(kitty)$
 
-# source = /home/rainz/.config/hypr/window_rules.conf
+# Ignore maximize requests from apps. You'll probably like this.
+windowrule = suppressevent maximize, class:.*
+
+# Fix some dragging issues with XWayland
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+
