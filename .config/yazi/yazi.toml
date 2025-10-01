@@ -56,6 +56,13 @@ play = [
 	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
+# PDF and Document viewers
+zathura = [
+    { run = 'zathura "$1"', desc = "Open with Zathura", orphan = true, for = "unix" }
+]
+doc_to_zathura = [
+    { run = '~/.local/bin/doc2zathura "$1"', desc = "Open DOC in Zathura", orphan = true, for = "unix" }
+]
 
 [open]
 rules = [
@@ -72,6 +79,17 @@ rules = [
 	# JSON
 	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
+	# PDF files - open with Zathura
+	{ mime = "application/pdf", use = [ "zathura", "open", "reveal" ] },
+	{ mime = "application/postscript", use = [ "zathura", "open", "reveal" ] },
+	{ mime = "image/vnd.djvu", use = [ "zathura", "open", "reveal" ] },
+	{ mime = "image/x-djvu", use = [ "zathura", "open", "reveal" ] },
+	# DOC files - convert and open with Zathura
+	{ mime = "application/msword", use = [ "doc_to_zathura", "open", "reveal" ] },
+	{ mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use = [ "doc_to_zathura", "open", "reveal" ] },
+	# DOCX, RTF and other document formats
+	{ mime = "application/rtf", use = [ "doc_to_zathura", "open", "reveal" ] },
+	{ mime = "application/vnd.oasis.opendocument.text", use = [ "doc_to_zathura", "open", "reveal" ] },
 	# Empty file
 	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
 	# Fallback
