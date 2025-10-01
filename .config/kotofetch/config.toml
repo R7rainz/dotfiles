@@ -1,0 +1,30 @@
+[display]
+# Minimal padding for a clean, centered look
+horizontal_padding = 1
+vertical_padding = 1
+
+# Optimal width for readability while staying centered
+width = 60
+
+# Translation settings
+show_translation = "romaji"
+translation_color = "dim"
+
+# Typography - medium size with bold for emphasis
+font_size = "medium"
+bold = true
+
+# NO borders
+border = false
+
+# Show source attribution
+source = true
+
+# Content modes
+modes = ["proverb", "anime"]
+
+# Random seed
+seed = 0
+
+# Keep it centered
+centered = true
