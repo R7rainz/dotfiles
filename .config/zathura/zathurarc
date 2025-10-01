@@ -1,0 +1,116 @@
+# Zathura Configuration with Glassy/Glassmorphism Theme
+# Save this as ~/.config/zathura/zathurarc
+
+# Font Configuration (Cascadia Code preferred, Dank Mono fallback)
+set font "Cascadia Code 11"
+# Alternative: set font "Dank Mono 11"
+
+# Window and Interface Settings
+set window-title-basename true
+set window-title-page true
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+set adjust-open width
+set pages-per-row 1
+set scroll-page-aware true
+set scroll-full-overlap 0.01
+set scroll-step 50
+set zoom-min 10
+set guioptions ""
+
+# Glassy Color Scheme - Dark with heavy transparency effects
+# Background colors with alpha for strong glass effect over content
+set default-bg                 "rgba(18,18,27,0.75)"      # Main background - more transparent
+set default-fg                 "#cdd6f4"                  # Main text - light blue-white
+
+# Status bar - glassy dark
+set statusbar-bg               "rgba(30,30,46,0.90)"      # Status bar background
+set statusbar-fg               "#f5e0dc"                  # Status bar text - warm white
+
+# Input bar (search, commands) - glassy
+set inputbar-bg                "rgba(49,50,68,0.95)"      # Input background
+set inputbar-fg                "#cdd6f4"                  # Input text
+
+# Notification colors - glassy with accent
+set notification-bg            "rgba(137,220,235,0.90)"   # Info notifications - sky blue
+set notification-fg            "#1e1e2e"                  # Dark text on light bg
+set notification-error-bg      "rgba(243,139,168,0.90)"   # Error - pink/red
+set notification-error-fg      "#1e1e2e"
+set notification-warning-bg    "rgba(249,226,175,0.90)"   # Warning - yellow
+set notification-warning-fg    "#1e1e2e"
+
+# Completion menu - glassy
+set completion-bg              "rgba(49,50,68,0.90)"      # Completion background
+set completion-fg              "#cdd6f4"                  # Completion text
+set completion-highlight-bg    "rgba(137,220,235,0.80)"   # Selected item - sky blue
+set completion-highlight-fg    "#1e1e2e"                  # Selected text - dark
+set completion-group-bg        "rgba(88,91,112,0.85)"     # Group separator
+set completion-group-fg        "#f5e0dc"
+
+# Index/TOC - glassy
+set index-bg                   "rgba(30,30,46,0.90)"      # TOC background
+set index-fg                   "#cdd6f4"                  # TOC text
+set index-active-bg            "rgba(137,220,235,0.80)"   # Active TOC item
+set index-active-fg            "#1e1e2e"
+
+# Highlight colors for search and selection - with transparency
+set highlight-color            "rgba(249,226,175,0.70)"   # Search highlight - yellow
+set highlight-active-color     "rgba(137,220,235,0.80)"   # Active search - sky blue
+set highlight-fg               "#1e1e2e"                  # Highlight text
+
+# Recolor settings for PDF content - ENABLE for glassy overlay effect
+set recolor                    true
+set recolor-lightcolor         "rgba(18,18,27,0.70)"      # Dark glassy overlay over light content
+set recolor-darkcolor          "rgba(205,214,244,0.95)"   # Light text over dark overlay
+set recolor-reverse-video      true
+set recolor-keephue            false
+
+# Page rendering settings for smooth glass effect
+set render-loading             true
+set render-loading-bg          "rgba(30,30,46,0.80)"      # Loading background
+set render-loading-fg          "#89b4fa"                  # Loading text - blue
+
+# Smooth scrolling and page transitions
+set page-padding               10
+set page-cache-size            32
+set incremental-search         true
+set abort-clear-search         true
+set advance-pages-per-row      false
+
+# Key bindings for enhanced navigation and recolor toggle
+map <C-i>       zoom in
+map <C-o>       zoom out
+map <C-r>       rotate
+map <C-g>       recolor                # Toggle glassy overlay on/off
+map <C-e>       exec "echo $FILE | xclip -selection clipboard"
+map <F5>        reload
+map <F11>       toggle_fullscreen
+
+# Search settings
+set database                   sqlite
+set synctex                    true
+set synctex-editor-command     "code --goto %{input}:%{line}"
+
+# Print settings
+set print-command              "lp"
+
+# Additional glassy effects (compositor dependent)
+# These work best with Hyprland/other compositors that support window rules
+# Add to your Hyprland config for maximum glassy effect:
+# windowrule = opacity 0.75 0.75,^(org.pwmt.zathura)$
+# windowrule = blur,^(org.pwmt.zathura)$
+# Optional for even more glass effect:
+# windowrule = blurls,^(org.pwmt.zathura)$
+
+# Sandbox settings for security
+set sandbox                    normal
+
+# Link handling
+set link-zoom                  true
+set link-hadjust               true
+
+# Startup options
+set first-page-column          1:1
+set window-height              900
+set window-width               1200
