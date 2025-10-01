@@ -40,7 +40,8 @@ function y
     rm -f -- "$tmp"
 end
 
-fastfetch
+# fastfetch
+kotofetch --border false
 set -Ux XCURSOR_SIZE 16
 
 # ========== FILE FINDER (FZF) ==========
