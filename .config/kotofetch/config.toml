@@ -24,7 +24,7 @@ source = true
 modes = ["proverb", "anime"]
 
 # Random seed
-seed = 0
+seed = 1
 
 # Keep it centered
 centered = true
