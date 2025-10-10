@@ -1,204 +1,117 @@
 {
   "layer": "top",
+  "position": "top",
+  "margin-bottom": -10,
   "spacing": 0,
 
-"modules-left": [
-  "custom/launcher",
-  "group/hardware",
-  "custom/filler",
-  "hyprland/window",
-  "custom/filler",
-  "custom/playerctl",
-  "custom/filler",
-  "custom/pacman",
-
-],
-  "modules-center": ["hyprland/workspaces"],
-  "modules-right": [
-    "battery",
-    "custom/dot",
-    "backlight",
-    "pulseaudio",
-    "custom/dot",
-    "network",
-    "custom/dot",
-    "clock",
-    "group/tools"
-  ],
-
-"custom/playerctl": {
-  "exec": "~/.config/waybar/scripts/player.sh",
-  "interval": 2,
-  "format": "{}",
-  "on-click": "playerctl play-pause",
-  "on-click-right": "playerctl next",
-  "on-click-middle": "playerctl previous"
-},
-
-  "custom/uptime": {
-    "format": " {}",
-    "interval": 30,
-    "exec": "$HOME/.local/bin/upt2",
-    "on-click": ""
-  },
-
-  "disk": {
-    "interval": 1,
-    "format": "<span color=\"#68b0d6\"> </span> {}%",
-    "on-click": "filelight /",
-    "on-click-right": "filelight /home/"
-  },
-
-"hyprland/workspaces": {
-  "on-scroll-up": "hyprctl dispatch workspace -1",
-  "on-scroll-down": "hyprctl dispatch workspace +1",
-  "on-click": "activate",
-  "persistent-workspaces": {
-    "1": [],
-    "2": [],
-    "3": [],
-    "4": [],
-    "5": []
-  },
-  "format": "{name}"
-},
-  "tray": {
-    "icon-size": 15,
-    "spacing": 8
-  },
-
-  "custom/filler": {
-    "format": " "
-  },
-
-  "custom/dot": {
-    "format": " "
-  },
-
-  "custom/clock-icon": {
-    "format": ""
-  },
-
-  "clock": {
-    "format": "<b>{:%I:%M %p }</b>",
-    "format-alt": "<b>{:%a.%d,%b}</b>",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
-  "tray":{
-    "icon-size":15,
-    "spacing":10
-  },
-
-"group/hardware": {
-  "orientation": "horizontal",
-  "drawer": {
-    "transition-duration": 400,
-    "transition-left-to-right": true
-  },
-  "modules": [
-    "custom/mark",
+  "modules-left": [
+    "hyprland/workspaces",
     "custom/uptime",
     "cpu",
-    "memory",
-    "temperature",
-    "disk"
-  ]
-},
+    "custom/music-button",
 
-"group/tools": {
-  "orientation": "horizontal",
-  "drawer": {
-    "transition-duration": 400,
-    "transition-right-to-left": true
-  },
-  "modules": [
-    "custom/mark1",
-    "custom/spacing",
+  ],
+
+  "modules-center": ["clock"],
+
+  "modules-right": [
     "custom/update",
-    "custom/clipboard",
-    "custom/power",
-    "tray"
-  ]
-},
+    "custom/pomodoro",
+    "bluetooth",
+    "network",
+    "pulseaudio", 
+    "backlight",
+    "battery"
+  ],
 
-"custom/spacing": {
-  "format": " "
-},
-
-
-"custom/mark1": {
-  "format": "⟨",  // ← Left-facing arrow icon
-  "tooltip": "Toggle Utilities",
-  "on-click": "mode=toggle"
-},
-
-
-"custom/mark": {
-  "format": "",  // ← Hamburger icon (requires Nerd Font)
-  "tooltip": "Toggle Utilities",
-  "on-click": "mode=toggle"
-},
-
-  "cpu": {
-    "interval": 10,
-    "format": " {usage}% ",
-    "max-length": 10,
-    "on-click": "htop"
-  },
-
-  "memory": {
-    "interval": 30,
-    "format": " {}% ",
-    "format-alt": " {used:0.1f}G",
-    "max-length": 10,
-    "on-click-right": "kitty -e btop"
-  },
-
-  "backlight": {
-    "device": "amdgpu_bl1",
-    "format": "{icon} {percent} ",
-    "tooltip": false,
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
-  },
-
-
-  "network": {
-    "interface": "wlan*",
-    "format": "{ifname}",
-    "format-wifi": "󰒢 {essid} ({signalStrength}%)",
-    "format-ethernet": "󰈀 {ipaddr}/{cidr}",
-    "format-disconnected": "󰖪 Disconnected",
-    "format-alt": "󰒢 {bandwidthDownBits} 󰕒 {bandwidthUpBits}",
-    "tooltip-format": "󰒢 {essid}\nIP: {ipaddr}\nGateway: {gwaddr}\nNetmask: {netmask}\nSignal: {signalStrength}%\nFrequency: {frequency}MHz",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-click-right": "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu",
-    "on-click-right": "nmgui",
-    "on-click-middle": "nmcli device wifi rescan",
-    "interval": 5,
-    "max-length": 50
+  "hyprland/workspaces": {
+    "format": "{name} {icon}",
+    "format-icons": {
+      "active": "",   // filled dot for active
+      "default": ""   // hollow circle for inactive
+    }
   },
 
   "custom/update": {
-    "exec": "~/.config/waybar/scripts/system-update.sh",
+    "exec": "/home/rainz/Dotfiles/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "~/.config/waybar/scripts/system-update.sh up",
+    "on-click": "/home/rainz/Dotfiles/.config/waybar/scripts/system-update.sh up",
     "interval": 30,
     "min-length": 1,
     "max-length": 1
   },
 
-"custom/power": {
-  "format": " ⏻ ",
-  "tooltip": false,
-  "on-click": "wlogout --protocol layer-shell"
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}", 
+    "format-connected": "{icon}",
+    "format-icons": {
+      "on": "󰂯",
+      "off": "󰂲",
+      "connected": "󰂱"
+    },
+    "on-click": "blueman-manager",
+    "tooltip-format-connected": "{device_enumerate}"
+  },
+
+"custom/music-button": {
+  "format": "",
+  "tooltip": true,
+  "exec": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null || echo 'No music playing'",
+  "interval": 2,
+  "on-click": "playerctl play-pause",
+  "on-click-right": "playerctl next",
+  "on-click-middle": "playerctl previous"
 },
 
+  "clock": {
+    "timezone": "Asia/Kolkata",
+    "tooltip": false,
+    "format": "{:%H:%M:%S  -  %A, %d}",
+    "interval": 1
+  },
 
+  "network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰤠 ",
+    "interval": 5,
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "nmgui"
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "on-click": "wezterm -e btop"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "tooltip-format": "Memory"
+  },
+
+  "custom/uptime": {
+    "format": "{}",
+    "format-icon": [""], 
+    "tooltip": false,
+    "interval": 1600,
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+  },
+  
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
+    "tooltip": false
+  },
+  
   "pulseaudio": {
-    "format": "{icon} <b>{volume}</b>",
-    "format-bluetooth": " {volume}",
+    "format": "{icon} <b>{volume}%</b>",
+    "format-bluetooth": " <b>{volume}%</b>",
     "format-bluetooth-muted": " ",
     "tooltip": false,
     "format-muted": "",
@@ -210,184 +123,31 @@
     "on-click-right": "pavucontrol"
   },
 
-  "custom/clipboard":{
-    "format":"󱉫",
-    "tooltip": true,
-    "tooltip-format": "Click to open clipboard history",
-    "on-click": "/home/rainz/Dotfiles/.config/waybar/scripts/waybar-clipboard.sh",
-    "interval": 60
-  },
-
   "battery": {
-    "bat": "BAT0",
-    "interval": 30,
+    "interval": 2,
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "⚡ {capacity}%",
-    "format-icons": [" ", " ", " ", " "],
-    "max-length": 25,
+    "format": "{icon}  {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  
+  "custom/lock": {
     "tooltip": false,
-    "on-click": "sh -c \"rofi -dmenu -p 'Select Power Mode' <<< $'Performance\\nBalanced\\nPower Saver' | awk '{print tolower($0)}' | tr -d ' ' | xargs -I{} ~/.config/power-modes/{}.sh\""
+    "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
+    "format": ""
   },
 
-  "custom/right-arr": {
-    "format": "  "
-  },
-
-  "custom/launcher": {
-    "format": " 󰣇",
-    "on-click": "rofi -show drun",
-    "tooltip": false
-  },
-
-  "custom/separator": {
-    "format": " "
-  },
-
-  "custom/window-name": {
-    "format": " <b>{}</b>",
-    "interval": 1,
-    "exec": "hyprctl activewindow | grep class | awk '{print $2}'"
-  },
-
-  "custom/pacman": {
-    "format": "  ",
-    "on-click": "blueberry"
-  },
-
-  "custom-pacman-update-icon-background": {
-    "format": ""
-  },
-
-  "custom/pacman-update-icon": {
-    "format": ""
-  },
-
-  "custom/pacman-update": {
-    "format": " {}",
-    "interval": 3600,
-    "exec": "checkupdates | wc -l",
-    "signal": 8
-  },
-
-  "custom/window-icon": {},
-
-  "temperature": {
-    "thermal-zone": 0,
-    "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C"
-  },
-
-  "hyprland/window": {
+  "custom/pomodoro": {
     "format": "{}",
-    "tooltip": false,
-    "min-length": 5,
-
-    "rewrite": {
-      // ────────────────────────────────────────────────────────── desktop ───
-      "": 
-        "<span foreground='#89b4fa'> </span> Hyprland",
-
-      // ───────────────────────────────────────────────────────── terminal ───
-
-      "~": "  Terminal",
-      "zsh": "  Terminal",
-      "kitty": "  Terminal",
-
-      "tmux(.*)": 
-        "<span foreground='#a6e3a1'> </span> Tmux",
-
-      // ────────────────────────────────────────────────────────── browser ───
-
-      "(.*)Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> Firefox",
-      "(.*) — Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> $1",
-
-      "(.*)Zen Browser": 
-        "<span foreground='#fab387'>󰺕 </span> Zen Browser",
-      "(.*) — Zen Browser": 
-        "<span foreground='#fab387'>󰺕 </span> $1",
-
-      // ────────────────────────────────────────────────────── development ───
-
-      "(.*) - Visual Studio Code": 
-        "<span foreground='#89b4fa'>󰨞 </span> $1",
-      "(.*)Visual Studio Code": 
-        "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
-
-      "nvim": 
-        "<span foreground='#a6e3a1'> </span> Neovim",
-      "nvim (.*)": 
-        "<span foreground='#a6e3a1'> </span> $1",
-
-      "vim": 
-        "<span foreground='#a6e3a1'> </span> Vim",
-      "vim (.*)": 
-        "<span foreground='#a6e3a1'> </span> $1",
-
-      // ──────────────────────────────────────────────────────────── media ───
-
-      "(.*)Spotify": 
-        "<span foreground='#a6e3a1'> </span> Spotify",
-      "(.*)Spotify Premium": 
-        "<span foreground='#a6e3a1'> </span> Spotify Premium",
-
-      "OBS(.*)": 
-        "<span foreground='#a6adc8'>󰻃 </span> OBS Studio",
-
-      "VLC media player": 
-        "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
-      "(.*) - VLC media player": 
-        "<span foreground='#fab387'>󰕼 </span> $1",
-
-      "(.*) - mpv": 
-        "<span foreground='#cba6f7'> </span> $1",
-
-      "qView": "󰋩  qView",
-
-      "(.*).jpg": "󰋩  $1.jpg",
-      "(.*).png": "󰋩  $1.png",
-      "(.*).svg": "󰋩  $1.svg",
-
-      // ─────────────────────────────────────────────────────────── social ───
-
-      "• Discord(.*)": "Discord$1",
-      "(.*)Discord(.*)": 
-        "<span foreground='#89b4fa'> </span> $1Discord$2",
-
-      "vesktop": 
-        "<span foreground='#89b4fa'> </span> Discord",
-
-      // ──────────────────────────────────────────────────────── documents ───
-
-      "ONLYOFFICE Desktop Editors": 
-        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
-
-      "(.*).docx": 
-        "<span foreground='#89b4fa'>󰈭 </span> $1.docx",
-      "(.*).xlsx": 
-        "<span foreground='#a6e3a1'>󰈜 </span> $1.xlsx",
-      "(.*).pptx": 
-        "<span foreground='#fab387'>󰈨 </span> $1.pptx",
-      "(.*).pdf": 
-        "<span foreground='#f38ba8'> </span> $1.pdf",
-
-      // ─────────────────────────────────────────────────────────── system ───
-      "Authenticate": "  Authenticate"
-    }
-  },
-
-
-  "custom/wrap-left": {
-    "format": "<b>[</b>"
-  },
-
-  "custom/wrap-right": {
-    "format": "<b>]</b>"
+    "return-type": "json",
+    "exec": "/home/rainz/Dotfiles/.config/waybar/scripts/pomodoro.sh",
+    "on-click": "/home/rainz/Dotfiles/.config/waybar/scripts/pomodoro.sh toggle",
+    "interval": 1
   }
 }
