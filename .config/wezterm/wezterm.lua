@@ -6,8 +6,9 @@ config.font = wezterm.font_with_fallback({
 	{ family = "DankMono Nerd Font", weight = "Regular" },
 	{ family = "JetBrains Mono Nerd Font", weight = "Regular" },
 	{ family = "Cascadia Code NF", weight = "Regular" },
-	{ family = "FiraCode Nerd Font", weight = "Regular" },
+	{ family = "Hurmit Nerd Font", weight = "Regular" },
 	{ family = "Droid Sans Mono Nerd Font", weight = "Regular" },
+	"Noto Sans CJK JP", -- Add Japanese support (install with the lighter method I mentioned)
 })
 config.font_size = 12.0
 config.line_height = 1.2
@@ -39,7 +40,7 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.75
 config.text_background_opacity = 1.0
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
@@ -209,21 +210,21 @@ config.initial_rows = 30
 -- Remove background effects
 config.window_background_gradient = nil
 
--- 🖼️ BACKGROUND IMAGE PATH
-local bg_image = os.getenv("HOME") .. "/Dotfiles/.config/wezterm/assets/bg-blurred-darker.png"
-
--- 🖼️ SIMPLE IMAGE BACKGROUND (Current WezTerm syntax)
-config.background = {
-	{
-		source = { File = bg_image },
-		repeat_x = "NoRepeat",
-		repeat_y = "NoRepeat",
-		width = "Cover",
-		height = "Cover",
-		vertical_align = "Middle",
-		horizontal_align = "Center",
-	},
-}
+-- -- 🖼️ BACKGROUND IMAGE PATH
+-- local bg_image = os.getenv("HOME") .. "/Dotfiles/.config/wezterm/assets/bg-blurred-darker.png"
+--
+-- -- 🖼️ SIMPLE IMAGE BACKGROUND (Current WezTerm syntax)
+-- config.background = {
+-- 	{
+-- 		source = { File = bg_image },
+-- 		repeat_x = "NoRepeat",
+-- 		repeat_y = "NoRepeat",
+-- 		width = "Cover",
+-- 		height = "Cover",
+-- 		vertical_align = "Middle",
+-- 		horizontal_align = "Center",
+-- 	},
+-- }
 
 -- 🎆 ADDITIONAL VISUAL ENHANCEMENTS
 config.bold_brightens_ansi_colors = true
@@ -233,5 +234,6 @@ config.inactive_pane_hsb = {
 }
 
 config.macos_window_background_blur = 20
+config.warn_about_missing_glyphs = false --Temporarily disable warnings
 
 return config
