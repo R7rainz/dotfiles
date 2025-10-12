@@ -1,63 +1,176 @@
-# Mako Glassy Configuration
+# Mako macOS-Style Configuration
+# Notification appearance - macOS inspired
+font=Dank Mono Nerd Font
+width=380
+height=110
+margin=12
+padding=16,18
+border-size=0
+border-radius=14
 
-# Notification appearance
-font=Inter 11
-width=350
-height=150
-margin=20
-padding=15,20
-border-size=1
-border-radius=12
+# macOS dark background with subtle transparency
+background-color=#1c1c1eF5
+text-color=#f5f5f7
+border-color=#00000000
 
-# Glassy translucent colors
-background-color=#1a1a1aCC
-text-color=#e0e0e0
-border-color=#ffffff30
+# Progress bar styling - macOS blue accent
+progress-color=over #007AFFCC
 
-# Progress bar styling
-progress-color=over #88888888
-
-# Icons
+# Icons - macOS style
 icons=1
-max-icon-size=64
+max-icon-size=48
+icon-location=left
 
-# Behavior
-default-timeout=5000
+# Behavior - macOS timing
+default-timeout=4000
 ignore-timeout=0
 layer=overlay
 
-# Grouped notifications
+# Grouped notifications - macOS style stacking
 group-by=app-name
-max-visible=3
+max-visible=5
 
-# Urgency levels with glassy effect
-[urgency=low]
-background-color=#1a1a1aB3
-border-color=#4a90e220
-text-color=#b0b0b0
-
-[urgency=normal]
-background-color=#1a1a1aCC
-border-color=#ffffff30
-text-color=#e0e0e0
-
-[urgency=critical]
-background-color=#2a1a1aDD
-border-color=#ff5555AA
-text-color=#ffffff
-default-timeout=0
-
-# App-specific styling (optional examples)
-[app-name="Spotify"]
-border-color=#1db95490
-
-[app-name="Discord"]
-border-color=#5865f290
-
-# Animations and positioning
-anchor=top-right
-
-# Additional glassy effects
+# Typography and formatting
 markup=1
 actions=1
 format=<b>%s</b>\n%b
+text-alignment=left
+
+# Positioning - top right like macOS
+anchor=top-right
+
+# Urgency levels - macOS inspired
+[urgency=low]
+background-color=#1c1c1eE6
+text-color=#98989d
+border-color=#00000000
+
+[urgency=normal]
+background-color=#1c1c1eF5
+text-color=#f5f5f7
+border-color=#00000000
+
+[urgency=critical]
+background-color=#2c1c1cF5
+text-color=#ffffff
+border-color=#ff453a40
+default-timeout=0
+
+# System notifications - macOS style
+[app-name="Volume"]
+background-color=#1c1c1eF5
+border-color=#00000000
+text-color=#f5f5f7
+
+[app-name="Brightness"]
+background-color=#1c1c1eF5
+border-color=#ffcc0030
+text-color=#f5f5f7
+
+[app-name="Battery"]
+background-color=#1c1c1eF5
+border-color=#30d15830
+text-color=#f5f5f7
+
+[app-name="battery" app-name="Battery"]
+background-color=#1c1c1eF5
+text-color=#f5f5f7
+
+[summary~="Battery Low" urgency=critical]
+background-color=#2c1c1cF5
+border-color=#ff453a50
+text-color=#ffffff
+default-timeout=0
+
+[summary~="Battery Critical" urgency=critical]
+background-color=#2c1c1cF5
+border-color=#ff453a80
+text-color=#ffffff
+default-timeout=0
+
+# Bluetooth notifications
+[app-name="Bluetooth" app-name="bluetooth"]
+background-color=#1c1c1eF5
+border-color=#007AFF30
+text-color=#f5f5f7
+
+[summary~="Connected"]
+background-color=#1c1c1eF5
+border-color=#30d15830
+text-color=#f5f5f7
+
+[summary~="Disconnected"]
+background-color=#1c1c1eF5
+border-color=#ff9f0a30
+text-color=#f5f5f7
+
+# Network notifications
+[app-name="Network" app-name="NetworkManager"]
+background-color=#1c1c1eF5
+border-color=#007AFF30
+text-color=#f5f5f7
+
+# Terminal notifications (wezterm)
+[app-name="wezterm" app-name="WezTerm"]
+background-color=#1c1c1eF5
+border-color=#64d2ff30
+text-color=#f5f5f7
+
+[app-name="wezterm" summary~="Command finished"]
+background-color=#1c1c1eF5
+border-color=#30d15830
+text-color=#f5f5f7
+
+[app-name="wezterm" summary~="Command failed"]
+background-color=#2c1c1cF5
+border-color=#ff453a50
+text-color=#ffffff
+
+# Music/Media apps - macOS style
+[app-name="Spotify"]
+background-color=#1c1c1eF5
+border-color=#1db95430
+text-color=#f5f5f7
+
+[app-name="Music" app-name="music"]
+background-color=#1c1c1eF5
+border-color=#ff375f30
+text-color=#f5f5f7
+
+# Communication apps
+[app-name="Discord"]
+background-color=#1c1c1eF5
+border-color=#5865f230
+text-color=#f5f5f7
+
+[app-name="Slack"]
+background-color=#1c1c1eF5
+border-color=#4a154b30
+text-color=#f5f5f7
+
+# Screenshot notifications
+[app-name="Screenshot" app-name="screenshot"]
+background-color=#1c1c1eF5
+border-color=#007AFF30
+text-color=#f5f5f7
+
+# System updates
+[summary~="Update" app-name="System"]
+background-color=#1c1c1eF5
+border-color=#007AFF30
+text-color=#f5f5f7
+
+# Calendar/Time notifications
+[app-name="Calendar" app-name="calendar"]
+background-color=#1c1c1eF5
+border-color=#ff453a30
+text-color=#f5f5f7
+
+# Do Not Disturb style (if needed)
+[mode=dnd]
+invisible=1
+
+# Focus mode - reduced visibility
+[mode=focus]
+background-color=#1c1c1eCC
+text-color=#98989d
