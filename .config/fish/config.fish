@@ -1,4 +1,5 @@
 set fish_greeting
+set -gx EDITOR nvim
 # Check if the shell is interactive
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -11,7 +12,7 @@ end
 
 # oh-my-posh init fish --config $HOME/.poshthemes/kushal.omp.json | source
 # oh-my-posh init fish --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/tiwahu.omp.json' | source
-#oh-my-posh init fish --config ~/.config/oh-my-posh/themes/custom.omp.json | source
+# oh-my-posh init fish --config ~/.config/oh-my-posh/themes/custom.omp.json | source
 
 starship init fish | source
 
@@ -278,3 +279,6 @@ alias zls='zoxide query -l' # List all directories in zoxide
 #fish default cursor 
 set fish_cursor_default beam
 starship init fish | source
+
+#cursor alias 
+alias cursor="/home/rainz/Applications/Cursor.AppImage"
