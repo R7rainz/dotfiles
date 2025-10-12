@@ -1,324 +1,261 @@
+/* --- Global Styles --- */
 * {
-  font-family: "Dank Mono Nerd Font", monospace;
-  font-weight: 500;
-  font-size: 12px;
+  font-family: 'Cascadia Code', 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif;
+  font-size: 13px;
   min-height: 0;
-  color: #ffffff;
-  border: none;
-  margin: 0;
-  padding: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
 }
 
+/* --- Waybar Container --- */
 #waybar {
   background: transparent;
-  margin: 5px 10px;
+  color: #b8c5db;
+  margin: 0px;
+  font-weight: 500;
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
-  background-color: rgba(0, 0, 0, 0.85);
-  border-radius: 12px;
-  padding: 2px 12px;
-  margin: 4px 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  /* Reduced shadow intensity */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
+#workspaces,
+#custom-uptime,
+#cpu {
+  background-color: #0d0f1a;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-/* Workspaces - Vibrant accent */
+/* --- Music Button Module --- */
+#custom-music-button {
+  background-color: #0d0f1a;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  color: #7a9cc6;
+  font-size: 16px;
+  margin-right: 5px;
+  border: none;
+  outline: none;
+}
+
+#custom-music-button:hover {
+  background-color: #1a1d2e;
+  color: #8fb3d9;
+}
+
 #workspaces {
-  margin: 0 4px;
+  padding: 2px;
+  margin-left: 7px;
+  margin-right: 5px;
+}
+
+#custom-uptime {
+  margin-right: 5px;
+}
+
+/* Simple Hover effects for individual left modules - BRIGHTER COLOR */
+#custom-uptime:hover,
+#cpu:hover {
+  background-color: #1a1d2e;
 }
 
 #workspaces button {
-  padding: 4px 8px;
-  margin: 0 2px;
+  color: #7a9cc6;
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
   background: transparent;
-  color: #666666;
-  border-radius: 8px;
-  font-size: 13px;
   transition: all 0.2s ease-in-out;
+  border: none;
+  outline: none;
 }
 
 #workspaces button.active {
-  background-color: rgba(0, 230, 230, 0.2);
-  color: #00e6e6;
-  box-shadow: inset 0 0 0 1px rgba(0, 230, 230, 0.4);
-}
-
-#workspaces button.urgent {
-  background-color: rgba(255, 77, 77, 0.3);
-  color: #ff4d4d;
+  color: #8fb3d9;
+  background-color: rgba(122, 156, 198, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(122, 156, 198, 0.25);
 }
 
 #workspaces button:hover {
-  background-color: rgba(100, 100, 255, 0.15);
-  color: #6464ff;
+  background: #1a1d2e;
+  color: #8fb3d9;
 }
 
-/* Custom launcher */
-#custom-launcher {
-  color: #00ffff;
+/* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
+#clock {
+  background-color: #0d0f1a;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(122, 156, 198, 0.2);
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Simple Hover effect for clock module - BRIGHTER COLOR */
+#clock:hover {
+  background-color: rgba(122, 156, 198, 0.12);
+}
+
+#custom-pomodoro {
+  background-color: #0d0f1a;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  min-width: 0;
+  border: none;
+  outline: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, outline 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  color: #7a9cc6;
+  font-weight: 600;
+}
+
+/* Positioning and spacing for the custom-pomodoro module */
+#custom-pomodoro {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Hover effect for the new pomodoro module (consistent with others + rectangular outline) */
+#custom-pomodoro:hover {
+  background-color: #1a1d2e;
+  color: #8fb3d9;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
+}
+
+/* --- Highlighted state for Pomodoro module when running (work or break) --- */
+#custom-pomodoro.work,
+#custom-pomodoro.break {
+  color: #8fb3d9;
+  background-color: rgba(122, 156, 198, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(122, 156, 198, 0.25);
+  outline: none;
+}
+
+#custom-update {
+  background-color: #0d0f1a;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  color: #7a9cc6;
   font-size: 16px;
-  padding-right: 12px;
-  margin-left: 4px;
+  margin-right: 5px;
 }
 
-/* Hardware group */
-#group-hardware {
-  color: #00ffaa;
-  background: transparent;
-  padding: 0 10px;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-}
-
-#group-hardware:hover {
-  background: rgba(0, 255, 170, 0.15);
-}
-
-#group-hardware:active {
-  background: rgba(0, 255, 170, 0.25);
-}
-
-/* Tools group */
-#group-tools {
-  color: #ffaa00;
-  background: transparent;
-  padding: 0 10px;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-}
-
-#group-tools:hover {
-  background: rgba(255, 170, 0, 0.15);
-}
-
-#group-tools:active {
-  background: rgba(255, 170, 0, 0.25);
-}
-
-/* Drawer toggle */
-#custom-mark.drawer-toggle {
-  padding: 0 10px;
-  color: #ffffff;
-  background-color: rgba(100, 100, 100, 0.2);
-  border-radius: 10px;
-  transition: background 0.2s ease;
-}
-
-#custom-mark.drawer-toggle:hover {
-  background-color: rgba(100, 100, 100, 0.4);
-}
-
-/* Hardware monitors */
-#cpu {
-  color: #ffaa00;
-  padding: 0 10px 0 12px;
-}
-
-#memory {
-  color: #8888ff;
-  padding: 0 10px;
-}
-
-#temperature {
-  color: #ff5555;
-  padding: 0 12px 0 10px;
-}
-
-#disk {
-  color: #00ddff;
-  padding: 0 10px;
-}
-
-#custom-pacman {
-  color: #00ff88;
-  padding: 0 8px;
-}
-
-/* Player control */
-#custom-playerctl {
-  padding: 4px 12px;
-  border-radius: 8px;
-  background: transparent;
-  color: #ffffff;
-  font-size: 13px;
-  transition: background 0.2s ease;
-}
-
-#custom-playerctl:hover {
-  background: rgba(100, 100, 255, 0.15);
-  color: #8888ff;
-}
-
-#custom-playerctl.playing {
-  color: #ff55ff;
-}
-
-/* Clipboard */
-#custom-clipboard {
-  color: #00ffff;
-  border-radius: 8px;
-  font-size: 16px;
-  padding: 0 8px;
-  margin: 0 4px;
-  transition: color 0.3s ease;
-}
-
-#custom-clipboard:hover {
-  color: #00ffaa;
-}
-
-/* Battery */
+/* --- Right Modules (Single, Seamless Bar ) --- */
+#bluetooth,
+#pulseaudio,
+#backlight,
+#network,
+#custom-lock,
 #battery {
-  color: #00ff88;
-  padding: 0 8px;
+  background-color: #0d0f1a;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px;
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-#battery.warning {
-  color: #ffaa00;
+#custom-update:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#network:hover,
+#custom-lock:hover,
+#battery:hover {
+  background-color: #1a1d2e;
 }
 
-#battery.critical {
-  color: #ff5555;
+#bluetooth {
+  margin-left: 0px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+#battery {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 7px;
+}
+
+#custom-uptime {
+  color: #7a9cc6;
+}
+
+#cpu {
+  color: #b8c5db;
+}
+
+#clock {
+  color: #8fb3d9;
+  font-weight: 500;
+}
+
+#pulseaudio {
+  color: #b8c5db;
 }
 
 #backlight {
-  color: #ffaa00;
-  padding: 0 10px;
+  color: #b8c5db;
 }
 
-/* Audio */
-#pulseaudio {
-  color: #00ddff;
-  padding: 0 10px;
-  min-width: 0px;
-}
-
-#pulseaudio.muted {
-  color: #666666;
-}
-
-/* Network */
 #network {
-  color: #8888ff;
-  padding: 0 10px;
+  color: #b8c5db;
 }
 
 #network.disconnected {
-  color: #ff5555;
+  color: #d88888;
 }
 
-/* Clock */
-#clock {
-  color: #ffffff;
-  padding: 0 12px;
-  font-weight: 600;
-  background: rgba(0, 200, 200, 0.2);
-  border-radius: 8px;
-  margin: 0 4px;
+#custom-lock {
+  color: #7a9cc6;
 }
 
-/* Tray */
-#tray {
-  margin-left: 10px;
-  padding: 0 8px;
-  background: rgba(100, 100, 100, 0.2);
-  border-radius: 8px;
+#bluetooth {
+  color: #666666;
+  font-size: 16px;
 }
 
-/* Separators and dots */
-#custom-dot,
-#custom-filler,
-#custom-separator {
-  color: #555555;
-  padding: 0 6px;
-  opacity: 0.6;
+#bluetooth.on {
+  color: #6a93c4;
 }
 
-/* Pacman updates */
-#custom-pacman-update {
-  color: #00ff88;
-  margin: 0 10px;
-  padding: 0 8px;
-  background: rgba(0, 255, 136, 0.15);
-  border-radius: 8px;
+#bluetooth.connected {
+  color: #8fb3d9;
 }
 
-#custom-pacman-update-icon {
-  color: #000000;
-  padding: 2px 6px;
-  border-radius: 5px;
-  background: #00ff88;
-  margin-right: 6px;
+#battery {
+  color: #8fb3d9;
 }
 
-/* Animation for active elements */
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.7;
-  }
-
-  100% {
-    opacity: 1;
-  }
+#battery.charging {
+  color: #89c9a6;
 }
 
-#battery.charging,
-#network.connected,
-#pulseaudio:not(.muted) {
-  animation: pulse 2s ease-in-out infinite;
+#battery.warning:not(.charging) {
+  color: #d88888;
 }
 
-/* Focused window title */
-#window {
-  color: #ffffff;
-  padding: 0 12px;
-  font-style: italic;
-  background: rgba(100, 100, 255, 0.1);
-  border-radius: 8px;
-}
-
-/* Custom weather module */
-#custom-weather {
-  color: #00ddff;
-  padding: 0 10px;
-}
-
-/* Power button */
-#custom-power {
-  color: #ff5555;
-  padding: 0 10px;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-}
-
-#custom-power:hover {
-  background: rgba(255, 85, 85, 0.2);
-}
-
-/* Workspace numbers */
-#workspaces button {
-  font-feature-settings: "tnum";
-}
-
-#workspaces button.active {
-  font-weight: 600;
-}
-
-/* Additional elements */
-#custom-notification {
-  color: #ff55ff;
-  padding: 0 10px;
-}
-
-#custom-bluetooth {
-  color: #0088ff;
-  padding: 0 10px;
+/* --- Tooltip Styles --- */
+tooltip {
+  background-color: #0d0f1a;
+  color: #b8c5db;
+  padding: 5px 12px;
+  margin: 5px 0px;
+  border-radius: 6px;
+  border: 1px solid rgba(122, 156, 198, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  font-size: 12px;
 }
