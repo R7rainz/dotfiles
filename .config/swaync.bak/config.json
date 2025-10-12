@@ -1,0 +1,191 @@
+{
+  "position": "top-right",
+  "layer": "overlay",
+  "control-center-layer": "overlay",
+  "control-center-margin-top": 50,
+  "control-center-margin-bottom": 16,
+  "control-center-margin-right": 16,
+  "control-center-width": 440,
+  "control-center-height": 620,
+  "notification-margin-top": 50,
+  "notification-margin-right": 16,
+  "notification-window-width": 440,
+  "notification-icon-size": 56,
+  "notification-body-image-height": 120,
+  "notification-body-image-width": 240,
+  "notification-visibility-time": 8000,
+  "notification-fade-in-time": 350,
+  "notification-fade-out-time": 300,
+  "notification-slide-in-time": 350,
+  "notification-slide-out-time": 300,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 350,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "script-fail-notify": true,
+  "scripts": {
+    "goal-notification": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga",
+      "urgency": "Critical"
+    },
+    "match-alert": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga",
+      "urgency": "Normal"
+    },
+    "transfer-news": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-email.oga",
+      "urgency": "Normal"
+    },
+    "stadium-sound": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga",
+      "urgency": "Low"
+    },
+    "whistle-sound": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/device-added.oga",
+      "urgency": "Low"
+    },
+    "match-update": {
+      "exec": "paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga",
+      "urgency": "Normal"
+    }
+  },
+  "notification-criteria": [
+    {
+      "criteria": {
+        "app-name": "zen"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-update"
+    },
+    {
+      "criteria": {
+        "app-name": "brave"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-update"
+    },
+    {
+      "criteria": {
+        "app-name": "firefox"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-update"
+    },
+    {
+      "criteria": {
+        "app-name": "google-chrome"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-update"
+    },
+    {
+      "criteria": {
+        "summary": "*goal*"
+      },
+      "urgency": "Critical",
+      "default-timeout": 10000,
+      "script": "goal-notification"
+    },
+    {
+      "criteria": {
+        "summary": "*match*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    },
+    {
+      "criteria": {
+        "summary": "*transfer*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "transfer-news"
+    },
+    {
+      "criteria": {
+        "body": "*football*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    },
+    {
+      "criteria": {
+        "body": "*soccer*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    },
+    {
+      "criteria": {
+        "summary": "*Champion*"
+      },
+      "urgency": "Critical",
+      "default-timeout": 12000,
+      "script": "goal-notification"
+    },
+    {
+      "criteria": {
+        "summary": "*Premier League*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    },
+    {
+      "criteria": {
+        "summary": "*La Liga*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    },
+    {
+      "criteria": {
+        "summary": "*Serie A*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    },
+    {
+      "criteria": {
+        "summary": "*Bundesliga*"
+      },
+      "urgency": "Normal",
+      "default-timeout": 8000,
+      "script": "match-alert"
+    }
+  ],
+  "widgets": {
+    "control-center": [
+      "title",
+      "dnd",
+      "mpris",
+      "notifications"
+    ],
+    "notification-popup": [
+      "app-icon",
+      "summary",
+      "body",
+      "time",
+      "actions"
+    ]
+  },
+  "dnd-indicator": {
+    "text": "⚽ Match Mode - No Distractions",
+    "tooltip": "Focus mode for the beautiful game"
+  },
+  "mpris": {
+    "image-size": 56,
+    "image-radius": 12,
+    "blur": true
+  }
+}

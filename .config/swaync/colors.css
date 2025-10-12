@@ -1,0 +1,33 @@
+/*
+ * Dark Vibrant Theme for swaync
+ * Background = deep neutral, accents = vivid & readable
+ */
+
+@define-color background #121212;
+@define-color surface #1E1E1E;
+@define-color surface-alt #242424;
+@define-color surface-bright #2E2E2E;
+@define-color surface-dim #0E0E0E;
+
+@define-color on_background #EDEDED;
+@define-color on_surface #EDEDED;
+@define-color outline #3A3A3A;
+
+@define-color primary #FF6B6B;
+/* red-pink accent */
+@define-color secondary #4DD0E1;
+/* teal accent */
+@define-color tertiary #FFD93D;
+/* yellow accent */
+@define-color success #81C784;
+/* green accent */
+@define-color error #E57373;
+/* soft red */
+
+@define-color volume #82B1FF;
+/* blue for volume */
+@define-color brightness #FFD93D;
+/* yellow for brightness */
+
+@define-color scrim #000000;
+@define-color shadow #000000;
