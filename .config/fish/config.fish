@@ -278,7 +278,6 @@ alias zls='zoxide query -l' # List all directories in zoxide
 
 #fish default cursor 
 set fish_cursor_default beam
-starship init fish | source
 
 #cursor alias 
 alias cursor="/home/rainz/Downloads/Cursor-1.5.11-x86_64.AppImage"
