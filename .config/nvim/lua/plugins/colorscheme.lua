@@ -3,15 +3,15 @@ return {
     "folke/tokyonight.nvim",
     opts = {
       style = "night",
-      transparent = false,
+      transparent = true, -- Changed to true
       terminal_colors = true,
       styles = {
         comments = { italic = true },
         keywords = { italic = false },
         functions = {},
         variables = {},
-        sidebars = "dark",
-        floats = "dark",
+        sidebars = "transparent", -- Changed to transparent
+        floats = "transparent", -- Changed to transparent
       },
       sidebars = { "qf", "help", "terminal", "packer", "neo-tree" },
       on_colors = function(colors)
@@ -58,29 +58,29 @@ return {
         colors.hint = "#50E3E3"
       end,
       on_highlights = function(highlights, colors)
-        -- Base
-        highlights.Normal = { fg = colors.fg, bg = colors.bg }
-        highlights.NormalFloat = { fg = colors.fg, bg = colors.bg_float }
-        highlights.NormalNC = { fg = colors.fg_dark, bg = colors.bg }
-        highlights.SignColumn = { bg = colors.bg }
-        highlights.EndOfBuffer = { fg = colors.bg_highlight }
+        -- Base - Make backgrounds transparent
+        highlights.Normal = { fg = colors.fg, bg = "none" } -- Changed to none
+        highlights.NormalFloat = { fg = colors.fg, bg = "none" } -- Changed to none
+        highlights.NormalNC = { fg = colors.fg_dark, bg = "none" } -- Changed to none
+        highlights.SignColumn = { bg = "none" } -- Changed to none
+        highlights.EndOfBuffer = { fg = colors.bg_highlight, bg = "none" } -- Added bg none
 
-        -- Cursor and selection
+        -- Cursor and selection - Keep some background for visibility
         highlights.CursorLine = { bg = colors.bg_highlight }
         highlights.CursorColumn = { bg = colors.bg_highlight }
         highlights.Visual = { bg = colors.bg_visual }
         highlights.VisualNOS = { bg = colors.bg_visual }
 
         -- Line numbers
-        highlights.LineNr = { fg = colors.fg_gutter }
-        highlights.CursorLineNr = { fg = colors.yellow, bold = true }
+        highlights.LineNr = { fg = colors.fg_gutter, bg = "none" } -- Added bg none
+        highlights.CursorLineNr = { fg = colors.yellow, bold = true, bg = "none" } -- Added bg none
 
         -- Search - more vibrant
         highlights.Search = { bg = colors.yellow, fg = "#000000", bold = true }
         highlights.IncSearch = { bg = colors.cyan, fg = "#000000", bold = true }
         highlights.CurSearch = { bg = colors.red, fg = "#000000", bold = true }
 
-        -- SYNTAX HIGHLIGHTING - More vibrant One Dark style
+        -- SYNTAX HIGHLIGHTING - More vibrant One Dark style (no background changes)
         highlights.Comment = { fg = "#6B7280", italic = true }
         highlights.Keyword = { fg = colors.purple, bold = true }
         highlights.Function = { fg = colors.blue, bold = true }
@@ -143,20 +143,20 @@ return {
         highlights.cssClassName = { fg = colors.green }
         highlights.cssIdentifier = { fg = colors.blue }
 
-        -- Popup menus
+        -- Popup menus - Keep some background for readability
         highlights.Pmenu = { fg = colors.fg, bg = colors.bg_float }
         highlights.PmenuSel = { fg = "#000000", bg = colors.blue, bold = true }
         highlights.PmenuSbar = { bg = colors.bg_highlight }
         highlights.PmenuThumb = { bg = colors.cyan }
 
-        -- Statusline
-        highlights.StatusLine = { fg = colors.fg, bg = colors.bg_float }
-        highlights.StatusLineNC = { fg = colors.fg_dark, bg = colors.bg }
+        -- Statusline - Make transparent
+        highlights.StatusLine = { fg = colors.fg, bg = "none" } -- Changed to none
+        highlights.StatusLineNC = { fg = colors.fg_dark, bg = "none" } -- Changed to none
 
-        -- Tabline
-        highlights.TabLine = { fg = colors.fg_dark, bg = colors.bg }
-        highlights.TabLineFill = { bg = colors.bg }
-        highlights.TabLineSel = { fg = colors.blue, bg = colors.bg_float, bold = true }
+        -- Tabline - Make transparent
+        highlights.TabLine = { fg = colors.fg_dark, bg = "none" } -- Changed to none
+        highlights.TabLineFill = { bg = "none" } -- Changed to none
+        highlights.TabLineSel = { fg = colors.blue, bg = "none", bold = true } -- Changed to none
 
         -- Splits
         highlights.VertSplit = { fg = colors.border }
@@ -178,20 +178,20 @@ return {
         highlights.LspReferenceRead = { bg = colors.bg_visual }
         highlights.LspReferenceWrite = { bg = colors.bg_visual }
 
-        -- Telescope
-        highlights.TelescopeNormal = { fg = colors.fg, bg = colors.bg }
-        highlights.TelescopeBorder = { fg = colors.blue, bg = colors.bg }
-        highlights.TelescopePromptBorder = { fg = colors.blue, bg = colors.bg }
-        highlights.TelescopeResultsBorder = { fg = colors.blue, bg = colors.bg }
-        highlights.TelescopePreviewBorder = { fg = colors.blue, bg = colors.bg }
+        -- Telescope - Make backgrounds transparent
+        highlights.TelescopeNormal = { fg = colors.fg, bg = "none" } -- Changed to none
+        highlights.TelescopeBorder = { fg = colors.blue, bg = "none" } -- Changed to none
+        highlights.TelescopePromptBorder = { fg = colors.blue, bg = "none" } -- Changed to none
+        highlights.TelescopeResultsBorder = { fg = colors.blue, bg = "none" } -- Changed to none
+        highlights.TelescopePreviewBorder = { fg = colors.blue, bg = "none" } -- Changed to none
         highlights.TelescopeSelection = { fg = colors.fg, bg = colors.bg_visual }
         highlights.TelescopeSelectionCaret = { fg = colors.blue, bold = true }
         highlights.TelescopePromptPrefix = { fg = colors.blue, bold = true }
         highlights.TelescopeMatching = { fg = colors.yellow, bold = true }
 
-        -- Neo-tree - more vibrant
-        highlights.NeoTreeNormal = { fg = colors.fg, bg = colors.bg }
-        highlights.NeoTreeNormalNC = { fg = colors.fg, bg = colors.bg }
+        -- Neo-tree - Make backgrounds transparent
+        highlights.NeoTreeNormal = { fg = colors.fg, bg = "none" } -- Changed to none
+        highlights.NeoTreeNormalNC = { fg = colors.fg, bg = "none" } -- Changed to none
         highlights.NeoTreeDirectoryName = { fg = colors.blue, bold = true }
         highlights.NeoTreeDirectoryIcon = { fg = colors.blue, bold = true }
         highlights.NeoTreeFileName = { fg = colors.fg }
@@ -201,15 +201,15 @@ return {
         highlights.NeoTreeGitDeleted = { fg = colors.red, bold = true }
         highlights.NeoTreeRootName = { fg = colors.blue, bold = true }
 
-        -- Which-key
+        -- Which-key - Make backgrounds transparent
         highlights.WhichKey = { fg = colors.cyan, bold = true }
         highlights.WhichKeyGroup = { fg = colors.blue, bold = true }
         highlights.WhichKeyDesc = { fg = colors.fg }
         highlights.WhichKeySeperator = { fg = colors.purple }
-        highlights.WhichKeyFloat = { bg = colors.bg }
-        highlights.WhichKeyBorder = { fg = colors.cyan, bg = colors.bg }
+        highlights.WhichKeyFloat = { bg = "none" } -- Changed to none
+        highlights.WhichKeyBorder = { fg = colors.cyan, bg = "none" } -- Changed to none
 
-        -- Completion menu
+        -- Completion menu - Keep background for readability
         highlights.CmpItemAbbr = { fg = colors.fg }
         highlights.CmpItemAbbrDeprecated = { fg = colors.fg_gutter, strikethrough = true }
         highlights.CmpItemAbbrMatch = { fg = colors.blue, bold = true }
@@ -223,7 +223,7 @@ return {
         highlights.Debug = { fg = colors.orange, bold = true }
         highlights.Tag = { fg = colors.purple, bold = true }
 
-        -- Diff
+        -- Diff - Keep backgrounds for better visibility
         highlights.DiffAdd = { fg = colors.green, bg = "#2D3A2D", bold = true }
         highlights.DiffChange = { fg = colors.yellow, bg = "#3A3A2D", bold = true }
         highlights.DiffDelete = { fg = colors.red, bg = "#3A2D2D", bold = true }
@@ -234,5 +234,20 @@ return {
         highlights.MatchParen = { fg = colors.blue, bold = true, underline = true }
       end,
     },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd("colorscheme tokyonight")
+
+      -- Additional transparency overrides for better terminal background visibility
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+      vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+      vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+      vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+      vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
+    end,
   },
 }

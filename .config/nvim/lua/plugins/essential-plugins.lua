@@ -49,7 +49,7 @@ return {
 
   -- 📦 PACKAGE MANAGER: Install language servers and formatters
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     -- What it does: GUI to install LSP servers, formatters, linters
     -- Command: :Mason to open the installer
     -- Auto-installs: TypeScript server, Prettier, ESLint, etc.

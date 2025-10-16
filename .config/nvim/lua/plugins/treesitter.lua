@@ -9,7 +9,15 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
-      require("nvim-treesitter.configs").setup({
+      -- Add a safety check to ensure the module exists
+      local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
+      if not status_ok then
+        vim.notify("nvim-treesitter not available yet", vim.log.levels.WARN)
+        return
+      end
+
+      treesitter_configs.setup({
+        -- your config here (same as before)
         ensure_installed = {
           "bash",
           "c",
@@ -31,10 +39,7 @@ return {
           "yaml",
         },
         auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
+        highlight = { enable = true, additional_vim_regex_highlighting = false },
         indent = { enable = true },
         incremental_selection = {
           enable = true,
