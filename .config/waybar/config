@@ -3,17 +3,14 @@
   "position": "top",
   "margin-bottom": -10,
   "spacing": 0,
-
   "modules-left": [
     "hyprland/workspaces",
     "custom/uptime",
     "cpu",
     "custom/music-button",
-
+    "custom/audio-visualizer"
   ],
-
   "modules-center": ["clock"],
-
   "modules-right": [
     "custom/update",
     "custom/pomodoro",
@@ -23,15 +20,13 @@
     "backlight",
     "battery"
   ],
-
   "hyprland/workspaces": {
     "format": "{name} {icon}",
     "format-icons": {
-      "active": "",   // filled dot for active
-      "default": ""   // hollow circle for inactive
+      "active": "",
+      "default": ""
     }
   },
-
   "custom/update": {
     "exec": "/home/rainz/Dotfiles/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
@@ -41,7 +36,6 @@
     "min-length": 1,
     "max-length": 1
   },
-
   "bluetooth": {
     "format": "󰂲",
     "format-on": "{icon}",
@@ -55,24 +49,30 @@
     "on-click": "blueman-manager",
     "tooltip-format-connected": "{device_enumerate}"
   },
-
-"custom/music-button": {
-  "format": "",
-  "tooltip": true,
-  "exec": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null || echo 'No music playing'",
-  "interval": 2,
-  "on-click": "playerctl play-pause",
-  "on-click-right": "playerctl next",
-  "on-click-middle": "playerctl previous"
-},
-
+  "custom/music-button": {
+    "format": "",
+    "tooltip": true,
+    "exec": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null || echo 'No music playing'",
+    "interval": 2,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous"
+  },
+  "custom/audio-visualizer": {
+    "format": "♪ {}",
+    "exec": "/home/rainz/Dotfiles/.config/waybar/scripts/audio-visualizer.sh",
+    "interval": 1,
+    "tooltip": true,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous"
+  },
   "clock": {
     "timezone": "Asia/Kolkata",
     "tooltip": false,
     "format": "{:%H:%M:%S  -  %A, %d}",
     "interval": 1
   },
-
   "network": {
     "format-wifi": "󰤢",
     "format-ethernet": "󰈀 ",
@@ -81,48 +81,42 @@
     "tooltip-format": "{essid} ({signalStrength}%)",
     "on-click": "nmgui"
   },
-
   "cpu": {
     "interval": 1,
-    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
     "on-click": "wezterm -e btop"
   },
-
   "memory": {
     "interval": 30,
-    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "format": "  {used:0.1f}G/{total:0.1f}G",
     "tooltip-format": "Memory"
   },
-
   "custom/uptime": {
     "format": "{}",
-    "format-icon": [""], 
+    "format-icon": [""], 
     "tooltip": false,
     "interval": 1600,
     "exec": "$HOME/.config/waybar/scripts/uptime.sh"
   },
-  
   "backlight": {
     "format": "{icon}  {percent}%",
-    "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
+    "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
     "tooltip": false
   },
-  
   "pulseaudio": {
     "format": "{icon} <b>{volume}%</b>",
-    "format-bluetooth": " <b>{volume}%</b>",
-    "format-bluetooth-muted": " ",
+    "format-bluetooth": " <b>{volume}%</b>",
+    "format-bluetooth-muted": " ",
     "tooltip": false,
-    "format-muted": "",
+    "format-muted": "",
     "format-icons": {
-      "default": ["󰝟", "", "󰕾", ""]
+      "default": ["󰝟", "", "󰕾", ""]
     },
     "format-muted" : "󰝟",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol"
   },
-
   "battery": {
     "interval": 2,
     "states": {
@@ -131,18 +125,16 @@
     },
     "format": "{icon}  {capacity}%",
     "format-full": "{icon}  {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["", "", "", "", ""]
   },
-  
   "custom/lock": {
     "tooltip": false,
     "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
-    "format": ""
+    "format": ""
   },
-
   "custom/pomodoro": {
     "format": "{}",
     "return-type": "json",
