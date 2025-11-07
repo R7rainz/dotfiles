@@ -4,7 +4,7 @@
   "margin-bottom": -10,
   "spacing": 0,
   "modules-left": [
-    "hyprland/workspaces",
+    "niri/workspaces",
     "custom/uptime",
     "cpu",
     "custom/music-button",
@@ -18,15 +18,16 @@
     "network",
     "pulseaudio", 
     "backlight",
-    "battery"
+    "battery",
+    "custom/power"
   ],
-  "hyprland/workspaces": {
-    "format": "{name} {icon}",
-    "format-icons": {
-      "active": "",
-      "default": ""
-    }
-  },
+"niri/workspaces": {
+  "format": "{icon}{name}",
+  "format-icons": {
+    "active": " ● ",
+    "default": " ○ "
+  }
+},
   "custom/update": {
     "exec": "/home/rainz/Dotfiles/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
@@ -100,22 +101,31 @@
     "exec": "$HOME/.config/waybar/scripts/uptime.sh"
   },
   "backlight": {
-    "format": "{icon}  {percent}%",
-    "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
+    "format": "{icon} {percent}%",
+    "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔"],
     "tooltip": false
   },
   "pulseaudio": {
     "format": "{icon} <b>{volume}%</b>",
-    "format-bluetooth": " <b>{volume}%</b>",
-    "format-bluetooth-muted": " ",
-    "tooltip": false,
-    "format-muted": "",
+    "format-bluetooth": "󱡏 <b>{volume}%</b>",
+    "format-bluetooth-muted": "󰝟 <b>Muted</b>",
+    "format-muted": "󰝟 <b>Muted</b>",
     "format-icons": {
-      "default": ["󰝟", "", "󰕾", ""]
+      "headphone": "󰋋",
+      "hands-free": "󱡏",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
-    "format-muted" : "󰝟",
+    "scroll-step": 5,
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol"
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "tooltip": true,
+    "tooltip-format": "{desc}\nVolume: {volume}%"
   },
   "battery": {
     "interval": 2,
@@ -125,10 +135,15 @@
     },
     "format": "{icon}  {capacity}%",
     "format-full": "{icon}  {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰚥  {capacity}%",
     "format-alt": "{icon} {time}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "custom/power" : {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "wlogout"
   },
   "custom/lock": {
     "tooltip": false,
