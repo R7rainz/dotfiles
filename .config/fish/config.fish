@@ -63,7 +63,7 @@ end
 # ============================================================================
 
 # File listing (eza)
-alias ll='eza --icons --group-directories-first --oneline'
+alias ll='eza --icons --group-directories-first'
 
 # File finder
 alias f='ff'
@@ -85,7 +85,7 @@ alias cursor="$HOME/Downloads/Cursor-1.5.11-x86_64.AppImage"
 # File Listing (eza wrapper)
 # ----------------------------------------------------------------------------
 function ls
-    eza --icons --group-directories-first --oneline $argv
+    eza --icons --group-directories-first $argv
 end
 
 # ----------------------------------------------------------------------------
