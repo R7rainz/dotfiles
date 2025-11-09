@@ -1,6 +1,11 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  cmd = "Oil",
+  keys = {
+    { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+    { "<leader>-", "<cmd>Oil --float<cr>", desc = "Open parent directory in floating window" },
+  },
   config = function()
     require("oil").setup({
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)

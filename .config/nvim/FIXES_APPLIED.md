@@ -179,3 +179,82 @@ All core components tested and verified:
 
 ---
 *Final Update: 2025-11-06*
+
+## Alpha-nvim Welcome Screen Enhancement (2025-11-09)
+
+### Issues Fixed:
+1. **Oil command not found error** - Oil plugin was lazy-loaded but not properly initialized
+2. **Icon visibility** - Some icons weren't displaying properly
+3. **Manual path entry** - Had to type full folder paths manually
+
+### Solutions Applied:
+1. Added `cmd = "Oil"` to oil.lua for proper lazy-loading
+2. Updated alpha config to use `require("lazy").load()` before calling Oil
+3. Replaced manual input with Telescope fuzzy finder for folder selection
+4. Enhanced UI with better spacing, colors, and icon compatibility
+5. Added color-coded shortcuts (red/pink) and buttons (white)
+
+### New Workflow:
+- Press 'p' → Telescope opens with fuzzy search
+- Type folder name → Instant filtering
+- Press Enter → Oil shows folder tree structure
+- Navigate and open files
+
+### Documentation Created:
+- ALPHA_USAGE.md - Complete usage guide
+- ALPHA_QUICKSTART.md - Quick reference
+- verify_alpha.sh - Verification script
+
+
+## Neovide Configuration Enhancement (2025-11-09)
+
+### Enhancements Added:
+
+#### Visual Effects:
+- **Cursor animations** - Railgun VFX with smooth animations (0.08s)
+- **Cursor trail** - 0.8 opacity trail effect
+- **Scroll animations** - 0.3s smooth scrolling
+- **Window transparency** - 95% opacity for modern look
+- **Floating blur** - Blurred backgrounds for floating windows
+- **Shadow effects** - Depth for floating windows
+- **Padding** - 10px padding on all sides
+
+#### Performance:
+- **60 FPS** refresh rate when active
+- **5 FPS** idle rate for battery saving
+- **No idle mode** for smooth animations
+- **Confirm quit** to prevent accidental closes
+- **Remember window size** between sessions
+
+#### Keyboard Shortcuts:
+- **Ctrl + =** - Zoom in
+- **Ctrl + -** - Zoom out
+- **Ctrl + 0** - Reset zoom
+- **F11** - Toggle fullscreen
+
+#### Editor Improvements:
+- **Relative line numbers** - Easier navigation with counts
+- **Cursorline** - Highlights current line
+- **Smart case search** - Case-insensitive unless caps used
+- **System clipboard** - Full integration
+- **Persistent undo** - History saved between sessions
+- **No swap files** - Cleaner, faster
+- **Fast completion** - 250ms update time
+- **Better splits** - Open right/below
+
+### Font Configuration:
+- Default: JetBrainsMono Nerd Font at size 12
+- Easily adjustable in init.lua
+
+### Available Cursor VFX Modes:
+- railgun (current)
+- torpedo
+- pixiedust
+- sonicboom
+- ripple
+- wireframe
+
+### Documentation Created:
+- NEOVIDE_FEATURES.md - Complete feature guide
+- NEOVIDE_QUICKSTART.md - Quick reference
+
