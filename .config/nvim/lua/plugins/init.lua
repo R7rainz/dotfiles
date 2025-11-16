@@ -11,7 +11,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  require("plugins.copilot"),
+  require "plugins.copilot",
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },

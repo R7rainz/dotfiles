@@ -97,7 +97,10 @@ map({ "n", "t" }, "<C-`>", toggle_horizontal_term, { desc = "Toggle terminal" })
 map({ "n", "t" }, "<C-\\>", toggle_horizontal_term, { desc = "Toggle terminal (alt)" })
 
 -- Horizontal terminal
-map("n", "<leader>th", toggle_horizontal_term, { desc = "Toggle horizontal terminal" })
+map("n", "<leader>tt", toggle_horizontal_term, { desc = "Toggle horizontal terminal" })
+
+-- Theme picker
+map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Change theme" })
 
 -- Vertical terminal
 map("n", "<leader>tv", toggle_vertical_term, { desc = "Toggle vertical terminal" })
@@ -115,5 +118,11 @@ map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
+-- Resize window splits
+map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

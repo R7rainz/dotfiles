@@ -4,12 +4,22 @@ vim.g.mapleader = " "
 -- Neovide Configuration
 if vim.g.neovide then
   -- Font settings
-  vim.o.guifont = "Monaspace Argon NF:h12"
+  -- vim.o.guifont = "JetBrainsMono Nerd Font:h13"
+  vim.o.guifont = "Monaspace Argon NF:h13"
+  -- vim.o.guifont = "Inconsolata LGC Nerd Font Mono:h14:b"
+  -- vim.o.guifont = "Hurmit Nerd Font Mono:h11"
+  -- vim.o.guifont = "DankMono Nerd Font:h14"
+  -- vim.o.guifont = "Fira Code:h14"
+  -- vim.o.guifont = "Cascadia Code PL:h14"
 
   -- Cursor animations
-  vim.g.neovide_cursor_vfx_mode = "railgun"
-  vim.g.neovide_cursor_animation_length = 0.08
-  vim.g.neovide_cursor_trail_size = 0.8
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  vim.g.neovide_cursor_vfx_length = 0.8
+  vim.g.neovide_cursor_vfx_particle_density = 15.0
+  vim.g.neovide_cursor_vfx_opacity = 300.0
+  vim.g.neovide_cursor_vfx_speed = 50.0
+  vim.g.neovide_cursor_animation_length = 0.2
+  vim.g.neovide_cursor_trail_size = 1
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.neovide_cursor_animate_command_line = true
@@ -37,10 +47,7 @@ if vim.g.neovide then
   vim.g.neovide_confirm_quit = true
 
   -- Padding (comfortable spacing around the editor)
-  vim.g.neovide_padding_top = 20
-  vim.g.neovide_padding_bottom = 20
-  vim.g.neovide_padding_right = 20
-  vim.g.neovide_padding_left = 20
+  vim.g.neovide_padding_top = 10
 
   -- Fullscreen
   vim.g.neovide_fullscreen = false
@@ -69,6 +76,10 @@ if vim.g.neovide then
   vim.keymap.set("n", "<F11>", function()
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
   end, { desc = "Toggle fullscreen" })
+
+  -- Delete previous word with Ctrl+Backspace (like browsers/editors)
+  vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete previous word" })
+  vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Delete previous word (fallback)" })
 end
 
 -- bootstrap lazy and all plugins
@@ -112,7 +123,7 @@ require("lazy").setup({
         "  ██║  ██║██║  ██║██║██║ ╚████║███████╗",
         "  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝",
         "",
-        "         Welcome back, RAINZ! 🚀",
+        "         Welcome back SIUUUUUUUU! 🚀",
         "",
       }
 
