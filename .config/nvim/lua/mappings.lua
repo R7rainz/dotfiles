@@ -126,3 +126,67 @@ map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window wi
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+-- ========================================
+-- ENHANCED NAVIGATION & EDITING
+-- ========================================
+
+-- Better page navigation (center cursor after jump)
+map("n", "<C-f>", "<C-d>zz", { desc = "Page down (centered)" })
+map("n", "<C-b>", "<C-u>zz", { desc = "Page up (centered)" })
+map("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+map("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+
+-- Jump to matching bracket/brace and center
+map("n", "%", "%zz", { desc = "Jump to matching bracket (centered)" })
+
+-- Jump into empty brackets/functions
+map("n", "<leader>jb", "/[\\[{(]\\s*[\\]})]<CR>:noh<CR>va{<Esc>i<CR><Esc>O", { desc = "Jump into empty brackets" })
+map("n", "<leader>jf", "/function.*{\\s*}<CR>:noh<CR>va{<Esc>i<CR><Esc>O", { desc = "Jump into empty function" })
+
+-- Quick jump to next/prev empty line
+map("n", "}", "}zz", { desc = "Next paragraph (centered)" })
+map("n", "{", "{zz", { desc = "Previous paragraph (centered)" })
+
+-- Move selected lines up/down (like VS Code Alt+Up/Down)
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Better indenting (stay in visual mode)
+map("v", "<", "<gv", { desc = "Indent left" })
+map("v", ">", ">gv", { desc = "Indent right" })
+
+-- Join lines but keep cursor position
+map("n", "J", "mzJ`z", { desc = "Join lines (keep cursor)" })
+
+-- Paste without overwriting register in visual mode
+map("v", "p", '"_dP', { desc = "Paste without yanking" })
+
+-- Delete without yanking
+map({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+
+-- Quick search and replace word under cursor
+map("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word under cursor" })
+
+-- Select all
+map("n", "<C-a>", "ggVG", { desc = "Select all" })
+
+-- Increment/decrement numbers
+map("n", "+", "<C-a>", { desc = "Increment number" })
+map("n", "-", "<C-x>", { desc = "Decrement number" })
+
+-- Better undo break points (break undo sequence at punctuation)
+map("i", ",", ",<C-g>u", { desc = "Undo break point" })
+map("i", ".", ".<C-g>u", { desc = "Undo break point" })
+map("i", "!", "!<C-g>u", { desc = "Undo break point" })
+map("i", "?", "?<C-g>u", { desc = "Undo break point" })
+
+-- Quick save
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+map("i", "<C-s>", "<Esc><cmd>w<CR>a", { desc = "Save file (insert mode)" })
+
+-- Navigate to next/previous function/class (using treesitter via mini.bracketed)
+-- These will work after you install the navigation.lua plugin
+-- [t / ]t = prev/next treesitter node
+-- [c / ]c = prev/next comment
+-- [d / ]d = prev/next diagnostic

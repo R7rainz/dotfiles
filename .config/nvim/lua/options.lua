@@ -10,8 +10,8 @@ o.cursorlineopt = 'both'
 o.relativenumber = true
 o.numberwidth = 4
 
--- Better scrolling
-o.scrolloff = 8
+-- Better scrolling (cursor stays away from edges)
+o.scrolloff = 12  -- Keep cursor 12 lines from top/bottom
 o.sidescrolloff = 8
 
 -- Better splits
@@ -50,3 +50,8 @@ o.termguicolors = true
 
 -- Sign column always visible
 o.signcolumn = "yes"
+
+-- Disable indent-blankline
+vim.g.indent_blankline_enabled = false
+vim.g.indent_blankline_show_first_indent_level = false
+vim.g.indent_blankline_show_trailing_blankline_indent = false

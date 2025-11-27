@@ -6,13 +6,26 @@
 local M = {}
 
 M.base46 = {
-	theme = "yoru"
+	theme = "rosepine"
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
 }
+
+M.ui = {
+	cmp = {
+		icons_left = false,
+	},
+	
+	nvdash = {
+		load_on_startup = false,
+	},
+}
+
+-- Disable indent-blankline
+vim.g.indent_blankline_enabled = false
 
 -- M.nvdash = { load_on_startup = true }
 -- M.ui = {

@@ -12,6 +12,7 @@ return {
   },
 
   require "plugins.copilot",
+  require "plugins.codecompanion",
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },

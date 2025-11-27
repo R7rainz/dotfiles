@@ -4,13 +4,7 @@ vim.g.mapleader = " "
 -- Neovide Configuration
 if vim.g.neovide then
   -- Font settings
-  -- vim.o.guifont = "JetBrainsMono Nerd Font:h13"
-  vim.o.guifont = "Monaspace Argon NF:h13"
-  -- vim.o.guifont = "Inconsolata LGC Nerd Font Mono:h14:b"
-  -- vim.o.guifont = "Hurmit Nerd Font Mono:h11"
-  -- vim.o.guifont = "DankMono Nerd Font:h14"
-  -- vim.o.guifont = "Fira Code:h14"
-  -- vim.o.guifont = "Cascadia Code PL:h14"
+  vim.o.guifont = "FantasqueSansM Nerd Font Mono:h15"
 
   -- Cursor animations
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
@@ -30,7 +24,7 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_far_lines = 1
 
   -- Window settings
-  vim.g.neovide_opacity = 0.95
+  vim.g.neovide_opacity = 1.0
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_floating_shadow = true
