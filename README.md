@@ -2,7 +2,7 @@
 
 # ✨ RAINZ'S Arch Hyprland Rice
 
-*A meticulously crafted Arch Linux desktop experience*
+_A meticulously crafted Arch Linux desktop experience_
 
 [![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)](https://archlinux.org/)
 [![Hyprland](https://img.shields.io/badge/Hyprland-00D9FF?style=for-the-badge&logo=wayland&logoColor=white)](https://hyprland.org/)
@@ -11,59 +11,59 @@
 
 ---
 
-*Elevate your Linux workflow with this carefully curated collection of dotfiles*
+_Elevate your Linux workflow with this carefully curated collection of dotfiles_
 
 </div>
 
 ## 🖼️ Preview Gallery
 
-<div align="center">
+<!-- <div align="center"> -->
+<!---->
+<!-- ### Desktop Showcase -->
+<!---->
+<!-- <table> -->
+<!--   <tr> -->
+<!--     <td width="50%"> -->
+<!--       <img src="https://github.com/user-attachments/assets/7a85eb93-d3df-493f-a341-e0f13547f6a6" alt="Desktop Overview" style="border-radius: 8px;"/> -->
+<!--       <p><em>Clean Desktop with Waybar and Rofi</em></p> -->
+<!--     </td> -->
+<!--     <td width="50%"> -->
+<!--       <img src="https://github.com/user-attachments/assets/68f81533-c7a9-4d90-951c-9a4c0ce9931c" alt="Terminal Setup" style="border-radius: 8px;"/> -->
+<!--       <p><em>Terminal & Development Environment</em></p> -->
+<!--     </td> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <td width="50%"> -->
+<!--       <img src="https://github.com/user-attachments/assets/d5e6620b-7521-467b-a809-d53609db8cf0" alt="Application Launcher" style="border-radius: 8px;"/> -->
+<!--       <p><em>Spotify with Cava</em></p> -->
+<!--     </td> -->
+<!--     <td width="50%"> -->
+<!--       <img src="https://github.com/user-attachments/assets/9b87382c-5a32-4fbe-99ce-53f1a1bd9e9d" alt="Browser Setup" style="border-radius: 8px;"/> -->
+<!--       <p><em>SDDM Theme</em></p> -->
+<!--     </td> -->
+<!--   </tr> -->
+<!-- </table> -->
+<!---->
+<!-- </div> -->
 
-### Desktop Showcase
-
-<table>
-  <tr>
-    <td width="50%">
-      <img src="https://github.com/user-attachments/assets/7a85eb93-d3df-493f-a341-e0f13547f6a6" alt="Desktop Overview" style="border-radius: 8px;"/>
-      <p><em>Clean Desktop with Waybar and Rofi</em></p>
-    </td>
-    <td width="50%">
-      <img src="https://github.com/user-attachments/assets/68f81533-c7a9-4d90-951c-9a4c0ce9931c" alt="Terminal Setup" style="border-radius: 8px;"/>
-      <p><em>Terminal & Development Environment</em></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <img src="https://github.com/user-attachments/assets/d5e6620b-7521-467b-a809-d53609db8cf0" alt="Application Launcher" style="border-radius: 8px;"/>
-      <p><em>Spotify with Cava</em></p>
-    </td>
-    <td width="50%">
-      <img src="https://github.com/user-attachments/assets/9b87382c-5a32-4fbe-99ce-53f1a1bd9e9d" alt="Browser Setup" style="border-radius: 8px;"/>
-      <p><em>SDDM Theme</em></p>
-    </td>
-  </tr>
-</table>
-
-</div>
-
----
+## <!---->
 
 ## ⚡ Tech Stack
 
 <div align="center">
 
-| Component | Choice | Why |
-|:---------:|:------:|:---:|
-| 🐧 **OS** | `Arch Linux` | Rolling release perfection |
-| 🪟 **WM** | `Hyprland` | Smooth Wayland animations |
-| 🌐 **Browser** | `Zen Browser` | Privacy-focused & customizable |
-| 🖥️ **Terminal** | `Kitty` | GPU-accelerated performance |
-| 🐚 **Shell** | `Fish + Oh My Posh` | Beautiful & user-friendly |
-| ✏️ **Editor** | `Neovim` | Extensible text editing |
-| 🚀 **Launcher** | `Rofi` | Fast application switching |
-| 📊 **Bar** | `Waybar` | Highly customizable status |
-| 🔔 **Notifications** | `SwayNC` | Clean notification system |
-| 🖼️ **Wallpaper** | `Hyprpaper + Waypaper` | Dynamic wallpaper management |
+|      Component       |         Choice         |              Why               |
+| :------------------: | :--------------------: | :----------------------------: |
+|      🐧 **OS**       |      `Arch Linux`      |   Rolling release perfection   |
+|      🪟 **WM**       |       `Hyprland`       |   Smooth Wayland animations    |
+|    🌐 **Browser**    |     `Zen Browser`      | Privacy-focused & customizable |
+|   🖥️ **Terminal**    |        `Kitty`         |  GPU-accelerated performance   |
+|     🐚 **Shell**     |  `Fish + Oh My Posh`   |   Beautiful & user-friendly    |
+|    ✏️ **Editor**     |        `Neovim`        |    Extensible text editing     |
+|   🚀 **Launcher**    |         `Rofi`         |   Fast application switching   |
+|      📊 **Bar**      |        `Waybar`        |   Highly customizable status   |
+| 🔔 **Notifications** |        `SwayNC`        |   Clean notification system    |
+|   🖼️ **Wallpaper**   | `Hyprpaper + Waypaper` |  Dynamic wallpaper management  |
 
 </div>
 
@@ -72,6 +72,7 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 ```bash
 # Ensure you have these essentials
 - Arch Linux (fresh install recommended)
@@ -80,6 +81,7 @@
 ```
 
 ### One-Command Setup
+
 ```bash
 git clone https://github.com/R7rainz/dotfiles.git ~/dotfiles && cd ~/dotfiles
 ```
@@ -92,13 +94,16 @@ git clone https://github.com/R7rainz/dotfiles.git ~/dotfiles && cd ~/dotfiles
 <summary><b>🏗️ Step 1: Hyprland Installation</b></summary>
 
 ### System Update & Dependencies
+
 ```bash
 sudo pacman -Syu
 sudo pacman -S base-devel cmake meson ninja gcc pkgconf libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info cpio tomlplusplus hyprlang hyprcursor hyprwayland-scanner
 ```
 
 ### GPU Drivers
+
 **NVIDIA:**
+
 ```bash
 sudo pacman -S nvidia nvidia-utils nvidia-settings
 # Add to /etc/mkinitcpio.conf: MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
@@ -108,16 +113,19 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 **AMD:**
+
 ```bash
 sudo pacman -S mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon
 ```
 
 **Intel:**
+
 ```bash
 sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel
 ```
 
 ### Install Hyprland
+
 ```bash
 sudo pacman -S hyprland
 # Or for latest features:
@@ -126,6 +134,7 @@ yay -S xdg-desktop-portal-hyprland-git
 ```
 
 ### Configure XDG Desktop Portal
+
 ```bash
 # Install required portal packages
 sudo pacman -S xdg-desktop-portal-wlr xdg-desktop-portal-gtk
@@ -168,22 +177,26 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 <summary><b>🌐 Step 3: Zen Browser Setup</b></summary>
 
 ### Nebula Theme Installation
+
 ```bash
 git clone https://github.com/JustAdumbPrsn/Zen-Nebula.git ~/zen-nebula
 ```
 
 ### Apply Custom CSS
+
 1. Open Zen Browser → `about:config`
 2. Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
 3. Go to `about:support` → Open Profile Folder
 4. Create `chrome` folder
 5. Copy CSS files:
+
 ```bash
 cp ~/zen-nebula/userChrome.css ~/.zen/[your-profile]/chrome/
 cp ~/zen-nebula/userContent.css ~/.zen/[your-profile]/chrome/
 ```
 
 ### Extensions & Settings
+
 - Install **uBlock Origin**
 - Enable **Compact Sidebar Mode**
 - Configure privacy settings
@@ -207,6 +220,7 @@ sudo ~/dotfiles/install-sddm-theme.sh
 <summary><b>⚙️ Step 5: System Configuration</b></summary>
 
 ### Services
+
 ```bash
 # Audio
 systemctl --user enable pipewire pipewire-pulse wireplumber
@@ -220,6 +234,7 @@ sudo systemctl enable sddm
 ```
 
 ### Configure Display Manager
+
 ```bash
 # Configure SDDM to use Wayland session
 sudo mkdir -p /etc/sddm.conf.d
@@ -260,6 +275,7 @@ stow hyprland
 ```
 
 ### Configure Shell
+
 ```bash
 # Set Fish as default shell
 echo /usr/bin/fish | sudo tee -a /etc/shells
@@ -270,6 +286,7 @@ ls -la ~/.config/oh-my-posh/themes/custom.omp.json
 ```
 
 ### Font Configuration
+
 ```bash
 # Refresh font cache
 fc-cache -fv
@@ -284,12 +301,14 @@ fc-list | grep -i "jetbrains\\|hurmit\\|inconsolata"
 <summary><b>✅ Step 7: Final Configuration</b></summary>
 
 ### Reload Fish Configuration
+
 ```bash
 fish
 source ~/.config/fish/config.fish
 ```
 
 ### Test Applications
+
 ```bash
 # Test fetch tools
 batfetch
@@ -309,6 +328,7 @@ zen-browser &
 ```
 
 ### Launch Hyprland
+
 ```bash
 # If using a display manager, select Hyprland from the session menu
 # Or start Hyprland manually from TTY:
@@ -418,7 +438,7 @@ The setup uses these carefully selected fonts:
 
 ### 🎭 **Oh My Posh Theme**
 
-The custom theme is located at `~/.config/oh-my-posh/themes/custom.omp.json`. 
+The custom theme is located at `~/.config/oh-my-posh/themes/custom.omp.json`.
 Modify this file to customize your shell prompt appearance and behavior.
 
 ### 📊 **Waybar Configuration**
@@ -439,7 +459,7 @@ Waybar modules include:
 ### ⚠️ **Common Issues**
 
 1. **🔗 Stow conflicts**: Use `stow --adopt package-name` to resolve conflicts
-2. **🔤 Font not loading**: Run `fc-cache -fv` and restart applications  
+2. **🔤 Font not loading**: Run `fc-cache -fv` and restart applications
 3. **🔊 Audio issues**: Check PipeWire services with `systemctl --user status pipewire`
 4. **📶 Bluetooth not working**: Ensure bluetoothd service is running
 5. **🌐 Zen Browser CSS not applying**: Ensure `toolkit.legacyUserProfileCustomizations.stylesheets` is set to `true`
@@ -509,7 +529,7 @@ cp ~/zen-nebula/*.css ~/.zen/[profile-name]/chrome/
 > **⚠️ Backup Warning**: Always backup your existing configurations before stowing
 
 - 🔄 Some applications may require a logout/login or restart to fully apply themes
-- 👑 The SDDM theme requires root privileges to install  
+- 👑 The SDDM theme requires root privileges to install
 - 📶 Custom bluetooth scripts are included in the bluetooth directory
 - 🎨 Themes and colors can be customized in individual config files
 - 🌐 Browser CSS changes require browser restart to take effect
@@ -561,7 +581,7 @@ Feel free to fork this repository and submit pull requests for improvements or a
 
 <img src="https://github.com/user-attachments/assets/03ef993e-2fad-4668-a313-2b2a31d6b66e" alt="RAINZ" width="50" style="border-radius: 50%;"/>
 
-**Crafted by RAINZ** • *Making Linux beautiful, one rice at a time*
+**Crafted by RAINZ** • _Making Linux beautiful, one rice at a time_
 
 ⭐ **Star this repo if it helped you!**
 
