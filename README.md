@@ -14,9 +14,6 @@ _A meticulously crafted Arch Linux desktop experience_
 _Elevate your Linux workflow with this carefully curated collection of dotfiles_
 
 </div>
-
-## 🖼️ Preview Gallery
-
 <!-- <div align="center"> -->
 <!---->
 <!-- ### Desktop Showcase -->
