@@ -157,21 +157,31 @@ return {
     },
   },
 
-  -- Better icons (used by telescope, neo-tree, etc.)
+-- Better icons (used by telescope, neo-tree, etc.)
   {
     "nvim-tree/nvim-web-devicons",
     opts = {
       override = {
         zsh = {
-          icon = "", -- terminal icon
+          icon = "",
           color = "#428850",
           cterm_color = "65",
           name = "Zsh",
         },
         fish = {
-          icon = "", -- same terminal icon
+          icon = "",
           color = "#4d5a5e",
           name = "Fish",
+        },
+        bash = {
+          icon = "",
+          color = "#89e051",
+          name = "Bash",
+        },
+        sh = {
+          icon = "",
+          color = "#4d5a5e",
+          name = "Shell",
         },
       },
       color_icons = true,
@@ -179,16 +189,146 @@ return {
       strict = true,
       override_by_filename = {
         [".gitignore"] = {
-          icon = "", -- git icon
+          icon = "",
           color = "#f1502f",
           name = "Gitignore",
+        },
+        [".gitattributes"] = {
+          icon = "",
+          color = "#f1502f",
+          name = "GitAttributes",
+        },
+        ["docker-compose.yml"] = {
+          icon = "󰡨",
+          color = "#0db7ed",
+          name = "DockerCompose",
+        },
+        ["Dockerfile"] = {
+          icon = "󰡨",
+          color = "#0db7ed",
+          name = "Dockerfile",
+        },
+        [".dockerignore"] = {
+          icon = "󰡨",
+          color = "#0db7ed",
+          name = "DockerIgnore",
+        },
+        ["package.json"] = {
+          icon = "",
+          color = "#e8274b",
+          name = "PackageJson",
+        },
+        ["package-lock.json"] = {
+          icon = "",
+          color = "#7a0d21",
+          name = "PackageLockJson",
+        },
+        ["README.md"] = {
+          icon = "",
+          color = "#519aba",
+          name = "Readme",
+        },
+        ["LICENSE"] = {
+          icon = "",
+          color = "#cbcb41",
+          name = "License",
+        },
+        [".env"] = {
+          icon = "",
+          color = "#faf743",
+          name = "Env",
+        },
+        ["go.mod"] = {
+          icon = "",
+          color = "#519aba",
+          name = "GoMod",
+        },
+        ["go.sum"] = {
+          icon = "",
+          color = "#519aba",
+          name = "GoSum",
         },
       },
       override_by_extension = {
         ["log"] = {
-          icon = "", -- log/file icon
+          icon = "󰌱",
           color = "#81e043",
           name = "Log",
+        },
+        ["py"] = {
+          icon = "",
+          color = "#4B8BBE",
+          name = "Python",
+        },
+        ["js"] = {
+          icon = "",
+          color = "#cbcb41",
+          name = "JavaScript",
+        },
+        ["ts"] = {
+          icon = "",
+          color = "#519aba",
+          name = "TypeScript",
+        },
+        ["jsx"] = {
+          icon = "",
+          color = "#20c2e3",
+          name = "JavaScriptReact",
+        },
+        ["tsx"] = {
+          icon = "",
+          color = "#519aba",
+          name = "TypeScriptReact",
+        },
+        ["go"] = {
+          icon = "",
+          color = "#519aba",
+          name = "Go",
+        },
+        ["rs"] = {
+          icon = "",
+          color = "#dea584",
+          name = "Rust",
+        },
+        ["java"] = {
+          icon = "",
+          color = "#cc3e44",
+          name = "Java",
+        },
+        ["md"] = {
+          icon = "",
+          color = "#519aba",
+          name = "Markdown",
+        },
+        ["yaml"] = {
+          icon = "",
+          color = "#6d8086",
+          name = "Yaml",
+        },
+        ["yml"] = {
+          icon = "",
+          color = "#6d8086",
+          name = "Yml",
+        },
+        ["json"] = {
+          icon = "",
+          color = "#cbcb41",
+          name = "Json",
+        },
+        ["toml"] = {
+          icon = "",
+          color = "#6d8086",
+          name = "Toml",
+        },
+        ["lua"] = {
+          icon = "",
+          color = "#51a0cf",
+          name = "Lua",
+        },
+        ["vim"] = {
+          icon = "",
+          color = "#019833",
+          name = "Vim",
         },
       },
     },

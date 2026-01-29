@@ -17,8 +17,8 @@ end
 -- Neo-tree keybindings
 -- <leader><tab> = LEFT sidebar tree (always left)
 -- <leader>e    = Floating tree (always floating)
-map("n", "<leader><tab>", "<cmd>Neotree toggle left reveal=true<cr>", { desc = "Toggle NeoTree (left)" })
-map("n", "<leader>e", "<cmd>Neotree float reveal=true<cr>", { desc = "NeoTree (floating)" })
+map("n", "<leader><tab>", "<cmd>Neotree toggle left<cr>", { desc = "Toggle NeoTree (left)" })
+map("n", "<leader>e", "<cmd>Neotree float<cr>", { desc = "NeoTree (floating)" })
 
 -- Buffer navigation with Tab
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })

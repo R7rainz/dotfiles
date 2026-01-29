@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- On dashboard/landing buffers, map `p` to global project search (home dir)
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "snacks_dashboard", "alpha", "starter", "lazy" },
+  pattern = { "alpha", "starter", "lazy" },
   callback = function(ctx)
     local bufnr = ctx.buf
     -- Defer so dashboard's own keymaps are set first, then we override `p`

@@ -4,19 +4,18 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
   },
-
-  -- Disable mini.indentscope animations/lines
+  -- Disable mini.indentscope animations/lines (correct plugin name)
   {
     "nvim-mini/mini.indentscope",
     enabled = false,
   },
-
-  -- Disable snacks.nvim indent guides and scope
+  -- Configure snacks (enable dashboard, disable indent/scope)
   {
     "folke/snacks.nvim",
     opts = {
       indent = { enabled = false },
       scope = { enabled = false },
+      dashboard = { enabled = true },
     },
   },
 }

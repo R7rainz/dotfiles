@@ -2,17 +2,21 @@ vim.g.mapleader = " "
 
 -- Neovide Configuration
 if vim.g.neovide then
-  -- Use the GUI font from options.lua; do not override here
-  vim.g.guifont = "FantasqueSansM Nerd Font Mono:h15"
+  -- JetBrains Mono font
+  -- vim.o.guifont = "DankMono Nerd Font:h15:b"
+  vim.o.guifont = "Victor Mono:h15"
+
+  -- Enable italic support in Neovide
+  vim.opt.linespace = 0
 
   -- Cursor animations
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
-  vim.g.neovide_cursor_vfx_length = 0.8
-  vim.g.neovide_cursor_vfx_particle_density = 15.0
-  vim.g.neovide_cursor_vfx_opacity = 300.0
-  vim.g.neovide_cursor_vfx_speed = 50.0
-  vim.g.neovide_cursor_animation_length = 0.2
-  vim.g.neovide_cursor_trail_size = 1
+  vim.g.neovide_cursor_vfx_length = 1.2
+  vim.g.neovide_cursor_vfx_particle_density = 25.0
+  vim.g.neovide_cursor_vfx_opacity = 400.0
+  vim.g.neovide_cursor_vfx_speed = 60.0
+  vim.g.neovide_cursor_animation_length = 0.13
+  vim.g.neovide_cursor_trail_size = 0.8
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.neovide_cursor_animate_command_line = true

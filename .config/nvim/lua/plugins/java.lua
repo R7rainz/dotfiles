@@ -10,7 +10,7 @@ return {
       local jdtls = require("jdtls")
       local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
       local root_dir = require("jdtls.setup").find_root(root_markers)
-      
+
       local home = os.getenv("HOME")
       local workspace_dir = home .. "/.local/share/nvim/jdtls-workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
