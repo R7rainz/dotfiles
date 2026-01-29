@@ -1,176 +1,835 @@
-# Mako macOS-Style Configuration
-# Notification appearance - macOS inspired
-font=Dank Mono Nerd Font
-width=380
-height=110
-margin=12
-padding=16,18
-border-size=0
+# ============================================
+# MAKO NOTIFICATION DAEMON - BLUE FIRE THEME
+# ============================================
+
+# --- Font & Sizing ---
+font=Dank Mono Nerd Font 11
+width=420
+height=130
+margin=20
+padding=22
+border-size=3
 border-radius=14
-
-# macOS dark background with subtle transparency
-background-color=#1c1c1eF5
-text-color=#f5f5f7
-border-color=#00000000
-
-# Progress bar styling - macOS blue accent
-progress-color=over #007AFFCC
-
-# Icons - macOS style
-icons=1
-max-icon-size=48
-icon-location=left
-
-# Behavior - macOS timing
-default-timeout=4000
-ignore-timeout=0
-layer=overlay
-
-# Grouped notifications - macOS style stacking
-group-by=app-name
 max-visible=5
+max-icon-size=64
 
-# Typography and formatting
+# --- Layout ---
+icon-location=left
+icons=1
 markup=1
 actions=1
 format=<b>%s</b>\n%b
 text-alignment=left
-
-# Positioning - top right like macOS
 anchor=top-right
+layer=overlay
 
-# Urgency levels - macOS inspired
-[urgency=low]
-background-color=#1c1c1eE6
-text-color=#98989d
-border-color=#00000000
+# --- Default Colors (Blue Fire Theme) ---
+background-color=#0d1117F5
+text-color=#ebdbb2
+border-color=#7daea3
+progress-color=over #83a598DD
 
-[urgency=normal]
-background-color=#1c1c1eF5
-text-color=#f5f5f7
-border-color=#00000000
+# --- Behavior ---
+default-timeout=5000
+ignore-timeout=0
+group-by=app-name
+history=1
+sort=-time
 
-[urgency=critical]
-background-color=#2c1c1cF5
-text-color=#ffffff
-border-color=#ff453a40
+# ============================================
+# BATTERY NOTIFICATIONS
+# ============================================
+
+[summary~="[Bb]attery.*[Cc]ritical"]
+background-color=#1d0a0aF5
+border-color=#ea6962
+text-color=#ebdbb2
+default-timeout=15000
+
+[summary~="[Cc]ritical.*[Bb]attery"]
+background-color=#1d0a0aF5
+border-color=#ea6962
+text-color=#ebdbb2
+default-timeout=15000
+
+[summary~="[Bb]attery.*[Ll]ow"]
+background-color=#1d1410F5
+border-color=#fe8019
+text-color=#ebdbb2
+default-timeout=15000
+
+[summary~="[Ll]ow.*[Bb]attery"]
+background-color=#1d1410F5
+border-color=#fe8019
+text-color=#ebdbb2
+default-timeout=15000
+
+[summary~="[Bb]attery.*[Mm]edium"]
+background-color=#1d1410F5
+border-color=#d8a657
+text-color=#ebdbb2
+default-timeout=8000
+
+[summary~="[Bb]attery.*[Cc]harging"]
+background-color=#0f1d0fF5
+border-color=#a9b665
+text-color=#ebdbb2
+default-timeout=3000
+
+[summary~="[Cc]harging"]
+background-color=#0f1d0fF5
+border-color=#a9b665
+text-color=#ebdbb2
+default-timeout=3000
+
+[summary~="[Bb]attery.*[Ff]ull"]
+background-color=#0f1d0fF5
+border-color=#b8bb26
+text-color=#ebdbb2
+default-timeout=5000
+
+[summary~="[Ff]ully.*[Cc]harged"]
+background-color=#0f1d0fF5
+border-color=#b8bb26
+text-color=#ebdbb2
+default-timeout=5000
+
+[summary~="[Dd]ischarging"]
+background-color=#0d1117F5
+border-color=#7daea3
+text-color=#ebdbb2
+default-timeout=3000
+
+[summary~="[Pp]lugged"]
+background-color=#0d1117F5
+border-color=#7daea3
+default-timeout=2000
+
+[summary~="[Uu]nplugged"]
+background-color=#1d1410F5
+border-color=#d8a657
+default-timeout=2000
+
+# ============================================
+# VOLUME & BRIGHTNESS
+# ============================================
+
+[app-name="[Vv]olume"]
+border-color=#d3869b
+background-color=#1d0f1dF5
+default-timeout=1500
+format=<b>%s</b>\n%b
+
+[summary~="[Vv]olume"]
+border-color=#d3869b
+background-color=#1d0f1dF5
+default-timeout=1500
+
+[app-name="[Bb]rightness"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=1500
+format=<b>%s</b>\n%b
+
+[summary~="[Bb]rightness"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=1500
+
+# ============================================
+# NETWORK & CONNECTIVITY
+# ============================================
+
+[app-name="NetworkManager"]
+border-color=#7daea3
+default-timeout=4000
+
+[app-name="Network"]
+border-color=#7daea3
+default-timeout=4000
+
+[summary~="[Ww]i-?[Ff]i.*[Cc]onnected"]
+background-color=#0f1d0fF5
+border-color=#a9b665
+default-timeout=3000
+
+[summary~="[Ww]i-?[Ff]i.*[Dd]isconnected"]
+background-color=#1d0a0aF5
+border-color=#ea6962
+default-timeout=5000
+
+[summary~="[Nn]etwork.*[Cc]onnected"]
+background-color=#0f1d0fF5
+border-color=#a9b665
+default-timeout=3000
+
+[summary~="[Nn]etwork.*[Dd]isconnected"]
+background-color=#1d0a0aF5
+border-color=#ea6962
+default-timeout=5000
+
+[app-name="Bluetooth"]
+border-color=#83a598
+default-timeout=4000
+
+[summary~="[Bb]luetooth.*[Cc]onnected"]
+background-color=#0f1a1dF5
+border-color=#83a598
+default-timeout=3000
+
+[summary~="[Bb]luetooth.*[Dd]isconnected"]
+background-color=#1d1410F5
+border-color=#d8a657
+default-timeout=3000
+
+[summary~="VPN"]
+border-color=#d3869b
+default-timeout=5000
+
+[summary~="VPN.*[Cc]onnected"]
+background-color=#1d0f1dF5
+border-color=#d3869b
+default-timeout=3000
+
+[summary~="VPN.*[Dd]isconnected"]
+background-color=#1d0a0aF5
+border-color=#ea6962
+default-timeout=5000
+
+# ============================================
+# SYSTEM UPDATES & SECURITY
+# ============================================
+
+[summary~="[Uu]pdate"]
+border-color=#d8a657
+background-color=#1d1410F5
+default-timeout=10000
+
+[summary~="[Uu]pgrade"]
+border-color=#d8a657
+background-color=#1d1410F5
+default-timeout=10000
+
+[summary~="[Ss]ecurity"]
+background-color=#1d0a0aF5
+border-color=#ea6962
 default-timeout=0
 
-# System notifications - macOS style
-[app-name="Volume"]
-background-color=#1c1c1eF5
-border-color=#00000000
-text-color=#f5f5f7
+[summary~="[Ww]arning"]
+background-color=#1d1410F5
+border-color=#fe8019
+default-timeout=8000
 
-[app-name="Brightness"]
-background-color=#1c1c1eF5
-border-color=#ffcc0030
-text-color=#f5f5f7
-
-[app-name="Battery"]
-background-color=#1c1c1eF5
-border-color=#30d15830
-text-color=#f5f5f7
-
-[app-name="battery" app-name="Battery"]
-background-color=#1c1c1eF5
-text-color=#f5f5f7
-
-[summary~="Battery Low" urgency=critical]
-background-color=#2c1c1cF5
-border-color=#ff453a50
-text-color=#ffffff
+[summary~="[Rr]eboot.*[Rr]equired"]
+background-color=#1d1410F5
+border-color=#fe8019
 default-timeout=0
 
-[summary~="Battery Critical" urgency=critical]
-background-color=#2c1c1cF5
-border-color=#ff453a80
-text-color=#ffffff
-default-timeout=0
+[summary~="[Ss]ystem.*[Ee]rror"]
+background-color=#1d0a0aF5
+border-color=#ea6962
+default-timeout=10000
 
-# Bluetooth notifications
-[app-name="Bluetooth" app-name="bluetooth"]
-background-color=#1c1c1eF5
-border-color=#007AFF30
-text-color=#f5f5f7
+# ============================================
+# DEVELOPMENT & TERMINAL
+# ============================================
 
-[summary~="Connected"]
-background-color=#1c1c1eF5
-border-color=#30d15830
-text-color=#f5f5f7
+[app-name="kitty"]
+group-by=app-name
+border-color=#7daea3
 
-[summary~="Disconnected"]
-background-color=#1c1c1eF5
-border-color=#ff9f0a30
-text-color=#f5f5f7
+[app-name="wezterm"]
+group-by=app-name
+border-color=#7daea3
 
-# Network notifications
-[app-name="Network" app-name="NetworkManager"]
-background-color=#1c1c1eF5
-border-color=#007AFF30
-text-color=#f5f5f7
+[app-name="alacritty"]
+group-by=app-name
+border-color=#7daea3
 
-# Terminal notifications (wezterm)
-[app-name="wezterm" app-name="WezTerm"]
-background-color=#1c1c1eF5
-border-color=#64d2ff30
-text-color=#f5f5f7
+[app-name="foot"]
+group-by=app-name
+border-color=#7daea3
 
-[app-name="wezterm" summary~="Command finished"]
-background-color=#1c1c1eF5
-border-color=#30d15830
-text-color=#f5f5f7
+[summary~="[Bb]uild.*[Ss]uccess"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=4000
 
-[app-name="wezterm" summary~="Command failed"]
-background-color=#2c1c1cF5
-border-color=#ff453a50
-text-color=#ffffff
+[summary~="[Bb]uild.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=10000
 
-# Music/Media apps - macOS style
+[summary~="[Bb]uild.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=4000
+
+[summary~="[Cc]ompil"]
+border-color=#7daea3
+default-timeout=5000
+
+[summary~="[Gg]it"]
+border-color=#89b482
+default-timeout=4000
+
+[summary~="[Tt]est.*[Pp]assed"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Tt]est.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=8000
+
+[summary~="[Ff]inished"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Cc]ompleted"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Ss]uccess"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=8000
+
+[summary~="[Ee]rror"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=8000
+
+# ============================================
+# SCREENSHOTS & SCREEN RECORDING
+# ============================================
+
+[summary~="[Ss]creenshot"]
+border-color=#89b482
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Ss]creen.*[Cc]apture"]
+border-color=#89b482
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Rr]ecording.*[Ss]tarted"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=3000
+
+[summary~="[Rr]ecording.*[Ss]topped"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[app-name="flameshot"]
+border-color=#89b482
+default-timeout=3000
+
+[app-name="grimblast"]
+border-color=#89b482
+default-timeout=3000
+
+[app-name="grim"]
+border-color=#89b482
+default-timeout=3000
+
+# ============================================
+# MEDIA & MUSIC
+# ============================================
+
 [app-name="Spotify"]
-background-color=#1c1c1eF5
-border-color=#1db95430
-text-color=#f5f5f7
+border-color=#a9b665
+default-timeout=4000
+group-by=app-name
 
-[app-name="Music" app-name="music"]
-background-color=#1c1c1eF5
-border-color=#ff375f30
-text-color=#f5f5f7
+[app-name="spotify"]
+border-color=#a9b665
+default-timeout=4000
+group-by=app-name
 
-# Communication apps
+[app-name="Music"]
+border-color=#d3869b
+default-timeout=4000
+group-by=app-name
+
+[app-name="mpd"]
+border-color=#d3869b
+default-timeout=4000
+group-by=app-name
+
+[app-name="mpv"]
+border-color=#d3869b
+default-timeout=4000
+group-by=app-name
+
+[app-name="vlc"]
+border-color=#d3869b
+default-timeout=4000
+group-by=app-name
+
+[summary~="[Nn]ow [Pp]laying"]
+border-color=#d3869b
+background-color=#1d0f1dF5
+default-timeout=4000
+
+[summary~="[Pp]laying"]
+border-color=#d3869b
+background-color=#1d0f1dF5
+default-timeout=4000
+
+[summary~="[Pp]aused"]
+border-color=#d8a657
+default-timeout=2000
+
+# ============================================
+# COMMUNICATION APPS
+# ============================================
+
 [app-name="Discord"]
-background-color=#1c1c1eF5
-border-color=#5865f230
-text-color=#f5f5f7
+group-by=app-name
+border-color=#83a598
+default-timeout=6000
+
+[app-name="discord"]
+group-by=app-name
+border-color=#83a598
+default-timeout=6000
 
 [app-name="Slack"]
-background-color=#1c1c1eF5
-border-color=#4a154b30
-text-color=#f5f5f7
+group-by=app-name
+border-color=#d3869b
+default-timeout=6000
 
-# Screenshot notifications
-[app-name="Screenshot" app-name="screenshot"]
-background-color=#1c1c1eF5
-border-color=#007AFF30
-text-color=#f5f5f7
+[app-name="slack"]
+group-by=app-name
+border-color=#d3869b
+default-timeout=6000
 
-# System updates
-[summary~="Update" app-name="System"]
-background-color=#1c1c1eF5
-border-color=#007AFF30
-text-color=#f5f5f7
+[app-name="Telegram"]
+group-by=app-name
+border-color=#7daea3
+default-timeout=6000
 
-# Calendar/Time notifications
-[app-name="Calendar" app-name="calendar"]
-background-color=#1c1c1eF5
-border-color=#ff453a30
-text-color=#f5f5f7
+[app-name="telegram"]
+group-by=app-name
+border-color=#7daea3
+default-timeout=6000
 
-# Do Not Disturb style (if needed)
+[app-name="Signal"]
+group-by=app-name
+border-color=#83a598
+default-timeout=6000
+
+[app-name="signal"]
+group-by=app-name
+border-color=#83a598
+default-timeout=6000
+
+[app-name="WhatsApp"]
+group-by=app-name
+border-color=#a9b665
+default-timeout=6000
+
+[app-name="whatsapp"]
+group-by=app-name
+border-color=#a9b665
+default-timeout=6000
+
+[app-name="Teams"]
+group-by=app-name
+border-color=#83a598
+default-timeout=6000
+
+[app-name="Zoom"]
+group-by=app-name
+border-color=#83a598
+default-timeout=6000
+
+[summary~="[Mm]essage"]
+border-color=#7daea3
+default-timeout=6000
+
+[summary~="[Mm]ention"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=8000
+
+# ============================================
+# EMAIL
+# ============================================
+
+[app-name="Thunderbird"]
+border-color=#7daea3
+default-timeout=8000
+
+[app-name="thunderbird"]
+border-color=#7daea3
+default-timeout=8000
+
+[app-name="Mail"]
+border-color=#7daea3
+default-timeout=8000
+
+[app-name="Evolution"]
+border-color=#7daea3
+default-timeout=8000
+
+[summary~="[Nn]ew [Ee]mail"]
+border-color=#7daea3
+default-timeout=8000
+
+[summary~="[Nn]ew [Mm]ail"]
+border-color=#7daea3
+default-timeout=8000
+
+# ============================================
+# CALENDAR & REMINDERS
+# ============================================
+
+[app-name="Calendar"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=0
+
+[app-name="Reminder"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=0
+
+[summary~="[Mm]eeting"]
+background-color=#1d1410F5
+border-color=#fe8019
+default-timeout=0
+
+[summary~="[Ee]vent"]
+background-color=#1d0f1dF5
+border-color=#d3869b
+default-timeout=0
+
+[summary~="[Rr]eminder"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=0
+
+[summary~="[Aa]ppointment"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=0
+
+# ============================================
+# FILE OPERATIONS & DOWNLOADS
+# ============================================
+
+[summary~="[Dd]ownload.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=4000
+
+[summary~="[Dd]ownload.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=6000
+
+[summary~="[Dd]ownload.*[Ss]tarted"]
+border-color=#7daea3
+default-timeout=2000
+
+[summary~="[Uu]pload.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=4000
+
+[summary~="[Uu]pload.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=6000
+
+[summary~="[Ff]ile.*[Ss]aved"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=2000
+
+[summary~="[Tt]ransfer.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[app-name="Transmission"]
+border-color=#a9b665
+default-timeout=4000
+
+[app-name="qBittorrent"]
+border-color=#a9b665
+default-timeout=4000
+
+# ============================================
+# DISK & STORAGE
+# ============================================
+
+[summary~="[Dd]isk.*[Ss]pace"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=10000
+
+[summary~="[Dd]isk.*[Ff]ull"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=0
+
+[summary~="[Ll]ow.*[Ss]pace"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=10000
+
+[summary~="[Mm]ounted"]
+border-color=#a9b665
+default-timeout=3000
+
+[summary~="[Uu]nmounted"]
+border-color=#7daea3
+default-timeout=3000
+
+[summary~="[Ee]jected"]
+border-color=#7daea3
+default-timeout=2000
+
+# ============================================
+# PACKAGE MANAGERS
+# ============================================
+
+[summary~="[Pp]acman"]
+border-color=#d8a657
+default-timeout=5000
+
+[summary~="[Yy]ay"]
+border-color=#d8a657
+default-timeout=5000
+
+[summary~="[Pp]aru"]
+border-color=#d8a657
+default-timeout=5000
+
+[summary~="[Aa]pt"]
+border-color=#d8a657
+default-timeout=5000
+
+[summary~="[Dd]nf"]
+border-color=#d8a657
+default-timeout=5000
+
+[summary~="[Pp]ackage"]
+border-color=#d8a657
+default-timeout=5000
+
+[summary~="[Ii]nstall.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=4000
+
+[summary~="[Ii]nstall.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=8000
+
+# ============================================
+# CLIPBOARD
+# ============================================
+
+[summary~="[Cc]lipboard"]
+border-color=#89b482
+background-color=#0f1d0fF5
+default-timeout=2000
+
+[summary~="[Cc]opied"]
+border-color=#89b482
+background-color=#0f1d0fF5
+default-timeout=1500
+
+[app-name="clipboard"]
+border-color=#89b482
+default-timeout=2000
+
+[app-name="clipman"]
+border-color=#89b482
+default-timeout=2000
+
+# ============================================
+# AUTHENTICATION & SECURITY
+# ============================================
+
+[summary~="[Aa]uthentication"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=8000
+
+[summary~="[Ll]ogin"]
+border-color=#7daea3
+default-timeout=4000
+
+[summary~="[Ll]ogout"]
+border-color=#d8a657
+default-timeout=3000
+
+[summary~="[Ss]udo"]
+border-color=#fe8019
+default-timeout=5000
+
+[summary~="[Pp]assword"]
+border-color=#fe8019
+background-color=#1d1410F5
+default-timeout=6000
+
+[summary~="[Ll]ocked"]
+border-color=#ea6962
+default-timeout=3000
+
+[summary~="[Uu]nlocked"]
+border-color=#a9b665
+default-timeout=2000
+
+# ============================================
+# PRINTER & SCANNER
+# ============================================
+
+[app-name="cups"]
+border-color=#7daea3
+default-timeout=5000
+
+[summary~="[Pp]rint"]
+border-color=#7daea3
+default-timeout=4000
+
+[summary~="[Ss]can"]
+border-color=#89b482
+default-timeout=4000
+
+[summary~="[Pp]rint.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=3000
+
+[summary~="[Pp]rint.*[Ee]rror"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=8000
+
+# ============================================
+# BACKUP & SYNC
+# ============================================
+
+[summary~="[Bb]ackup"]
+border-color=#7daea3
+default-timeout=5000
+
+[summary~="[Bb]ackup.*[Cc]omplete"]
+border-color=#a9b665
+background-color=#0f1d0fF5
+default-timeout=4000
+
+[summary~="[Bb]ackup.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=10000
+
+[summary~="[Ss]ync"]
+border-color=#7daea3
+default-timeout=4000
+
+[summary~="[Ss]ync.*[Cc]omplete"]
+border-color=#a9b665
+default-timeout=3000
+
+[summary~="[Ss]ync.*[Ff]ailed"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=8000
+
+# ============================================
+# POWER MANAGEMENT
+# ============================================
+
+[summary~="[Ss]uspend"]
+border-color=#d8a657
+default-timeout=3000
+
+[summary~="[Hh]ibernate"]
+border-color=#d8a657
+default-timeout=3000
+
+[summary~="[Ss]hutdown"]
+border-color=#ea6962
+default-timeout=5000
+
+[summary~="[Rr]estart"]
+border-color=#fe8019
+default-timeout=5000
+
+[summary~="[Ll]idstatus"]
+border-color=#7daea3
+default-timeout=2000
+
+# ============================================
+# WEATHER
+# ============================================
+
+[summary~="[Ww]eather"]
+border-color=#7daea3
+default-timeout=6000
+
+[summary~="[Tt]emperature"]
+border-color=#7daea3
+default-timeout=4000
+
+[summary~="[Rr]ain"]
+border-color=#83a598
+default-timeout=5000
+
+[summary~="[Ss]torm"]
+border-color=#ea6962
+background-color=#1d0a0aF5
+default-timeout=0
+
+# ============================================
+# DO NOT DISTURB MODE
+# ============================================
+
 [mode=dnd]
 invisible=1
 
-# Focus mode - reduced visibility
+[mode=dnd summary~="[Cc]ritical"]
+invisible=0
+background-color=#1d0a0aF5
+border-color=#ea6962
+
+[mode=dnd summary~="[Bb]attery.*[Cc]ritical"]
+invisible=0
+background-color=#1d0a0aF5
+border-color=#ea6962
+
+# ============================================
+# FOCUS MODE
+# ============================================
+
 [mode=focus]
-background-color=#1c1c1eCC
-text-color=#98989d
+invisible=1
+
+[mode=focus summary~="[Cc]ritical"]
+invisible=0
+background-color=#0d1117DD
+text-color=#ebdbb2
+
+[mode=focus summary~="[Bb]attery.*[Cc]ritical"]
+invisible=0
+background-color=#1d0a0aF5
+border-color=#ea6962
