@@ -17,6 +17,9 @@ set -gx QT_QPA_PLATFORM wayland
 # Cursor size
 set -Ux XCURSOR_SIZE 16
 
+# Terminal color support
+set -gx TERM xterm-256color
+
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
@@ -42,18 +45,18 @@ set fish_cursor_default beam
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    
+
     # Initialize Homebrew (if installed)
     if test -f /home/linuxbrew/.linuxbrew/bin/brew
         eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     end
-    
+
     # Initialize Starship prompt
     starship init fish | source
-    
+
     # Initialize zoxide (don't let it override cd - we handle that below)
     zoxide init --cmd j fish | source
-    
+
     # Display system info on startup
     kotofetch --border false
 end
@@ -63,16 +66,21 @@ end
 # ============================================================================
 
 # File listing (eza)
-alias ll='eza --icons --group-directories-first'
+alias ll='eza --icons --group-directories-first -l'
 
 # File finder
 alias f='ff'
 alias finder='ff'
 
+# Directory finder
+alias d='fd'
+alias dir='fd'
+alias folder='fd'
+
 # Zoxide
-alias z='cd'                        # Make z behave like our enhanced cd
-alias jump='zi'                     # Interactive jump
-alias zls='zoxide query -l'        # List all directories in zoxide
+alias z='cd' # Make z behave like our enhanced cd
+alias jump='zi' # Interactive jump
+alias zls='zoxide query -l' # List all directories in zoxide
 
 # Applications
 alias cursor="$HOME/Downloads/Cursor-1.5.11-x86_64.AppImage"
@@ -94,12 +102,57 @@ end
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
-    
+
     if set cwd (command cat -- "$tmp"); and test -n "$cwd"; and test "$cwd" != "$PWD"
         builtin cd -- "$cwd"
     end
-    
+
     rm -f -- "$tmp"
+end
+
+# ----------------------------------------------------------------------------
+# Fuzzy Directory Finder (FZF - Directories Only)
+# ----------------------------------------------------------------------------
+function fd
+    # If no argument, show interactive picker from home
+    # If argument provided, use it as search query
+    set query ""
+    if test (count $argv) -gt 0
+        set query "$argv"
+    end
+
+    # Search directories from home, excluding common noise directories
+    set selected (find ~ -type d \
+        -not -path '*/\.*' \
+        -not -path '*/node_modules/*' \
+        -not -path '*/\.git/*' \
+        -not -path '*/\.cache/*' \
+        -not -path '*/\.local/share/*' \
+        -not -path '*/\.local/state/*' \
+        -not -path '*/\.npm/*' \
+        -not -path '*/\.cargo/*' \
+        2>/dev/null | \
+        fzf --height=40% \
+            --layout=reverse \
+            --border \
+            --query="$query" \
+            --preview='eza --icons --group-directories-first --color=always -la {}' \
+            --preview-window=right:50%:wrap \
+            --header="Search directories (type to filter)" \
+            --bind="tab:toggle-preview")
+
+    # Exit if nothing selected
+    if test -z "$selected"
+        return 0
+    end
+
+    # Navigate to selected directory
+    if test -d "$selected"
+        cd "$selected" && pwd
+    else
+        echo "Error: Selected item is not a directory"
+        return 1
+    end
 end
 
 # ----------------------------------------------------------------------------
@@ -107,7 +160,7 @@ end
 # ----------------------------------------------------------------------------
 function ff
     set search_dir (test -n "$argv[1]"; and echo "$argv[1]"; or echo ".")
-    
+
     # File extensions that should open in Neovim
     set code_extensions \
         txt md markdown rst \
@@ -122,7 +175,7 @@ function ff
         dockerfile makefile log csv tsv \
         proto graphql svelte vue dart nim zig \
         crystal jl
-    
+
     # Use fzf to select file/directory
     set selected (find $search_dir -type f -o -type d 2>/dev/null | \
         fzf --height=40% \
@@ -132,42 +185,42 @@ function ff
             --preview-window=right:50%:wrap \
             --header="Enter: open, Tab: toggle preview" \
             --bind="tab:toggle-preview")
-    
+
     # Exit if nothing selected
     if test -z "$selected"
         return 0
     end
-    
+
     # Handle the selection
     if test -d "$selected"
         # It's a directory - navigate to it
         cd "$selected" && pwd
-        
+
     else if test -f "$selected"
         # It's a file - check if it should open in Neovim
         set ext (string split -r -m1 . "$selected")[2]
         set basename_file (basename "$selected")
-        
+
         # Check if extension is in code_extensions or it's a common text file without extension
         if contains (string lower "$ext") $code_extensions
             nvim "$selected"
-            
+
         else if test -z "$ext"
             # Check for common files without extension
             if echo "Makefile Dockerfile Rakefile Gemfile Procfile LICENSE README CHANGELOG TODO INSTALL" | grep -q "$basename_file"
                 nvim "$selected"
-            # Check if it's a text file
+                # Check if it's a text file
             else if file "$selected" 2>/dev/null | grep -q text
                 nvim "$selected"
             else
                 xdg-open "$selected" 2>/dev/null &
             end
-            
+
         else
             # Use xdg-open for other files (images, PDFs, etc.)
             xdg-open "$selected" 2>/dev/null &
         end
-        
+
     else
         echo "Error: Selected item doesn't exist or is not a regular file/directory"
         return 1
@@ -179,48 +232,48 @@ end
 # ----------------------------------------------------------------------------
 function cd
     set argc (count $argv)
-    
+
     # Handle no arguments - go to home
     if test $argc -eq 0
         builtin cd ~
         zoxide add (pwd)
         return
     end
-    
+
     # Handle special cases
     switch $argv[1]
         case - "~" "." ".."
             builtin cd $argv
             and zoxide add (pwd)
             return
-            
+
         case "/*"
             # Absolute path - use normal cd
             builtin cd $argv
             and zoxide add (pwd)
             return
     end
-    
+
     # Check if it's a relative path that exists
     if test -d "$argv[1]"
         builtin cd $argv
         and zoxide add (pwd)
         return
     end
-    
+
     # Not a valid directory - try zoxide
     set matches (zoxide query -l -- $argv 2>/dev/null)
-    
+
     if test (count $matches) -eq 0
         # No zoxide matches - try normal cd (will show error if invalid)
         builtin cd $argv
         and zoxide add (pwd)
-        
+
     else if test (count $matches) -eq 1
         # Single match - go there
         builtin cd "$matches[1]"
         and zoxide add (pwd)
-        
+
     else
         # Multiple matches - show picker
         echo "Multiple directories found:"
@@ -231,7 +284,7 @@ function cd
             --header="Multiple matches for '$argv' - select one:" \
             --preview='ls -la {}' \
             --preview-window=right:50%:wrap)
-        
+
         if test -n "$selected"
             builtin cd "$selected"
             and zoxide add (pwd)
@@ -256,7 +309,7 @@ function zi
         --preview='ls -la {}' \
         --preview-window=right:50%:wrap \
         --query="$argv")
-    
+
     if test -n "$selected"
         cd "$selected"
     end
@@ -274,27 +327,27 @@ function zr
         # Remove current directory
         zoxide remove (pwd)
         echo "Removed (pwd) from zoxide database"
-        
+
     else
         # Remove specified directory
         set matches (zoxide query -l -- $argv)
-        
+
         if test (count $matches) -eq 1
             zoxide remove "$matches[1]"
             echo "Removed $matches[1] from zoxide database"
-            
+
         else if test (count $matches) -gt 1
             set selected (printf '%s\n' $matches | fzf \
                 --height=40% \
                 --layout=reverse \
                 --border \
                 --header="Select directory to remove:")
-            
+
             if test -n "$selected"
                 zoxide remove "$selected"
                 echo "Removed $selected from zoxide database"
             end
-            
+
         else
             echo "zoxide: no match found"
         end
@@ -313,7 +366,7 @@ function ze
         --bind="ctrl-d:execute(zoxide remove {2})+reload(zoxide query -l -s)" \
         --with-nth=2.. \
         --delimiter=' ' | read -l selected_line
-    
+
     if test -n "$selected_line"
         set path (echo "$selected_line" | awk '{print $2}')
         cd "$path"
@@ -328,15 +381,15 @@ end
 # Force zoxide search (even if local directory exists)
 function zcd
     set matches (zoxide query -l -- $argv 2>/dev/null)
-    
+
     if test (count $matches) -eq 0
         echo "No matches found in zoxide database"
         return 1
-        
+
     else if test (count $matches) -eq 1
         builtin cd "$matches[1]"
         and zoxide add (pwd)
-        
+
     else
         set selected (printf '%s\n' $matches | fzf \
             --height=40% \
@@ -345,7 +398,7 @@ function zcd
             --header="Zoxide matches for '$argv':" \
             --preview='ls -la {}' \
             --preview-window=right:50%:wrap)
-        
+
         if test -n "$selected"
             builtin cd "$selected"
             and zoxide add (pwd)
@@ -357,9 +410,17 @@ end
 # KEY BINDINGS
 # ============================================================================
 
-# Bind Ctrl+T to fuzzy file finder
+# Bind Ctrl+F to fuzzy file finder
 bind \cf 'ff; commandline -f repaint'
+
+# Bind Ctrl+D to fuzzy directory finder (Note: may conflict with EOF)
+# Alternative: use Ctrl+G or another key if Ctrl+D conflicts
+bind \cg 'fd; commandline -f repaint'
 
 # ============================================================================
 # END OF CONFIGURATION
 # ============================================================================
+set -gx PATH $PATH /home/rainz/go/bin /home/rainz/.cargo/bin
+
+# opencode
+fish_add_path /home/rainz/.opencode/bin
