@@ -2,8 +2,8 @@
 
 # Flavor
 [flavor]
-dark  = ""
-light = ""
+dark  = "noctalia"
+light = "noctalia"
 
 # Manager
 [mgr]
