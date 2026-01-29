@@ -3,14 +3,10 @@ local config = wezterm.config_builder()
 
 -- 🎨 FONT CONFIGURATION - Multiple Fallbacks
 config.font = wezterm.font_with_fallback({
-	{ family = "DankMono Nerd Font", weight = "Regular" },
-	{ family = "JetBrains Mono Nerd Font", weight = "Regular" },
-	{ family = "Cascadia Code NF", weight = "Regular" },
-	{ family = "Hurmit Nerd Font", weight = "Regular" },
-	{ family = "Droid Sans Mono Nerd Font", weight = "Regular" },
-	"Noto Sans CJK JP", -- Add Japanese support (install with the lighter method I mentioned)
+	-- { family = "FanTasqueSansM Nerd Font Mono" },
+	{ family = "Victor Mono", weight = "Regular" },
 })
-config.font_size = 12.0
+config.font_size = 12.5
 config.line_height = 1.2
 config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
 
@@ -18,13 +14,81 @@ config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
 config.font_rules = {
 	{
 		intensity = "Bold",
-		font = wezterm.font("DankMono Nerd Font", { weight = "Bold" }),
+		font = wezterm.font("Victor Mono", { weight = "Bold" }),
 	},
 	{
 		italic = true,
-		font = wezterm.font("DankMono Nerd Font", { weight = "Regular", style = "Italic" }),
+		font = wezterm.font("Victor Mono", { weight = "Regular", style = "Italic" }),
 	},
 }
+
+local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+bar.apply_to_config(config, {
+	position = "bottom",
+	max_width = 32,
+	padding = {
+		left = 1,
+		right = 1,
+		tabs = {
+			left = 0,
+			right = 2,
+		},
+	},
+	separator = {
+		space = 1,
+		left_icon = wezterm.nerdfonts.fa_long_arrow_right,
+		right_icon = wezterm.nerdfonts.fa_long_arrow_left,
+		field_icon = wezterm.nerdfonts.indent_line,
+	},
+	modules = {
+		tabs = {
+			active_tab_fg = 4,
+			inactive_tab_fg = 6,
+			new_tab_fg = 2,
+		},
+		workspace = {
+			enabled = true,
+			icon = wezterm.nerdfonts.cod_window,
+			color = 8,
+		},
+		leader = {
+			enabled = true,
+			icon = wezterm.nerdfonts.oct_rocket,
+			color = 2,
+		},
+		zoom = {
+			enabled = false,
+			icon = wezterm.nerdfonts.md_fullscreen,
+			color = 4,
+		},
+		pane = {
+			enabled = true,
+			icon = wezterm.nerdfonts.cod_multiple_windows,
+			color = 7,
+		},
+		username = {
+			enabled = true,
+			icon = wezterm.nerdfonts.fa_user,
+			color = 6,
+		},
+		hostname = {
+			enabled = true,
+			icon = wezterm.nerdfonts.cod_server,
+			color = 8,
+		},
+		clock = {
+			enabled = true,
+			icon = wezterm.nerdfonts.md_calendar_clock,
+			format = "%H:%M",
+			color = 5,
+		},
+		cwd = {
+			enabled = true,
+			icon = wezterm.nerdfonts.oct_file_directory,
+			color = 7,
+		},
+	},
+})
 
 -- 🚀 PERFORMANCE
 config.max_fps = 120
@@ -40,99 +104,99 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.8
 config.text_background_opacity = 1.0
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 
--- 🎯 CURSOR CONFIGURATION - Kitty-like
-config.default_cursor_style = "SteadyUnderline"
-config.cursor_thickness = 2.0
+config.default_cursor_style = "BlinkingBlock"
+config.cursor_thickness = 1.0
 config.animation_fps = 60
-config.cursor_blink_rate = 800
+config.cursor_blink_rate = 700
 config.cursor_blink_ease_in = "EaseIn"
 config.cursor_blink_ease_out = "EaseOut"
 
+-- 🎨 NOCTALIA COLOR SCHEME
 config.colors = {
 	-- The default text color
-	foreground = "#f0f0f0",
+	foreground = "#dfe3e7",
 	-- The default background color
-	background = "#0a0a0a",
+	background = "#101417",
 
 	-- Overrides the cursor color
-	cursor_bg = "#ff6b6b",
-	cursor_fg = "#0a0a0a",
-	cursor_border = "#ff6b6b",
+	cursor_bg = "#dfe3e7",
+	cursor_fg = "#101417",
+	cursor_border = "#dfe3e7",
 
 	-- Overrides the selection colors
-	selection_fg = "#ffffff",
-	selection_bg = "#404040",
+	selection_fg = "#c1c7ce",
+	selection_bg = "#41484d",
 
 	-- The color of the scrollbar "thumb"; the portion that represents the current viewport
-	scrollbar_thumb = "#666666",
+	scrollbar_thumb = "#8b9198",
 
 	-- The color of the split lines between panes
-	split = "#333333",
+	split = "#41484d",
 
 	ansi = {
-		"#1a1a1a", -- black (darker for contrast)
-		"#ff4757", -- red (vibrant red)
-		"#2ed573", -- green (mid vibrant green)
-		"#FFD700", -- gold
-		"#ff6348", -- blue replacement (coral-red)
-		"#ff3838", -- magenta (bright red-pink)
-		"#00d2d3", -- cyan (vibrant cyan - you mentioned cyan alone is fine)
-		"#f1f2f6", -- white (soft white)
+		"#101417", -- black
+		"#ffb4ab", -- red
+		"#ccc1e9", -- green
+		"#b6c9d8", -- yellow
+		"#92cef5", -- blue
+		"#ccc1e9", -- magenta
+		"#b6c9d8", -- cyan
+		"#dfe3e7", -- white
 	},
 
 	brights = {
-		"#2f3542", -- bright black (gray)
-		"#ff6b7a", -- bright red
-		"#7bed9f", -- bright green
-		"#FFD700", -- bright yellow
-		"#ff7675", -- bright blue replacement (salmon)
-		"#fd79a8", -- bright magenta (pink)
-		"#74b9ff", -- bright cyan (keeping this vibrant)
-		"#ffffff", -- bright white (pure white)
+		"#8b9198", -- bright black
+		"#ffb4ab", -- bright red
+		"#ccc1e9", -- bright green
+		"#b6c9d8", -- bright yellow
+		"#92cef5", -- bright blue
+		"#ccc1e9", -- bright magenta
+		"#b6c9d8", -- bright cyan
+		"#dfe3e7", -- bright white
 	},
 
 	-- Colors for copy_mode and quick_select
-	copy_mode_active_highlight_bg = { Color = "#ff6b6b" },
-	copy_mode_active_highlight_fg = { Color = "#0a0a0a" },
-	copy_mode_inactive_highlight_bg = { Color = "#404040" },
-	copy_mode_inactive_highlight_fg = { Color = "#f0f0f0" },
+	copy_mode_active_highlight_bg = { Color = "#92cef5" },
+	copy_mode_active_highlight_fg = { Color = "#101417" },
+	copy_mode_inactive_highlight_bg = { Color = "#41484d" },
+	copy_mode_inactive_highlight_fg = { Color = "#dfe3e7" },
 
-	quick_select_label_bg = { Color = "#ffa502" },
-	quick_select_label_fg = { Color = "#0a0a0a" },
-	quick_select_match_bg = { Color = "#ff4757" },
-	quick_select_match_fg = { Color = "#ffffff" },
+	quick_select_label_bg = { Color = "#b6c9d8" },
+	quick_select_label_fg = { Color = "#101417" },
+	quick_select_match_bg = { Color = "#ffb4ab" },
+	quick_select_match_fg = { Color = "#101417" },
 
 	-- Visual bell
-	visual_bell = "#ff6b6b",
+	visual_bell = "#92cef5",
 
 	tab_bar = {
-		background = "#0f0f23", -- Deep dark blue/purple
+		background = "#101417",
 		active_tab = {
-			bg_color = "#6c5ce7", -- Purple accent
-			fg_color = "#ffffff",
+			bg_color = "#92cef5",
+			fg_color = "#101417",
 			intensity = "Bold",
 		},
 		inactive_tab = {
-			bg_color = "#2d3748", -- Dark gray-blue
-			fg_color = "#a0aec0", -- Light gray
+			bg_color = "#41484d",
+			fg_color = "#8b9198",
 		},
 		inactive_tab_hover = {
-			bg_color = "#4a5568", -- Lighter gray-blue
-			fg_color = "#e2e8f0", -- Almost white
+			bg_color = "#ccc1e9",
+			fg_color = "#101417",
 		},
 		new_tab = {
-			bg_color = "#2d3748",
-			fg_color = "#a0aec0",
+			bg_color = "#41484d",
+			fg_color = "#8b9198",
 		},
 		new_tab_hover = {
-			bg_color = "#6c5ce7",
-			fg_color = "#ffffff",
+			bg_color = "#92cef5",
+			fg_color = "#101417",
 		},
 	},
 }
@@ -211,7 +275,7 @@ config.initial_rows = 30
 config.window_background_gradient = nil
 
 -- -- 🖼️ BACKGROUND IMAGE PATH
--- local bg_image = os.getenv("HOME") .. "/Dotfiles/.config/wezterm/assets/bg-blurred-darker.png"
+-- local bg_image = os.getenv("HOME") .. "/Pictures/27230.jpg"
 --
 -- -- 🖼️ SIMPLE IMAGE BACKGROUND (Current WezTerm syntax)
 -- config.background = {
@@ -229,11 +293,12 @@ config.window_background_gradient = nil
 -- 🎆 ADDITIONAL VISUAL ENHANCEMENTS
 config.bold_brightens_ansi_colors = true
 config.inactive_pane_hsb = {
-	saturation = 0.8,
-	brightness = 0.7,
+	saturation = 1.0,
+	brightness = 1.0,
 }
 
-config.macos_window_background_blur = 20
+config.macos_window_background_blur = 40
 config.warn_about_missing_glyphs = false --Temporarily disable warnings
 
+config.color_scheme = "Noctalia"
 return config
