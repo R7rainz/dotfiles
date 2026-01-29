@@ -86,6 +86,19 @@ _Elevate your Linux workflow with this carefully curated collection of dotfiles_
 git clone https://github.com/R7rainz/dotfiles.git ~/dotfiles && cd ~/dotfiles
 ```
 
+## Neovim Setup ( recommended to setup in a different repo for better updates and management )
+
+Want to try my Neovim configuration?  
+You can find it here: **https://github.com/R7rainz/neovim-conf** 
+
+If you like it, consider leaving a ⭐ — it really helps!
+
+Clone it directly into your Neovim config directory:
+
+```bash
+git clone https://github.com/R7rainz/neovim-conf ~/.config/nvim
+```
+
 ---
 
 ## 📦 Installation Steps
