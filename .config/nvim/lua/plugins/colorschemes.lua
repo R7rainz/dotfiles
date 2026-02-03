@@ -429,7 +429,8 @@ return {
     "philosofonusus/morta.nvim",
     name = "morta",
     priority = 1000,
-    lazy = false,
+    lazy = true,
+    transparent = true,
     config = function()
       -- setup morta
       require("morta").setup({
@@ -476,6 +477,22 @@ return {
           vim.api.nvim_set_hl(0, "CursorLineNr", { bg = black })
         end,
       })
+    end,
+  },
+  {
+    "nobbmaestro/nvim-andromeda",
+    priority = 1000, -- load before other UI stuff
+    lazy = true,
+    transparent = true,
+    transparency = true,
+    dependencies = {
+      {
+        "tjdevries/colorbuddy.nvim",
+        branch = "dev",
+      },
+    },
+    config = function()
+      vim.cmd.colorscheme("andromeda")
     end,
   },
 }
