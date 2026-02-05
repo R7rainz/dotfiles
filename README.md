@@ -49,18 +49,21 @@ _Elevate your Linux workflow with this carefully curated collection of dotfiles_
 
 <div align="center">
 
-|      Component       |         Choice         |              Why               |
-| :------------------: | :--------------------: | :----------------------------: |
-|      🐧 **OS**       |      `Arch Linux`      |   Rolling release perfection   |
-|      🪟 **WM**       |       `Hyprland`       |   Smooth Wayland animations    |
-|    🌐 **Browser**    |     `Zen Browser`      | Privacy-focused & customizable |
-|   🖥️ **Terminal**    |        `Kitty`         |  GPU-accelerated performance   |
-|     🐚 **Shell**     |  `Fish + Oh My Posh`   |   Beautiful & user-friendly    |
-|    ✏️ **Editor**     |        `Neovim`        |    Extensible text editing     |
-|   🚀 **Launcher**    |         `Rofi`         |   Fast application switching   |
-|      📊 **Bar**      |        `Waybar`        |   Highly customizable status   |
-| 🔔 **Notifications** |        `SwayNC`        |   Clean notification system    |
-|   🖼️ **Wallpaper**   | `Hyprpaper + Waypaper` |  Dynamic wallpaper management  |
+|      Component       |           Choice            |              Why               |
+| :------------------: | :-------------------------: | :----------------------------: |
+|      🐧 **OS**       |        `Arch Linux`         |   Rolling release perfection   |
+|      🪟 **WM**       |         `Hyprland`          |   Smooth Wayland animations    |
+|    🌐 **Browser**    |        `Zen Browser`        | Privacy-focused & customizable |
+|   🖥️ **Terminal**    |      `Kitty + Wezterm`      |  GPU-accelerated performance   |
+|     🐚 **Shell**     | `Fish + Oh My Posh/Starship` |   Beautiful & user-friendly    |
+|    ✏️ **Editor**     |          `Neovim`           |    Extensible text editing     |
+|   🚀 **Launcher**    |           `Rofi`            |   Fast application switching   |
+|      📊 **Bar**      |          `Waybar`           |   Highly customizable status   |
+| 🔔 **Notifications** |      `SwayNC + Mako`        |   Clean notification system    |
+|   🖼️ **Wallpaper**   |   `Hyprpaper + Waypaper`    |  Dynamic wallpaper management  |
+| 📁 **File Manager**  |           `Yazi`            |   Terminal-based file manager  |
+| 📄 **PDF Viewer**    |          `Zathura`          |    Vim-like document viewer    |
+|   🖥️ **Multiplexer** |           `Tmux`            |   Terminal session management  |
 
 </div>
 
@@ -170,14 +173,14 @@ EOF
 sudo pacman -S git stow brightnessctl pacman-contrib pipewire pipewire-pulse wireplumber bluez-utils pulseaudio pavucontrol blueman wayland wayland-protocols wlroots
 
 # Applications
-sudo pacman -S kitty fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm
-yay -S waybar swaync waypaper zen-browser-bin pnpm-bin
+sudo pacman -S kitty wezterm fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm yazi zathura zathura-pdf-mupdf tmux mako
+yay -S waybar swaync waypaper zen-browser-bin pnpm-bin avizo
 
 # Fonts & Tools
-sudo pacman -S ttf-jetbrains-mono-nerd ttf-liberation ttf-dejavu
+sudo pacman -S ttf-jetbrains-mono-nerd ttf-liberation ttf-dejavu starship
 yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd bat fastfetch
 
-# Oh My Posh
+# Oh My Posh (optional, alternatively use starship)
 curl -s https://ohmyposh.dev/install.sh | bash -s
 ```
 
@@ -267,18 +270,23 @@ EOF
 cd ~/dotfiles
 
 # Individual stowing (recommended)
+stow avizo
 stow batfetch
 stow fastfetch
 stow fish
 stow oh-my-posh
 stow kitty
+stow wezterm
 stow neovim
 stow rofi
 stow swaync
+stow mako
 stow waybar
-stow hyprpaper
-stow waypaper
 stow hyprland
+stow yazi
+stow zathura
+stow tmux
+stow starship
 
 # Or stow everything at once (be careful of conflicts)
 # stow */
@@ -370,29 +378,39 @@ stow -R */
 ```
 ~/dotfiles/
 ├── .config/
-│   ├── hypr/
+│   ├── avizo/              # Volume/brightness OSD
+│   ├── batfetch/           # Fetch utility
+│   ├── fastfetch/          # System info fetch
+│   ├── fish/               # Fish shell config
+│   ├── hypr/               # Hyprland configs
 │   │   ├── hyprland.conf
-│   │   ├── hyprpaper.conf
+│   │   ├── hypridle.conf
+│   │   ├── hyprlock.conf
+│   │   ├── window_rules.conf
 │   │   └── scripts/
-│   ├── batfetch/
-│   ├── fastfetch/
-│   ├── fish/
-│   ├── oh-my-posh/
+│   ├── kitty/              # Kitty terminal
+│   ├── kotofetch/          # Fetch utility
+│   ├── mako/               # Notification daemon
+│   ├── nvim/               # Neovim config
+│   ├── oh-my-posh/         # Shell prompt theme
 │   │   └── themes/
 │   │       └── custom.omp.json
-│   ├── kitty/
-│   ├── neovim/
-│   ├── rofi/
-│   ├── swaync/
-│   ├── waybar/
-│   ├── hyprpaper/
-│   └── waypaper/
-├── Wallpapers/
+│   ├── rofi/               # Application launcher
+│   ├── scripts/            # Utility scripts
+│   ├── starship.toml       # Starship prompt config
+│   ├── swaync/             # Notification center
+│   ├── tmux/               # Tmux config
+│   ├── waybar/             # Status bar
+│   ├── wezterm/            # Wezterm terminal
+│   ├── yazi/               # File manager
+│   └── zathura/            # PDF viewer
 ├── system/
 │   └── sddm/
 │       └── themes/
 │           └── silent/
-└── install-sddm-theme.sh
+├── bluetooth-auto-switch.sh
+├── install-bluetooth-auto-switch.sh
+└── install-sdddm-theme.sh
 ```
 
 ---
@@ -446,10 +464,14 @@ The setup uses these carefully selected fonts:
 - **⚡ Hurmit Nerd Font** - Alternative monospace with unique character
 - **📝 InconsolataLGC Nerd Font** - Additional monospace option for variety
 
-### 🎭 **Oh My Posh Theme**
+### 🎭 **Oh My Posh / Starship Theme**
 
-The custom theme is located at `~/.config/oh-my-posh/themes/custom.omp.json`.
-Modify this file to customize your shell prompt appearance and behavior.
+Two shell prompt options are available:
+
+- **Oh My Posh**: Custom theme at `~/.config/oh-my-posh/themes/custom.omp.json`
+- **Starship**: Configuration at `~/.config/starship.toml`
+
+Modify these files to customize your shell prompt appearance and behavior.
 
 ### 📊 **Waybar Configuration**
 
@@ -461,6 +483,30 @@ Waybar modules include:
 - 💻 **System information**
 - 📦 **Package update notifications**
 - 🪟 **Hyprland workspaces** integration
+
+### 🖥️ **Terminal Emulators**
+
+Two terminal options are included:
+
+- **Kitty**: Fast, GPU-accelerated terminal with config at `~/.config/kitty/`
+- **Wezterm**: Feature-rich terminal with Lua config at `~/.config/wezterm/`
+  - Custom Noctalia color scheme included
+
+### 📁 **Yazi File Manager**
+
+Terminal-based file manager with:
+
+- Custom Noctalia theme/flavor
+- Vim-style keybindings
+- Image previews support
+
+### 📄 **Zathura PDF Viewer**
+
+Minimalist PDF viewer with vim keybindings configured at `~/.config/zathura/`
+
+### 🖥️ **Tmux Configuration**
+
+Terminal multiplexer setup at `~/.config/tmux/tmux.conf`
 
 ---
 
@@ -475,6 +521,7 @@ Waybar modules include:
 5. **🌐 Zen Browser CSS not applying**: Ensure `toolkit.legacyUserProfileCustomizations.stylesheets` is set to `true`
 6. **🪟 Hyprland not starting**: Check GPU drivers and Wayland support
 7. **🖥️ Screen sharing not working**: Ensure xdg-desktop-portal-hyprland is installed and configured
+8. **🔔 Notifications not working**: Check if mako or swaync service is running
 
 ### 🔍 **Logs and Debugging**
 
@@ -540,13 +587,14 @@ cp ~/zen-nebula/*.css ~/.zen/[profile-name]/chrome/
 
 - 🔄 Some applications may require a logout/login or restart to fully apply themes
 - 👑 The SDDM theme requires root privileges to install
-- 📶 Custom bluetooth scripts are included in the bluetooth directory
+- 📶 Custom bluetooth scripts are included (`bluetooth-auto-switch.sh`, `install-bluetooth-auto-switch.sh`)
 - 🎨 Themes and colors can be customized in individual config files
 - 🌐 Browser CSS changes require browser restart to take effect
 - 🛡️ uBlock Origin settings can be exported/imported for easy setup across devices
 - 🪟 **NVIDIA users**: May need additional configuration for optimal Hyprland performance
 - 🖥️ **Multi-monitor setups**: Configure displays in `~/.config/hypr/hyprland.conf`
 - ⚡ **Performance**: Hyprland performs best with modern GPUs and drivers
+- 🖥️ **Terminal choice**: Both Kitty and Wezterm configs included - use whichever you prefer
 
 ---
 
