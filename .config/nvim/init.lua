@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 if vim.g.neovide then
   -- JetBrains Mono font
   -- vim.o.guifont = "DankMono Nerd Font:h15:b"
-  vim.o.guifont = "Victor Mono:h15"
+  vim.o.guifont = "Victor Mono:h16"
 
   -- Enable italic support in Neovide
   vim.opt.linespace = 0
