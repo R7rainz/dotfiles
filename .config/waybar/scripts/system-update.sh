@@ -40,7 +40,7 @@ if [ "$1" == "up" ]; then
     printf '\n'
     read -n 1 -p 'Press any key to continue...'
     "
-  wezterm start -- sh -c "echo -ne '\033]0;  System Update\007'; ${command}"
+  kitty sh -c "echo -ne '\033]0;  System Update\007'; ${command}"
 fi
 
 # Check for AUR updates
