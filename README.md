@@ -806,8 +806,6 @@ Feel free to fork this repository and submit pull requests for improvements or a
 
 ---
 
-<img src="https://github.com/user-attachments/assets/03ef993e-2fad-4668-a313-2b2a31d6b66e" alt="RAINZ" width="50" style="border-radius: 50%;"/>
-
 **Crafted by RAINZ** • _Making Linux beautiful, one rice at a time_
 
 ⭐ **Star this repo if it helped you!**
