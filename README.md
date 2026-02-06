@@ -8,6 +8,7 @@ _A meticulously crafted Arch Linux desktop experience_
 [![Hyprland](https://img.shields.io/badge/Hyprland-00D9FF?style=for-the-badge&logo=wayland&logoColor=white)](https://hyprland.org/)
 [![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
 [![Fish Shell](https://img.shields.io/badge/Fish_Shell-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://fishshell.com/)
+[![Noctalia Shell](https://img.shields.io/badge/Noctalia_Shell-A8AEFF?style=for-the-badge&logo=wayland&logoColor=white)](https://docs.noctalia.dev/)
 
 ---
 
@@ -53,13 +54,14 @@ _Elevate your Linux workflow with this carefully curated collection of dotfiles_
 | :------------------: | :-------------------------: | :----------------------------: |
 |      🐧 **OS**       |        `Arch Linux`         |   Rolling release perfection   |
 |      🪟 **WM**       |         `Hyprland`          |   Smooth Wayland animations    |
+|   🌙 **Desktop Shell**   |     `Noctalia Shell`        |   Sleek, minimal Wayland shell |
 |    🌐 **Browser**    |        `Zen Browser`        | Privacy-focused & customizable |
 |   🖥️ **Terminal**    |      `Kitty + Wezterm`      |  GPU-accelerated performance   |
-|     🐚 **Shell**     | `Fish + Oh My Posh/Starship` |   Beautiful & user-friendly    |
+|     🐚 **Shell**     | `Fish + Starship` |   Beautiful & user-friendly    |
 |    ✏️ **Editor**     |          `Neovim`           |    Extensible text editing     |
-|   🚀 **Launcher**    |           `Rofi`            |   Fast application switching   |
-|      📊 **Bar**      |          `Waybar`           |   Highly customizable status   |
-| 🔔 **Notifications** |      `SwayNC + Mako`        |   Clean notification system    |
+|   🚀 **Launcher**    |      `Rofi + Vicinae`       |   Fast application switching   |
+|      📊 **Bar**      |      `Noctalia Bar`         |   Built into Noctalia Shell    |
+| 🔔 **Notifications** |      `Noctalia Notifications`|   Integrated notification system|
 |   🖼️ **Wallpaper**   |   `Hyprpaper + Waypaper`    |  Dynamic wallpaper management  |
 | 📁 **File Manager**  |           `Yazi`            |   Terminal-based file manager  |
 | 📄 **PDF Viewer**    |          `Zathura`          |    Vim-like document viewer    |
@@ -166,6 +168,100 @@ EOF
 </details>
 
 <details>
+<summary><b>🌙 Step 1.5: Noctalia Shell Installation</b></summary>
+
+### What is Noctalia Shell?
+
+[Noctalia Shell](https://github.com/noctalia-dev/noctalia-shell) is a sleek and minimal desktop shell thoughtfully crafted for Wayland. Built on [Quickshell](https://quickshell.outfoxxed.me/), it provides:
+
+- Beautiful status bar with integrated modules
+- Notification center
+- Application launcher
+- Control center with quick settings
+- Lock screen
+- Plugin support for extensibility
+
+### Installation (Arch Linux)
+
+**Using AUR (Recommended):**
+
+```bash
+# Install stable version
+paru -S noctalia-shell
+
+# Or install development version for latest features
+paru -S noctalia-shell-git
+```
+
+### Dependencies
+
+Noctalia Shell will automatically install its dependencies, but here's what it uses:
+
+**Required:**
+- `quickshell` - Core shell framework
+- `brightnessctl` - Screen brightness control
+- `imagemagick` - Image processing for wallpapers
+- `python` - Required for template processing
+- `git` - Update checking and plugin system
+
+**Optional (Recommended):**
+```bash
+paru -S cliphist cava wlsunset power-profiles-daemon ddcutil
+```
+
+- `cliphist` - Clipboard history support
+- `cava` - Audio visualizer component
+- `wlsunset` - Night light functionality
+- `power-profiles-daemon` - Power profile management
+- `ddcutil` - External display brightness control
+
+### Running Noctalia Shell
+
+Add this line to your Hyprland config (`~/.config/hypr/hyprland.conf`):
+
+```bash
+exec-once = qs -c noctalia-shell
+```
+
+### Hyprland Settings for Noctalia
+
+Add these settings for optimal integration with Noctalia Shell:
+
+```bash
+# Enable blur for Noctalia panels
+layerrule {
+  name = noctalia
+  match:namespace = noctalia-background-.*$
+  ignore_alpha = 0.5
+  blur = true
+  blur_popups = true
+}
+```
+
+### Noctalia IPC Commands
+
+Noctalia uses IPC for various functions. Example keybind for lock screen:
+
+```bash
+# Lock screen
+bind = SUPER, L, exec, qs -c noctalia-shell ipc call lockScreen lock
+```
+
+### Configuration
+
+Noctalia configuration is stored in:
+- Config: `~/.config/noctalia/`
+- Cache: `~/.cache/noctalia/`
+
+### Resources
+
+- [Noctalia Documentation](https://docs.noctalia.dev)
+- [GitHub Repository](https://github.com/noctalia-dev/noctalia-shell)
+- [Discord Community](https://discord.noctalia.dev)
+
+</details>
+
+<details>
 <summary><b>📦 Step 2: Core Packages</b></summary>
 
 ```bash
@@ -173,15 +269,15 @@ EOF
 sudo pacman -S git stow brightnessctl pacman-contrib pipewire pipewire-pulse wireplumber bluez-utils pulseaudio pavucontrol blueman wayland wayland-protocols wlroots
 
 # Applications
-sudo pacman -S kitty wezterm fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm yazi zathura zathura-pdf-mupdf tmux mako
-yay -S waybar swaync waypaper zen-browser-bin pnpm-bin avizo
+sudo pacman -S kitty wezterm fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm yazi zathura zathura-pdf-mupdf tmux
+yay -S waypaper zen-browser-bin pnpm-bin avizo vicinae
+
+# Noctalia Shell (replaces waybar, swaync, mako)
+yay -S noctalia-shell
 
 # Fonts & Tools
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-liberation ttf-dejavu starship
-yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd bat fastfetch
-
-# Oh My Posh (optional, alternatively use starship)
-curl -s https://ohmyposh.dev/install.sh | bash -s
+yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd bat fastfetch kotofetch
 ```
 
 </details>
@@ -274,19 +370,17 @@ stow avizo
 stow batfetch
 stow fastfetch
 stow fish
-stow oh-my-posh
 stow kitty
 stow wezterm
 stow neovim
 stow rofi
-stow swaync
-stow mako
-stow waybar
 stow hyprland
 stow yazi
 stow zathura
-stow tmux
 stow starship
+
+# Note: Noctalia Shell manages its own config in ~/.config/noctalia/
+# You don't need to stow waybar, swaync, or mako if using Noctalia Shell
 
 # Or stow everything at once (be careful of conflicts)
 # stow */
@@ -383,26 +477,25 @@ stow -R */
 │   ├── fastfetch/          # System info fetch
 │   ├── fish/               # Fish shell config
 │   ├── hypr/               # Hyprland configs
-│   │   ├── hyprland.conf
+│   │   ├── hyprland.conf   # Main config (includes Noctalia autostart)
 │   │   ├── hypridle.conf
 │   │   ├── hyprlock.conf
 │   │   ├── window_rules.conf
 │   │   └── scripts/
-│   ├── kitty/              # Kitty terminal
+│   ├── kitty/              # Kitty terminal (Noctalia theme)
 │   ├── kotofetch/          # Fetch utility
-│   ├── mako/               # Notification daemon
 │   ├── nvim/               # Neovim config
-│   ├── oh-my-posh/         # Shell prompt theme
+│   ├── oh-my-posh/         # Shell prompt theme (alternative)
 │   │   └── themes/
 │   │       └── custom.omp.json
 │   ├── rofi/               # Application launcher
 │   ├── scripts/            # Utility scripts
 │   ├── starship.toml       # Starship prompt config
-│   ├── swaync/             # Notification center
-│   ├── tmux/               # Tmux config
-│   ├── waybar/             # Status bar
 │   ├── wezterm/            # Wezterm terminal
-│   ├── yazi/               # File manager
+│   │   ├── wezterm.lua     # Main config with Noctalia colors
+│   │   └── colors/
+│   │       └── Noctalia.toml  # Noctalia color scheme
+│   ├── yazi/               # File manager (Noctalia flavor)
 │   └── zathura/            # PDF viewer
 ├── system/
 │   └── sddm/
@@ -416,6 +509,50 @@ stow -R */
 ---
 
 ## 🎨 Customization Options
+
+### 🌙 **Noctalia Shell**
+
+This rice uses [Noctalia Shell](https://github.com/noctalia-dev/noctalia-shell) as the primary desktop shell, replacing traditional status bars and notification daemons.
+
+#### Features
+- **Status Bar** - Clean, minimal bar with workspace indicators, system tray, and clock
+- **Notification Center** - Integrated notification system with history
+- **Control Center** - Quick settings panel for Wi-Fi, Bluetooth, brightness, volume
+- **Application Launcher** - Built-in launcher (or use Rofi/Vicinae)
+- **Lock Screen** - Integrated lock screen via IPC
+
+#### Key Components
+| Component | Noctalia Equivalent |
+|-----------|---------------------|
+| Waybar | Noctalia Bar |
+| SwayNC/Mako | Noctalia Notifications |
+| wlogout | Noctalia Power Menu |
+
+#### Configuration
+Noctalia Shell stores its configuration at `~/.config/noctalia/`. Access settings through the shell's built-in settings panel.
+
+#### Useful IPC Commands
+```bash
+# Lock screen
+qs -c noctalia-shell ipc call lockScreen lock
+
+# Toggle control center
+qs -c noctalia-shell ipc call controlCenter toggle
+
+# Toggle launcher
+qs -c noctalia-shell ipc call launcher toggle
+```
+
+#### Noctalia Color Theme
+The Noctalia color palette is used across multiple applications:
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Background | `#141316` | Dark charcoal base |
+| Foreground | `#e6e1e6` | Light gray text |
+| Accent Pink | `#eeb8cb` | Highlights |
+| Accent Purple | `#cbbeff` | Secondary accent |
+| Accent Red | `#ffb4ab` | Alerts/errors |
 
 ### 🪟 **Hyprland Configuration**
 
@@ -473,32 +610,37 @@ Two shell prompt options are available:
 
 Modify these files to customize your shell prompt appearance and behavior.
 
-### 📊 **Waybar Configuration**
+### 📊 **Status Bar (Noctalia)**
 
-Waybar modules include:
+Noctalia Shell provides an integrated status bar with:
 
-- 📶 **Bluetooth** (with custom scripts)
-- 🔊 **Audio control** (PulseAudio/Pipewire)
-- 🔆 **Brightness control**
+- 📶 **Bluetooth & Network** indicators
+- 🔊 **Audio control** (PipeWire integration)
+- 🔆 **Brightness control** 
 - 💻 **System information**
-- 📦 **Package update notifications**
 - 🪟 **Hyprland workspaces** integration
+- 🔔 **Notification indicator**
+
+> **Note**: Waybar config files are included in this repo for reference, but Noctalia Shell's bar is the primary status bar.
 
 ### 🖥️ **Terminal Emulators**
 
-Two terminal options are included:
+Two terminal options are included, both with the **Noctalia color scheme**:
 
 - **Kitty**: Fast, GPU-accelerated terminal with config at `~/.config/kitty/`
+  - Uses Noctalia theme via `current-theme.conf`
 - **Wezterm**: Feature-rich terminal with Lua config at `~/.config/wezterm/`
-  - Custom Noctalia color scheme included
+  - Custom Noctalia color scheme at `~/.config/wezterm/colors/Noctalia.toml`
+  - Full color palette defined inline in `wezterm.lua`
 
 ### 📁 **Yazi File Manager**
 
 Terminal-based file manager with:
 
-- Custom Noctalia theme/flavor
+- **Noctalia theme/flavor** for both dark and light modes
 - Vim-style keybindings
 - Image previews support
+- Configuration at `~/.config/yazi/theme.toml`
 
 ### 📄 **Zathura PDF Viewer**
 
@@ -521,7 +663,31 @@ Terminal multiplexer setup at `~/.config/tmux/tmux.conf`
 5. **🌐 Zen Browser CSS not applying**: Ensure `toolkit.legacyUserProfileCustomizations.stylesheets` is set to `true`
 6. **🪟 Hyprland not starting**: Check GPU drivers and Wayland support
 7. **🖥️ Screen sharing not working**: Ensure xdg-desktop-portal-hyprland is installed and configured
-8. **🔔 Notifications not working**: Check if mako or swaync service is running
+8. **🌙 Noctalia Shell not starting**: Check if quickshell is installed with `pacman -Q quickshell`
+9. **🌙 Noctalia bar not showing**: Ensure `exec-once = qs -c noctalia-shell` is in your hyprland.conf
+
+### 🌙 **Noctalia Shell Troubleshooting**
+
+```bash
+# Check if Noctalia/Quickshell is running
+pgrep -f "qs.*noctalia"
+
+# Restart Noctalia Shell
+killall qs && qs -c noctalia-shell &
+
+# Check Noctalia logs
+journalctl --user -f | grep -i noctalia
+
+# Verify quickshell installation
+pacman -Qi quickshell
+pacman -Qi noctalia-shell
+
+# Test IPC commands
+qs -c noctalia-shell ipc call lockScreen lock
+
+# Clear Noctalia cache (if having issues)
+rm -rf ~/.cache/noctalia/
+```
 
 ### 🔍 **Logs and Debugging**
 
@@ -594,7 +760,9 @@ cp ~/zen-nebula/*.css ~/.zen/[profile-name]/chrome/
 - 🪟 **NVIDIA users**: May need additional configuration for optimal Hyprland performance
 - 🖥️ **Multi-monitor setups**: Configure displays in `~/.config/hypr/hyprland.conf`
 - ⚡ **Performance**: Hyprland performs best with modern GPUs and drivers
-- 🖥️ **Terminal choice**: Both Kitty and Wezterm configs included - use whichever you prefer
+- 🖥️ **Terminal choice**: Both Kitty and Wezterm configs included with Noctalia theme
+- 🌙 **Noctalia Shell**: Replaces Waybar, SwayNC, and Mako - all-in-one desktop shell
+- 🌙 **Noctalia config**: Stored in `~/.config/noctalia/` (not managed by stow)
 
 ---
 
@@ -630,10 +798,11 @@ Feel free to fork this repository and submit pull requests for improvements or a
 
 - **[Arch Linux](https://archlinux.org/)** - The best rolling release distribution
 - **[Hyprland](https://hyprland.org/)** - Dynamic tiling Wayland compositor
+- **[Noctalia Shell](https://github.com/noctalia-dev/noctalia-shell)** - Sleek and minimal desktop shell for Wayland
+- **[Quickshell](https://quickshell.outfoxxed.me/)** - Building blocks for desktop shells
 - **[Zen Browser](https://zen-browser.app/)** - Privacy-focused Firefox-based browser
 - **[Nebula Theme](https://github.com/JustAdumbPrsn/Zen-Nebula)** - Beautiful cosmic theme for Zen Browser
-- **[Oh My Posh](https://ohmyposh.dev/)** - Cross-platform prompt theme engine
-- **[Waybar](https://github.com/Alexays/Waybar)** - Highly customizable Wayland bar
+- **[Starship](https://starship.rs/)** - Cross-platform prompt
 
 ---
 
