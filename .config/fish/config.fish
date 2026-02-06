@@ -85,6 +85,9 @@ alias zls='zoxide query -l' # List all directories in zoxide
 # Applications
 alias cursor="$HOME/Downloads/Cursor-1.5.11-x86_64.AppImage"
 
+# System update
+alias update="$HOME/Dotfiles/.config/waybar/scripts/system-update.sh up"
+
 # ============================================================================
 # FUNCTIONS
 # ============================================================================
