@@ -15,7 +15,8 @@ _A meticulously crafted Arch Linux desktop experience_
 _Elevate your Linux workflow with this carefully curated collection of dotfiles_
 
 <p align="center"> <img src="https://github.com/user-attachments/assets/b4ab952f-be97-499d-a486-d246c987d4e2" width="90%" /> </p> <p align="center">
-<p align="center"> <img src="https://github.com/user-attachments/assets/f2643df2-ad5f-45e7-bf4d-82cae17e38ee" width="70%" /> </p> <p align="center"> <em>Neovim setup with bufferline, telescope, and modern UI tweaks</em> </p>
+<p align="center"> <img width="70%" alt="image" src="https://github.com/user-attachments/assets/44f49526-cc86-411f-8e3a-c94d3d0d528b" />
+ </p> <p align="center"> <em>Neovim setup with bufferline, telescope, and modern UI tweaks</em> </p>
 
 
 </div>
