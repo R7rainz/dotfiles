@@ -1,0 +1,92 @@
+# ─────────────────────────────
+# WINDOW
+# ─────────────────────────────
+title = "T E R M Z"
+window-decoration = false
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true 
+window-padding-color = background 
+window-save-state = always
+window-inherit-working-directory = true
+window-inherit-font-size = true
+
+# ─────────────────────────────
+# FONT
+# ─────────────────────────────
+font-size = 15
+#font-family = "Inconsolata LGC Nerd Font"
+font-family = "JetBrainsMono Nerd Font"
+# font-feature = liga
+# font-feature = calt
+# font-thicken = false
+# font-synthetic-style = true
+
+adjust-cell-height = 2
+adjust-cell-width = 0
+
+# ─────────────────────────────
+# BACKGROUND
+# ─────────────────────────────
+background = #000000
+background-opacity = 1.0
+background-blur = false
+background-image = "~/Pictures/Wallpapers/gruvbox-3.jpg"
+background-image-opacity = 0.15
+background-image-fit = cover 
+background-image-repeat = true
+window-colorspace = srgb
+
+# ─────────────────────────────
+# CURSOR
+# ─────────────────────────────
+cursor-style = block
+cursor-style-blink = false
+cursor-opacity = 0.9
+adjust-cursor-thickness = 1
+
+# ─────────────────────────────
+# THEME
+# ─────────────────────────────
+theme = gruvbox-material 
+palette = 0=#313244
+palette = 8=#6c7086
+
+# ─────────────────────────────
+# PERFORMANCE
+# ─────────────────────────────
+scrollback-limit = 100000
+image-storage-limit = 320000000
+term = xterm-ghostty
+
+# ─────────────────────────────
+# MOUSE
+# ─────────────────────────────
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+copy-on-select = clipboard
+
+# ─────────────────────────────
+# CLIPBOARD
+# ─────────────────────────────
+clipboard-trim-trailing-spaces = true
+clipboard-read = allow
+clipboard-write = allow
+clipboard-paste-protection = true
+clipboard-paste-bracketed-safe = true
+
+# ─────────────────────────────
+# SHELL
+# ─────────────────────────────
+command = /bin/fish
+shell-integration = fish
+
+# ─────────────────────────────
+# UI
+# ─────────────────────────────
+confirm-close-surface = false
+quit-after-last-window-closed = true
+auto-update = check
+auto-update-channel = stable
+desktop-notifications = true
+progress-style = true
