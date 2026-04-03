@@ -61,7 +61,7 @@ _Elevate your Linux workflow with this carefully curated collection of dotfiles_
 |      🪟 **WM**       |         `Hyprland`          |   Smooth Wayland animations    |
 |   🌙 **Desktop Shell**   |     `Noctalia Shell`        |   Sleek, minimal Wayland shell |
 |    🌐 **Browser**    |        `Zen Browser`        | Privacy-focused & customizable |
-|   🖥️ **Terminal**    |      `Kitty + Wezterm`      |  GPU-accelerated performance   |
+|   🖥️ **Terminal**    |      `Ghostty`      |  GPU-accelerated performance   |
 |     🐚 **Shell**     | `Fish + Starship` |   Beautiful & user-friendly    |
 |    ✏️ **Editor**     |          `Neovim`           |    Extensible text editing     |
 |   🚀 **Launcher**    |      `Rofi + Vicinae`       |   Fast application switching   |
@@ -274,7 +274,7 @@ Noctalia configuration is stored in:
 sudo pacman -S git stow brightnessctl pacman-contrib pipewire pipewire-pulse wireplumber bluez-utils pulseaudio pavucontrol blueman wayland wayland-protocols wlroots
 
 # Applications
-sudo pacman -S kitty wezterm fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm yazi zathura zathura-pdf-mupdf tmux
+sudo pacman -S kitty wezterm ghostty fish neovim rofi hyprpaper thunar gvfs gvfs-mtp npm yazi zathura zathura-pdf-mupdf tmux
 yay -S waypaper zen-browser-bin pnpm-bin avizo vicinae
 
 # Noctalia Shell (replaces waybar, swaync, mako)
@@ -362,6 +362,7 @@ stow batfetch
 stow fastfetch
 stow fish
 stow kitty
+stow ghostty
 stow wezterm
 stow neovim
 stow rofi
@@ -418,7 +419,7 @@ batfetch
 fastfetch
 
 # Test terminal
-kitty &
+ghostty &
 
 # Test editor
 nvim
