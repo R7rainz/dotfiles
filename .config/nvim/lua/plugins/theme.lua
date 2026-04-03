@@ -12,6 +12,11 @@ return {
           cs = lines[1]
         end
       end
+      -- If a previously-used colorscheme no longer exists (e.g. removed custom theme),
+      -- fall back to a safe built-in theme.
+      if cs == "cursor-dark" then
+        cs = "kanagawa"
+      end
       opts.colorscheme = cs
     end,
   },

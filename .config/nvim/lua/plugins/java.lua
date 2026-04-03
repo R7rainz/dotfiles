@@ -1,3 +1,9 @@
+--[[
+  Java Plugin Configuration
+  ------------------------
+  All Java LSP, DAP, and related plugin setups.
+  Add or modify Java-specific plugins here.
+]]
 return {
   -- Java development with nvim-jdtls
   {

@@ -1,3 +1,9 @@
+--[[
+  Python Plugin Configuration
+  --------------------------
+  All Python LSP, DAP, testing, and related plugin setups.
+  Add or modify Python-specific plugins here.
+]]
 return {
   -- Python development
   {

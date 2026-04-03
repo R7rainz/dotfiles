@@ -1,3 +1,9 @@
+--[[
+  TypeScript/JavaScript Plugin Configuration
+  -----------------------------------------
+  All TS/JS LSP, DAP, and related plugin setups.
+  Add or modify TypeScript/JavaScript plugins here.
+]]
 return {
   -- TypeScript/JavaScript development
   {

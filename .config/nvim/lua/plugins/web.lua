@@ -1,3 +1,9 @@
+--[[
+  Web Development Plugin Configuration
+  -----------------------------------
+  All HTML, CSS, Tailwind, Emmet, and related plugin setups.
+  Add or modify web development plugins here.
+]]
 return {
   -- HTML/CSS/Tailwind development
   {

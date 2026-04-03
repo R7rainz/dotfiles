@@ -64,3 +64,22 @@ map("n", "<leader>lx", "<cmd>lclose<cr>", { desc = "Close location list" })
 map("n", "<leader>fA", function()
   require("telescope.builtin").find_files({ cwd = vim.loop.os_homedir() })
 end, { desc = "Find files (all folders)" })
+
+-- LSP code actions
+map({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+
+map("n", "<leader>th", function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  if not _horizontal_term then
+    _horizontal_term = Terminal:new({ direction = "horizontal", hidden = true })
+  end
+  _horizontal_term:toggle()
+end, { desc = "Toggle Terminal (horizontal)" })
+
+map("n", "<leader>tv", function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  if not _vertical_term then
+    _vertical_term = Terminal:new({ direction = "vertical", hidden = true })
+  end
+  _vertical_term:toggle()
+end, { desc = "Toggle Terminal (vertical)" })

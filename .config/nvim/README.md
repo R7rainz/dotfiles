@@ -1,12 +1,5 @@
 <h1 align="center"><u>Neovim Config</u></h1>
 
-<p align="center">
-  <!-- Replace with hosted logo URLs or local assets if you prefer -->
-  <img src="https://neovim.io/logos/neovim-mark-flat.svg" alt="Neovim Logo" height="64" />
-  &nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/LazyVim/LazyVim/main/assets/logo.svg" alt="LazyVim Logo" height="64" />
-</p>
-
 ![Neovim Dashboard](./screenshots/Pasted%20image%20%282%29.png)
 
 A modern, feature-rich Neovim configuration built on [LazyVim](https://www.lazyvim.org/) with support for multiple programming languages, elegant UI enhancements, and powerful development tools. Tuned for Neovide, smooth scrolling, Discord Rich Presence, AI-assisted workflows, and rich Treesitter-powered syntax highlighting.
@@ -34,7 +27,7 @@ Below are a few more looks at the setup in action.
 
 ![Neovim Editing](./screenshots/Pasted%20image%20%283%29.png)
 
-Focused editing view with LSP, Telescope, smooth scrolling, and Rose Pine Moon.
+Focused editing view with LSP, Telescope, smooth scrolling
 
 ![Neovim Dev Workflow](./screenshots/Pasted%20image.png)
 
@@ -129,6 +122,31 @@ The first startup may take 2-3 minutes as plugins are downloaded and compiled.
         ├── typescript.lua      # TypeScript/JavaScript support
         ├── ui.lua              # UI tweaks, dashboard, and indent settings
         └── web.lua             # Web development tools
+  ├── config/             # Core configuration
+  │   ├── autocmds.lua    # Autocommands and event handlers
+  │   ├── keymaps.lua     # Custom keybindings
+  │   ├── lazy.lua        # Plugin manager setup
+  │   └── options.lua     # Editor settings and preferences
+  │
+  └── plugins/            # Plugin specifications and configs
+    ├── colorschemes.lua    # Color theme configurations (with clear header)
+    ├── copilot-chat.lua    # GitHub Copilot + CopilotChat integration
+    ├── docker.lua          # Docker integration
+    ├── example.lua         # Example plugin setup
+    ├── go.lua              # Go language support (with clear header)
+    ├── java.lua            # Java language support (with clear header)
+    ├── linux-tools.lua     # Linux development tools
+    ├── mini.lua            # mini.nvim core plugin
+    ├── neo-tree.lua        # File explorer configuration
+    ├── neoscroll.lua       # Smooth scrolling
+    ├── presence.lua        # Discord Rich Presence
+    ├── python.lua          # Python language support (with clear header)
+    ├── telescope.lua       # Fuzzy finder configuration
+    ├── theme.lua           # UI theme customization
+    ├── treesitter.lua      # Treesitter + context and highlighting
+    ├── typescript.lua      # TypeScript/JavaScript support (with clear header)
+    ├── ui.lua              # UI tweaks, dashboard, and indent settings
+    └── web.lua             # Web development tools (with clear header)
 ```
 
 ## ⌨️ Key Bindings
@@ -265,6 +283,16 @@ This config includes Docker integration for containerized development workflows:
 ```
 
 ## 🛠️ Linux Tools
+
+### Language Support
+
+Language-specific plugin configurations are organized as single files in `lua/plugins/` for each language (not in subfolders), with clear headers for maintainability:
+
+- **Python**: [lua/plugins/python.lua](lua/plugins/python.lua) — LSP (Pyright), formatting (Black), linting (Ruff), DAP, testing, and virtualenv support
+- **Go**: [lua/plugins/go.lua](lua/plugins/go.lua) — LSP (gopls), formatting, testing, debugging, and keymaps
+- **Java**: [lua/plugins/java.lua](lua/plugins/java.lua) — LSP (Eclipse JDT), DAP, Maven/Gradle, Treesitter
+- **TypeScript/JavaScript**: [lua/plugins/typescript.lua](lua/plugins/typescript.lua) — LSP, formatting (Prettier), ESLint, framework support
+- **Web**: [lua/plugins/web.lua](lua/plugins/web.lua) — HTML, CSS, SCSS, Tailwind, Emmet, colorizer, and related tools
 
 Enhanced Linux development experience with integrated tools for system programming and scripting.
 

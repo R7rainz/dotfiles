@@ -1,3 +1,9 @@
+--[[
+  Go Plugin Configuration
+  ----------------------
+  All Go LSP, DAP, testing, and related plugin setups.
+  Add or modify Go-specific plugins here.
+]]
 return {
   -- Go development setup
   {
@@ -19,12 +25,13 @@ return {
         tag_transform = false,
         test_dir = "",
         comment_placeholder = "   ",
-        lsp_cfg = true,
+        -- Let LazyVim/nvim-lspconfig manage gopls; avoid double LSP setup
+        lsp_cfg = false,
         lsp_gofumpt = true,
-        lsp_on_attach = true,
+        lsp_on_attach = false,
         dap_debug = true,
       })
-      
+
       -- Set custom Go keybindings that don't conflict with Telescope
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "go",
@@ -51,49 +58,48 @@ return {
   -- LSP configuration for Go
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        gopls = {
-          settings = {
-            gopls = {
-              gofumpt = true,
-              codelenses = {
-                gc_details = false,
-                generate = true,
-                regenerate_cgo = true,
-                run_govulncheck = true,
-                test = true,
-                tidy = true,
-                upgrade_dependency = true,
-                vendor = true,
-              },
-              hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-              },
-              analyses = {
-                fieldalignment = true,
-                nilness = true,
-                unusedparams = true,
-                unusedwrite = true,
-                useany = true,
-              },
-              usePlaceholders = true,
-              completeUnimported = true,
-              staticcheck = true,
-              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-              -- Disable semantic tokens; let treesitter/colorscheme handle colors
-              semanticTokens = false,
+    opts = function(_, opts)
+      opts.servers = opts.servers or {}
+      opts.servers.gopls = vim.tbl_deep_extend("force", opts.servers.gopls or {}, {
+        settings = {
+          gopls = {
+            gofumpt = true,
+            codelenses = {
+              gc_details = false,
+              generate = true,
+              regenerate_cgo = true,
+              run_govulncheck = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
             },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            analyses = {
+              fieldalignment = true,
+              nilness = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+            -- Disable semantic tokens; let treesitter/colorscheme handle colors
+            semanticTokens = false,
           },
         },
-      },
-    },
+      })
+    end,
   },
 
   -- DAP configuration for Go debugging

@@ -16,10 +16,67 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Disable auto-comment on new line",
 })
 
+-- When starting Neovim in a directory (e.g. `nvim .`), restore a saved session
+-- for that directory if one exists.
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() ~= 1 then
+      return
+    end
+    local arg = vim.fn.argv(0)
+    if vim.fn.isdirectory(arg) ~= 1 then
+      return
+    end
+
+    local ok, persistence = pcall(require, "persistence")
+    if not ok then
+      return
+    end
+
+    local session = persistence.current()
+    if session and vim.fn.filereadable(session) == 1 then
+      vim.g._cursor_session_restored = true
+      persistence.load()
+    end
+  end,
+  desc = "Restore session when starting in a directory",
+})
+
+-- If we started in a directory with no session, use neo-tree as the default explorer.
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() ~= 1 then
+      return
+    end
+    local arg = vim.fn.argv(0)
+    if vim.fn.isdirectory(arg) ~= 1 then
+      return
+    end
+
+    -- Don't override a restored session layout
+    if vim.g._cursor_session_restored then
+      return
+    end
+
+    -- Prefer neo-tree as the default file explorer
+    local ok, command = pcall(require, "neo-tree.command")
+    if ok then
+      command.execute({ toggle = false, dir = arg, position = "left" })
+    end
+  end,
+  desc = "Use neo-tree as default explorer for `nvim .`",
+})
+
 -- When a session restores buffers, skip the start screen and jump to a real file.
 -- If no real file buffers exist (e.g. previous session had none), open Telescope in this project.
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
+    -- If Neovim was started with a file or directory (e.g. `nvim .` or `nvim foo.go`),
+    -- let LazyVim/neo-tree/session handling decide what to show; don't force Telescope.
+    if vim.fn.argc() > 0 then
+      return
+    end
+
     vim.defer_fn(function()
       local bufs = vim.fn.getbufinfo({ buflisted = 1 })
       local found = false
@@ -65,6 +122,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
   desc = "Persist last colorscheme and refresh treesitter",
 })
+
+
 
 -- On dashboard/landing buffers, map `p` to global project search (home dir)
 vim.api.nvim_create_autocmd("FileType", {
