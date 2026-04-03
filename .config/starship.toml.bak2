@@ -1,0 +1,90 @@
+format = """
+[ ]()\
+[ ](fg:#ff5370)\
+$username\
+[ in ](fg:#7a8085)\
+$directory \
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$php\
+$fill\
+$line_break\
+$character"""
+
+[username]
+style_user = "fg:#ff5370"
+style_root = "fg:#ff5370"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+disabled = true
+
+[directory]
+style = "fg:#65a2fa"
+format = "[ $path]($style)"
+truncation_length = 2
+truncation_symbol = "󰝰 "
+
+[directory.substitutions]
+"~" = "󰝰 "
+"Documents" = "Documents"
+"Downloads" = "Downloads"
+"Music" = "Music"
+"Pictures" = "Pictures"
+"Videos" = "Videos"
+"Desktop" = "Desktop"
+
+[fill]
+symbol = "─"
+style = "fg:#5c6370"
+
+[git_branch]
+symbol = " "
+style = "fg:#a9dc76"
+format = '[ $symbol $branch]($style)'
+
+[git_status]
+style = "fg:#c792ea"
+format = '[ $all_status$ahead_behind]($style)'
+conflicted = "✘"
+ahead = "↑"
+behind = "↓"
+diverged = "↕"
+untracked = "?"
+stashed = "*"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+[nodejs]
+symbol = " "
+style = "fg:#a9dc76"
+format = '[ via $symbol $version]($style)'
+
+[rust]
+symbol = "󱘗 "
+style = "fg:#ff6188"
+format = '[ via $symbol $version]($style)'
+
+[golang]
+symbol = ""
+style = "fg:#78dce8"
+format = '[ via $symbol $version]($style)'
+
+[php]
+symbol = ""
+style = "fg:#c792ea"
+format = '[ via $symbol $version]($style)'
+
+[character]
+success_symbol = "[❯](fg:#a9dc76)"
+error_symbol = "[❯](fg:#ff6188)"
+
+[line_break]
+disabled = false
