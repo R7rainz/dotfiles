@@ -1,14 +1,16 @@
-# Zathura Configuration - Glassmorphism Theme
-# Requires compositor blur (Hyprland/Picom)
+# Zathura configuration - glassmorphism theme
+# Requires compositor blur (Hyprland / Picom)
 
 # Font
-set font "JetBrainsMono Nerd Font 11"
+set font "SF Mono 11"
 
 # Window
 set window-title-basename true
 set window-title-page true
 set window-title-home-tilde true
 set statusbar-basename true
+set statusbar-home-tilde true
+set statusbar-page-percent true
 set selection-clipboard clipboard
 set adjust-open width
 set pages-per-row 1
@@ -19,6 +21,8 @@ set scroll-page-aware true
 set scroll-full-overlap 0.01
 set scroll-step 50
 set zoom-min 10
+set zoom-center true
+set vertical-center true
 
 # Background - fully transparent for blur effect
 set default-bg "rgba(0,0,0,0)"
@@ -83,7 +87,10 @@ map <C-o> zoom out
 map <C-r> rotate
 map <C-g> recolor
 map <F5> reload
+map <F2> toggle_statusbar
+map <F3> toggle_inputbar
 map <F11> toggle_fullscreen
+map <C-0> set zoom 100
 
 # Database & Synctex
 set database sqlite
