@@ -316,22 +316,8 @@ cp ~/zen-nebula/userContent.css ~/.zen/[your-profile]/chrome/
 - Configure privacy settings
 
 </details>
-
 <details>
-<summary><b>🎭 Step 4: SDDM Theme Setup</b></summary>
-
-```bash
-# Install SDDM theme
-sudo chmod +x ~/dotfiles/install-sddm-theme.sh
-sudo ~/dotfiles/install-sddm-theme.sh
-
-# The theme will be installed to: /usr/share/sddm/themes/silent
-```
-
-</details>
-
-<details>
-<summary><b>⚙️ Step 5: System Configuration</b></summary>
+<summary><b>⚙️ Step 4: System Configuration</b></summary>
 
 ### Services
 
@@ -365,7 +351,7 @@ EOF
 </details>
 
 <details>
-<summary><b>🔗 Step 6: Apply Dotfiles</b></summary>
+<summary><b>🔗 Step 5: Apply Dotfiles</b></summary>
 
 ```bash
 cd ~/dotfiles
@@ -415,7 +401,7 @@ fc-list | grep -i "jetbrains\\|hurmit\\|inconsolata"
 </details>
 
 <details>
-<summary><b>✅ Step 7: Final Configuration</b></summary>
+<summary><b>✅ Step 6: Final Configuration</b></summary>
 
 ### Reload Fish Configuration
 
@@ -503,6 +489,7 @@ stow -R */
 │   ├── yazi/               # File manager (Noctalia flavor)
 │   └── zathura/            # PDF viewer
 ├── noctalia/
+├── ghostty/
 ├── bluetooth-auto-switch.sh
 ├── install-bluetooth-auto-switch.sh
 ```
