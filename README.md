@@ -282,7 +282,7 @@ yay -S noctalia-shell
 
 # Fonts & Tools
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-liberation ttf-dejavu starship
-yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd bat fastfetch kotofetch
+yay -S ttf-inconsolata-lgc-nerd ttf-hurmit-nerd bat fastfetch kotofetch apple_cursor
 ```
 
 </details>
