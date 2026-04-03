@@ -49,6 +49,7 @@ if status is-interactive
     # Initialize Homebrew (if installed)
     if test -f /home/linuxbrew/.linuxbrew/bin/brew
         eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        atuin init fish | source
     end
 
     # Initialize Starship prompt
@@ -85,7 +86,8 @@ alias zls='zoxide query -l' # List all directories in zoxide
 # Applications
 alias cursor="$HOME/Downloads/Cursor-1.5.11-x86_64.AppImage"
 
-# System update
+# System control
+alias lock='qs -c noctalia-shell ipc call lockScreen lock'
 alias update="$HOME/Dotfiles/.config/waybar/scripts/system-update.sh up"
 
 # ============================================================================

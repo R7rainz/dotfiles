@@ -1,0 +1,5 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export XCURSOR_SIZE:16
+SETUVAR __fish_initialized:4300
+SETUVAR --export fish_user_paths:/home/rainz/\x2elocal/bin\x1e/home/rainz/\x2elocal/bin\x1e/home/rainz/\x2eopencode/bin\x1e/home/rainz/\x2efzf/bin
