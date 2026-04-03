@@ -1,0 +1,24 @@
+{
+  "id": "screenshot",
+  "name": "Screenshot",
+  "version": "1.0.3",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "Cleboost",
+  "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+  "description": "Quick screenshot button in bar for Hyprland, Sway, and Niri",
+  "tags": [
+    "Bar",
+    "Utility"
+  ],
+  "entryPoints": {
+    "main": "Main.qml",
+    "barWidget": "BarWidget.qml",
+    "settings": "Settings.qml"
+  },
+  "metadata": {
+    "defaultSettings": {
+      "mode": "region"
+    }
+  }
+}

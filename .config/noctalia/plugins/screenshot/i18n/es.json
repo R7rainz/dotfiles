@@ -1,0 +1,11 @@
+{
+  "tooltip": "Tomar una captura de pantalla",
+  "settings": {
+    "mode": {
+      "label": "Modo de captura",
+      "description": "Elegir entre selección de región o captura directa de pantalla",
+      "region": "Selección de región",
+      "screen": "Pantalla completa"
+    }
+  }
+}

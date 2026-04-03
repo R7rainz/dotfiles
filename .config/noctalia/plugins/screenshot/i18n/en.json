@@ -1,0 +1,17 @@
+{
+  "tooltip": "Take a screenshot",
+  "notification": {
+    "title": "Screenshot",
+    "success": "Captured and copied to clipboard",
+    "error-grimshot": "Failed to run grimshot. Please ensure grimshot is installed and in PATH.",
+    "unsupported-compositor": "Screenshots are not supported in this compositor."
+  },
+  "settings": {
+    "mode": {
+      "label": "Screenshot Mode",
+      "description": "Choose between region selection or direct screen capture",
+      "region": "Region Selection",
+      "screen": "Full Screen"
+    }
+  }
+}

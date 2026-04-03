@@ -1,0 +1,11 @@
+{
+  "tooltip": "Tirar uma captura de tela",
+  "settings": {
+    "mode": {
+      "label": "Modo de captura",
+      "description": "Escolher entre seleção de região ou captura direta da tela",
+      "region": "Seleção de região",
+      "screen": "Tela cheia"
+    }
+  }
+}

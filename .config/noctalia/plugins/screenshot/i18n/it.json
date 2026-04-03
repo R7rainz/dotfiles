@@ -1,0 +1,11 @@
+{
+  "tooltip": "Scatta uno screenshot",
+  "settings": {
+    "mode": {
+      "label": "Modalità screenshot",
+      "description": "Scegli tra selezione regione o cattura diretta dello schermo",
+      "region": "Selezione regione",
+      "screen": "Schermo intero"
+    }
+  }
+}

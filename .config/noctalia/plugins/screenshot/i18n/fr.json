@@ -1,0 +1,17 @@
+{
+  "tooltip": "Prendre une capture d'écran",
+  "notification": {
+    "title": "Capture d'écran",
+    "success": "Capture copiée dans le presse-papier",
+    "error-grimshot": "Échec du lancement de grimshot. Vérifiez qu'il est installé et présent dans votre PATH.",
+    "unsupported-compositor": "Les captures d'écran ne sont pas supportées dans ce compositeur."
+  },
+  "settings": {
+    "mode": {
+      "label": "Mode de capture",
+      "description": "Choisir entre la sélection de région ou la capture directe de l'écran",
+      "region": "Sélection de région",
+      "screen": "Plein écran"
+    }
+  }
+}
