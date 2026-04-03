@@ -502,13 +502,9 @@ stow -R */
 │   │       └── Noctalia.toml  # Noctalia color scheme
 │   ├── yazi/               # File manager (Noctalia flavor)
 │   └── zathura/            # PDF viewer
-├── system/
-│   └── sddm/
-│       └── themes/
-│           └── silent/
+├── noctalia/
 ├── bluetooth-auto-switch.sh
 ├── install-bluetooth-auto-switch.sh
-└── install-sdddm-theme.sh
 ```
 
 ---
