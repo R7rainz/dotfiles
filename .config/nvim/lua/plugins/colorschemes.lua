@@ -90,6 +90,7 @@ return {
             end,
         },
     },
+
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -97,11 +98,92 @@ return {
         priority = 1000,
         opts = {
             flavour = "mocha",
-            transparent_background = true,
+            transparent_background = false,
             styles = {
                 comments = { "italic" },
                 keywords = { "italic" },
             },
+            color_overrides = {
+                mocha = {
+                    -- Editor & UI Backgrounds
+                    base = "#121314", -- editor.background
+                    mantle = "#191a1b", -- sideBar.background / terminal.background
+                    crust = "#0f1011", -- Deepest background (slightly darker than base)
+
+                    -- UI Foregrounds & Borders
+                    text = "#bfbfbf", -- foreground
+                    subtext1 = "#bbbebf", -- editor.foreground
+                    subtext0 = "#a0a0a0",
+                    overlay2 = "#8c8c8c", -- descriptionForeground / inactive elements
+                    overlay1 = "#858889", -- editorLineNumber.foreground
+                    overlay0 = "#555555", -- disabledForeground
+                    surface2 = "#333536", -- input.border
+                    surface1 = "#2a2b2c", -- activityBar.border / tab.border
+                    surface0 = "#202122", -- editorWidget.background / menus
+
+                    -- Syntax & Accent Colors
+                    blue = "#569CD6", -- keyword / constant.language
+                    sapphire = "#3994bc", -- activityBarBadge (UI Accent)
+                    sky = "#9CDCFE", -- variable.other / object keys
+                    teal = "#4EC9B0", -- support.class / types
+                    green = "#73c991", -- git added / strings
+                    yellow = "#e5ba7d", -- warnings / git modified
+                    peach = "#FFA657", -- markup/variables
+                    maroon = "#CE9178", -- string.value
+                    red = "#f48771", -- errorForeground
+                    mauve = "#D2A8FF", -- entity.name.function
+                    pink = "#C586C0", -- keyword.control
+                    flamingo = "#D16969", -- string.regexp
+                    rosewater = "#f28772", -- editorGutter.deleted
+                },
+            },
+            custom_highlights = function(colors)
+                return {
+                    -- Syntax adjustments
+                    Comment = { fg = "#8B949E", style = { "italic" } },
+                    String = { fg = "#CE9178" },
+                    Keyword = { fg = "#569CD6", style = { "italic" } },
+                    Function = { fg = "#DCDCAA", style = { "italic" } },
+                    Type = { fg = "#4EC9B0" },
+                    Variable = { fg = "#9CDCFE" },
+                    Constant = { fg = "#79C0FF" },
+                    Number = { fg = "#B5CEA8" },
+                    Boolean = { fg = "#569CD6" },
+
+                    -- Editor UI
+                    LineNr = { fg = colors.overlay1 },
+                    CursorLineNr = { fg = colors.subtext1 },
+                    CursorLine = { bg = "#242526" },
+                    ColorColumn = { bg = "#242526" },
+
+                    -- Selections
+                    Visual = { bg = "#276782" },
+                    Search = { bg = "#276782", fg = colors.text },
+                    IncSearch = { bg = "#3994bc", fg = colors.base },
+
+                    -- Popups / Menus
+                    Pmenu = { bg = colors.surface0, fg = colors.text },
+                    PmenuSel = { bg = "#3994bc", fg = "#ffffff" },
+                    PmenuSbar = { bg = colors.surface1 },
+                    PmenuThumb = { bg = colors.overlay0 },
+
+                    -- Telescope
+                    TelescopeNormal = { bg = colors.surface0 },
+                    TelescopeBorder = { bg = colors.surface0, fg = colors.surface1 },
+                    TelescopePromptNormal = { bg = colors.mantle },
+                    TelescopePromptBorder = { bg = colors.mantle, fg = colors.surface1 },
+
+                    -- Tree Explorers
+                    NvimTreeNormal = { bg = colors.mantle },
+                    NvimTreeWinSeparator = { fg = colors.surface1 },
+
+                    -- Diagnostics
+                    DiagnosticError = { fg = colors.red },
+                    DiagnosticWarn = { fg = colors.yellow },
+                    DiagnosticInfo = { fg = colors.sapphire },
+                    DiagnosticHint = { fg = colors.overlay2 },
+                }
+            end,
         },
     },
 
