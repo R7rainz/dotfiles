@@ -1,0 +1,28 @@
+name: Check Markdown Links
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+  push:
+    paths:
+      - "**/*.md"
+  schedule:
+    - cron: "0 0 * * 0" # Runs every Sunday at midnight
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Lychee Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --accept 200,204,429 --verbose --no-progress "./**/*.md"
+          fail: true
