@@ -9,9 +9,6 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     ft = { "java" },
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
     config = function()
       local jdtls = require("jdtls")
       local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
@@ -125,7 +122,6 @@ return {
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, {
         "jdtls",
-        "java-debug-adapter",
         "java-test",
       })
     end,

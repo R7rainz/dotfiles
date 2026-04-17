@@ -29,7 +29,7 @@ return {
         lsp_cfg = false,
         lsp_gofumpt = true,
         lsp_on_attach = false,
-        dap_debug = true,
+        
       })
 
       -- Set custom Go keybindings that don't conflict with Telescope
@@ -102,25 +102,6 @@ return {
     end,
   },
 
-  -- DAP configuration for Go debugging
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-    dependencies = {
-      {
-        "mason-org/mason.nvim",
-        opts = function(_, opts)
-          opts.ensure_installed = opts.ensure_installed or {}
-          vim.list_extend(opts.ensure_installed, { "delve" })
-        end,
-      },
-      {
-        "leoluz/nvim-dap-go",
-        config = true,
-      },
-    },
-  },
-
   -- Treesitter for Go
   {
     "nvim-treesitter/nvim-treesitter",
@@ -149,7 +130,6 @@ return {
         "golines",
         "gomodifytags",
         "impl",
-        "delve",
       })
     end,
   },
