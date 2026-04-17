@@ -2,7 +2,7 @@
 # WINDOW
 # ─────────────────────────────
 title = "T E R M Z"
-window-decoration = false
+window-decoration = true 
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true 
@@ -14,13 +14,14 @@ window-inherit-font-size = true
 # ─────────────────────────────
 # FONT
 # ─────────────────────────────
-font-size = 15
+font-size = 17
 #font-family = "Inconsolata LGC Nerd Font"
-font-family = "JetBrainsMono Nerd Font"
-# font-feature = liga
-# font-feature = calt
-# font-thicken = false
-# font-synthetic-style = true
+#font-family = "JetBrainsMono Nerd Font"
+font-family = "Iosevka Nerd Font"
+font-feature = liga
+font-feature = calt
+font-thicken = false
+font-synthetic-style = true
 
 adjust-cell-height = 2
 adjust-cell-width = 0
@@ -40,9 +41,9 @@ window-colorspace = srgb
 # ─────────────────────────────
 # CURSOR
 # ─────────────────────────────
-cursor-style = block
-cursor-style-blink = false
-cursor-opacity = 0.9
+cursor-style = underline
+cursor-style-blink = true 
+cursor-opacity = 1.0
 adjust-cursor-thickness = 1
 
 # ─────────────────────────────

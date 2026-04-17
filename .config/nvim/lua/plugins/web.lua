@@ -5,149 +5,142 @@
   Add or modify web development plugins here.
 ]]
 return {
-    -- HTML/CSS/Tailwind/React development
-    {
-        "neovim/nvim-lspconfig",
-        opts = {
-            servers = {
-                -- Added TypeScript/React language server for Next.js support
-                ts_ls = {
-                    filetypes = {
-                        "javascript",
-                        "javascriptreact",
-                        "typescript",
-                        "typescriptreact",
-                    },
-                },
-                html = {
-                    filetypes = { "html", "htmldjango" },
-                },
-                cssls = {
-                    settings = {
-                        css = {
-                            validate = true,
-                            lint = { unknownAtRules = "ignore" },
-                        },
-                        scss = {
-                            validate = true,
-                            lint = { unknownAtRules = "ignore" },
-                        },
-                        less = {
-                            validate = true,
-                            lint = { unknownAtRules = "ignore" },
-                        },
-                    },
-                },
-                tailwindcss = {
-                    filetypes = {
-                        "html",
-                        "css",
-                        "scss",
-                        "javascript",
-                        "javascriptreact",
-                        "typescript",
-                        "typescriptreact",
-                        "vue",
-                        "svelte",
-                    },
-                    settings = {
-                        tailwindCSS = {
-                            experimental = {
-                                classRegex = {
-                                    "tw`([^`]*)",
-                                    'tw="([^"]*)',
-                                    'tw={"([^"}]*)',
-                                    "tw\\.\\w+`([^`]*)",
-                                    "tw\\(.*?\\)`([^`]*)",
-                                },
-                            },
-                        },
-                    },
-                },
-                emmet_ls = {
-                    filetypes = {
-                        "html",
-                        "css",
-                        "scss",
-                        "javascript",
-                        "javascriptreact",
-                        "typescript",
-                        "typescriptreact",
-                        "vue",
-                        "svelte",
-                    },
-                },
-            },
+  -- HTML/CSS/Tailwind development
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        html = {
+          filetypes = { "html", "htmldjango" },
         },
-    },
-
-    -- Tailwind CSS colorizer and tools
-    {
-        "NvChad/nvim-colorizer.lua",
-        event = "BufReadPre",
-        opts = {
-            filetypes = { "*", "!lazy" },
-            buftype = { "*", "!prompt", "!nofile" },
-            user_default_options = {
-                RGB = true,
-                RRGGBB = true,
-                names = false,
-                RRGGBBAA = true,
-                AARRGGBB = false,
-                rgb_fn = true,
-                hsl_fn = true,
-                css = true,
-                css_fn = true,
-                mode = "background",
-                tailwind = true,
-                sass = { enable = true, parsers = { "css" } },
-                virtualtext = "■",
-                always_update = false,
+        cssls = {
+          settings = {
+            css = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
             },
+            scss = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+            less = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+          },
         },
+        tailwindcss = {
+          filetypes = {
+            "html",
+            "css",
+            "scss",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
+          },
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  "tw`([^`]*)",
+                  'tw="([^"]*)',
+                  'tw={"([^"}]*)',
+                  "tw\\.\\w+`([^`]*)",
+                  "tw\\(.*?\\)`([^`]*)",
+                },
+              },
+            },
+          },
+        },
+        emmet_ls = {
+          filetypes = {
+            "html",
+            "css",
+            "scss",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
+          },
+        },
+      },
     },
+  },
 
-    -- Tailwind tools
-    {
-        "luckasRanarison/tailwind-tools.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        opts = {},
+  -- Tailwind CSS colorizer and tools
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {
+      filetypes = { "*", "!lazy" },
+      buftype = { "*", "!prompt", "!nofile" },
+      user_default_options = {
+        RGB = true,
+        RRGGBB = true,
+        names = false,
+        RRGGBBAA = true,
+        AARRGGBB = false,
+        rgb_fn = true,
+        hsl_fn = true,
+        css = true,
+        css_fn = true,
+        mode = "background",
+        tailwind = true,
+        sass = { enable = true, parsers = { "css" } },
+        virtualtext = "■",
+        always_update = false,
+      },
     },
+  },
 
-    -- Treesitter for web languages
-    {
-        "nvim-treesitter/nvim-treesitter",
-        opts = function(_, opts)
-            vim.list_extend(opts.ensure_installed, {
-                "html",
-                "css",
-                "scss",
-                "vue",
-                "svelte",
-                "javascript", -- Added JS for React
-                "typescript", -- Added TS for React
-                "tsx", -- Added TSX for React components
-            })
-            -- Enable treesitter-based indentation
-            opts.indent = opts.indent or {}
-            opts.indent.enable = true
-        end,
-    },
+  -- Tailwind tools
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
+  },
 
-    -- Mason tools
-    {
-        "mason-org/mason.nvim",
-        opts = function(_, opts)
-            opts.ensure_installed = opts.ensure_installed or {}
-            vim.list_extend(opts.ensure_installed, {
-                "html-lsp",
-                "css-lsp",
-                "tailwindcss-language-server",
-                "emmet-ls",
-                "stylelint",
-                "rustywind",
-                "ts-standard", -- Added TS/JS formatter/linter
-            })
-        end,
-    },
+  -- Treesitter for web languages
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "html",
+        "css",
+        "scss",
+        "vue",
+        "svelte",
+      })
+      -- Enable treesitter-based indentation
+      opts.indent = opts.indent or {}
+      opts.indent.enable = true
+    end,
+  },
+
+  -- Mason tools
+  {
+    "mason-org/mason.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
+        "html-lsp",
+        "css-lsp",
+        "tailwindcss-language-server",
+        "emmet-ls",
+        "stylelint",
+        "rustywind",
+      })
+    end,
+  },
 }

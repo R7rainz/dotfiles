@@ -43,9 +43,9 @@
         "autoHideDelay": 500,
         "autoShowDelay": 150,
         "backgroundOpacity": 1,
-        "barType": "floating",
+        "barType": "simple",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 0,
+        "capsuleOpacity": 1,
         "contentPadding": 2,
         "density": "default",
         "displayMode": "always_visible",
@@ -56,7 +56,7 @@
         "hideOnOverview": false,
         "marginHorizontal": 9,
         "marginVertical": 4,
-        "middleClickAction": "none",
+        "middleClickAction": "controlCenter",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
         "monitors": [
@@ -165,15 +165,35 @@
                 },
                 {
                     "defaultSettings": {
-                        "refreshInterval": 5000
+                        "boldText": true,
+                        "checkCmd": "(checkupdates; paru -Qua) 2>/dev/null",
+                        "customIconPath": "",
+                        "desktopTip": true,
+                        "enableColorization": false,
+                        "flatpak": true,
+                        "hideOnEmpty": false,
+                        "iconColor": "none",
+                        "iconName": "arrow-big-down-lines",
+                        "noctalia": true,
+                        "refreshInterval": 120,
+                        "refreshTimer": true,
+                        "toast": true,
+                        "updateCmd": "ghostty -e bash -c 'echo \"Updating System...\";paru; flatpak update; read -n 1 -p \"Press any key to exit...\"'",
+                        "useDistroLogo": false
                     },
-                    "id": "plugin:mini-docker"
+                    "id": "plugin:arch-updater"
                 },
                 {
                     "defaultSettings": {
                         "mode": "region"
                     },
                     "id": "plugin:screenshot"
+                },
+                {
+                    "defaultSettings": {
+                        "refreshInterval": 5000
+                    },
+                    "id": "plugin:mini-docker"
                 },
                 {
                     "hideWhenZero": false,
@@ -254,7 +274,7 @@
         "predefinedScheme": "Vesper",
         "schedulingMode": "off",
         "syncGsettings": true,
-        "useWallpaperColors": true
+        "useWallpaperColors": false
     },
     "controlCenter": {
         "cards": [
@@ -476,11 +496,11 @@
     },
     "location": {
         "analogClockInCalendar": false,
-        "autoLocate": true,
+        "autoLocate": false,
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "",
+        "name": "Bhopal",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
@@ -735,7 +755,7 @@
         "overviewBlur": 0.4,
         "overviewEnabled": false,
         "overviewTint": 0.6,
-        "panelPosition": "follow_bar",
+        "panelPosition": "center",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
         "showHiddenFiles": false,

@@ -6,6 +6,10 @@
     "error-grimshot": "Échec du lancement de grimshot. Vérifiez qu'il est installé et présent dans votre PATH.",
     "unsupported-compositor": "Les captures d'écran ne sont pas supportées dans ce compositeur."
   },
+  "actions": {
+    "active-window": "Prendre une capture de la fenêtre active",
+    "active-screen": "Prendre une capture de l'écran actif"
+  },
   "settings": {
     "mode": {
       "label": "Mode de capture",

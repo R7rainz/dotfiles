@@ -2,10 +2,6 @@ vim.g.mapleader = " "
 
 -- Minimize command line height to remove extra space at the bottom
 vim.opt.cmdheight = 0
--- Disable inlay hints globally to fix 'out of range' LSP crashes
-if vim.fn.has("nvim-0.10") == 1 then
-    vim.lsp.inlay_hint.enable(false)
-end
 
 -- ═══════════════════════════════════════════════════════════════════════════
 --  NEOVIDE CONFIGURATION

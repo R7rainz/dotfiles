@@ -7,11 +7,11 @@
         }
     ],
     "states": {
-        "mini-docker": {
+        "arch-updater": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "nvim-session-provider": {
+        "mini-docker": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },

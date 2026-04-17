@@ -19,7 +19,7 @@ NIconButton {
     property int sectionWidgetsCount: 0
 
     icon: "camera"
-    tooltipText: pluginApi?.tr("tooltip") || "Take a screenshot"
+    tooltipText: pluginApi?.tr("tooltip")
     tooltipDirection: BarService.getTooltipDirection()
     baseSize: Style.capsuleHeight
     applyUiScale: false
@@ -45,11 +45,13 @@ NIconButton {
         }
     }
 
-    function takeScreenshot() {
+    function takeScreenshot(customArgs = null) {
         if (screenshotProcess.running) return;
 
         var args = [];
-        if (CompositorService.isHyprland) {
+        if (customArgs) {
+            args = customArgs;
+        } else if (CompositorService.isHyprland) {
             args = ["hyprshot", "--freeze", "--clipboard-only", "--mode", screenshotMode, "--silent"];
         } else if (CompositorService.isNiri) {
             args = ["niri", "msg", "action", "screenshot"];
@@ -81,19 +83,49 @@ NIconButton {
     NPopupContextMenu {
         id: contextMenu
 
-        model: [
-            {
+        model: {
+            var items = [
+                {
+                    "label": pluginApi?.tr("tooltip"),
+                    "action": "take-screenshot",
+                    "icon": "camera"
+                }
+            ];
+
+            if (CompositorService.isHyprland) {
+                items.push({
+                    "label": pluginApi?.tr("actions.active-window"),
+                    "action": "take-screenshot-active-window",
+                    "icon": "window"
+                });
+
+                items.push({
+                    "label": pluginApi?.tr("actions.active-screen"),
+                    "action": "take-screenshot-active-screen",
+                    "icon": "screen-share"
+                });
+            }
+
+            items.push({
                 "label": I18n.tr("actions.widget-settings"),
                 "action": "widget-settings",
                 "icon": "settings"
-            },
-        ]
+            });
+
+            return items;
+        }
 
         onTriggered: action => {
             contextMenu.close();
             PanelService.closeContextMenu(screen);
 
-            if (action === "widget-settings") {
+            if (action === "take-screenshot") {
+                root.takeScreenshot();
+            } else if (action === "take-screenshot-active-window") {
+                root.takeScreenshot(["hyprshot", "-m", "window", "-m", "active", "--clipboard-only"]);
+            } else if (action === "take-screenshot-active-screen") {
+                root.takeScreenshot(["hyprshot", "-m", "output", "-m", "active", "--clipboard-only"]);
+            } else if (action === "widget-settings") {
                 BarService.openPluginSettings(screen, pluginApi.manifest);
             }
         }

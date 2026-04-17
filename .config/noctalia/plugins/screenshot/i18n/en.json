@@ -6,6 +6,10 @@
     "error-grimshot": "Failed to run grimshot. Please ensure grimshot is installed and in PATH.",
     "unsupported-compositor": "Screenshots are not supported in this compositor."
   },
+  "actions": {
+    "active-window": "Capture active window",
+    "active-screen": "Capture active screen"
+  },
   "settings": {
     "mode": {
       "label": "Screenshot Mode",
