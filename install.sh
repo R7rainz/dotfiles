@@ -37,7 +37,7 @@ SUDO_PID=$!
 error_handler() {
   local line=$1
   local exit_code=$2
-  kill $SUDO_PID 2>/dev/null 
+  kill $SUDO_PID 2>/dev/null
   clear
   gum style --margin "1 auto" --width "$UI_WIDTH" --border rounded --border-foreground "$COLOR_ERROR" --padding "1 2" \
     "$(gum style --foreground "$COLOR_ERROR" --bold "💥 CRITICAL ERROR")
@@ -69,7 +69,6 @@ print_header() {
 }
 
 print_step() {
-  # Renders as a solid colored badge
   gum style --margin "1 0 0 0" --padding "0 2" --background "$COLOR_PRIMARY" --foreground "$COLOR_BG" --bold " $1 "
 }
 
@@ -104,7 +103,7 @@ install_pacman() {
   fi
 
   print_info "Missing packages: $missing"
-  
+
   if ! gum spin --spinner dot --spinner.foreground "$COLOR_SECONDARY" --title " Installing via pacman..." -- sudo pacman -S --needed --noconfirm $missing >/dev/null 2>&1; then
     print_error "Pacman failed. Running openly to show the error:"
     sudo pacman -S --needed --noconfirm $missing
@@ -148,7 +147,7 @@ if [ ! -d "$HOME/dotfiles" ]; then
   exit 1
 fi
 
-sudo pacman -S --needed --noconfirm base-devel git curl wget unzip >/dev/null 2>&1
+sudo pacman -S --needed --noconfirm base-devel git curl wget unzip stow >/dev/null 2>&1
 
 if ! command -v gum &>/dev/null; then
   echo -e "\e[34mInstalling 'gum' for UI components...\e[0m"
@@ -185,9 +184,6 @@ if [[ "$INSTALL_MODE" == *"Express"* ]]; then
   EXTRAS="Ghostty Kitty Wezterm Zen Browser Yazi Zathura Fetch Tools"
   WANT_NVIM="yes"
 else
-  # ------------------------------------------
-  # CUSTOM GRANULAR PROMPTS
-  # ------------------------------------------
   print_step "🔄 SYSTEM MAINTENANCE"
   gum style --margin "0 0 0 2" "Perform a full system update?"
   DO_UPDATE=$(gum confirm --selected.background="$COLOR_PRIMARY" --selected.foreground="$COLOR_BG" && echo "yes" || echo "no")
@@ -195,16 +191,16 @@ else
   print_step "🪟 CORE DESKTOP ELEMENTS"
   gum style --margin "0 0 0 2" "1. Install Hyprland & Wayland base?"
   INSTALL_HYPR=$(gum confirm --selected.background="$COLOR_PRIMARY" --selected.foreground="$COLOR_BG" && echo "yes" || echo "no")
-  
+
   gum style --margin "0 0 0 2" "2. Install Noctalia Shell (Bar, Notifications)?"
   INSTALL_NOCT=$(gum confirm --selected.background="$COLOR_PRIMARY" --selected.foreground="$COLOR_BG" && echo "yes" || echo "no")
-  
+
   gum style --margin "0 0 0 2" "3. Install Audio Subsystem (Pipewire)?"
   INSTALL_AUDIO=$(gum confirm --selected.background="$COLOR_PRIMARY" --selected.foreground="$COLOR_BG" && echo "yes" || echo "no")
-  
+
   gum style --margin "0 0 0 2" "4. Install Bluetooth Subsystem (Bluez)?"
   INSTALL_BT=$(gum confirm --selected.background="$COLOR_PRIMARY" --selected.foreground="$COLOR_BG" && echo "yes" || echo "no")
-  
+
   gum style --margin "0 0 0 2" "5. Install Nerd Fonts & Starship Prompt?"
   INSTALL_FONTS=$(gum confirm --selected.background="$COLOR_PRIMARY" --selected.foreground="$COLOR_BG" && echo "yes" || echo "no")
 
@@ -228,7 +224,7 @@ BACKUP_DIR="$HOME/.config.bak_$(date +%Y%m%d_%H%M%S)"
 gum spin --spinner points --spinner.foreground "$COLOR_SECONDARY" --title " Backing up existing configs to $BACKUP_DIR..." -- sleep 2
 mkdir -p "$BACKUP_DIR"
 
-TARGET_CONFIGS=("nvim" "fish" "starship" "rofi" "hypr" "tmux" "ghostty" "kitty" "wezterm" "yazi" "zathura" "bat" "fastfetch")
+TARGET_CONFIGS=("nvim" "fish" "starship" "rofi" "hypr" "noctalia" "tmux" "ghostty" "kitty" "wezterm" "yazi" "zathura" "bat" "fastfetch")
 for app in "${TARGET_CONFIGS[@]}"; do
   if [ -d "$HOME/.config/$app" ]; then
     cp -r "$HOME/.config/$app" "$BACKUP_DIR/" 2>/dev/null || true
@@ -247,7 +243,7 @@ fi
 
 if ! command -v yay &>/dev/null; then
   print_step "📦 COMPILING AUR HELPER"
-  gum spin --spinner dot --spinner.foreground "$COLOR_ACCENT" --title " Building yay..." -- bash -c "rm -rf /tmp/yay && git clone https://aur.archlinux.org/yay.git /tmp/yay >/dev/null 2>&1 && cd /tmp/yay && makepkg -si --noconfirm >/dev/null 2>&1"
+  gum spin --spinner dot --spinner.foreground "$COLOR_ACCENT" --title " Building yay..." -- bash -c "rm -rf /tmp/yay && git clone https://aur.archlinux.org/yay.git /tmp/yay >/dev/null 2>&1 && cd /tmp/yay && makepkg -si --noconfirm"
   cd ~/dotfiles
 fi
 
@@ -261,7 +257,7 @@ esac
 
 if [[ "$INSTALL_HYPR" == "yes" ]]; then
   print_step "🪟 WINDOW MANAGER"
-  install_pacman "hyprland xdg-desktop-portal-hyprland xdg-desktop-portal-wlr xdg-desktop-portal-gtk wayland wlroots rofi-wayland hyprpaper thunar tmux stow brightnessctl"
+  install_pacman "hyprland xdg-desktop-portal-hyprland xdg-desktop-portal-wlr xdg-desktop-portal-gtk wayland wlroots rofi-wayland hyprpaper thunar tmux brightnessctl"
 fi
 
 if [[ "$INSTALL_NOCT" == "yes" ]]; then
@@ -313,7 +309,8 @@ print_step "🔗 DEPLOYING DOTFILES"
 safe_stow() {
   local app=$1
   if [ -d "$HOME/dotfiles/$app" ]; then
-    gum spin --spinner mini --spinner.foreground "$COLOR_SECONDARY" --title " Stowing $app..." -- stow --adopt "$app" >/dev/null 2>&1
+    # || true prevents stow errors from triggering the set -e crash trap
+    gum spin --spinner mini --spinner.foreground "$COLOR_SECONDARY" --title " Stowing $app..." -- stow --adopt "$app" >/dev/null 2>&1 || true
   fi
 }
 
@@ -321,12 +318,13 @@ cd ~/dotfiles || exit 1
 
 if [[ "$INSTALL_FONTS" == "yes" ]]; then safe_stow fish && safe_stow starship; fi
 if [[ "$INSTALL_HYPR" == "yes" ]]; then safe_stow rofi && safe_stow hyprland && safe_stow tmux; fi
+if [[ "$INSTALL_NOCT" == "yes" ]]; then safe_stow noctalia; fi
 if [[ $EXTRAS == *"Ghostty"* ]]; then safe_stow ghostty; fi
 if [[ $EXTRAS == *"Kitty"* ]]; then safe_stow kitty; fi
 if [[ $EXTRAS == *"Wezterm"* ]]; then safe_stow wezterm; fi
 if [[ $EXTRAS == *"Yazi"* ]]; then safe_stow yazi; fi
 if [[ $EXTRAS == *"Zathura"* ]]; then safe_stow zathura; fi
-if [[ $EXTRAS == *"Fetch Tools"* ]]; then safe_stow batfetch && safe_stow fastfetch; fi
+if [[ $EXTRAS == *"Fetch Tools"* ]]; then safe_stow bat && safe_stow fastfetch; fi
 
 git restore . >/dev/null 2>&1 || true
 print_success "Symlinks created successfully."
@@ -358,7 +356,7 @@ fi
 # 6. COMPLETION
 # ==========================================
 trap - ERR
-kill $SUDO_PID 2>/dev/null
+kill $SUDO_PID 2>/dev/null || true
 
 clear
 gum style \
