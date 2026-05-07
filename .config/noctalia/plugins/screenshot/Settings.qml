@@ -16,16 +16,16 @@ ColumnLayout {
     spacing: Style.marginM
 
     NComboBox {
-        label: pluginApi?.tr("settings.mode.label") || "Screenshot Mode"
-        description: pluginApi?.tr("settings.mode.description") || "Choose between region selection or direct screen capture"
+        label: pluginApi?.tr("settings.mode.label")
+        description: pluginApi?.tr("settings.mode.description")
         model: [
             {
                 "key": "region",
-                "name": pluginApi?.tr("settings.mode.region") || "Region Selection"
+                "name": pluginApi?.tr("settings.mode.region")
             },
             {
                 "key": "screen",
-                "name": pluginApi?.tr("settings.mode.screen") || "Full Screen"
+                "name": pluginApi?.tr("settings.mode.screen")
             }
         ]
         currentKey: root.editMode
