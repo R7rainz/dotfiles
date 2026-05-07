@@ -55,6 +55,9 @@ if status is-interactive
     # Initialize Starship prompt
     starship init fish | source
 
+    #Initialize Oh My Posh
+    # oh-my-posh init fish --config ~/Dotfiles/.config/oh-my-posh/themes/tokyo-storm.omp.json | source
+
     # Initialize zoxide (don't let it override cd - we handle that below)
     zoxide init --cmd j fish | source
 
