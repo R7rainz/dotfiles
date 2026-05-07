@@ -2,7 +2,8 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- THEME (gruvbox material feel)
-config.color_scheme = "Gruvbox Material (Gogh)"
+-- config.color_scheme = "Gruvbox Material (Gogh)"
+config.color_scheme = "Noctalia"
 
 -- FORCE PURE BLACK BACKGROUND
 config.colors = {
@@ -15,7 +16,8 @@ config.max_fps = 120
 config.animation_fps = 60
 
 -- THEME (gruvbox material vibe)
-config.color_scheme = "Gruvbox Material (Gogh)"
+-- config.color_scheme = "Gruvbox Material (Gogh)"
+config.color_scheme = "Noctalia"
 
 -- FORCE TRUE BLACK BASE
 config.colors = {
@@ -27,7 +29,7 @@ config.window_decorations = "NONE"
 config.enable_tab_bar = false
 
 -- BACKGROUND IMAGE (subtle, not distracting)
-config.window_background_image = "/home/rainz/Pictures/Wallpapers/gruvbox-3.jpg"
+config.window_background_image = "/home/rainz/Pictures/Wallpapers/min-arch.jpg"
 
 config.window_background_image_hsb = {
 	brightness = 0.05, -- very subtle
@@ -40,12 +42,13 @@ config.window_background_opacity = 1.0
 
 -- FONT (clean + fallback)
 config.font = wezterm.font_with_fallback({
+	"Dank Mono Nerd Font",
 	"JetBrains Mono Nerd Font",
 	"FantasqueSansM Nerd Font",
 	"Noto Color Emoji",
 })
-config.font_size = 15
-config.line_height = 1.0
+config.font_size = 17
+config.line_height = 1.1
 
 -- CURSOR (clean + non-distracting)
 config.default_cursor_style = "SteadyBar"

@@ -186,18 +186,61 @@ return {
             end,
         },
     },
-
     {
         "rebelot/kanagawa.nvim",
-        lazy = true,
-        priority = 1000,
-        opts = {
-            transparent = false,
-            commentStyle = { italic = true },
-            keywordStyle = { italic = true },
-        },
-    },
+        lazy = true, -- load at startup (important for colorscheme)
+        priority = 1000, -- make sure it loads before other UI plugins
 
+        config = function()
+            require("kanagawa").setup({
+                compile = false,
+                undercurl = true,
+                commentStyle = { italic = true },
+                keywordStyle = { italic = true },
+                statementStyle = { bold = true },
+                transparent = true,
+                dimInactive = false,
+                terminalColors = true,
+
+                theme = "wave", -- change to "dragon" or "lotus" if you want
+
+                background = {
+                    dark = "wave",
+                    light = "lotus",
+                },
+
+                colors = {
+                    theme = {
+                        all = {
+                            ui = {
+                                bg_gutter = "none", -- removes gutter background
+                            },
+                        },
+                    },
+                },
+
+                overrides = function(colors)
+                    local theme = colors.theme
+                    return {
+                        -- transparent floating windows
+                        NormalFloat = { bg = "none" },
+                        FloatBorder = { bg = "none" },
+                        FloatTitle = { bg = "none" },
+
+                        -- better popup menu
+                        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+                        PmenuSel = { bg = theme.ui.bg_p2 },
+
+                        -- example tweak
+                        Comment = { italic = true },
+                    }
+                end,
+            })
+
+            -- load the colorscheme
+            vim.cmd("colorscheme kanagawa")
+        end,
+    },
     {
         "rose-pine/neovim",
         name = "rose-pine",
@@ -245,12 +288,12 @@ return {
         },
     },
     {
-      "danfry1/lume",
-      lazy = false,
-      priority = 1000,
-      config = function()
-        require("lume").setup()
-        vim.cmd("colorscheme lume")
-      end,
+        "danfry1/lume",
+        lazy = true,
+        priority = 1000,
+        config = function()
+            require("lume").setup()
+            vim.cmd("colorscheme lume")
+        end,
     },
 }
