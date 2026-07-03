@@ -29,18 +29,5 @@ return {
         end,
     },
 
-    {
-        "LazyVim/LazyVim",
-        opts = function()
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = { "c", "cpp" },
-                callback = function()
-                    vim.bo.tabstop = 4
-                    vim.bo.shiftwidth = 4
-                    vim.bo.softtabstop = 4
-                    vim.bo.expandtab = true
-                end,
-            })
-        end,
-    },
+
 }

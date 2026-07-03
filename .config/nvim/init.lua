@@ -1,146 +1,198 @@
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
--- Minimize command line height to remove extra space at the bottom
-vim.opt.cmdheight = 0
+vim.opt.termguicolors = true
+vim.opt.nu = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.scrolloff = 8
+vim.opt.clipboard:append("unnamedplus")
 
--- ═══════════════════════════════════════════════════════════════════════════
---  NEOVIDE CONFIGURATION
--- ═══════════════════════════════════════════════════════════════════════════
+-- Hightlight yanking
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    callback = function()
+        vim.hl.on_yank()
+    end,
+})
 
-if vim.g.neovide then
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Typography & Rendering
-    -- ─────────────────────────────────────────────────────────────────────────
+if vim.fn.executable "xsel" == 1 then
+  vim.g.clipboard = {
+    name = "xsel",
+    copy = { ["+"] = "xsel --input --clipboard", ["*"] = "xsel --input --primary" },
+    paste = { ["+"] = "xsel --output --clipboard", ["*"] = "xsel --output --primary" },
+    cache_enabled = 0,
+  }
+end
+vim.opt.relativenumber = true
 
-    -- vim.o.guifont = "SF Mono:h15"
-    vim.o.guifont = "JetBrainsMono Nerd Font:h15"
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-    vim.opt.linespace = 1 -- Slightly more breathing room between lines
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Cursor Effects & Animation
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    vim.g.neovide_cursor_vfx_mode = "pixiedust" -- Options: ripple, torpedo, pixiedust, sonicboom, railgun, wireframe
-    vim.g.neovide_cursor_vfx_particle_lifetime = 0.7
-    vim.g.neovide_cursor_vfx_particle_density = 40.0
-    vim.g.neovide_cursor_vfx_opacity = 100.0
-    vim.g.neovide_cursor_vfx_particle_speed = 10.0
-
-    vim.g.neovide_cursor_animation_length = 0.2 -- Snappier feel
-    vim.g.neovide_cursor_trail_size = 1.0
-    vim.g.neovide_cursor_antialiasing = true
-    vim.g.neovide_cursor_animate_in_insert_mode = true
-    vim.g.neovide_cursor_animate_command_line = true
-    vim.g.neovide_cursor_unfocused_outline_width = 0.125
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Scroll Dynamics
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    vim.g.neovide_scroll_animation_length = 0.25
-    vim.g.neovide_scroll_animation_far_lines = 1
-    vim.g.neovide_hide_mouse_when_typing = true
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Window & Transparency
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    -- Light macOS-style glass effect
-    vim.g.neovide_opacity = 0.95
-    vim.g.neovide_window_blurred = true
-
-    vim.g.neovide_floating_blur_amount_x = 3.0
-    vim.g.neovide_floating_blur_amount_y = 3.0
-    vim.g.neovide_floating_shadow = true
-    vim.g.neovide_floating_z_height = 10
-    vim.g.neovide_light_angle_degrees = 45
-    vim.g.neovide_light_radius = 5
-
-    -- Dynamic background (adapts to your colorscheme)
-    -- vim.g.neovide_background_color = "#000000" -- Match your black theme
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Performance & Refresh
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    vim.g.neovide_refresh_rate = 60
-    vim.g.neovide_refresh_rate_idle = 5
-    vim.g.neovide_no_idle = true
-    vim.g.neovide_confirm_quit = true
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Layout & Spacing
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    vim.g.neovide_padding_top = 12
-    vim.g.neovide_padding_bottom = 12
-    vim.g.neovide_padding_right = 12
-    vim.g.neovide_padding_left = 12
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Window Behavior
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    vim.g.neovide_fullscreen = false
-    vim.g.neovide_remember_window_size = true
-    vim.g.neovide_input_macos_alt_is_meta = true
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Zoom & Scale
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    vim.g.neovide_scale_factor = 1.0
-
-    local change_scale_factor = function(delta)
-        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
-    end
-
-    vim.keymap.set("n", "<C-=>", function()
-        change_scale_factor(1.1)
-    end, { desc = "󰁌 Increase scale" })
-
-    vim.keymap.set("n", "<C-->", function()
-        change_scale_factor(1 / 1.1)
-    end, { desc = "󰁍 Decrease scale" })
-
-    vim.keymap.set("n", "<C-0>", function()
-        vim.g.neovide_scale_factor = 1.0
-    end, { desc = "󰁎 Reset scale" })
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Keybindings
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    -- Fullscreen
-    vim.keymap.set("n", "<F11>", function()
-        vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
-    end, { desc = "󰊓 Toggle fullscreen" })
-
-    -- Editor-style word deletion
-    vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete previous word" })
-    vim.keymap.set("i", "<C-H>", "<C-w>", { desc = "Delete previous word (fallback)" })
-
-    -- Paste from system clipboard (Cmd+V / Ctrl+V)
-    vim.keymap.set({ "n", "v", "i", "c" }, "<D-v>", function()
-        vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
-    end, { desc = "Paste from clipboard" })
-
-    -- Copy to system clipboard (Cmd+C / Ctrl+C)
-    vim.keymap.set("v", "<D-c>", '"+y', { desc = "Copy to clipboard" })
-
-    -- ─────────────────────────────────────────────────────────────────────────
-    --  Optional: Cursor Style Variants
-    -- ─────────────────────────────────────────────────────────────────────────
-
-    -- Uncomment to try different cursor effects:
-    -- vim.g.neovide_cursor_vfx_mode = "railgun"  -- Fast and sleek
-    -- vim.g.neovide_cursor_vfx_mode = "torpedo"  -- Smooth trail
-    -- vim.g.neovide_cursor_vfx_mode = "sonicboom"  -- Energetic pulse
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
 
--- ═══════════════════════════════════════════════════════════════════════════
---  BOOTSTRAP
--- ═══════════════════════════════════════════════════════════════════════════
+vim.opt.rtp:prepend(lazypath)
 
-require("config.lazy")
+local lazy_config = {
+  defaults = { lazy = true },
+  install = { colorscheme = { "nvchad" } },
+  ui = {
+    icons = {
+      ft = "",
+      lazy = "󰂠 ",
+      loaded = "",
+      not_loaded = "",
+    },
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin", "tohtml", "getscript", "getscriptPlugin", "gzip",
+        "logipat", "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers",
+        "matchit", "tar", "tarPlugin", "rrhelper", "spellfile_plugin",
+        "vimball", "vimballPlugin", "zip", "zipPlugin", "tutor", "rplugin",
+        "syntax", "synmenu", "optwin", "compiler", "bugreport", "ftplugin",
+      },
+    },
+  },
+}
+
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
+
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+local function clear_backgrounds()
+  vim.api.nvim_set_hl(0, "Normal", { bg = nil })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = nil })
+  vim.api.nvim_set_hl(0, "SignColumn", { bg = nil })
+  vim.api.nvim_set_hl(0, "LineNr", { bg = nil })
+  vim.api.nvim_set_hl(0, "CursorLineNr", { bg = nil })
+  vim.api.nvim_set_hl(0, "FoldColumn", { bg = nil })
+end
+
+clear_backgrounds()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = clear_backgrounds,
+})
+
+require "autocmds"
+require "nvchad.mappings"
+
+local map = vim.keymap.set
+
+local function close_other_buffers()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted and buf ~= current then
+      vim.cmd("bdelete " .. buf)
+    end
+  end
+end
+
+map("n", "<leader><tab>", "<cmd>NvimTreeToggle<cr>", { desc = "File Explorer (sidebar)" })
+map("n", "<leader>e", function()
+  require("telescope.builtin").find_files { prompt_title = "Files" }
+end, { desc = "Find Files (float)" })
+
+map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+map("n", "<C-x>", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+map("n", "<leader>X", "<cmd>bdelete!<cr>", { desc = "Force close buffer" })
+map("n", "<leader>bo", close_other_buffers, { desc = "Close other buffers" })
+
+map("n", "<leader>ff", function()
+  require("telescope.builtin").find_files { cwd = vim.loop.cwd() }
+end, { desc = "Find Files" })
+map("n", "<leader>fp", function()
+  require("telescope.builtin").find_files { cwd = require("lazy.core.config").options.root }
+end, { desc = "Find Plugin File" })
+map("n", "<leader>fA", function()
+  require("telescope.builtin").find_files { cwd = vim.loop.os_homedir() }
+end, { desc = "Find files (home)" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
+map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
+map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
+map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recent Files" })
+
+map("n", "<C-h>", "<C-w>h", { desc = "Focus left pane" })
+map("n", "<C-j>", "<C-w>j", { desc = "Focus bottom pane" })
+map("n", "<C-k>", "<C-w>k", { desc = "Focus top pane" })
+map("n", "<C-l>", "<C-w>l", { desc = "Focus right pane" })
+
+map("n", "<leader>wx", "<cmd>close<cr>", { desc = "Close window" })
+
+map("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
+
+map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit" })
+map("n", "<leader>qQ", "<cmd>q!<cr>", { desc = "Quit (force)" })
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>qA", "<cmd>qa!<cr>", { desc = "Quit all (force)" })
+
+map("n", "<leader>cx", "<cmd>cclose<cr>", { desc = "Close quickfix" })
+map("n", "<leader>lx", "<cmd>lclose<cr>", { desc = "Close location list" })
+
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
+map("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+map("n", "gr", vim.lsp.buf.references, { desc = "References" })
+map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+map("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type Definition" })
+map("n", "<leader>fs", vim.lsp.buf.document_symbol, { desc = "Document Symbols" })
+map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { desc = "Workspace Symbols" })
+
+map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+map("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostics to Loclist" })
+
+map("n", "<leader>cf", function()
+  require("conform").format { bufnr = 0, lsp_fallback = true }
+end, { desc = "Format" })
+
+map("n", "<leader>tt", function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  if not _horizontal_term then
+    _horizontal_term = Terminal:new { direction = "horizontal", hidden = true }
+  end
+  _horizontal_term:toggle()
+end, { desc = "Terminal (horizontal)" })
+map("n", "<leader>tv", function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  if not _vertical_term then
+    _vertical_term = Terminal:new { direction = "vertical", hidden = true }
+  end
+  _vertical_term:toggle()
+end, { desc = "Terminal (vertical)" })
+map("n", "<C-`>", function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  if not _float_term then
+    _float_term = Terminal:new { direction = "float", hidden = true }
+  end
+  _float_term:toggle()
+end, { desc = "Terminal (float)" })
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
+map("n", "<leader>w/", "<C-w>v", { desc = "Split vertical" })
+map("n", "<leader>w-", "<C-w>s", { desc = "Split horizontal" })
+map("n", "<leader>ww", "<C-w>w", { desc = "Next window" })

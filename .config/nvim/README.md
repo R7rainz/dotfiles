@@ -1,396 +1,147 @@
-<h1 align="center"><u>Neovim Config</u></h1>
+# neovim-conf
 
-![Neovim Dashboard](./screenshots/Pasted%20image%20%282%29.png)
+Personal Neovim configuration built on [NvChad v2.5](https://github.com/NvChad/NvChad).
 
-A modern, feature-rich Neovim configuration built on [LazyVim](https://www.lazyvim.org/) with support for multiple programming languages, elegant UI enhancements, and powerful development tools. Tuned for Neovide, smooth scrolling, Discord Rich Presence, AI-assisted workflows, and rich Treesitter-powered syntax highlighting.
+## Screenshots
 
-## ✨ Features
+![Dashboard](screenshots/main-dashboard.png)
+![Sample](screenshots/main-sample.png)
 
-- **LazyVim Foundation**: Built on the excellent LazyVim starter template with intelligent lazy-loading
-- **Multi-Language Support**: First-class support for Python, Go, Java, TypeScript, and Web development
-- **Neovide Ready**: Fully optimized for [Neovide](https://neovide.dev/) GUI with smooth cursor animations, transparency, padding, and fullscreen controls
-- **Beautiful UI**: Modern colorschemes with Rosepine Moon as the default, plus Gruvbox and Tokyodark variants
-- **Smooth Scrolling**: [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) for animated scrolling and comfortable navigation
-- **Dashboard & Clean Indent View**: Snacks dashboard enabled, with indent guides from indent-blankline and mini.indentscope disabled for a cleaner look
-- **Discord Rich Presence**: [presence.nvim](https://github.com/andweeb/presence.nvim) integration with handy keymaps to toggle status
-- **AI Assistance**: GitHub Copilot completions and Copilot Chat with rich prompts and keybindings
-- **Powerful Tools**: Integrated development utilities including Docker support, Linux tools, and more
-- **Smart Completion**: Blink completion engine for lightning-fast code completion
-- **File Navigation**: NeoTree file explorer with floating and sidebar modes
-- **Fuzzy Finding**: Telescope for files, live grep, and symbol navigation
-- **Relative Line Numbers**: Hybrid line numbers for efficient navigation
-- **Professional Keybindings**: Carefully curated keyboard shortcuts for optimal workflow
-
-## 📸 Screenshots
-
-Below are a few more looks at the setup in action.
-
-![Neovim Editing](./screenshots/Pasted%20image%20%283%29.png)
-
-Focused editing view with LSP, Telescope, smooth scrolling
-
-![Neovim Dev Workflow](./screenshots/Pasted%20image.png)
-
-Dev workflow view with NeoTree, terminal splits, and Copilot integration.
-
-## 📋 Requirements
-
-- **Neovim**: v0.9.0 or later
-- **Node.js**: For LSP and code completion
-- **Python**: For Python language support and general tools
-- **Git**: For plugin management with lazy.nvim
-- **A Nerd Font**: For icons and visual elements (recommended: JetBrains Mono or Fantasque Sans Mono)
-
-### Optional Dependencies
-
-- **Docker**: For Docker plugin and container development
-- **Language Servers**: Automatically installed for supported languages
-
-## Installation
-
-### 1. Prerequisites
-
-Ensure you have Neovim 0.9.0+ installed:
-
-```bash
-nvim --version
-```
-
-Install a Nerd Font. Popular choices:
-
-- [JetBrains Mono Nerd Font](https://www.nerdfonts.com/)
-- [Fantasque Sans Mono Nerd Font](https://www.nerdfonts.com/)
-
-### 2. Clone the Configuration
-
-Replace your existing Neovim config:
-
-```bash
-# Backup your current config if needed
-mv ~/.config/nvim ~/.config/nvim.backup
-
-# Clone this configuration
-git clone <your-repo-url> ~/.config/nvim
-```
-
-### 3. Launch Neovim
-
-```bash
-nvim
-```
-
-Lazy.nvim will automatically:
-
-- Download and install all plugins
-- Install language servers and tools
-- Set up the development environment
-
-The first startup may take 2-3 minutes as plugins are downloaded and compiled.
-
-## 📁 Project Structure
+## Structure
 
 ```
-.config/nvim/
-├── init.lua                 # Main entry point with Neovide config
-├── lazy-lock.json          # Plugin version lock file
-├── lazyvim.json            # LazyVim configuration metadata
-├── stylua.toml             # Lua code formatting configuration
-│
-└── lua/
-    ├── config/             # Core configuration
-    │   ├── autocmds.lua    # Autocommands and event handlers
-    │   ├── keymaps.lua     # Custom keybindings
-    │   ├── lazy.lua        # Plugin manager setup
-    │   └── options.lua     # Editor settings and preferences
-    │
-    └── plugins/            # Plugin specifications and configs
-        ├── colorschemes.lua    # Color theme configurations
-        ├── copilot-chat.lua    # GitHub Copilot + CopilotChat integration
-        ├── docker.lua          # Docker integration
-        ├── example.lua         # Example plugin setup
-        ├── go.lua              # Go language support
-        ├── java.lua            # Java language support
-        ├── linux-tools.lua     # Linux development tools
-        ├── mini.lua            # mini.nvim core plugin
-        ├── neo-tree.lua        # File explorer configuration
-        ├── neoscroll.lua       # Smooth scrolling
-        ├── presence.lua        # Discord Rich Presence
-        ├── python.lua          # Python language support
-        ├── telescope.lua       # Fuzzy finder configuration
-        ├── theme.lua           # UI theme customization
-        ├── treesitter.lua      # Treesitter + context and highlighting
-        ├── typescript.lua      # TypeScript/JavaScript support
-        ├── ui.lua              # UI tweaks, dashboard, and indent settings
-        └── web.lua             # Web development tools
-  ├── config/             # Core configuration
-  │   ├── autocmds.lua    # Autocommands and event handlers
-  │   ├── keymaps.lua     # Custom keybindings
-  │   ├── lazy.lua        # Plugin manager setup
-  │   └── options.lua     # Editor settings and preferences
-  │
-  └── plugins/            # Plugin specifications and configs
-    ├── colorschemes.lua    # Color theme configurations (with clear header)
-    ├── copilot-chat.lua    # GitHub Copilot + CopilotChat integration
-    ├── docker.lua          # Docker integration
-    ├── example.lua         # Example plugin setup
-    ├── go.lua              # Go language support (with clear header)
-    ├── java.lua            # Java language support (with clear header)
-    ├── linux-tools.lua     # Linux development tools
-    ├── mini.lua            # mini.nvim core plugin
-    ├── neo-tree.lua        # File explorer configuration
-    ├── neoscroll.lua       # Smooth scrolling
-    ├── presence.lua        # Discord Rich Presence
-    ├── python.lua          # Python language support (with clear header)
-    ├── telescope.lua       # Fuzzy finder configuration
-    ├── theme.lua           # UI theme customization
-    ├── treesitter.lua      # Treesitter + context and highlighting
-    ├── typescript.lua      # TypeScript/JavaScript support (with clear header)
-    ├── ui.lua              # UI tweaks, dashboard, and indent settings
-    └── web.lua             # Web development tools (with clear header)
+init.lua              — Entry point, options, mappings, lazy bootstrap, transparency
+lua/
+├── autocmds.lua      — Loads NvChad's autocmds (FilePost event for LSP)
+├── chadrc.lua        — NvChad theme config (palenight)
+└── plugins/
+    ├── init.lua      — All plugin specs (alpha, lspconfig, conform, telescope, etc.)
+    ├── cpp.lua       — C/C++ LSP (clangd) + mason-lspconfig
+    ├── colorschemes.lua — All available themes
+    └── presence.lua  — Discord Rich Presence
+screenshots/
+├── main-dashboard.png
+└── main-sample.png
 ```
 
-## ⌨️ Key Bindings
+## Features
 
-### General Navigation
+- **Alpha dashboard** — Custom startup dashboard with random ASCII art header, rotating quotes, and a command grid (find files, find text, find directory, config, restore session, new file, lazy, quit)
+- **LSP**: gopls (Go), clangd (C/C++), vtsls (TypeScript/JavaScript), html, cssls, jsonls, yamlls, marksman, bashls, dockerls, pyright, rust_analyzer, prismals, emmet_language_server via `nvim-lspconfig`
+- **Formatting**: conform.nvim with prettier, gofumpt, clang-format, stylua, goimports
+- **Completion**: blink.cmp (NvChad's native completion)
+- **Treesitter**: syntax highlighting for all major languages
+- **File explorer**: NvimTree
+- **Telescope**: fuzzy finding, live grep, buffers, help tags, recent files, directories — all with a custom centered dropdown theme
+- **Session management**: auto-session (auto-save/restore) + persistence.nvim (manual restore from dashboard)
+- **Terminal**: toggleterm.nvim (horizontal, vertical, float)
+- **Flash**: quick jump and treesitter navigation with `s` / `S`
+- **Which-key**: popup keybinding hints
+- **Themes**: 10+ colorschemes (tokyonight, catppuccin, gruvbox-material, kanagawa, rose-pine, onedark, solarized-osaka, etc.)
+- **Clipboard**: explicit `xsel` provider for reliable Wayland clipboard support
+- **Transparency**: clears background highlights so terminal transparency shows through (works with Ghostty, Kitty, Alacritty, etc.)
 
-| Binding      | Action                               |
-| ------------ | ------------------------------------ |
-| `<Space>`    | Leader key                           |
-| `<Tab>`      | Next buffer                          |
-| `<S-Tab>`    | Previous buffer                      |
-| `<C-x>`      | Close current buffer                 |
-| `<leader>X`  | Force close buffer (discard changes) |
-| `<leader>bo` | Close other buffers                  |
+## Theme
 
-### File Navigation
+Default theme is `palenight` (set in `lua/chadrc.lua`). Switch with `:Telescope themes`.
 
-| Binding         | Action                          |
-| --------------- | ------------------------------- |
-| `<leader><Tab>` | Toggle NeoTree (sidebar left)   |
-| `<leader>e`     | Toggle NeoTree (floating)       |
-| `<leader>ff`    | Find files in current directory |
-| `<leader>fp`    | Find plugin files               |
+## Keymaps
 
-### Window Management
+### Dashboard (alpha)
 
-| Binding      | Action               |
-| ------------ | -------------------- |
-| `<leader>wx` | Close current window |
+| Key | Action |
+|-----|--------|
+| `f` | Find Files |
+| `r` | Recent Files |
+| `g` | Live Grep |
+| `d` | Find Directory |
+| `s` | Restore Session |
+| `c` | Open Config |
+| `n` | New File |
+| `l` | Lazy |
+| `q` | Quit |
 
-For more keybindings, see [keymaps.lua](lua/config/keymaps.lua) and the [LazyVim documentation](https://www.lazyvim.org/configuration/general#keymaps).
+### General
 
-## 🎨 Customization
+| Key | Action |
+|-----|--------|
+| `<Tab>` / `<S-Tab>` | Next/previous buffer |
+| `<C-x>` | Close buffer |
+| `<leader>X` | Force close buffer |
+| `<leader>bo` | Close other buffers |
+| `<C-h/j/k/l>` | Navigation between panes |
+| `<leader>w/` | Split vertical |
+| `<leader>w-` | Split horizontal |
+| `<leader>ww` | Next window |
+| `<leader>wx` | Close window |
+| `<leader>tx` | Close tab |
+| `<leader>qq/qQ/qa/qA` | Quit variants |
 
-### Changing the Colorscheme
+### Telescope
 
-Edit [lua/plugins/colorschemes.lua](lua/plugins/colorschemes.lua):
+| Key | Action |
+|-----|--------|
+| `<leader>e` | Find Files (float) |
+| `<leader>ff` | Find Files (cwd) |
+| `<leader>fp` | Find Plugin File |
+| `<leader>fA` | Find Files (home) |
+| `<leader>fg` | Live Grep |
+| `<leader>fb` | Buffers |
+| `<leader>fh` | Help Tags |
+| `<leader>fr` | Recent Files |
 
-```lua
--- Default colorscheme: Rosepine Moon
-return {
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require("rose-pine").setup({
-        variant = "moon",
-        styles = { transparency = true },
-        disable_background = true,
-        disable_float_background = true,
-      })
-      vim.cmd("colorscheme rose-pine-moon")
-    end,
-  },
-}
+### LSP
+
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gr` | References |
+| `gi` | Go to implementation |
+| `K` | Hover documentation |
+| `<leader>ca` | Code action |
+| `<leader>rn` | Rename symbol |
+| `<leader>D` | Type definition |
+| `<leader>fs` | Document symbols |
+| `<leader>ws` | Workspace symbols |
+
+### Diagnostics
+
+| Key | Action |
+|-----|--------|
+| `<leader>d` | Line diagnostics |
+| `[d` / `]d` | Previous/next diagnostic |
+| `<leader>dl` | Diagnostics to loclist |
+
+### Terminal
+
+| Key | Action |
+|-----|--------|
+| `<leader>tt` | Terminal (horizontal) |
+| `<leader>tv` | Terminal (vertical) |
+| `<leader>tf` | Terminal (float) |
+
+### Other
+
+| Key | Action |
+|-----|--------|
+| `s` / `S` | Flash jump / Treesitter |
+| `<leader>cf` | Format buffer |
+| `;` | Enter command mode |
+| `jk` | Escape (insert mode) |
+
+## Requirements
+
+- Neovim >= 0.12.0
+- Nerd Font
+- Git
+- Go (for gopls)
+- Clangd (for C/C++, install via Mason)
+- `xsel` or `wl-clipboard` (for clipboard on Linux/Wayland)
+
+## Install
+
+```sh
+git clone git@github.com:R7rainz/neovim-conf.git ~/.config/nvim
+nvim --headless "+Lazy! sync" +qa
 ```
-
-Other available themes: Gruvbox (with dark hard and light soft variants) and Tokyodark.
-
-### Modifying Editor Settings
-
-Edit [lua/config/options.lua](lua/config/options.lua) to customize:
-
-- Font and font size
-- Tab width and indentation
-- Line number display
-- Scroll behavior
-- Mouse and clipboard settings
-
-### Adding Custom Keybindings
-
-Add new keybindings to [lua/config/keymaps.lua](lua/config/keymaps.lua):
-
-```lua
-local map = vim.keymap.set
-map("n", "<leader>custom", "<cmd>echo 'Custom binding'<cr>", { desc = "Custom action" })
-```
-
-### Enabling Neovide Features
-
-Edit [init.lua](init.lua) to customize Neovide-specific settings:
-
-- Cursor animation styles
-- Opacity and transparency
-- Scroll animations
-- Window blur effects
-- Refresh rate settings
-
-## 🔧 Language Support
-
-### Python
-
-- LSP: Pyright
-- Formatting: Black
-- Linting: Ruff
-- Configuration: [lua/plugins/python.lua](lua/plugins/python.lua)
-
-### Go
-
-- LSP: gopls
-- Formatting: gofmt
-- Testing tools integrated
-- Configuration: [lua/plugins/go.lua](lua/plugins/go.lua)
-
-### Java
-
-- LSP: Eclipse JDT
-- Build tools: Maven, Gradle support
-- Configuration: [lua/plugins/java.lua](lua/plugins/java.lua)
-
-### TypeScript/JavaScript
-
-- LSP: TypeScript-language-server
-- Formatting: Prettier
-- Framework support: React, Vue, Angular
-- Configuration: [lua/plugins/typescript.lua](lua/plugins/typescript.lua)
-
-### Web Development
-
-- HTML, CSS, SCSS support
-- Emmet abbreviations
-- Live reload capabilities
-- Configuration: [lua/plugins/web.lua](lua/plugins/web.lua)
-
-## 🐳 Docker Support
-
-This config includes Docker integration for containerized development workflows:
-
-```bash
-# Docker commands and container management available within Neovim
-# See lua/plugins/docker.lua for configuration details
-```
-
-## 🛠️ Linux Tools
-
-### Language Support
-
-Language-specific plugin configurations are organized as single files in `lua/plugins/` for each language (not in subfolders), with clear headers for maintainability:
-
-- **Python**: [lua/plugins/python.lua](lua/plugins/python.lua) — LSP (Pyright), formatting (Black), linting (Ruff), DAP, testing, and virtualenv support
-- **Go**: [lua/plugins/go.lua](lua/plugins/go.lua) — LSP (gopls), formatting, testing, debugging, and keymaps
-- **Java**: [lua/plugins/java.lua](lua/plugins/java.lua) — LSP (Eclipse JDT), DAP, Maven/Gradle, Treesitter
-- **TypeScript/JavaScript**: [lua/plugins/typescript.lua](lua/plugins/typescript.lua) — LSP, formatting (Prettier), ESLint, framework support
-- **Web**: [lua/plugins/web.lua](lua/plugins/web.lua) — HTML, CSS, SCSS, Tailwind, Emmet, colorizer, and related tools
-
-Enhanced Linux development experience with integrated tools for system programming and scripting.
-
-Configuration: [lua/plugins/linux-tools.lua](lua/plugins/linux-tools.lua)
-
-## 📦 Plugin Management
-
-This config uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
-
-### Common Commands
-
-```vim
-:Lazy                    " Open lazy.nvim UI
-:Lazy sync              " Sync all plugins
-:Lazy update            " Update all plugins
-:Lazy install           " Install missing plugins
-:checkhealth            " Check plugin health
-```
-
-## 🎯 Performance
-
-The configuration is optimized for performance with:
-
-- Smart lazy-loading of plugins
-- Disabled unnecessary rtp plugins
-- Configurable checker for plugin updates
-- Efficient plugin defaults
-
-## 🤖 Copilot Chat
-
-This configuration includes [copilot.lua](https://github.com/zbirenbaum/copilot.lua) and [copilot-chat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim) for AI-powered code assistance.
-
-### Usage
-
-- **Open Copilot Chat**: `<leader>ccq` (quick chat)
-- **Toggle Chat Panel**: `<leader>cct`
-- **Code Actions**: Copilot suggestions available in insert mode
-
-See [lua/plugins/copilot.lua](lua/plugins/copilot.lua) for configuration.
-
-## 🐛 Troubleshooting
-
-### Plugins Not Loading
-
-```vim
-:Lazy sync
-:checkhealth
-```
-
-### Missing LSPs or Formatters
-
-LSPs are auto-installed for recognized file types. Manually trigger installation:
-
-```vim
-:Mason               " Open Mason UI
-```
-
-### Font Issues
-
-Ensure you have installed a Nerd Font and configured it in your terminal or Neovide settings.
-
-Update font in [lua/config/options.lua](lua/config/options.lua):
-
-```lua
-vim.o.guifont = "YourFont Nerd Font:h14"
-```
-
-### Slow Startup
-
-Check loaded plugins:
-
-```vim
-:Lazy profile
-```
-
-## 📚 Learning Resources
-
-- [Neovim Documentation](https://neovim.io/doc/)
-- [LazyVim Documentation](https://www.lazyvim.org/)
-- [Vim Tips & Tricks](https://vim.fandom.com/wiki/Vim_Tips_Wiki)
-- [Lua Guide for Neovim](https://github.com/nanotee/nvim-lua-guide)
-
-## 🤝 Contributing
-
-Feel free to customize this configuration to match your workflow. Some ideas:
-
-- Add language-specific plugins
-- Create custom keybindings
-- Integrate additional LSPs
-- Add snippets and abbreviations
-- Modify color schemes and themes
-
-## 📄 License
-
-This Neovim configuration is provided as-is. Refer to individual plugin licenses for details.
-
----
-
-**Happy coding! 🎉**
-
-For questions or issues, please check the [LazyVim documentation](https://www.lazyvim.org/) or the respective plugin repositories.

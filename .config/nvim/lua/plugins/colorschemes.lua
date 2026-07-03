@@ -106,12 +106,12 @@ return {
             color_overrides = {
                 mocha = {
                     -- Editor & UI Backgrounds
-                    base = "#121314", -- editor.background
+                    base = "#121314",   -- editor.background
                     mantle = "#191a1b", -- sideBar.background / terminal.background
-                    crust = "#0f1011", -- Deepest background (slightly darker than base)
+                    crust = "#0f1011",  -- Deepest background (slightly darker than base)
 
                     -- UI Foregrounds & Borders
-                    text = "#bfbfbf", -- foreground
+                    text = "#bfbfbf",     -- foreground
                     subtext1 = "#bbbebf", -- editor.foreground
                     subtext0 = "#a0a0a0",
                     overlay2 = "#8c8c8c", -- descriptionForeground / inactive elements
@@ -122,18 +122,18 @@ return {
                     surface0 = "#202122", -- editorWidget.background / menus
 
                     -- Syntax & Accent Colors
-                    blue = "#569CD6", -- keyword / constant.language
-                    sapphire = "#3994bc", -- activityBarBadge (UI Accent)
-                    sky = "#9CDCFE", -- variable.other / object keys
-                    teal = "#4EC9B0", -- support.class / types
-                    green = "#73c991", -- git added / strings
-                    yellow = "#e5ba7d", -- warnings / git modified
-                    peach = "#FFA657", -- markup/variables
-                    maroon = "#CE9178", -- string.value
-                    red = "#f48771", -- errorForeground
-                    mauve = "#D2A8FF", -- entity.name.function
-                    pink = "#C586C0", -- keyword.control
-                    flamingo = "#D16969", -- string.regexp
+                    blue = "#569CD6",      -- keyword / constant.language
+                    sapphire = "#3994bc",  -- activityBarBadge (UI Accent)
+                    sky = "#9CDCFE",       -- variable.other / object keys
+                    teal = "#4EC9B0",      -- support.class / types
+                    green = "#73c991",     -- git added / strings
+                    yellow = "#e5ba7d",    -- warnings / git modified
+                    peach = "#FFA657",     -- markup/variables
+                    maroon = "#CE9178",    -- string.value
+                    red = "#f48771",       -- errorForeground
+                    mauve = "#D2A8FF",     -- entity.name.function
+                    pink = "#C586C0",      -- keyword.control
+                    flamingo = "#D16969",  -- string.regexp
                     rosewater = "#f28772", -- editorGutter.deleted
                 },
             },
@@ -186,61 +186,18 @@ return {
             end,
         },
     },
+
     {
         "rebelot/kanagawa.nvim",
-        lazy = true, -- load at startup (important for colorscheme)
-        priority = 1000, -- make sure it loads before other UI plugins
-
-        config = function()
-            require("kanagawa").setup({
-                compile = false,
-                undercurl = true,
-                commentStyle = { italic = true },
-                keywordStyle = { italic = true },
-                statementStyle = { bold = true },
-                transparent = true,
-                dimInactive = false,
-                terminalColors = true,
-
-                theme = "wave", -- change to "dragon" or "lotus" if you want
-
-                background = {
-                    dark = "wave",
-                    light = "lotus",
-                },
-
-                colors = {
-                    theme = {
-                        all = {
-                            ui = {
-                                bg_gutter = "none", -- removes gutter background
-                            },
-                        },
-                    },
-                },
-
-                overrides = function(colors)
-                    local theme = colors.theme
-                    return {
-                        -- transparent floating windows
-                        NormalFloat = { bg = "none" },
-                        FloatBorder = { bg = "none" },
-                        FloatTitle = { bg = "none" },
-
-                        -- better popup menu
-                        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-                        PmenuSel = { bg = theme.ui.bg_p2 },
-
-                        -- example tweak
-                        Comment = { italic = true },
-                    }
-                end,
-            })
-
-            -- load the colorscheme
-            vim.cmd("colorscheme kanagawa")
-        end,
+        lazy = true,
+        priority = 1000,
+        opts = {
+            transparent = false,
+            commentStyle = { italic = true },
+            keywordStyle = { italic = true },
+        },
     },
+
     {
         "rose-pine/neovim",
         name = "rose-pine",

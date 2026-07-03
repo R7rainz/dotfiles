@@ -5,9 +5,8 @@ return {
     opts = {
       auto_update = true,
 
-      -- 🔹 App visuals
       neovim_image_text = "Neovim",
-      main_image = "file", -- IMPORTANT (see section 2)
+      main_image = "file",
       client_id = "793271441293967371",
 
       debounce_timeout = 10,
@@ -15,16 +14,13 @@ return {
       show_time = true,
       buttons = true,
 
-      -- 🔹 Rich Presence text
       editing_text = "Editing %s",
       reading_text = "Reading %s",
       file_explorer_text = "Browsing %s",
       plugin_manager_text = "Managing plugins",
 
-      -- Shows repo/workspace name
       workspace_text = "Working on %s",
 
-      -- 🔹 GitHub buttons (MAX 2)
       buttons = {
         {
           label = "GitHub Profile",
