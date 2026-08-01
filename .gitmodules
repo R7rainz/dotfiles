@@ -1,0 +1,4 @@
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:R7rainz/neovim-conf.git
+	branch = master
