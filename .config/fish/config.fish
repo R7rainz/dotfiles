@@ -1,10 +1,12 @@
-# ============================================================================
+#
+# ======================================================================
 # FISH SHELL CONFIGURATION
-# ============================================================================
+# ======================================================================
+#
 
-# ============================================================================
+# ======================================================================
 # ENVIRONMENT VARIABLES
-# ============================================================================
+# ======================================================================
 
 # Editor
 set -gx EDITOR nvim
@@ -22,6 +24,7 @@ set -gx TERM xterm-256color
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+
 if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
@@ -29,48 +32,51 @@ end
 # Local binaries
 set -U fish_user_paths "$HOME/.local/bin" $fish_user_paths
 
-# ============================================================================
+
+# ======================================================================
 # SHELL SETTINGS
-# ============================================================================
+# ======================================================================
 
 # Disable fish greeting
 set fish_greeting
 
 # Set default cursor style
-set fish_cursor_default beam
+# set fish_cursor_default beam
 
-# ============================================================================
+
+# ======================================================================
 # INTERACTIVE SESSION SETUP
-# ============================================================================
+# ======================================================================
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
 
     # Initialize Homebrew (if installed)
     if test -f /home/linuxbrew/.linuxbrew/bin/brew
         eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-        atuin init fish | source
     end
+
+    # Initialize Atuin
+    atuin init fish | source
 
     # Initialize Starship prompt
     starship init fish | source
 
-    #Initialize Oh My Posh
+    # Initialize Oh My Posh
     # oh-my-posh init fish --config ~/Dotfiles/.config/oh-my-posh/themes/tokyo-storm.omp.json | source
 
-    # Initialize zoxide (don't let it override cd - we handle that below)
+    # Initialize zoxide
+    # Don't let it override cd - we handle that below
     zoxide init --cmd j fish | source
 
-    # Display system info on startup
-    kotofetch --border false
 end
 
-# ============================================================================
+
+# ======================================================================
 # ALIASES
-# ============================================================================
+# ======================================================================
 
 # File listing (eza)
-alias ll='eza --icons --group-directories-first -l'
+alias ll='eza --icons --group-directories-first -l -a'
 
 # File finder
 alias f='ff'
@@ -82,33 +88,35 @@ alias dir='fd'
 alias folder='fd'
 
 # Zoxide
-alias z='cd' # Make z behave like our enhanced cd
-alias jump='zi' # Interactive jump
-alias zls='zoxide query -l' # List all directories in zoxide
-
-# Applications
-alias cursor="$HOME/Downloads/Cursor-1.5.11-x86_64.AppImage"
+alias z='cd'          # Make z behave like our enhanced cd
+alias jump='zi'       # Interactive jump
+alias zls='zoxide query -l'  # List all directories in zoxide
 
 # System control
 alias lock='qs -c noctalia-shell ipc call lockScreen lock'
 alias update="$HOME/Dotfiles/.config/waybar/scripts/system-update.sh up"
 
-# ============================================================================
-# FUNCTIONS
-# ============================================================================
 
-# ----------------------------------------------------------------------------
+# ======================================================================
+# FUNCTIONS
+# ======================================================================
+
+# ----------------------------------------------------------------------
 # File Listing (eza wrapper)
-# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
 function ls
     eza --icons --group-directories-first $argv
 end
 
-# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
 # Yazi file manager with directory changing
-# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
+
     yazi $argv --cwd-file="$tmp"
 
     if set cwd (command cat -- "$tmp"); and test -n "$cwd"; and test "$cwd" != "$PWD"
@@ -118,36 +126,43 @@ function y
     rm -f -- "$tmp"
 end
 
-# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
 # Fuzzy Directory Finder (FZF - Directories Only)
-# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
 function fd
     # If no argument, show interactive picker from home
     # If argument provided, use it as search query
+
     set query ""
+
     if test (count $argv) -gt 0
         set query "$argv"
     end
 
     # Search directories from home, excluding common noise directories
-    set selected (find ~ -type d \
-        -not -path '*/\.*' \
-        -not -path '*/node_modules/*' \
-        -not -path '*/\.git/*' \
-        -not -path '*/\.cache/*' \
-        -not -path '*/\.local/share/*' \
-        -not -path '*/\.local/state/*' \
-        -not -path '*/\.npm/*' \
-        -not -path '*/\.cargo/*' \
-        2>/dev/null | \
-        fzf --height=40% \
+    set selected (
+        find ~ -type d \
+            -not -path '*/\.*' \
+            -not -path '*/node_modules/*' \
+            -not -path '*/\.git/*' \
+            -not -path '*/\.cache/*' \
+            -not -path '*/\.local/share/*' \
+            -not -path '*/\.local/state/*' \
+            -not -path '*/\.npm/*' \
+            -not -path '*/\.cargo/*' \
+            2>/dev/null |
+        fzf \
+            --height=40% \
             --layout=reverse \
             --border \
             --query="$query" \
             --preview='eza --icons --group-directories-first --color=always -la {}' \
             --preview-window=right:50%:wrap \
             --header="Search directories (type to filter)" \
-            --bind="tab:toggle-preview")
+            --bind="tab:toggle-preview"
+    )
 
     # Exit if nothing selected
     if test -z "$selected"
@@ -163,11 +178,17 @@ function fd
     end
 end
 
-# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
 # Fuzzy File Finder (FZF)
-# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
 function ff
-    set search_dir (test -n "$argv[1]"; and echo "$argv[1]"; or echo ".")
+    set search_dir (
+        test -n "$argv[1]"
+        and echo "$argv[1]"
+        or echo "."
+    )
 
     # File extensions that should open in Neovim
     set code_extensions \
@@ -185,14 +206,17 @@ function ff
         crystal jl
 
     # Use fzf to select file/directory
-    set selected (find $search_dir -type f -o -type d 2>/dev/null | \
-        fzf --height=40% \
+    set selected (
+        find $search_dir -type f -o -type d 2>/dev/null |
+        fzf \
+            --height=40% \
             --layout=reverse \
             --border \
             --preview='if test -d {}; ls -la {}; else if test -f {}; head -50 {}; end; end' \
             --preview-window=right:50%:wrap \
             --header="Enter: open, Tab: toggle preview" \
-            --bind="tab:toggle-preview")
+            --bind="tab:toggle-preview"
+    )
 
     # Exit if nothing selected
     if test -z "$selected"
@@ -201,32 +225,42 @@ function ff
 
     # Handle the selection
     if test -d "$selected"
+
         # It's a directory - navigate to it
         cd "$selected" && pwd
 
     else if test -f "$selected"
+
         # It's a file - check if it should open in Neovim
         set ext (string split -r -m1 . "$selected")[2]
         set basename_file (basename "$selected")
 
-        # Check if extension is in code_extensions or it's a common text file without extension
+        # Check if extension is in code_extensions
+        # or it's a common text file without extension
         if contains (string lower "$ext") $code_extensions
             nvim "$selected"
 
         else if test -z "$ext"
+
             # Check for common files without extension
-            if echo "Makefile Dockerfile Rakefile Gemfile Procfile LICENSE README CHANGELOG TODO INSTALL" | grep -q "$basename_file"
+            if echo "Makefile Dockerfile Rakefile Gemfile Procfile LICENSE README CHANGELOG TODO INSTALL" \
+                | grep -q "$basename_file"
+
                 nvim "$selected"
-                # Check if it's a text file
+
+            # Check if it's a text file
             else if file "$selected" 2>/dev/null | grep -q text
                 nvim "$selected"
+
             else
                 xdg-open "$selected" 2>/dev/null &
             end
 
         else
+
             # Use xdg-open for other files (images, PDFs, etc.)
             xdg-open "$selected" 2>/dev/null &
+
         end
 
     else
@@ -235,9 +269,11 @@ function ff
     end
 end
 
-# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
 # Enhanced CD with Zoxide Integration
-# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
 function cd
     set argc (count $argv)
 
@@ -250,6 +286,7 @@ function cd
 
     # Handle special cases
     switch $argv[1]
+
         case - "~" "." ".."
             builtin cd $argv
             and zoxide add (pwd)
@@ -273,25 +310,33 @@ function cd
     set matches (zoxide query -l -- $argv 2>/dev/null)
 
     if test (count $matches) -eq 0
-        # No zoxide matches - try normal cd (will show error if invalid)
+
+        # No zoxide matches - try normal cd
+        # Will show error if invalid
         builtin cd $argv
         and zoxide add (pwd)
 
     else if test (count $matches) -eq 1
+
         # Single match - go there
         builtin cd "$matches[1]"
         and zoxide add (pwd)
 
     else
+
         # Multiple matches - show picker
         echo "Multiple directories found:"
-        set selected (printf '%s\n' $matches | fzf \
-            --height=40% \
-            --layout=reverse \
-            --border \
-            --header="Multiple matches for '$argv' - select one:" \
-            --preview='ls -la {}' \
-            --preview-window=right:50%:wrap)
+
+        set selected (
+            printf '%s\n' $matches |
+            fzf \
+                --height=40% \
+                --layout=reverse \
+                --border \
+                --header="Multiple matches for '$argv' - select one:" \
+                --preview='ls -la {}' \
+                --preview-window=right:50%:wrap
+        )
 
         if test -n "$selected"
             builtin cd "$selected"
@@ -303,25 +348,30 @@ function cd
     end
 end
 
-# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------
 # Zoxide Helper Functions
-# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------
 
 # Interactive zoxide (enhanced)
 function zi
-    set selected (zoxide query -l | fzf \
-        --height=40% \
-        --layout=reverse \
-        --border \
-        --header="Select directory:" \
-        --preview='ls -la {}' \
-        --preview-window=right:50%:wrap \
-        --query="$argv")
+    set selected (
+        zoxide query -l |
+        fzf \
+            --height=40% \
+            --layout=reverse \
+            --border \
+            --header="Select directory:" \
+            --preview='ls -la {}' \
+            --preview-window=right:50%:wrap \
+            --query="$argv"
+    )
 
     if test -n "$selected"
         cd "$selected"
     end
 end
+
 
 # Add current directory to zoxide
 function za
@@ -329,27 +379,36 @@ function za
     echo "Added (pwd) to zoxide database"
 end
 
+
 # Remove directory from zoxide
 function zr
+
     if test (count $argv) -eq 0
+
         # Remove current directory
         zoxide remove (pwd)
         echo "Removed (pwd) from zoxide database"
 
     else
+
         # Remove specified directory
         set matches (zoxide query -l -- $argv)
 
         if test (count $matches) -eq 1
+
             zoxide remove "$matches[1]"
             echo "Removed $matches[1] from zoxide database"
 
         else if test (count $matches) -gt 1
-            set selected (printf '%s\n' $matches | fzf \
-                --height=40% \
-                --layout=reverse \
-                --border \
-                --header="Select directory to remove:")
+
+            set selected (
+                printf '%s\n' $matches |
+                fzf \
+                    --height=40% \
+                    --layout=reverse \
+                    --border \
+                    --header="Select directory to remove:"
+            )
 
             if test -n "$selected"
                 zoxide remove "$selected"
@@ -362,18 +421,24 @@ function zr
     end
 end
 
+
+# ----------------------------------------------------------------------
 # Edit/browse zoxide database
+# ----------------------------------------------------------------------
+
 function ze
-    zoxide query -l -s | fzf \
-        --height=60% \
-        --layout=reverse \
-        --border \
-        --header="Zoxide database (score | path) - Enter to jump, Ctrl-D to delete" \
-        --preview='ls -la {2}' \
-        --preview-window=right:50%:wrap \
-        --bind="ctrl-d:execute(zoxide remove {2})+reload(zoxide query -l -s)" \
-        --with-nth=2.. \
-        --delimiter=' ' | read -l selected_line
+    zoxide query -l -s |
+        fzf \
+            --height=60% \
+            --layout=reverse \
+            --border \
+            --header="Zoxide database (score | path) - Enter to jump, Ctrl-D to delete" \
+            --preview='ls -la {2}' \
+            --preview-window=right:50%:wrap \
+            --bind="ctrl-d:execute(zoxide remove {2})+reload(zoxide query -l -s)" \
+            --with-nth=2.. \
+            --delimiter=' ' |
+        read -l selected_line
 
     if test -n "$selected_line"
         set path (echo "$selected_line" | awk '{print $2}')
@@ -381,31 +446,39 @@ function ze
     end
 end
 
+
 # Original cd behavior (bypass zoxide)
 function ocd
     builtin cd $argv
 end
+
 
 # Force zoxide search (even if local directory exists)
 function zcd
     set matches (zoxide query -l -- $argv 2>/dev/null)
 
     if test (count $matches) -eq 0
+
         echo "No matches found in zoxide database"
         return 1
 
     else if test (count $matches) -eq 1
+
         builtin cd "$matches[1]"
         and zoxide add (pwd)
 
     else
-        set selected (printf '%s\n' $matches | fzf \
-            --height=40% \
-            --layout=reverse \
-            --border \
-            --header="Zoxide matches for '$argv':" \
-            --preview='ls -la {}' \
-            --preview-window=right:50%:wrap)
+
+        set selected (
+            printf '%s\n' $matches |
+            fzf \
+                --height=40% \
+                --layout=reverse \
+                --border \
+                --header="Zoxide matches for '$argv':" \
+                --preview='ls -la {}' \
+                --preview-window=right:50%:wrap
+        )
 
         if test -n "$selected"
             builtin cd "$selected"
@@ -414,21 +487,41 @@ function zcd
     end
 end
 
-# ============================================================================
+
+# ======================================================================
 # KEY BINDINGS
-# ============================================================================
+# ======================================================================
 
 # Bind Ctrl+F to fuzzy file finder
 bind \cf 'ff; commandline -f repaint'
 
-# Bind Ctrl+D to fuzzy directory finder (Note: may conflict with EOF)
-# Alternative: use Ctrl+G or another key if Ctrl+D conflicts
+# Bind Ctrl+G to fuzzy directory finder
+# (Ctrl+D can conflict with EOF)
 bind \cg 'fd; commandline -f repaint'
 
-# ============================================================================
-# END OF CONFIGURATION
-# ============================================================================
-set -gx PATH $PATH /home/rainz/go/bin /home/rainz/.cargo/bin
 
-# opencode
+# ======================================================================
+# ADDITIONAL PATH CONFIGURATION
+# ======================================================================
+
+# Go
+set -gx PATH $PATH /home/rainz/go/bin
+
+# Cargo
+set -gx PATH $PATH /home/rainz/.cargo/bin
+
+# OpenCode
 fish_add_path /home/rainz/.opencode/bin
+
+# Bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# Qwen Code PATH block begin
+set -gx PATH '/home/rainz/.local/bin' $PATH
+# Qwen Code PATH block end
+
+
+# ======================================================================
+# END OF CONFIGURATION
+# ======================================================================
