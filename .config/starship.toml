@@ -11,7 +11,6 @@ ${custom.giturl}\
 $git_branch\
 ${custom.git_worktree}\
 $git_status\
-$line_break\
 $character\
 """
 
@@ -27,7 +26,9 @@ $cmd_duration
 
 [directory]
 style = "bold blue"
-format = "[$path]($style)"
+format = "[󰉋 $path]($style)[$read_only]($read_only_style)"
+read_only = " "
+read_only_style = "bold red"
 truncation_length = 3
 truncate_to_repo = true
 
@@ -35,17 +36,17 @@ truncate_to_repo = true
 disabled = true
 
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
-vimcmd_symbol = "[❮](bold yellow)"
+success_symbol = "[ ➜](bold green)"
+error_symbol = "[ ➜](bold red)"
+vimcmd_symbol = "[ ⇠](bold yellow)"
 
 [cmd_duration]
 min_time = 2000
 format = "[$duration](yellow)"
 
 [git_branch]
-symbol = " "
-format = "[$symbol$branch]($style)"
+symbol = " "
+format = "[ $symbol$branch]($style)"
 style = "bold purple"
 
 [git_status]
@@ -67,15 +68,15 @@ command = """
 remote=$(git config --get remote.origin.url 2>/dev/null)
 
 if [[ "$remote" =~ github ]]; then
-    echo ""
+    echo " "
 elif [[ "$remote" =~ gitlab ]]; then
-    echo "󰮠"
+    echo "󰮠 "
 elif [[ "$remote" =~ bitbucket ]]; then
-    echo "󰞁"
+    echo "󰞁 "
 fi
 """
 when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-format = "[$output ](cyan)"
+format = "[$output](cyan)"
 require_repo = true
 
 [custom.git_worktree]
@@ -84,11 +85,11 @@ common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
 git_dir=$(git rev-parse --git-dir 2>/dev/null)
 
 if [ "$common_dir" != "$git_dir" ]; then
-    echo "⛓"
+    echo "⛓ "
 fi
 """
 when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-format = "[$output ](green)"
+format = "[$output](green)"
 require_repo = true
 
 [nodejs]
@@ -108,3 +109,4 @@ symbol = " "
 
 [docker_context]
 symbol = " "
+
