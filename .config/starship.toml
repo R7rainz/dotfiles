@@ -1,112 +1,126 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
-scan_timeout = 50
+add_newline = true
 command_timeout = 1000
-follow_symlinks = false
-add_newline = false
+scan_timeout = 30
 
 format = """
+$username\
 $directory\
-${custom.giturl}\
 $git_branch\
-${custom.git_worktree}\
 $git_status\
-$character\
-"""
-
-right_format = """
-$nodejs\
+$fill\
+$c\
 $golang\
+$nodejs\
 $python\
 $rust\
 $java\
 $docker_context\
-$cmd_duration
-"""
+$status\
+$cmd_duration\
+$time\
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
+
+[username]
+show_always = true
+style_user = "bold fg:black bg:bright-white"
+style_root = "bold fg:red bg:bright-white"
+format = "[ $user ]($style)[](fg:bright-white bg:bright-black)"
 
 [directory]
-style = "bold blue"
-format = "[󰉋 $path]($style)[$read_only]($read_only_style)"
+style = "bold fg:black bg:bright-black"
 read_only = " "
-read_only_style = "bold red"
+read_only_style = "bold fg:red bg:bright-black"
+format = "[ $path ]($style)[$read_only]($read_only_style)[](fg:bright-black) "
 truncation_length = 3
 truncate_to_repo = true
+truncation_symbol = "…/"
 
-[line_break]
-disabled = true
-
-[character]
-success_symbol = "[ ➜](bold green)"
-error_symbol = "[ ➜](bold red)"
-vimcmd_symbol = "[ ⇠](bold yellow)"
-
-[cmd_duration]
-min_time = 2000
-format = "[$duration](yellow)"
+[directory.substitutions]
+"Music" = "󰝚 "
+"Pictures" = " "
+"Development" = "󰲋 "
 
 [git_branch]
-symbol = " "
-format = "[ $symbol$branch]($style)"
-style = "bold purple"
+symbol = ""
+style = "bold fg:black bg:yellow"
+format = "[](fg:black bg:bright-white)[ $symbol ](bold fg:yellow bg:bright-white)[](fg:bright-white bg:yellow)[ $branch ]($style)[](fg:yellow)"
 
 [git_status]
-format = "[$untracked$staged$modified$renamed$deleted$stashed$conflicted$ahead_behind]($style)"
-staged = "[+](green)"
-modified = "[!](yellow)"
-renamed = "[»](blue)"
-deleted = "[-](red)"
-untracked = "[?](red)"
-stashed = "[≡](purple)"
-conflicted = "[✖](red bold)"
-ahead = "[⇡${count}](cyan)"
-behind = "[⇣${count}](yellow)"
-diverged = "[⇕⇡${ahead_count}⇣${behind_count}](purple)"
+style = "bold fg:yellow"
+format = "[ $all_status$ahead_behind]($style) "
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
 
-[custom.giturl]
-description = "Git remote provider"
-command = """
-remote=$(git config --get remote.origin.url 2>/dev/null)
-
-if [[ "$remote" =~ github ]]; then
-    echo " "
-elif [[ "$remote" =~ gitlab ]]; then
-    echo "󰮠 "
-elif [[ "$remote" =~ bitbucket ]]; then
-    echo "󰞁 "
-fi
-"""
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-format = "[$output](cyan)"
-require_repo = true
-
-[custom.git_worktree]
-command = """
-common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
-git_dir=$(git rev-parse --git-dir 2>/dev/null)
-
-if [ "$common_dir" != "$git_dir" ]; then
-    echo "⛓ "
-fi
-"""
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-format = "[$output](green)"
-require_repo = true
-
-[nodejs]
-symbol = "󰎙 "
+[c]
+symbol = " "
+style = "bright-black"
+format = "[$symbol$version]($style) "
 
 [golang]
 symbol = " "
+style = "bright-black"
+format = "[$symbol$version]($style) "
+
+[nodejs]
+symbol = " "
+style = "bright-black"
+format = "[$symbol$version]($style) "
 
 [python]
-symbol = " "
+symbol = " "
+style = "bright-black"
+format = "[$symbol$version]($style) "
 
 [rust]
-symbol = "󱘗 "
+symbol = " "
+style = "bright-black"
+format = "[$symbol$version]($style) "
 
 [java]
 symbol = " "
+style = "bright-black"
+format = "[$symbol$version]($style) "
 
 [docker_context]
 symbol = " "
+style = "bright-black"
+format = "[$symbol$context]($style) "
 
+[status]
+disabled = false
+symbol = "✘ "
+style = "bold red"
+format = "[$symbol$status]($style) "
+
+[cmd_duration]
+min_time = 1500
+style = "bright-black"
+format = "[$duration]($style) "
+
+[time]
+disabled = false
+time_format = "%T"
+style = "bold fg:black bg:bright-black"
+format = "[](fg:bright-black)[  $time ]($style)"
+
+[line_break]
+disabled = false
+
+[character]
+success_symbol = "[❯](bold yellow) "
+error_symbol = "[❯](bold red) "
+vimcmd_symbol = "[❮](bold yellow) "
