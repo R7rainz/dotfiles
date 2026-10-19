@@ -58,11 +58,10 @@ if status is-interactive
     # Initialize Atuin
     atuin init fish | source
 
-    # Initialize Starship prompt
-    starship init fish | source
-
-    # Initialize Oh My Posh
-    # oh-my-posh init fish --config ~/Dotfiles/.config/oh-my-posh/themes/tokyo-storm.omp.json | source
+    # Initialize Starship
+    if type -q starship
+        starship init fish | source
+    end
 
     # Initialize zoxide
     # Don't let it override cd - we handle that below
@@ -76,7 +75,7 @@ end
 # ======================================================================
 
 # File listing (eza)
-alias ll='eza --icons --group-directories-first -l -a'
+alias ll='eza --icons --group-directories-first -l -a --header'
 
 # File finder
 alias f='ff'
@@ -91,11 +90,6 @@ alias folder='fd'
 alias z='cd'          # Make z behave like our enhanced cd
 alias jump='zi'       # Interactive jump
 alias zls='zoxide query -l'  # List all directories in zoxide
-
-# System control
-alias lock='qs -c noctalia-shell ipc call lockScreen lock'
-alias update="$HOME/Dotfiles/.config/waybar/scripts/system-update.sh up"
-
 
 # ======================================================================
 # FUNCTIONS
